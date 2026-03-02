@@ -1,0 +1,40 @@
+@model Pagina_proyecto.Models.MateriasDrive
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="box">
+    <h2>Eliminar Materia</h2>
+    <p>¿Está seguro de que desea eliminar la siguiente materia?</p>
+
+    <div class="tkendo">
+        <dl class="row">
+            <dt class="col-sm-3">Materia</dt>
+            <dd class="col-sm-9">@Model.Materia</dd>
+
+            <dt class="col-sm-3">Descripción</dt>
+            <dd class="col-sm-9">@Model.DescripcionContenido</dd>
+
+            <dt class="col-sm-3">Link Carpeta</dt>
+            <dd class="col-sm-9"><a href="@Model.LinkCarpeta" target="_blank">@Model.LinkCarpeta</a></dd>
+
+            <dt class="col-sm-3">Archivos</dt>
+            <dd class="col-sm-9">@Model.CantidadArchivos</dd>
+
+            <dt class="col-sm-3">Visualizaciones</dt>
+            <dd class="col-sm-9">@Model.CantidadVisualizaciones</dd>
+
+            <dt class="col-sm-3">Activo</dt>
+            <dd class="col-sm-9">@Model.Activo</dd>
+        </dl>
+
+        <form asp-action="Delete" method="post">
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group mt-3">
+                <button type="submit" class="btn btn-danger">Eliminar</button>
+                <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>

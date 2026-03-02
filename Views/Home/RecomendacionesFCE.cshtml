@@ -1,0 +1,504 @@
+﻿@{
+    ViewData["Title"] = "Recomendaciones FCE";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/RecomendacionesFCE.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Styles.css" asp-append-version="true" />
+}
+
+<!-- Botón flotante esquina superior derecha -->
+<!-- Botón flotante esquina superior derecha -->
+<!-- Botón flotante draggable -->
+<div class="floating-btn-container" id="floatingBtn">
+    <a target="_blank" class="floating-btn" title="Recomendaciones FCE" href="https://docs.google.com/forms/d/e/1FAIpQLScisguezhfPwa7TbhQNKZ6WCqy9M1XHv4itXsEmT6H4PUZMHQ/viewform">
+        📝 <span>Dejá tu recomendación</span>
+    </a>
+</div>
+<div class="OfertaCalificadaContainer">
+
+    <section class="biblio-hero">
+        <div class="container">
+            <h1>📝 Recomendaciones FCE</h1>
+
+            <p>Revisa la experiencia de otros estudiantes y anotate a las mejores cátedras</p>
+        </div>
+    </section>
+    
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    
+                    <input class="filtroMateria" type="text" id="filtroMateria" placeholder="Filtra por Materia, Docente, Cátedra, Horarios y días de cursada">
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <button class="btn btn-warning" onclick="mostrarDatos()">Mostrar Datos</button>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12 largoColumnaOfertasDestacadas">
+                            <div class="table-responsive">
+                                <table id="tbData" class="table table-striped">
+                                    <thead class="fixed-header">
+                                        <tr>
+                                            <th>Materia</th>
+                                            <th>Docente</th>
+                                            <th>Sede</th>
+                                            <th>Días de Cursada</th>
+                                            <th>Horarios de Cursada</th>
+                                            <th>Cuatrimestre</th>
+                                            <th>Modalidad de Cursada</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Bienvenida -->
+<div class="modal fade" id="bienvenidaModal" tabindex="-1" role="dialog" aria-labelledby="bienvenidaModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bienvenidaModalLabel">Bienvenido/a</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar" onclick="cerrarModalBienvenida()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="mensajeBienvenida">
+                <!-- Mensaje se llenará con JavaScript -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="cerrarModalBienvenida()">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal con paginación -->
+<div class="modal fade" id="detalleModal" tabindex="-1" role="dialog" aria-labelledby="detalleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content modalOfertaCalificada">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detalleModalLabel">Detalle de la Oferta</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar" onclick="cerrarModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="pagina1" class="pagina-visible pagina-detalle row"></div>
+                <div id="pagina2" class="pagina-oculta pagina-detalle row"></div>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button id="btnAnterior" onclick="cambiarPagina(1)">Anterior</button>
+                <button id="btnSiguiente" onclick="cambiarPagina(2)">Siguiente</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="cerrarModal()">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const campos = [
+            "Materia", "Docente", "Sede", "DiasDeCursada", "HorarioDeCursada", "Cuatrimestre",
+            "ModalidadDeCursada", "Puntaje", "NivelDeLaCursada", "DificultadDelCurso",
+            "CalidadDeLasClases", "FormatoDeLasClases", "SeRespetoElDiaVirtualAsignado",
+            "ModalidadDeLosParciales", "DificultadDeLosParciales", "RecomendariasElCurso", "OtraInfo"
+        ];
+
+        const camposLegibles = {
+            "Materia": "Materia",
+            "Docente": "Docente",
+            "Sede": "Sede",
+            "DiasDeCursada": "Días de Cursada",
+            "HorarioDeCursada": "Horarios de Cursada",
+            "Cuatrimestre": "Cuatrimestre",
+            "ModalidadDeCursada": "Modalidad de Cursada",
+            "Puntaje": "Puntaje",
+            "NivelDeLaCursada": "Nivel de la Cursada",
+            "DificultadDelCurso": "Dificultad del Curso",
+            "CalidadDeLasClases": "Calidad de las Clases",
+            "FormatoDeLasClases": "Formato de las Clases",
+            "SeRespetoElDiaVirtualAsignado": "Se Respetó el Día Virtual",
+            "ModalidadDeLosParciales": "Modalidad de los Parciales",
+            "DificultadDeLosParciales": "Dificultad de los Parciales",
+            "RecomendariasElCurso": "Recomendarías el Curso",
+            "OtraInfo": "Otra Información"
+        };
+
+        /* =========================
+           NORMALIZAR TEXTO (SIN ACENTOS)
+        ========================== */
+        function normalizarTexto(texto) {
+            return texto
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "");
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            mostrarModalBienvenida();
+            mostrarDatos();
+
+            const debouncedFiltrarTabla = debounce(filtrarTabla, 300);
+
+            document.getElementById('filtroMateria')
+                .addEventListener('keyup', function () {
+                    debouncedFiltrarTabla('filtroMateria');
+                });
+
+            const scrollContainer = document.querySelector(".table-responsive");
+            if (scrollContainer) {
+                enableDirectionalDragScroll(scrollContainer);
+            }
+        });
+
+        /* =========================
+           MODAL BIENVENIDA
+        ========================== */
+        function mostrarModalBienvenida() {
+            const anchoPantalla = window.innerWidth;
+
+            const mensaje = anchoPantalla < 930
+                ? `
+                    <div>
+                        <h5>Recomendaciones FCE</h5>
+                        <ul class="Recomendaciones-celu">
+                            <li>Utilizá el filtro para buscar tu materia.</li>
+                            <li>Da clic en la fila para ampliar el contenido.</li>
+                            <li>Girá tu teléfono horizontal para mejorar tu experiencia.</li>
+                            <img src="/logos/phone-rotate.png" alt="rotate" />
+                        </ul>
+                    </div>`
+                : `
+                    <div>
+                        <h5>Recomendaciones FCE</h5>
+                        <ul>
+                            <li>Utilizá el filtro para buscar tu materia.</li>
+                            <li>Da clic en la fila para ampliar el contenido.</li>
+                        </ul>
+                    </div>`;
+
+            document.getElementById("mensajeBienvenida").innerHTML = mensaje;
+            $('#bienvenidaModal').modal('show');
+        }
+
+        function cerrarModalBienvenida() {
+            $('#bienvenidaModal').modal('hide');
+        }
+
+        /* =========================
+           MOSTRAR DATOS
+        ========================== */
+        function mostrarDatos() {
+            fetch("/Home/MostrarDatos", { method: "POST" })
+                .then(r => {
+                    if (!r.ok) throw new Error(r.status);
+                    return r.json();
+                })
+                .then(dataJson => {
+                    const tableBody = document.querySelector("#tbData tbody");
+                    tableBody.innerHTML = '';
+
+                    if (!dataJson || dataJson.length === 0) {
+                        tableBody.innerHTML =
+                            `<tr><td colspan="7" style="text-align:center">
+                                No hay datos disponibles
+                             </td></tr>`;
+                        return;
+                    }
+
+                    const camposMostrar = [
+                        "Materia", "Docente", "Sede",
+                        "DiasDeCursada", "HorarioDeCursada",
+                        "Cuatrimestre", "ModalidadDeCursada"
+                    ];
+
+                    dataJson.forEach(fila => {
+                        const row = document.createElement("tr");
+
+                        camposMostrar.forEach(campo => {
+                            const cell = document.createElement("td");
+                            cell.textContent = fila[campo] || "Sin datos";
+                            row.appendChild(cell);
+                        });
+
+                        row.addEventListener("click", () => mostrarModalDetalle(fila));
+                        row.style.cursor = "pointer";
+
+                        tableBody.appendChild(row);
+                    });
+                })
+                .catch(() => {
+                    const tableBody = document.querySelector("#tbData tbody");
+                    tableBody.innerHTML =
+                        `<tr>
+                            <td colspan="7" style="text-align:center;color:red">
+                                Error al cargar los datos
+                            </td>
+                         </tr>`;
+                });
+        }
+
+        /* =========================
+           FILTRO SIN ACENTOS
+        ========================== */
+        function filtrarTabla(idFiltro) {
+            const input = document.getElementById(idFiltro);
+            const filtro = normalizarTexto(input.value);
+
+            if (filtro.length < 3) {
+                mostrarTodasLasFilas();
+                return;
+            }
+
+            const filas = document.querySelectorAll("#tbData tbody tr");
+
+            filas.forEach(fila => {
+                const celdas = fila.getElementsByTagName("td");
+                let mostrar = false;
+
+                const columnasAFiltrar = [0, 1, 2, 3, 4];
+
+                for (let col of columnasAFiltrar) {
+                    if (celdas[col]) {
+                        const texto = normalizarTexto(celdas[col].textContent);
+                        if (texto.includes(filtro)) {
+                            mostrar = true;
+                            break;
+                        }
+                    }
+                }
+
+                fila.style.display = mostrar ? "" : "none";
+            });
+        }
+
+        function mostrarTodasLasFilas() {
+            document
+                .querySelectorAll("#tbData tbody tr")
+                .forEach(f => f.style.display = "");
+        }
+
+        /* =========================
+           MODAL DETALLE
+        ========================== */
+        function mostrarModalDetalle(fila) {
+            const pagina1 = document.getElementById("pagina1");
+            const pagina2 = document.getElementById("pagina2");
+
+            pagina1.innerHTML = "";
+            pagina2.innerHTML = "";
+
+            campos.forEach((campo, index) => {
+                const valor = fila[campo] || "Sin datos";
+                const nombre = camposLegibles[campo] || campo;
+
+                const contenido = `
+                    <div class="celda-detalle ${index === campos.length - 1 ? 'red' : ''}">
+                        <strong class="h6">${nombre}:</strong><br>
+                        <span>${valor}</span>
+                    </div>`;
+
+                if (index < 8 || campo === "OtraInfo") {
+                    pagina1.innerHTML += contenido;
+                } else {
+                    pagina2.innerHTML += contenido;
+                }
+            });
+
+            pagina1.className = "pagina-visible pagina-detalle row";
+            pagina2.className = "pagina-oculta pagina-detalle row";
+
+            document.getElementById("btnAnterior").style.display = "none";
+            document.getElementById("btnSiguiente").style.display = "inline-block";
+
+            $('#detalleModal').modal('show');
+        }
+
+        function cambiarPagina(pagina) {
+            const p1 = document.getElementById("pagina1");
+            const p2 = document.getElementById("pagina2");
+
+            const btnAnterior = document.getElementById("btnAnterior");
+            const btnSiguiente = document.getElementById("btnSiguiente");
+
+            if (pagina === 1) {
+                p1.classList.replace("pagina-oculta", "pagina-visible");
+                p2.classList.replace("pagina-visible", "pagina-oculta");
+                btnAnterior.style.display = "none";
+                btnSiguiente.style.display = "inline-block";
+            } else {
+                p1.classList.replace("pagina-visible", "pagina-oculta");
+                p2.classList.replace("pagina-oculta", "pagina-visible");
+                btnAnterior.style.display = "inline-block";
+                btnSiguiente.style.display = "none";
+            }
+        }
+
+        function cerrarModal() {
+            $('#detalleModal').modal('hide');
+        }
+
+        /* =========================
+           DEBOUNCE
+        ========================== */
+        function debounce(func, wait) {
+            let timeout;
+            return function (...args) {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(this, args), wait);
+            };
+        }
+
+        /* =========================
+           DRAG SCROLL (TABLA)
+        ========================== */
+        function enableDirectionalDragScroll(container) {
+            let isDragging = false;
+            let startX, startY, scrollLeft, scrollTop, direction = null;
+
+            container.addEventListener("mousedown", e => {
+                isDragging = true;
+                direction = null;
+                startX = e.pageX - container.offsetLeft;
+                startY = e.pageY - container.offsetTop;
+                scrollLeft = container.scrollLeft;
+                scrollTop = container.scrollTop;
+            });
+
+            container.addEventListener("mouseup", () => isDragging = false);
+            container.addEventListener("mouseleave", () => isDragging = false);
+
+            container.addEventListener("mousemove", e => {
+                if (!isDragging) return;
+
+                const x = e.pageX - container.offsetLeft;
+                const y = e.pageY - container.offsetTop;
+
+                const dx = x - startX;
+                const dy = y - startY;
+
+                if (!direction) {
+                    direction = Math.abs(dx) > Math.abs(dy) ? "horizontal" : "vertical";
+                }
+
+                if (direction === "horizontal") {
+                    container.scrollLeft = scrollLeft - dx * 1.5;
+                } else {
+                    container.scrollTop = scrollTop - dy * 1.5;
+                }
+            });
+        }
+
+        /* =========================
+           DRAG BOTÓN FLOTANTE
+        ========================== */
+                /* =========================
+           DRAG BOTÓN FLOTANTE
+        ========================== */
+        (function () {
+            const btn = document.getElementById("floatingBtn");
+            const link = btn.querySelector("a.floating-btn");
+            let isDragging = false;
+            let offsetX = 0, offsetY = 0;
+            let hasMoved = false;
+            let clickOriginatedOnBtn = false;
+
+            btn.addEventListener("mousedown", e => {
+                isDragging = true;
+                hasMoved = false;
+                clickOriginatedOnBtn = true;
+                offsetX = e.clientX - btn.getBoundingClientRect().left;
+                offsetY = e.clientY - btn.getBoundingClientRect().top;
+                btn.classList.add("dragging");
+                e.preventDefault();
+            });
+
+            document.addEventListener("mousemove", e => {
+                if (!isDragging) return;
+                hasMoved = true;
+
+                let newLeft = e.clientX - offsetX;
+                let newTop  = e.clientY - offsetY;
+
+                newLeft = Math.max(0, Math.min(window.innerWidth  - btn.offsetWidth,  newLeft));
+                newTop  = Math.max(0, Math.min(window.innerHeight - btn.offsetHeight, newTop));
+
+                btn.style.left  = newLeft + "px";
+                btn.style.top   = newTop  + "px";
+                btn.style.right = "auto";
+            });
+
+            document.addEventListener("mouseup", () => {
+                if (!isDragging) return;
+                isDragging = false;
+                btn.classList.remove("dragging");
+
+                // Solo navega si el click empezó Y terminó sin moverse
+                if (clickOriginatedOnBtn && !hasMoved) {
+                    window.open(link.href, link.target || "_self");
+                }
+
+                clickOriginatedOnBtn = false;
+                hasMoved = false;
+            });
+
+            // Touch support (mobile)
+            btn.addEventListener("touchstart", e => {
+                const touch = e.touches[0];
+                isDragging = true;
+                hasMoved = false;
+                clickOriginatedOnBtn = true;
+                offsetX = touch.clientX - btn.getBoundingClientRect().left;
+                offsetY = touch.clientY - btn.getBoundingClientRect().top;
+                btn.classList.add("dragging");
+            }, { passive: true });
+
+            document.addEventListener("touchmove", e => {
+                if (!isDragging) return;
+                hasMoved = true;
+                const touch = e.touches[0];
+
+                let newLeft = touch.clientX - offsetX;
+                let newTop  = touch.clientY - offsetY;
+
+                newLeft = Math.max(0, Math.min(window.innerWidth  - btn.offsetWidth,  newLeft));
+                newTop  = Math.max(0, Math.min(window.innerHeight - btn.offsetHeight, newTop));
+
+                btn.style.left  = newLeft + "px";
+                btn.style.top   = newTop  + "px";
+                btn.style.right = "auto";
+            }, { passive: true });
+
+            document.addEventListener("touchend", () => {
+                if (!isDragging) return;
+                isDragging = false;
+                btn.classList.remove("dragging");
+
+                if (clickOriginatedOnBtn && !hasMoved) {
+                    window.open(link.href, link.target || "_self");
+                }
+
+                clickOriginatedOnBtn = false;
+                hasMoved = false;
+            });
+        })();
+    </script>
+}

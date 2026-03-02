@@ -1,0 +1,72 @@
+﻿body {
+}
+.biblio-hero {
+    background: linear-gradient(135deg, #003366 0%, #004080 100%);
+    color: white;
+    padding: 4rem 0;
+    text-align: center;
+}
+
+    .biblio-hero h1 {
+        font-family: 'Montserrat', 'Roboto Condensed', sans-serif;
+        font-weight: 900;
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    .biblio-hero p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+.floating-btn-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    cursor: grab;
+    user-select: none;
+}
+
+    .floating-btn-container.dragging {
+        cursor: grabbing;
+    }
+
+.floating-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px 10px 12px;
+    background-color: #ffc107;
+    border-radius: 999px 999px 999px 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    font-size: 24px;
+    font-weight: 600;
+    color: #212529;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: box-shadow 0.2s ease;
+    pointer-events: none; /* evita que el <a> interfiera con el drag */
+}
+
+.floating-btn-container.dragging .floating-btn {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+.floating-btn span{
+    color:white;
+    font-size:16px;
+}
+
+@media (max-width: 850px){
+
+    .floating-btn span {
+        color: white;
+        font-size: 12px;
+    }
+    .floating-btn {
+        font-size:18px;
+    }
+
+}

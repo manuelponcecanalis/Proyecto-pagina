@@ -1,0 +1,214 @@
+﻿body {
+}
+
+.malla {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(7, 120px);
+    gap: 12px;
+    padding: 20px;
+    background: #f5f5f5;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ===== CAJA BASE ===== */
+.materia {
+    display: grid;
+    grid-template-columns: 16px 40px 1fr;
+    grid-template-rows: 1fr 1fr;
+    border: 3px solid #1f6d8c;
+    overflow: hidden;
+    height: 100%;
+    transition: all 0.2s ease-in-out;
+}
+
+.area {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    background: #1f6d8c;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: 11px;
+    font-weight: bold;
+    padding: 4px;
+    text-align: center;
+}
+
+.codigo {
+    grid-column: 2;
+    grid-row: 1;
+    border-right: 3px solid #1f6d8c;
+    border-bottom: 3px solid #1f6d8c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    /* SIN background: white — lo maneja cada estado */
+}
+
+.horas {
+    grid-column: 2;
+    grid-row: 2;
+    border-right: 3px solid #1f6d8c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    /* SIN background: white — lo maneja cada estado */
+}
+
+.nombre {
+    grid-column: 3;
+    grid-row: 1 / 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6px;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.correlativa {
+    font-size: 11px;
+    margin-top: 4px;
+    font-weight: bold;
+}
+
+.header {
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.side {
+    border: 3px solid #1f6d8c;
+    background: #dde3e6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* ===== ESTADOS ===== */
+
+/* 🔴 Bloqueada */
+.materia.bloqueada {
+    border-color: #dc3545;
+    background: #f8d7da;
+    opacity: 0.75;
+    cursor: not-allowed;
+}
+
+    .materia.bloqueada .area {
+        background: #dc3545;
+    }
+
+    .materia.bloqueada .codigo,
+    .materia.bloqueada .horas {
+        background: #f8d7da;
+        border-color: #dc3545;
+    }
+
+    .materia.bloqueada .nombre p {
+        color: #842029;
+    }
+
+    .materia.bloqueada .correlativa {
+        color: #dc3545;
+    }
+
+/* 🟡 Disponible */
+.materia.disponible {
+    border-color: #ffc107;
+    background: #fff9e6;
+    cursor: pointer;
+}
+
+    .materia.disponible .area {
+        background: #ffc107;
+        color: #333;
+    }
+
+    .materia.disponible .codigo,
+    .materia.disponible .horas {
+        background: #fff9e6;
+        border-color: #ffc107;
+    }
+
+    .materia.disponible .nombre p {
+        color: #664d03;
+    }
+
+    .materia.disponible .correlativa {
+        color: #b38600;
+    }
+
+/* 🟢 Aprobada */
+.materia.aprobada {
+    border-color: #198754;
+    background: #e6ffe6;
+    cursor: pointer;
+}
+
+    .materia.aprobada .area {
+        background: #198754;
+    }
+
+    .materia.aprobada .codigo,
+    .materia.aprobada .horas {
+        background: #e6ffe6;
+        border-color: #198754;
+    }
+
+    .materia.aprobada .nombre p {
+        color: #0a3622;
+    }
+
+    .materia.aprobada .correlativa {
+        color: #198754;
+    }
+
+/* ===== HOVER ===== */
+.materia.disponible:hover {
+    background: #fff3cd;
+    transform: scale(1.05);
+    z-index: 2;
+    box-shadow: 0 8px 16px rgba(255, 193, 7, 0.3);
+}
+
+    .materia.disponible:hover .codigo,
+    .materia.disponible:hover .horas {
+        background: #fff3cd;
+    }
+
+.materia.aprobada:hover {
+    background: #d1e7dd;
+    transform: scale(1.05);
+    z-index: 2;
+    box-shadow: 0 8px 16px rgba(25, 135, 84, 0.3);
+}
+
+    .materia.aprobada:hover .codigo,
+    .materia.aprobada:hover .horas {
+        background: #d1e7dd;
+    }
+
+.materia.bloqueada:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.materia:hover .nombre p {
+    font-weight: 700;
+    margin-bottom:6px;
+}

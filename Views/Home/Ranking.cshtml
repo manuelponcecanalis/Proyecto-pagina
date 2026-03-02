@@ -1,0 +1,249 @@
+﻿@{
+    ViewData["Title"] = "Ranking";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/Ranking.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Styles.css" asp-append-version="true" />
+}
+<section class="ranking-hero">
+    <div class="container">
+        <h1>📊 Simulador de Ranking</h1>
+        <p>¿Entrás al ranking? Cargá tus notas y proyectá tu posición.</p>
+    </div>
+</section>
+
+<container class="flex-column my-5 container-sm containerRanking">
+    <div class="alert alert-primary text-justify" role="alert">
+        Para utilizar la calculadora, copiá y pegá las materias desde la pestaña
+        "Calificaciones" en miEcon.
+    </div>
+    <div class="ListadoMaterias">
+        <h6 class="textoRanking">Listado de Materias</h6>
+        <textarea id="textInput" placeholder="Pegá acá las materias." class="form-control  inputMaterias"></textarea>
+    </div>
+    <div>
+        <label for="classesLeft">Elegí cuántas materias te faltan</label>
+        <select id="classesLeft">
+            <option value="0">9 o más</option>
+            <option value="5">8</option>
+            <option value="10">7</option>
+            <option value="15">6</option>
+            <option value="20">5</option>
+            <option value="30">4</option>
+            <option value="45">3</option>
+            <option value="60">2</option>
+            <option value="90">1</option>
+        </select>
+    </div>
+
+    <div class="d-flex justify-content-center  flex-column ListadoMaterias">
+
+        <div class="checkBox">
+            <h6 textoRanking>
+               Completaste la encuesta cuatrimestral?
+            </h6>
+            <label>
+           
+                <input type="checkbox" id="surveyAnswered"> 
+            </label>
+        </div>
+       
+        <button class="btn btn-primary mt-3 mb-2 calculate-btn" onclick="convertToArray() ">
+            Calcular
+        </button>
+    </div>
+
+    <div class="text-center my-4">
+        <h2 id="finalRanking">Ranking:</h2>
+    </div>
+
+    <div class="table-container mb-4" style="display: none">
+        <table id="resultTable" class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Cod.Mat / Curso</th>
+                    <th>Materia</th>
+                    <th>Fecha</th>
+                    <th>Nota</th>
+                    <th>Estado</th>
+                    <!-- Add a title for the Estado column -->
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table content will be generated here -->
+            </tbody>
+        </table>
+    </div>
+
+    
+
+    <div style="margin-top:80px;">
+        <div class="text-center">
+            <h2>Tips de inscripción</h2>
+        </div>
+
+        <ul>
+            <li>
+                En la primera inscripción te podes anotar a 3 materias presenciales
+                y 1 más en modalidad distancia, magistral o virtual
+            </li>
+            <li>
+                No te apures para inscribirte. Es lo mismo hacerlo el primer día que
+                el último
+            </li>
+            <li>
+                Existe corte de ranking para cursos con una alta cantidad de
+                inscriptos. La prioridad es asignada en un 70% a los rankings más
+                altos y en un 30% a los registros más bajos.
+            </li>
+            <li>
+                Cuando te inscribas acordate de chequear que ningún curso original y
+                alternativo de una materia se te superponga con los de otra
+            </li>
+            <li>
+                Si te anotaste a una materia para el intensivo de invierno pero no
+                la rendiste o te fue mal, podes anotarte a la misma materia a partir
+                de la segunda inscripción. Si estas cursando una materia en
+                invierno, recién te vas a poder anotar a su correlativa en la
+                tercera inscripción.
+            </li>
+            <li>
+                Si dejaste ausente una materia el cuatri pasado asignada en primera
+                inscripción, te vas a poder anotar a esa misma materia en la Sede
+                Córdoba pero con banda negativa, es decir, en los cursos entre las
+                11hs y las 17hs
+            </li>
+        </ul>
+    </div>
+</container>
+
+<script>
+
+        function calculateFinalRanking() {
+      // Select the checkbox element
+      const surveyAnsweredCheckbox = document.getElementById("surveyAnswered");
+
+      // Check if the surveyAnsweredCheckbox is checked
+      const hasAnsweredSurvey = surveyAnsweredCheckbox.checked;
+
+      // Select the dropdown menu element
+      const classesLeftDropdown = document.getElementById("classesLeft");
+
+      // Get the selected option's value (points)
+      const selectedPoints = parseInt(classesLeftDropdown.value);
+
+      // Select the table body
+      const tableBody = document.querySelector("tbody");
+
+      // Calculate rendidasCount (number of non-empty "Estado" cells)
+      let rendidasCount = 0;
+      for (const row of tableBody.rows) {
+        const estadoCell = row.cells[3].textContent.trim();
+        if (estadoCell !== "") {
+          rendidasCount++;
+        }
+      }
+
+      // Calculate aprobadasCount (number of "Aprobado" cells in the "Estado" column)
+      // Initialize a counter for "Aprobadas"
+      let aprobadasCount = 0;
+
+      // Loop through rows and check "Nota" column
+      for (const row of tableBody.rows) {
+        const notaCell = row.cells[3].textContent.trim(); // Assuming "Nota" is in the fourth column (index 3)
+        const notaValue = parseFloat(notaCell);
+
+        // Check if "Nota" is 4 or higher
+        if (!isNaN(notaValue) && notaValue >= 4) {
+          aprobadasCount++;
+        }
+      }
+
+      // Calculate the average nota (you can reuse the existing code)
+      let sum = 0;
+      let count = 0;
+      for (const row of tableBody.rows) {
+        const notaCell = row.cells[3].textContent.trim(); // Assuming "Nota" is in the third column (index 2)
+        const notaValue = parseFloat(notaCell.replace(",", ".")); // Handle comma as decimal separator
+        if (!isNaN(notaValue)) {
+          sum += notaValue;
+          count++;
+        }
+      }
+
+      var averageNota = count === 0 ? 0 : sum / count;
+
+      // Calculate the base final ranking using the formula
+      let baseFinalRanking =
+        (aprobadasCount / rendidasCount) * 100 +
+        aprobadasCount * 3 +
+        averageNota * 3;
+
+      // Add the selected points from the dropdown
+      baseFinalRanking += selectedPoints;
+
+      // Add 10 points if the survey has been answered
+      if (hasAnsweredSurvey) {
+        baseFinalRanking += 10;
+      }
+
+      // Update the final ranking in the <p> element
+      const finalRankingElement = document.getElementById("finalRanking");
+      finalRankingElement.textContent = `Ranking: ${baseFinalRanking.toFixed(2)}`;
+
+      console.log(`Aprobadas: ${aprobadasCount}`);
+      console.log(`Rendidas: ${rendidasCount}`);
+      console.log(`Promedio: ${averageNota}`);
+      console.log(`Ranking sin puntos: ${baseFinalRanking}`);
+    }
+
+    function convertToArray() {
+      // Get the user input from the text input field
+      const userInput = document.getElementById("textInput").value;
+
+      if (userInput === "") {
+        // The user input is blank
+        alert("Por favor llena el cuadro de texto");
+      } else {
+        // Split the input into rows based on newline characters
+        const rows = userInput.trim().split("\n");
+
+        // Get a reference to the table body
+        const tableBody = document.querySelector("#resultTable tbody");
+
+        // Clear any existing table rows
+        tableBody.innerHTML = "";
+
+        let currentRow = null; // Initialize current row to null
+
+        // Loop through the rows and populate the table
+        for (let i = 0; i < rows.length; i++) {
+          const rowText = rows[i].trim();
+
+          if (rowText) {
+            // Split the row into columns based on the delimiter (e.g., tab, comma, semicolon)
+            const columns = rowText.split("\t"); // Change the delimiter as needed
+
+            // Check if the last column contains "Aprobado" or "Reprobado"
+            const estado = columns[columns.length - 1];
+
+            if (estado === "Aprobado" || estado === "Reprobado") {
+              // If "Aprobado" or "Reprobado" is found in the last column, create a new row
+              currentRow = tableBody.insertRow();
+            }
+
+            if (currentRow) {
+              // If a current row exists, populate it with the extracted columns
+              for (let j = 0; j < columns.length; j++) {
+                const cell = currentRow.insertCell(j);
+                cell.textContent = columns[j];
+              }
+            }
+          }
+        }
+        calculateFinalRanking();
+      }
+    }
+
+</script>

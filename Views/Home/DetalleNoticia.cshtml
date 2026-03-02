@@ -1,0 +1,38 @@
+﻿@model NoticiaPreviewViewModel
+
+
+@{
+    ViewData["Title"] = "DetalleNoticia";
+}
+@section Styles {
+
+    <link rel="stylesheet" href="~/css/Styles.css" asp-append-version="true" />
+}
+<div class="contenedorDetalleNoticia">
+    <h1>@Model.Titulo</h1>
+    <p style="color:darkslategrey;">@Model.Subtitulo</p>
+    <img src="@Model.PrimeraImagenUrl" alt="Imagen de @Model.Titulo">
+    <p>@Html.Raw(ConvertirUrlsEnLinks(Model.Cuerpo))</p>
+</div>
+
+
+@functions {
+    public static string ConvertirUrlsEnLinks(string texto)
+    {
+        if (string.IsNullOrEmpty(texto)) return texto;
+
+        // Convertir URLs en links
+        string patron = @"(https?:\/\/[^\s]+)";
+        texto = System.Text.RegularExpressions.Regex.Replace(
+            texto,
+            patron,
+            "<a href=\"$1\" target=\"_blank\">$1</a>"
+        );
+
+        // Convertir saltos de línea en <br />
+        texto = texto.Replace("\r\n", "<br />")
+                     .Replace("\n", "<br />");
+
+        return texto;
+    }
+}

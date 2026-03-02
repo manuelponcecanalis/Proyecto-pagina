@@ -1,0 +1,46 @@
+@model Pagina_proyecto.Models.MateriasDrive
+
+@{
+    ViewData["Title"] = "Crear Materia";
+}
+
+<div class="box">
+    <h2>Crear Nueva Materia</h2>
+
+    <form asp-action="Create" method="post">
+        <div class="tkendo">
+            <!-- Materia -->
+            <div class="form-group">
+                <label asp-for="Materia"></label>
+                <input asp-for="Materia" class="form-control" placeholder="Nombre de la materia" />
+                <span asp-validation-for="Materia" class="text-danger"></span>
+            </div>
+
+            <!-- DescripcionContenido -->
+            <div class="form-group">
+                <label asp-for="DescripcionContenido"></label>
+                <textarea asp-for="DescripcionContenido" class="form-control" rows="4" placeholder="Descripción del contenido"></textarea>
+                <span asp-validation-for="DescripcionContenido" class="text-danger"></span>
+            </div>
+
+            <!-- LinkCarpeta -->
+            <div class="form-group">
+                <label asp-for="LinkCarpeta"></label>
+                <input asp-for="LinkCarpeta" class="form-control" placeholder="https://link-a-la-carpeta" />
+                <span asp-validation-for="LinkCarpeta" class="text-danger"></span>
+            </div>
+
+            <!-- Botones -->
+            <div class="form-group mt-3">
+                <button type="submit" class="btn btn-primary">Guardar Materia</button>
+                <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

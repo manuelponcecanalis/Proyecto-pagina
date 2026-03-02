@@ -1,0 +1,64 @@
+﻿@model IEnumerable<NoticiaPreviewViewModel>
+
+@{
+    ViewData["Title"] = "Noticias";
+    int pageSize = 8;
+    int pageNumber = 1;
+    var pagedNoticias = Model.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+}
+
+<div class="contenedor-principal">
+    <div class="noticias-container-pagina grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="columna-izquierda space-y-4">
+            @foreach (var noticia in pagedNoticias.Where((n, i) => i % 2 == 0))
+            {
+                <div class="noticia-item cursor-pointer" onclick="ampliarNoticia('@noticia.Id')">
+                    <img src="@noticia.PrimeraImagenUrl" alt="Imagen de @noticia.Titulo" class="w-full h-auto rounded">
+                    <div class="containertitulo">
+                        <h2>@noticia.Titulo</h2>
+                        <p>@Html.Raw(noticia.Subtitulo)</p>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="columna-derecha space-y-4">
+            @foreach (var noticia in pagedNoticias.Where((n, i) => i % 2 != 0))
+            {
+                <div class="noticia-item cursor-pointer" onclick="ampliarNoticia('@noticia.Id')">
+                    <img src="@noticia.PrimeraImagenUrl" alt="Imagen de @noticia.Titulo" class="w-full h-auto rounded">
+                    <div class="containertitulo">
+                        <h2>@noticia.Titulo</h2>
+                        <p>@Html.Raw(noticia.Subtitulo)</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+   
+</div>
+
+<div class="noticia-ampliada-container mt-6"></div>
+
+@section Scripts {
+    <script>
+        let pageNumber = 1;
+        const pageSize = 8;
+        const totalNoticias = @Model.Count();
+
+        function movePaginaNoticias(direction) {
+            pageNumber += direction;
+            if (pageNumber < 1) pageNumber = 1;
+            if (pageNumber > Math.ceil(totalNoticias / pageSize)) pageNumber = Math.ceil(totalNoticias / pageSize);
+
+            fetch(`@Url.Action("LoadMoreNoticias", "Home")?pageNumber=${pageNumber}&pageSize=${pageSize}`)
+                .then(response => response.text())
+                .then(data => {
+                    document.querySelector('.noticias-container-pagina').innerHTML = data;
+                });
+        }
+        function ampliarNoticia(id) {
+            window.location.href = `@Url.Action("DetalleNoticia", "Home")?id=${id}`;
+        }
+    </script>
+}

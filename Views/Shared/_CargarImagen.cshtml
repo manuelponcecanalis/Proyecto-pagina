@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Cargar Imagen";
+}
+
+<h4>Cargar Imagen</h4>
+
+<form id="form-cargar-imagen" asp-action="CargarImagen" asp-controller="Noticias" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <input type="file" name="imagen" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Cargar</button>
+</form>
+
+<div id="imagen-cargada"></div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#form-cargar-imagen').submit(function (e) {
+                e.preventDefault();
+                var formData = new FormData(this);
+                $.ajax({
+                    url: $(this).attr('action'),
+                    type: 'POST',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        $('#imagen-cargada').html('<p>Imagen cargada: <a href="' + response.url + '" target="_blank">' + response.url + '</a></p>');
+                    },
+                    error: function () {
+                        alert('Error al cargar la imagen.');
+                    }
+                });
+            });
+        });
+    </script>
+}

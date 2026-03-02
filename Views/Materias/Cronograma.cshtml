@@ -1,0 +1,183 @@
+﻿@model List<Pagina_proyecto.Models.Entities.Materia>
+@{
+    ViewData["Title"] = "Malla Sistemas";
+    var aprobadas = ViewBag.Aprobadas as List<int> ?? new();
+    var carreras = ViewBag.Carreras as List<Pagina_proyecto.Models.Entities.Carrera> ?? new();
+    var idCarreraActual = (ViewBag.IdCarrera as int?)?.ToString() ?? "";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/Cronograma.css" asp-append-version="true" />
+}
+
+<input type="hidden" id="idCarrera" value="@idCarreraActual" />
+
+<!-- ============================
+     BLOQUE INSCRIPCIÓN CARRERA
+============================= -->
+<div class="card mb-4 p-3">
+    <h5>Inscribirse a una carrera</h5>
+    <select id="selectCarrera" class="form-select mb-2">
+        <option value="">-- Seleccionar carrera --</option>
+        @foreach (var c in carreras)
+        {
+            <option value="@c.IdCarrera"
+                    selected="@(c.IdCarrera.ToString() == idCarreraActual)">
+                @c.Nombre
+            </option>
+        }
+    </select>
+    <button class="btn btn-primary" onclick="inscribirse()">
+        Inscribirme
+    </button>
+    <div id="mensajeCarrera" class="mt-2"></div>
+</div>
+
+<!-- ============================
+            MALLA
+============================= -->
+<div class="malla">
+    <div class="header" style="grid-column:1 / 3; grid-row:1;">
+        SISTEMAS – CICLO GENERAL
+    </div>
+    <div class="header" style="grid-column:3 / 8; grid-row:1; justify-content:center;">
+        CICLO PROFESIONAL
+    </div>
+
+    @if (Model != null && Model.Any())
+    {
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            var m = Model[i];
+            var totalFilas = 6;
+            var col = (i / totalFilas) + 1;
+            var row = (i % totalFilas) + 2;
+            var aprobada = aprobadas.Contains(m.IdMateria);
+            var desbloqueada = m.Correlativas == null || !m.Correlativas.Any() ||
+                               m.Correlativas.All(c => aprobadas.Contains(c.IdMateriaCorrelativa));
+            var css = aprobada ? "aprobada" : desbloqueada ? "disponible" : "bloqueada";
+
+            <div class="materia @css"
+                 style="grid-column:@col; grid-row:@row;"
+                 data-id="@m.IdMateria"
+                 data-correlativas="@string.Join(",", m.Correlativas?.Select(c => c.IdMateriaCorrelativa) ?? Enumerable.Empty<int>())"
+                 onclick="toggleMateria(this)">
+                <div class="area">SISTEMAS</div>
+                <div class="codigo">@m.IdMateria</div>
+                <div class="horas">@m.Horas VH</div>
+                <div class="nombre">
+                    <p>@m.Nombre</p>
+                    @if (m.Correlativas != null)
+                    {
+                        @foreach (var c in m.Correlativas)
+                        {
+                            <div class="correlativa">@c.IdMateriaCorrelativa</div>
+                        }
+                    }
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div style="grid-column:1 / -1; margin-top:20px;">
+            No hay materias cargadas.
+        </div>
+    }
+</div>
+
+<!-- ============================
+            SCRIPT
+============================= -->
+<script>
+    // Al cambiar el selector, recargar con ?idCarrera=X
+    document.getElementById("selectCarrera").addEventListener("change", function () {
+        if (this.value) window.location.href = `?idCarrera=${this.value}`;
+    });
+
+    function getIdCarrera() {
+        const hidden = document.getElementById("idCarrera").value;
+        if (hidden) return hidden;
+        return document.getElementById("selectCarrera").value;
+    }
+
+    const aprobadas = new Set([
+        @Html.Raw(string.Join(",", aprobadas))
+    ]);
+
+    async function toggleMateria(card) {
+        const idMateria = card.dataset.id;
+        const idCarrera = getIdCarrera();
+
+        if (!idCarrera) {
+            alert("Seleccioná una carrera primero.");
+            return;
+        }
+
+        const estaAprobada = card.classList.contains("aprobada");
+        const estaDisponible = card.classList.contains("disponible");
+        if (!estaAprobada && !estaDisponible) return;
+
+        try {
+            const url = `/api/materias/${estaAprobada ? "desaprobar" : "aprobar"}?idMateria=${idMateria}&idCarrera=${idCarrera}`;
+            const method = estaAprobada ? "DELETE" : "POST";
+            const response = await fetch(url, { method });
+
+            if (!response.ok) {
+                const msg = await response.text();
+                alert(msg || "Error al procesar la materia.");
+                return;
+            }
+
+            if (estaAprobada) {
+                aprobadas.delete(parseInt(idMateria));
+            } else {
+                aprobadas.add(parseInt(idMateria));
+            }
+
+            recalcularEstados();
+
+        } catch {
+            alert("Error de conexión.");
+        }
+    }
+
+    function recalcularEstados() {
+        document.querySelectorAll(".materia").forEach(card => {
+            const id = parseInt(card.dataset.id);
+            const correlativas = card.dataset.correlativas
+                ? card.dataset.correlativas.split(",").map(Number).filter(n => n > 0)
+                : [];
+
+            card.classList.remove("aprobada", "disponible", "bloqueada");
+
+            if (aprobadas.has(id)) {
+                card.classList.add("aprobada");
+            } else if (correlativas.length === 0 || correlativas.every(c => aprobadas.has(c))) {
+                card.classList.add("disponible");
+            } else {
+                card.classList.add("bloqueada");
+            }
+        });
+    }
+
+    async function inscribirse() {
+        const id = document.getElementById("selectCarrera").value;
+        const mensaje = document.getElementById("mensajeCarrera");
+        if (!id) {
+            mensaje.innerHTML = "Seleccioná una carrera";
+            return;
+        }
+        try {
+            const response = await fetch(`/api/usuario-carrera/${id}`, { method: "POST" });
+            const text = await response.text();
+            if (response.ok) {
+                mensaje.innerHTML = `<span style="color:green">${text}</span>`;
+                setTimeout(() => window.location.href = `?idCarrera=${id}`, 1000);
+            } else {
+                mensaje.innerHTML = `<span style="color:red">${text}</span>`;
+            }
+        } catch {
+            mensaje.innerHTML = "Error al inscribirse";
+        }
+    }
+</script>

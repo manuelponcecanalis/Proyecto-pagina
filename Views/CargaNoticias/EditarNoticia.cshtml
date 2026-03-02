@@ -1,0 +1,141 @@
+﻿@model NoticiaViewModel
+@using System.IO
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Noticia</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4">Editar Noticia</h1>
+        <form asp-action="Editar" asp-controller="CargaNoticias" method="post">
+            <div class="form-group">
+                <label asp-for="Titulo"></label>
+                <input type="text" class="form-control" asp-for="Titulo" required />
+                <span asp-validation-for="Titulo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Subtitulo"></label>
+                <input type="text" class="form-control" asp-for="Subtitulo" required />
+                <span asp-validation-for="Subtitulo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cuerpo"></label>
+                <textarea class="form-control" asp-for="Cuerpo" rows="5" required></textarea>
+                <span asp-validation-for="Cuerpo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PrimeraImagenUrl"></label>
+                <input type="text" class="form-control" asp-for="PrimeraImagenUrl" readonly />
+                <span asp-validation-for="PrimeraImagenUrl" class="text-danger"></span>
+                <small class="form-text text-muted">Haz clic en "Ver y Cargar Imágenes" para seleccionar una imagen</small>
+            </div>
+            <div class="form-group">
+                <label asp-for="EsCarrusel"></label>
+                <select class="form-control" asp-for="EsCarrusel">
+                    <option value="true">Sí</option>
+                    <option value="false">No</option>
+                </select>
+                <span asp-validation-for="EsCarrusel" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Id" />
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+
+        <button type="button" class="btn btn-secondary mb-3 mt-3" data-toggle="modal" data-target="#imagenesModal">
+            Ver y Cargar Imágenes
+        </button>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="imagenesModal" tabindex="-1" role="dialog" aria-labelledby="imagenesModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Imágenes disponibles</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    @{
+                        var images = System.IO.Directory.GetFiles(System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "wwwroot/Imagenes_Anuncios"));
+                    }
+                    @foreach (var img in images)
+                    {
+                        var fileName = System.IO.Path.GetFileName(img);
+                        var relativePath = "/Imagenes_Anuncios/" + fileName;
+
+                        <div class="mb-3 d-flex align-items-center" id="img-@fileName">
+                            <img src="@relativePath" alt="Imagen" style="max-width: 200px;" class="img-thumbnail mr-3" />
+                            <div class="flex-grow-1">
+                                <p class="mb-0">@fileName</p>
+                                <small class="text-muted">@relativePath</small>
+                            </div>
+                            <button type="button" class="btn btn-success btn-sm ml-2 seleccionar-imagen" data-ruta="@relativePath">
+                                Seleccionar
+                            </button>
+                            <button class="btn btn-danger btn-sm ml-2 eliminar-imagen" data-nombre="@fileName" title="Eliminar imagen">
+                                ❌
+                            </button>
+                        </div>
+                    }
+
+                    <hr />
+                    <h6>Subir nueva imagen</h6>
+                    <form asp-controller="Imagenes" asp-action="Subir" method="post" enctype="multipart/form-data">
+                        <input type="file" name="imagen" class="form-control mb-2" />
+                        <button type="submit" class="btn btn-success">Subir Imagen</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Manejar selección de imágenes
+            document.querySelectorAll(".seleccionar-imagen").forEach(btn => {
+                btn.addEventListener("click", function () {
+                    const ruta = this.getAttribute("data-ruta");
+                    document.querySelector('input[name="PrimeraImagenUrl"]').value = ruta;
+                    $('#imagenesModal').modal('hide'); // Cerrar el modal
+                    alert("Imagen seleccionada: " + ruta);
+                });
+            });
+
+            // Manejar eliminación de imágenes
+            document.querySelectorAll(".eliminar-imagen").forEach(btn => {
+                btn.addEventListener("click", function () {
+                    const nombre = this.getAttribute("data-nombre");
+                    const contenedor = document.getElementById("img-" + nombre);
+
+                    if (confirm(`¿Seguro que querés eliminar la imagen "${nombre}"?`)) {
+                        fetch(`/api/CargaNoticiasApi/imagen/${nombre}`, {
+                            method: "DELETE"
+                        })
+                        .then(response => {
+                            if (response.ok) {
+                                contenedor.remove();
+                                alert("Imagen eliminada correctamente");
+                            } else {
+                                response.json().then(data => alert(data.message));
+                            }
+                        })
+                        .catch(error => {
+                            console.error("Error al eliminar imagen:", error);
+                            alert("Ocurrió un error al intentar eliminar la imagen.");
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

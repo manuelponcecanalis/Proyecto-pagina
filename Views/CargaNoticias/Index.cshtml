@@ -1,0 +1,64 @@
+﻿@model IEnumerable<CargaNoticia>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Noticias</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4">Noticias</h1>
+        <a href="/CargaNoticias/CrearNoticia" class="btn btn-success mb-4">Crear Nueva Noticia</a>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Subtítulo</th>
+                    <th>Imagen</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var noticia in Model)
+                {
+
+                    <tr data-id="@noticia.Id">
+                        <td>@noticia.Titulo</td>
+                        <td>@noticia.Subtitulo</td>
+                        <td>
+                            <img src="@noticia.Imagenes" alt="Imagen de @noticia.Titulo" style="width: 100px; height: auto;" />
+                        </td>
+                        <td>
+                            <a href="/CargaNoticias/EditarNoticia/@noticia.Id" class="btn btn-primary">Editar</a>
+                            <button class="btn btn-danger" onclick="deleteNoticia(@noticia.Id)">Eliminar</button>
+                        </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function deleteNoticia(id) {
+            if (confirm('¿Estás seguro de que deseas eliminar esta noticia?')) {
+                fetch(`/api/CargaNoticiasApi/${id}`, {
+                    method: 'DELETE'
+                }).then(response => {
+                    if (response.ok) {
+                        document.querySelector(`tr[data-id='${id}']`).remove();
+                    } else {
+                        response.json().then(data => {
+                            alert('Error al eliminar la noticia: ' + data.message);
+                        });
+                    }
+                }).catch(error => {
+                    alert('Error al eliminar la noticia: ' + error.message);
+                });
+            }
+        }
+    </script>
+</body>
+</html>

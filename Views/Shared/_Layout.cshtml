@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Pagina proyecto</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Styles.css" asp-append-version="true" />
+
+    @RenderSection("Styles", required: false)
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q9Z8JBNK1C"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){ dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-Q9Z8JBNK1C');
+    </script>
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                    <img class="navbar-brand logoProyecto" src="~/Recurso_4-100-removebg-preview.png" alt="Logo proyecto" />
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target=".navbar-collapse"
+                        aria-controls="navbarSupportedContent"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark @(ViewContext.RouteData.Values["action"]?.ToString() == "Index" ? "active" : "")"
+                               asp-controller="Home" asp-action="Index">
+                                Inicio
+                            </a>
+                        </li>
+
+
+                      
+                        <li class="nav-item">
+                            <a class="nav-link text-dark @(ViewContext.RouteData.Values["action"]?.ToString() == "RecomendacionesFCE" ? "active" : "")"
+                               asp-controller="Home" asp-action="RecomendacionesFCE">
+                                Recomendaciones FCE
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark @(ViewContext.RouteData.Values["action"]?.ToString() == "BiblioEconomicas" ? "active" : "")"
+                               asp-controller="Home" asp-action="BiblioEconomicas">
+                                Biblio Economicas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark @(ViewContext.RouteData.Values["action"]?.ToString() == "Noticias" ? "active" : "")"
+                               asp-controller="Home" asp-action="Noticias">
+                                Anuncios
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark @(ViewContext.RouteData.Values["action"]?.ToString() == "Ranking" ? "active" : "")"
+                               asp-controller="Home" asp-action="Ranking">
+                                Ranking
+                            </a>
+                        </li>
+                     
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark @(ViewContext.RouteData.Values["action"]?.ToString() == "CBC" ? "active" : "")"
+                               asp-controller="Home" asp-action="CBC">
+                                CBC
+                            </a>
+                        </li>
+
+
+                      
+
+
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Operador"))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-dark
+                                   @(ViewContext.RouteData.Values["controller"]?.ToString() == "CargaNoticias"
+                                                                  || ViewContext.RouteData.Values["controller"]?.ToString() == "CargaCalendario"
+                                                                  || ViewContext.RouteData.Values["controller"]?.ToString() == "MateriasDrive"
+                                                                  ? "active" : "")"
+                               href="#"
+                               id="backendDropdown"
+                               role="button"
+                               data-bs-toggle="dropdown"
+                               aria-expanded="false">
+                                <b>BackEnd</b>
+                            </a>
+
+                                <ul class="dropdown-menu" aria-labelledby="backendDropdown">
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="CargaNoticias" asp-action="Index">
+                                            Carga Noticias
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="CargaCalendario" asp-action="Index">
+                                            Eventos
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="MateriasDrive" asp-action="Index">
+                                            BiblioEconomicas
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                                                }
+
+                    </ul>
+
+                    @*<partial name="_LoginPartial" /> *@
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                  
+                    <a href="https://chat.whatsapp.com/Lt65YC6x3W89HDCs3vcYRy"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="footer-link"
+                       data-red="whatsapp">
+                       <b> Contacto</b>
+                    </a>
+
+                    <a href="https://www.instagram.com/proyectoeconomicas/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="footer-link"
+                       data-red="instagram">
+                        <b>  Instagram</b>
+                    </a>
+
+                    <a href="https://x.com/proyectofce?s=21"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="footer-link"
+                       data-red="twitter">
+                        <b> X</b>
+                    </a>
+
+                    <a href="https://www.youtube.com/proyectoeconomicas"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="footer-link"
+                       data-red="youtube">
+                        <b>YouTube</b>
+                    </a>
+                  
+                </div>
+                <p class="footer-text">© 2024 PROYECTO Económicas. Todos los derechos reservados.</p>
+            </div>
+        </div>
+        <div class="footer-bar"></div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

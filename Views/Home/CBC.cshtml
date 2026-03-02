@@ -1,0 +1,147 @@
+﻿@{
+    ViewData["Title"] = "Mundo CBC - PROYECTO Económicas";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/CBC.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto+Condensed:wght@700&family=Open+Sans:wght@400;600&family=Lato:wght@400;600&display=swap" rel="stylesheet">
+}
+
+<!-- ================= HERO ================= -->
+<section class="cbc-hero">
+    <div class="container">
+        <h1>🚀 Guía de Supervivencia CBC</h1>
+        <p>Trámites, sedes y material para ingresantes. Que no te filtren.</p>
+    </div>
+</section>
+
+<!-- ================= CONTENIDO ================= -->
+<section class="guide-section">
+    <div class="container">
+
+        <div class="guide-card">
+            <h2>¿Qué es el CBC?</h2>
+            <p>
+                El Ciclo Básico Común (CBC) es el primer año de todas las carreras de la UBA.
+                Son 6 materias obligatorias para ingresar a la facultad.
+            </p>
+        </div>
+
+        <div class="guide-card">
+            <h2>Sedes del CBC</h2>
+            <ul class="info-list">
+                <li><strong>Ciudad Universitaria:</strong> Av. Int. Güiraldes 2620</li>
+                <li><strong>Medrano:</strong> Av. Medrano 951</li>
+                <li><strong>Drago:</strong> Av. Córdoba 2038</li>
+            </ul>
+        </div>
+
+        <div class="guide-card">
+            <h2>Materias del CBC – Económicas</h2>
+            <ul class="info-list">
+                <li>ICSE</li>
+                <li>IPC</li>
+                <li>Matemática</li>
+                <li>Álgebra</li>
+                <li>Análisis Matemático</li>
+                <li>Semiótica</li>
+            </ul>
+        </div>
+
+        <!-- ================= TRÁMITES ================= -->
+        <h2 style="font-family:'Montserrat',sans-serif;color:var(--color-primary);margin:3rem 0 2rem;text-align:center; " class="titulo-tramites">
+            Trámites Importantes
+        </h2>
+
+        <div class="tramites-grid">
+
+            <div class="tramite-card"
+                 data-titulo="Inscripción"
+                 data-descripcion="En Primer Tramo, las materias se asignan automáticamente según la sede y franja horaria que elegiste. Esto es así en los primeros dos cuatrimestres; en caso de que tengas que recursar una materia, tenes que inscribirte en las fechas que estipule el calendario académico.
+
+Si sos ingresante al CBC en años anteriores al 2020 y te querés inscribir a materias, necesitás:
+Estar incluido en el padrón de rematriculados. Si no estás incluido en dicho padrón necesitás realizar el Trámite de Rematriculación al CBC.
+
+Las fechas para realizar el trámite online de Rematriculación se publican en el calendario del CBC o nuestras redes.
+
+Si ingresaste al CBC luego del 2020 y no sos ingresante del año actual, no debés realizar el paso anterior. Si cumplís con los requisitos anteriores, en las fechas correspondientes vas a poder inscribirte a las materias presenciales, siempre y cuando hayas realizado y validado una preinscripción.
+
+Si empezaste a cursar por primera vez el CBC en el primer cuatrimestre, para poder cursar el segundo tenés que hacer la Reconfirmación de Inscripción, completando el formulario que estará disponible en la fecha correspondiente a través de la Plataforma de Trámites e Inscripciones del CBC. En este trámite podrás realizar cambio de carrera o solicitar una simultaneidad.
+
+Es importante que recuerdes que, en tu año de ingreso al CBC, la única forma de realizar el cambio de carrera o solicitar una simultaneidad es a través del trámite de Reconfirmación de la Inscripción. Si te quedaron materias para cursar y cambió el Ciclo Lectivo (nuevo año calendario), debés hacer la inscripción a materias.
+
+                 Si querés inscribirte a materias de UBA XXI, una vez realizado el Pre-ingreso a la UBA, recibirás un correo electrónico con tu usuario y contraseña para ingresar al <a href='https://guarani.uba.ar/cbc/' target='_blank'>SIU Guaraní</a>, donde vas a poder inscribirte a las materias de UBA XXI.
+
+No hay límite en la cantidad de materias que podés cursar a través de UBA XXI.
+">
+                <h3>Inscripción</h3>
+                <p>Inscripción online a través del sistema SIU Guaraní.</p>
+                <a href="#" class="tramite-link">Ver más →</a>
+            </div>
+
+            <div class="tramite-card"
+                 data-titulo="Certificado de Alumno Regular"
+                 data-descripcion="Si estás cursando el CBC, la constancia o certificado de alumno regular certifica que sos alumna/o activa/o del CBC y la podés solicitar a través de <a href='https://guarani.uba.ar/cbc/' target='_blank'>SIU Guaraní</a> desde la pantalla de consulta de asignación . No certifica tus horarios de cursada, días de examen, ni presencia en las clases.
+
+Si estás cursando UBA XXI, tenés que realizar los siguientes pasos:
+
+En la solapa “Reportes” hacé clic en “Mis inscripciones”.
+En “Cursadas – Períodos lectivos vigentes” encontrarás las materias en las que te inscribiste.
+En la columna “Comprobantes” hacé clic en el botón “Generar” para que puedas descargar el Certificado de alumno/a regular a la materia.
+">
+                <h3>Certificado de Alumno Regular</h3>
+                <p>Necesario para varios trámites.</p>
+                <a href="#" class="tramite-link">Ver más →</a>
+            </div>
+
+            <div class="tramite-card"
+                 data-titulo="Renuncia a Cursada"
+                 data-descripcion="Permite abandonar una materia sin perderla, siempre que se realice antes de la fecha límite establecida por el CBC.">
+                <h3>Renuncia a Cursada</h3>
+                <p>Si no podés cursar, podés renunciar.</p>
+                <a href="#" class="tramite-link">Ver más →</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ================= MODAL ================= -->
+<div id="tramiteModal" class="tramite-modal">
+    <div class="tramite-modal-content">
+        <span class="tramite-modal-close">&times;</span>
+        <h2 id="modalTitulo"></h2>
+        <p id="modalDescripcion"></p>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        const modal = document.getElementById("tramiteModal");
+        const modalTitulo = document.getElementById("modalTitulo");
+        const modalDescripcion = document.getElementById("modalDescripcion");
+        const cerrar = document.querySelector(".tramite-modal-close");
+
+        document.querySelectorAll(".tramite-card").forEach(card => {
+            card.addEventListener("click", e => {
+                e.preventDefault();
+                modalTitulo.textContent = card.dataset.titulo;
+                modalDescripcion.innerHTML = card.dataset.descripcion;
+
+                modal.style.display = "flex";
+            });
+        });
+
+        cerrar.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+
+        modal.addEventListener("click", e => {
+            if (e.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+    </script>
+}

@@ -1,0 +1,117 @@
+﻿@model Pagina_proyecto.Models.ViewModels.HomeIndexViewModel
+
+@{
+    ViewData["Title"] = "BiblioEconómicas";
+}
+
+
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/BiblioEconomicas.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Styles.css" asp-append-version="true" />
+}
+
+<section class="biblio-hero">
+    <div class="container">
+        <h1>📚 BiblioEconómicas</h1>
+        <p>Tu arsenal de estudio. Digitalizamos todo. Buscá por materia y cátedra. Descargá gratis.</p>
+    </div>
+</section>
+
+<!-- Search Section -->
+<section class="search-section">
+    <div class="container">
+        <div class="search-container" style="max-width: 100%; margin-bottom: 2rem;">
+            <input type="text" id="searchInput" class="search-input" placeholder="Busca por materia..." onkeyup="filtrarMaterias()">
+            <button class="search-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Content Section -->
+<section class="content-section">
+    <div class="container">
+        <div class="materias-grid" id="materiasGrid">
+            @if (Model.Materias != null && Model.Materias.Any())
+            {
+                @foreach (var materia in Model.Materias)
+                {
+                    if (materia.CantidadArchivos > 0)
+                    {
+                        <div class="materia-card" data-id="@materia.Id">
+                            <h3 class="materia-nombre">@materia.Materia</h3>
+                            <p style="color: var(--color-medium-gray); margin-bottom: 1rem;">
+                                @materia.DescripcionContenido
+                            </p>
+                            <div class="stats">
+                                <span>@materia.CantidadArchivos archivos</span>
+                                <span class="visualizaciones-count">@materia.CantidadVisualizaciones visualizaciones</span>
+                            </div>
+                            <a href="@materia.LinkCarpeta" target="_blank" class="download-btn materia-link">
+                                Entrar al Drive
+                            </a>
+                        </div>
+                    }
+
+                    
+                }
+            }
+            else
+            {
+                <p>No hay materias activas disponibles.</p>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+
+
+<script>
+    document.querySelectorAll('.materia-link').forEach(link => {
+        link.addEventListener('click', function () {
+            const card = this.closest('.materia-card');
+            const id = parseInt(card.dataset.id);
+
+            fetch('/MateriasDrive/RegistrarVisualizacion', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(id)
+            })
+            .then(res => {
+                console.log('Status:', res.status);
+                if (res.ok) {
+                    // Solo actualizamos visualmente si la DB confirmó
+                    const span = card.querySelector('.visualizaciones-count');
+                    span.textContent = (parseInt(span.textContent) + 1) + ' visualizaciones';
+                } else {
+                    console.error('No se pudo registrar la visualización, status:', res.status);
+                }
+            })
+            .catch(err => console.error('Error en fetch:', err));
+        });
+    });
+
+    function filtrarMaterias() {
+        const input = document.getElementById('searchInput').value
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "");
+
+        const cards = document.querySelectorAll('.materia-card');
+
+        cards.forEach(card => {
+            const nombre = card.querySelector('.materia-nombre').innerText
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "");
+
+            card.style.display = nombre.includes(input) ? 'block' : 'none';
+        });
+    }
+</script>

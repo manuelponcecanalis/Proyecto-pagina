@@ -1,0 +1,282 @@
+﻿body {
+}
+
+a p {
+    color: #333333 !important;
+}
+/* Estilos específicos para BiblioEconómicas */
+.biblio-hero {
+    background: linear-gradient(135deg, #003366 0%, #004080 100%);
+    color: white;
+    padding: 4rem 0;
+    text-align: center;
+}
+
+    .biblio-hero h1 {
+        font-family: 'Montserrat', 'Roboto Condensed', sans-serif;
+        font-weight: 900;
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    .biblio-hero p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+.search-section {
+    background-color: var(--color-white);
+    padding: 3rem 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.search-filters {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    justify-content: center;
+}
+
+.filter-btn {
+    padding: 0.7rem 1.5rem;
+    border: 2px solid var(--color-primary);
+    background: transparent;
+    color: var(--color-primary);
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+    .filter-btn:hover,
+    .filter-btn.active {
+        background-color: var(--color-primary);
+        color: white;
+    }
+
+.materias-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.materia-card {
+    background-color: var(--color-white);
+    border: 1px solid #E0E0E0;
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    position: relative; /* Necesario para posicionamiento absoluto */
+    min-height:270px;
+    display:flex;
+    flex-direction:column;
+}
+
+    .materia-card .stats {
+        display: flex;
+        gap: 1.5rem;
+        font-size: 0.9rem;
+        color: var(--color-medium-gray);
+        position: absolute; /* Posicionamos respecto a la tarjeta */
+        bottom: 20px; /* A 20px del bottom */
+        left: 2rem; /* Alineamos con el padding horizontal de la tarjeta */
+    }
+
+
+    .materia-card:hover {
+        transform: translateY(-5px);
+        transform: translateY(-5px);
+        box-shadow: 0 1px 4px #003366;
+    }
+
+    .materia-card h3 {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 1.3rem;
+        color:  #003366 !important;
+        margin-bottom: 0.5rem;
+    }
+
+    .materia-card .catedra {
+        color: var(--color-medium-gray);
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+
+    .materia-card .stats {
+        display: flex;
+        gap: 1.5rem;
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid #E0E0E0;
+        font-size: 0.9rem;
+        color: var(--color-medium-gray);
+    }
+
+        .materia-card .stats span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            color: black;
+        }
+
+.download-btn {
+    background-color: #E91E63 !important;
+    color: white !important;
+    padding: 0.7rem 1.5rem;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    margin-top: auto;
+    margin-bottom: 32px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+}
+
+    .download-btn:hover {
+        background-color: #1E8F5A;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px #003366;
+        text-decoration: none;
+        color: white;
+    }
+
+.content-section {
+    padding: 2rem 2rem;
+    background-color: var(--color-ice-gray);
+}
+
+@media (max-width: 768px) {
+    .biblio-hero h1 {
+        font-size: 2rem;
+    }
+
+    .biblio-hero p {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    .materias-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .search-filters {
+        gap: 0.5rem;
+    }
+
+    .filter-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+    }
+}
+/* =========================
+   SEARCH SECTION
+========================= */
+
+.search-section {
+    padding: 2.5rem 0;
+    background: linear-gradient(180deg, #f8f9fb, #ffffff);
+}
+
+.search-container {
+    position: relative;
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    margin-top: 22px !important;
+}
+
+/* Input */
+.search-input {
+    width: 80%;
+    margin-left:10%;
+    padding: 0.95rem 3.5rem 0.95rem 1.2rem;
+    font-size: 1rem;
+    border-radius: 14px;
+    border: 1px solid #e1e5ea;
+    background-color: #ffffff;
+    color: #1f2937;
+    outline: none;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+    .search-input::placeholder {
+        color: #9ca3af;
+    }
+
+    /* Focus elegante */
+    .search-input:focus {
+        border-color: #2563eb;
+        box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+    }
+
+/* Botón lupa */
+.search-btn {
+    position: absolute;
+    right: 0.55rem;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    border: none;
+    background: #2563eb;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.15s ease, box-shadow 0.15s ease;
+    margin-right: 10%;
+}
+
+    /* Hover */
+    .search-btn:hover {
+        background: #1e40af;
+        transform: translateY(-1px);
+        box-shadow: 0 6px 14px rgba(37, 99, 235, 0.25);
+    }
+
+    /* Click */
+    .search-btn:active {
+        transform: translateY(0);
+        box-shadow: none;
+    }
+
+    /* SVG */
+    .search-btn svg {
+        stroke: currentColor;
+    }
+
+/* Responsive */
+@media (max-width: 576px) {
+    .search-input {
+        font-size: 0.95rem;
+        padding: 0.85rem 3.2rem 0.85rem 1rem;
+    }
+
+    .search-btn {
+        width: 38px;
+        height: 38px;
+    }
+
+    .materias-grid .materia-card:last-child {
+      margin-bottom:300px;
+    }
+}
+.materia-card a {
+   
+    text-decoration: none !important;
+    font: inherit !important;
+}
