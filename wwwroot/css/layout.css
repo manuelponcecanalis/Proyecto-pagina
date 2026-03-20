@@ -1,0 +1,416 @@
+﻿/* =============================
+   DROPDOWN - Ítems internos
+   ============================= */
+.navbar-nav .dropdown-menu .dropdown-item {
+    font-size: 12.8px;
+    font-weight: 500;
+    padding: 0.55rem 1.2rem;
+    border-radius: 5px;
+    margin: 0 0.3rem;
+    width: calc(100% - 0.6rem);
+    transition: background-color 0.2s ease, color 0.2s ease;
+    position: relative;
+}
+
+    .navbar-nav .dropdown-menu .dropdown-item::after {
+        content: '';
+        position: absolute;
+        bottom: 4px;
+        left: 1.2rem;
+        width: 0%;
+        height: 2px;
+        background-color: #E91E63;
+        transition: width 0.25s ease;
+    }
+
+    .navbar-nav .dropdown-menu .dropdown-item:hover {
+        background-color: #003366;
+        color: #fff !important;
+    }
+
+        .navbar-nav .dropdown-menu .dropdown-item:hover::after {
+            width: calc(100% - 2.4rem);
+        }
+
+    .navbar-nav .dropdown-menu .dropdown-item.active::after {
+        width: calc(100% - 2.4rem);
+    }
+
+/* =============================
+   DROPDOWN - Contenedor (menú desplegable)
+   ============================= */
+.navbar-nav .dropdown-menu {
+    border: 1px solid #ccd9e8;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 51, 102, 0.12);
+    padding: 0.4rem 0;
+    min-width: 200px;
+    margin-top: 0.25rem;
+}
+
+/* =============================
+   NAVBAR - Links principales (excluyendo toggle)
+   ============================= */
+.navbar-nav .nav-item:not(.dropdown) > .nav-link {
+    font-weight: 500;
+    padding: 0.5rem 0.85rem;
+    border-radius: 6px;
+    color: #cccccc;
+    transition: color 0.2s ease;
+    position: relative;
+}
+
+    .navbar-nav .nav-item:not(.dropdown) > .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: 2px;
+        left: 0.85rem;
+        width: 0%;
+        height: 2px;
+        background-color: #E91E63;
+        transition: width 0.25s ease;
+    }
+
+    .navbar-nav .nav-item:not(.dropdown) > .nav-link:hover {
+        color: #003366 !important;
+        background-color: transparent;
+    }
+
+        .navbar-nav .nav-item:not(.dropdown) > .nav-link:hover::after {
+            width: calc(100% - 1.7rem);
+        }
+
+    .navbar-nav .nav-item:not(.dropdown) > .nav-link.active {
+        font-weight: 700;
+        color: #003366 !important;
+    }
+
+        .navbar-nav .nav-item:not(.dropdown) > .nav-link.active::after {
+            width: calc(100% - 1.7rem);
+        }
+
+        .navbar-nav .nav-item:not(.dropdown) > .nav-link.active:hover {
+            color: #003366 !important;
+        }
+
+/* =============================
+   DROPDOWN - Botón toggle
+   ============================= */
+.navbar-nav .nav-item.dropdown > .nav-link.dropdown-toggle {
+    font-weight: 500;
+    padding: 0.5rem 0.85rem;
+    border-radius: 6px;
+    color: #cccccc;
+    transition: color 0.2s ease;
+    position: relative;
+}
+
+    .navbar-nav .nav-item.dropdown > .nav-link.dropdown-toggle::before {
+        content: '';
+        position: absolute;
+        bottom: 2px;
+        left: 0.85rem;
+        width: 0%;
+        height: 2px;
+        background-color: #E91E63;
+        transition: width 0.25s ease;
+    }
+
+    .navbar-nav .nav-item.dropdown > .nav-link.dropdown-toggle:hover,
+    .navbar-nav .nav-item.dropdown > .nav-link.dropdown-toggle:focus {
+        background-color: transparent;
+        color: #003366 !important;
+    }
+
+        .navbar-nav .nav-item.dropdown > .nav-link.dropdown-toggle:hover::before {
+            width: calc(100% - 1.7rem);
+        }
+
+    .navbar-nav .nav-item.dropdown > .nav-link.dropdown-toggle.active {
+        font-weight: 700;
+        color: #003366 !important;
+    }
+
+        .navbar-nav .nav-item.dropdown > .nav-link.dropdown-toggle.active::before {
+            width: calc(100% - 1.7rem);
+        }
+
+        .navbar-nav .nav-item.dropdown > .nav-link.dropdown-toggle.active:hover {
+            color: #003366 !important;
+        }
+
+.navbar li {
+    font-size: 14.8px !important;
+    font-weight: 500;
+}
+
+    .navbar li :hover {
+        font-weight: 700;
+    }
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+/* =============================================
+   RESPONSIVE - Proyecto Económicas
+   Breakpoints: sm(576), md(768), lg(992), xl(1200)
+   ============================================= */
+
+/* ------------------------------------------------
+   NAVBAR BASE - ajustes generales que aplican
+   a todos los tamaños antes de los breakpoints
+   ------------------------------------------------ */
+.navbar {
+    padding: 0.5rem 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    background-color: #fff !important;
+    box-shadow: 0 2px 8px rgba(0, 51, 102, 0.08);
+}
+
+.navbar-brand .logoProyecto {
+    height: 42px;
+    width: auto;
+    transition: opacity 0.2s ease;
+}
+
+.navbar-brand:hover .logoProyecto {
+    opacity: 0.85;
+}
+
+/* ------------------------------------------------
+   NAVBAR TOGGLER (botón hamburguesa)
+   El HTML usa navbar-expand-sm, que oculta el toggler
+   desde 576px. Lo sobreescribimos para mostrarlo
+   hasta 991px y colapsar el menú en ese rango.
+   ------------------------------------------------ */
+
+/* Forzar colapso en tablet/mobile (hasta 991px) */
+@media (max-width: 991px) {
+    .navbar-expand-sm .navbar-toggler {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .navbar-expand-sm .navbar-collapse {
+        display: none !important;
+    }
+
+        .navbar-expand-sm .navbar-collapse.show,
+        .navbar-expand-sm .navbar-collapse.collapsing {
+            display: block !important;
+        }
+}
+
+/* Restaurar menú horizontal en desktop (desde 992px) */
+@media (min-width: 992px) {
+    .navbar-expand-sm .navbar-toggler {
+        display: none !important;
+    }
+
+    .navbar-expand-sm .navbar-collapse {
+        display: flex !important;
+        flex-basis: auto;
+    }
+}
+
+.navbar-toggler {
+    border: 1.5px solid #003366;
+    border-radius: 6px;
+    padding: 0.3rem 0.55rem;
+    transition: background-color 0.2s ease;
+}
+
+    .navbar-toggler:focus {
+        box-shadow: 0 0 0 0.15rem rgba(0, 51, 102, 0.25);
+        outline: none;
+    }
+
+    .navbar-toggler:hover {
+        background-color: rgba(0, 51, 102, 0.06);
+    }
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280%2C51%2C102%2C0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    width: 1.3em;
+    height: 1.3em;
+}
+
+/* ------------------------------------------------
+   DESKTOP (≥992px) — layout horizontal normal
+   ------------------------------------------------ */
+@media (min-width: 992px) {
+    .navbar-nav {
+        align-items: center;
+        gap: 0.15rem;
+    }
+
+        /* El dropdown se abre hacia abajo con animación */
+        .navbar-nav .dropdown-menu {
+            display: block;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-6px);
+            transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+            pointer-events: none;
+        }
+
+        .navbar-nav .nav-item.dropdown:hover > .dropdown-menu,
+        .navbar-nav .nav-item.dropdown .dropdown-menu.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+}
+
+/* ------------------------------------------------
+   TABLET (576px – 991px) — menú colapsado,
+   panel vertical al abrir
+   ------------------------------------------------ */
+@media (max-width: 991px) {
+
+    /* Panel colapsado */
+    .navbar-collapse {
+        margin-top: 0.5rem;
+        border-top: 1px solid #e0e8f0;
+        padding-top: 0.5rem;
+    }
+
+    /* Lista vertical */
+    .navbar-nav {
+        flex-direction: column !important;
+        gap: 0;
+        width: 100%;
+    }
+
+        /* Items de primer nivel */
+        .navbar-nav .nav-item {
+            width: 100%;
+        }
+
+            .navbar-nav .nav-item:not(.dropdown) > .nav-link,
+            .navbar-nav .nav-item.dropdown > .nav-link.dropdown-toggle {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                padding: 0.65rem 1rem;
+                border-radius: 6px;
+                font-size: 14px;
+                color: #1a1a2e !important;
+                transition: background-color 0.2s ease, color 0.2s ease;
+            }
+
+                .navbar-nav .nav-item:not(.dropdown) > .nav-link:hover,
+                .navbar-nav .nav-item.dropdown > .nav-link.dropdown-toggle:hover {
+                    background-color: rgba(0, 51, 102, 0.07);
+                    color: #003366 !important;
+                }
+
+                /* Quitar pseudo-elementos de subrayado en mobile */
+                .navbar-nav .nav-item:not(.dropdown) > .nav-link::after,
+                .navbar-nav .nav-item.dropdown > .nav-link.dropdown-toggle::before {
+                    display: none;
+                }
+
+                /* Estado activo en mobile */
+                .navbar-nav .nav-item:not(.dropdown) > .nav-link.active,
+                .navbar-nav .nav-item.dropdown > .nav-link.dropdown-toggle.active {
+                    background-color: rgba(0, 51, 102, 0.1);
+                    color: #003366 !important;
+                    font-weight: 700;
+                    border-left: 3px solid #E91E63;
+                    padding-left: calc(1rem - 3px);
+                }
+
+        /* Dropdown menu en mobile: flujo natural (no absolute) */
+        .navbar-nav .dropdown-menu {
+            position: static !important;
+            float: none;
+            width: 100%;
+            box-shadow: none;
+            border: none;
+            border-radius: 0;
+            background-color: #f4f7fb;
+            margin: 0;
+            padding: 0.25rem 0 0.5rem 0;
+            transform: none !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            pointer-events: auto !important;
+        }
+
+            .navbar-nav .dropdown-menu .dropdown-item {
+                font-size: 13px;
+                padding: 0.5rem 1rem 0.5rem 2rem;
+                border-radius: 0;
+                margin: 0;
+                width: 100%;
+                color: #333;
+                border-left: 3px solid transparent;
+                transition: background-color 0.2s ease, border-color 0.2s ease;
+            }
+
+                .navbar-nav .dropdown-menu .dropdown-item::after {
+                    display: none;
+                }
+
+                .navbar-nav .dropdown-menu .dropdown-item:hover {
+                    background-color: #e2eaf4;
+                    color: #003366 !important;
+                    border-left-color: #E91E63;
+                }
+
+                .navbar-nav .dropdown-menu .dropdown-item.active,
+                .navbar-nav .dropdown-menu .dropdown-item:active {
+                    background-color: #dae4f0;
+                    color: #003366 !important;
+                    border-left-color: #E91E63;
+                }
+}
+
+/* ------------------------------------------------
+   MOBILE PEQUEÑO (< 576px)
+   ------------------------------------------------ */
+@media (max-width: 575px) {
+
+    .navbar {
+        padding: 0.4rem 0.75rem;
+    }
+
+    .navbar-brand .logoProyecto {
+        height: 36px;
+    }
+
+    .navbar-nav .nav-item:not(.dropdown) > .nav-link,
+    .navbar-nav .nav-item.dropdown > .nav-link.dropdown-toggle {
+        font-size: 13.5px;
+        padding: 0.6rem 0.85rem;
+    }
+
+    .navbar-nav .dropdown-menu .dropdown-item {
+        font-size: 12.5px;
+        padding: 0.45rem 0.85rem 0.45rem 1.75rem;
+    }
+}
+
+/* ------------------------------------------------
+   CONTAINER - padding lateral en mobile
+   ------------------------------------------------ */
+@media (max-width: 575px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+/* ------------------------------------------------
+   UTILITIES — evitar overflow horizontal en mobile
+   ------------------------------------------------ */
+@media (max-width: 991px) {
+    body {
+        overflow-x: hidden;
+    }
+}

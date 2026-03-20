@@ -2,10 +2,12 @@
 {
     public class Correlativa
     {
-        public int IdMateria { get; set; }                 // FK hacia Materias
-        public int IdMateriaCorrelativa { get; set; }      // FK hacia Materias
+        public int IdCarrera { get; set; }
+        public int IdMateria { get; set; }
+        public int IdMateriaCorrelativa { get; set; }
 
         // Relaciones de navegación
+        public Carrera Carrera { get; set; } = null!;
         public Materia Materia { get; set; } = null!;
         public Materia MateriaCorrelativa { get; set; } = null!;
     }

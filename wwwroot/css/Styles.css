@@ -1,48 +1,39 @@
 @import url('site.css');
+
 .container {
     width: 100%;
     max-width: none !important;
 }
-.navbar .nav-link.active {
-    font-weight: 700;
-    color: #E91E63 !important;
-}
 
-/* Layout */
-.navbar li {
-    font-size: 14.8px !important;
-    font-weight: 500;
-}
-.navbar li :hover{
-   
-    font-weight: 700;
-}
+
+
 
 .mb-3 {
     margin-bottom: 0px !important;
 }
 
 
-    html {
-        font-size: 13.5px;
-    }
+html {
+    font-size: 13.5px;
+}
+
 h5 {
     color: rgb(0, 153, 205);
 }
+
 h3 {
     color: #003366 !important;
 }
+
 h1 {
     color: white;
 }
-p{
+
+p {
     font-size: 16px;
-   
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
+
 
 /* Index */
 .container {
@@ -64,13 +55,12 @@ p{
     border: none;
 }
 
-    #carousel-imagen {
-        width: 100%;
-        height: auto; /* Mantener la proporci�n de la imagen */
-        margin: 0px;
-        padding: 0px;
-        
-    }
+#carousel-imagen {
+    width: 100%;
+    height: auto; /* Mantener la proporci�n de la imagen */
+    margin: 0px;
+    padding: 0px;
+}
 
 .carousel-caption {
     position: absolute;
@@ -107,9 +97,9 @@ p{
 
 /*Modal grupos wsp */
 
-    .planesDeEstudioColumna a{
-        all: unset;
-    }
+.planesDeEstudioColumna a {
+    all: unset;
+}
 
 .contendorWsp {
     grid-template-columns: repeat(2, 1fr) !important;
@@ -123,6 +113,7 @@ p{
     margin-left: 13%;
     margin-right: 5%;
 }
+
 .NoticiasYGruposWsp {
     display: flex;
     flex-direction: column;
@@ -130,23 +121,13 @@ p{
     align-items: center;
     align-content: center;
     margin-bottom: 16px;
-   
 }
-
-
-
-
-
-
-
-
-
 
 
 .calculadoraRanking a {
     text-decoration: none;
-    
 }
+
 .calculadoraRanking p {
     text-decoration: none;
     color: black;
@@ -181,72 +162,68 @@ p{
 }
 
 
+/* Events */
+.eventsNoticias .eventNoticias {
+    display: flex;
+}
 
+.eventNoticias .dateNoticias {
+    text-align: center;
+    margin-right: 15px;
+    color: #ffc107; /* Yellow color */
+    font-weight: bold;
+    margin-bottom: 26px;
+}
 
-    /* Events */
-    .eventsNoticias .eventNoticias {
-        display: flex;
-    }
+.eventNoticias:last-of-type .dateNoticias {
+    margin-bottom: 4px !important;
+}
 
-    .eventNoticias .dateNoticias {
-        text-align: center;
-        margin-right: 15px;
+.eventNoticias .dateNoticias .monthNoticias {
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.eventNoticias .dateNoticias .dayNoticias {
+    font-size: 36px;
+}
+
+.eventNoticias .detailsNoticias {
+    flex: 1;
+}
+
+    .eventNoticias .detailsNoticias .timeNoticias {
         color: #ffc107; /* Yellow color */
-        font-weight: bold;
-        margin-bottom: 26px;
-    }
-
-    .eventNoticias:last-of-type .dateNoticias {
-        margin-bottom: 4px !important;
-    }
-
-    .eventNoticias .dateNoticias .monthNoticias {
         font-size: 14px;
-        text-transform: uppercase;
+        display: block;
+        margin-bottom: 5px;
     }
 
-    .eventNoticias .dateNoticias .dayNoticias {
-        font-size: 36px;
+    .eventNoticias .detailsNoticias p {
+        font-size: 16px;
+        margin: 0;
     }
 
-    .eventNoticias .detailsNoticias {
-        flex: 1;
+
+.footerNoticias {
+    text-align: right;
+    font-size: 12px;
+    margin-top: 20px;
+    color: rgba(0, 0, 0, 0.75); /* Semi-transparent black */
+}
+
+    .footerNoticias a {
+        all: unset;
     }
 
-        .eventNoticias .detailsNoticias .timeNoticias {
-            color: #ffc107; /* Yellow color */
-            font-size: 14px;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .eventNoticias .detailsNoticias p {
-            font-size: 16px;
-            margin: 0;
-        }
-
- 
-    .footerNoticias {
-        text-align: right;
-        font-size: 12px;
-        margin-top: 20px;
-        color: rgba(0, 0, 0, 0.75); /* Semi-transparent black */
+    .footerNoticias span {
+        font-size: small;
+        color: rgba(0, 153, 205,1);
+        font-weight: bold;
     }
-
-        .footerNoticias a {
-            all: unset;
-           
-        }
-
-        .footerNoticias span {
-            font-size: small;
-            color: rgba(0, 153, 205,1);
-            font-weight: bold;
-        }
 
 .contenedorMedio {
     display: flex;
-    
     margin-top: 24px;
     width: 100%;
 }
@@ -270,96 +247,93 @@ p{
         color: rgba(0, 153, 205, 0.8);
     }
 
-        .divMediano h3 {
-            
-            margin-left: 22px;
-            margin-top:8px;
-        }
-        .divMediano img {
-            margin-left: 12px;
-        }
+    .divMediano h3 {
+        margin-left: 22px;
+        margin-top: 8px;
+    }
+
+    .divMediano img {
+        margin-left: 12px;
+    }
 
 .estiloGruposWsp {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* o 3 si prefieres */
-   
 }
 
 
-    /*tercer container index youtube*/
-    .contenedorIndex3 {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        height: 220px;
-        background-color: #DF0009;
+/*tercer container index youtube*/
+.contenedorIndex3 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 220px;
+    background-color: #DF0009;
+}
+
+.video-container {
+    margin-right: 1.5%;
+    margin-left: 1.5%;
+}
+
+    .video-container iframe {
+        max-width: 360px;
     }
 
-    .video-container {
-        margin-right: 1.5%;
-        margin-left: 1.5%;
-    }
-
-        .video-container iframe {
-            max-width: 360px;
-        }
 
 
-  
 
 .table-responsive {
     position: relative;
     overflow-x: auto;
     height: auto;
-   
 }
 
-    .table {
-        width: 100%;
-        margin-bottom: 1rem;
-        color: #212529;
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+}
+
+    .table th,
+    .table td {
+        padding: 0.75rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
     }
 
-        .table th,
-        .table td {
-            padding: 0.75rem;
-            vertical-align: top;
-            border-top: 1px solid #dee2e6;
-        }
+    .table thead th {
+        vertical-align: bottom;
+        border-bottom: 2px solid #dee2e6;
+    }
 
-        .table thead th {
-            vertical-align: bottom;
-            border-bottom: 2px solid #dee2e6;
-        }
-
-        .table tbody + tbody {
-            border-top: 2px solid #dee2e6;
-        }
+    .table tbody + tbody {
+        border-top: 2px solid #dee2e6;
+    }
 
 .table-striped tbody tr:nth-of-type(odd) {
     background-color: rgb(0, 153, 205, 0.61);
 }
 
-    .table-hover tbody tr:hover {
-        background-color: rgba(0, 0, 0, 0.075);
-    }
+.table-hover tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.075);
+}
 
-    .filtroMateria {
-       
-        height: 36px;
-        padding: 5px;
-        margin-top: 5px;
-        box-sizing: border-box;
-    }
+.filtroMateria {
+    height: 36px;
+    padding: 5px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
 
-    .largoColumnaOfertasDestacadas {
-        overflow-x: auto;
-    }
+.largoColumnaOfertasDestacadas {
+    overflow-x: auto;
+}
 
-    .btn-warning {
-        display: none !important;
-    }
+.btn-warning {
+    display: none !important;
+}
 
 #tbData tbody tr {
     cursor: pointer;
@@ -367,614 +341,604 @@ p{
 }
 
     #tbData tbody tr:hover {
-       
         box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-       
     }
 
         #tbData tbody tr:hover td {
-          
             font-weight: 700;
         }
 
 @media (max-width: 650px) {
     .filtroMateria {
-       
         font-size: 11.5px;
-       
     }
 
-    .card-header{
+    .card-header {
         display: flex;
         flex-direction: column;
     }
-
-
 }
-    /*Fin OfertaCalificada */
-    .OfertaCalificadaContainer {
-        margin-left: 0px;
-    }
+/*Fin OfertaCalificada */
+.OfertaCalificadaContainer {
+    margin-left: 0px;
+}
 
-    .logoProyecto {
-        width: 140px;
-        margin-left:6px;
-    }
-
-
-    th.otraInfo,
-    td:nth-child(21) {
-        display: none;
-    }
+.logoProyecto {
+    width: 140px;
+    margin-left: 6px;
+}
 
 
-    .table-striped td {
-        max-width: 400px;
-    }
+th.otraInfo,
+td:nth-child(21) {
+    display: none;
+}
 
-    .row > * {
-        width: 25%;
-        max-width: none;
-    }
 
-    .table > :not(caption) > * > * {
-        padding: .5rem 1.8rem !important;
-    }
+.table-striped td {
+    max-width: 400px;
+}
 
-    .table > :not(:last-child) > :last-child > * {
-        font-size: 18px !important;
-    }
+.row > * {
+    width: 25%;
+    max-width: none;
+}
 
-    /* Estilo para el input con la clase filtromateria */
-    .filtroMateria {
-        border: 3px solid #0099CD; /* Borde gris claro */
-        border-radius: 5px; /* Bordes redondeados */
-        margin-left: 5%;
-        width:90%;
-    }
+.table > :not(caption) > * > * {
+    padding: .5rem 1.8rem !important;
+}
 
-    .OfertaCalificadaContainer .col-sm-12 {
-        overflow-x: auto; /* Habilita scroll horizontal */
-        overflow-y: hidden; /* Oculta scroll vertical */
-        white-space: nowrap;
-        width: 100%;
-    }
-    /* Estilo cuando el input est� enfocado */
-    .filtroMateria:focus {
-        outline: none; /* Elimina el contorno por defecto */
-        border-color: #01536e; /* Color del borde cuando se hace clic */
-        background-color: #f0f9fc; /* Fondo claro cuando est� enfocado */
-    }
+.table > :not(:last-child) > :last-child > * {
+    font-size: 18px !important;
+}
 
-    /* Conocenos */
-    /* Estilo para el body */
-    .contenedorConocenos1 {
-        display: flex;
-        flex-direction: row;
-        max-height: 600px;
-    }
-    /* Estilo para la descripci�n de "Qui�nes somos" */
-    .quienSomosDescripcion {
-        width: 47%;
-        margin: 0 auto;
-        background-color: #f9f9f9;
-        border-radius: 10px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        display: flex;
-        flex-direction: column;
-        margin-right: 2%;
-        margin-left: 2%;
-        padding: 2% 5% 4% 5%;
-    }
+/* Estilo para el input con la clase filtromateria */
+.filtroMateria {
+    border: 3px solid #0099CD; /* Borde gris claro */
+    border-radius: 5px; /* Bordes redondeados */
+    margin-left: 5%;
+    width: 90%;
+}
 
-        .quienSomosDescripcion h1 {
-            color: #0099CD;
-            font-size: 2em;
-            text-align: left;
-            margin-bottom: 20px;
-        }
+.OfertaCalificadaContainer .col-sm-12 {
+    overflow-x: auto; /* Habilita scroll horizontal */
+    overflow-y: hidden; /* Oculta scroll vertical */
+    white-space: nowrap;
+    width: 100%;
+}
+/* Estilo cuando el input est� enfocado */
+.filtroMateria:focus {
+    outline: none; /* Elimina el contorno por defecto */
+    border-color: #01536e; /* Color del borde cuando se hace clic */
+    background-color: #f0f9fc; /* Fondo claro cuando est� enfocado */
+}
 
-        .quienSomosDescripcion p {
-            line-height: 1.6;
-            color: #34495e;
-            text-align: justify;
-            margin-bottom: 20px;
-        }
+/* Conocenos */
+/* Estilo para el body */
+.contenedorConocenos1 {
+    display: flex;
+    flex-direction: row;
+    max-height: 600px;
+}
+/* Estilo para la descripci�n de "Qui�nes somos" */
+.quienSomosDescripcion {
+    width: 47%;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    margin-right: 2%;
+    margin-left: 2%;
+    padding: 2% 5% 4% 5%;
+}
 
-            .quienSomosDescripcion p:last-child {
-                margin-bottom: 0;
-            }
-
-        .quienSomosDescripcion img {
-            width: 100%;
-            align-content: center;
-            align-self: center;
-        }
-
-    /*FinanzasYRedes*/
-
-    .FinanzasYRedes {
-        width: 47%;
-        display: flex;
-        flex-direction: column;
-        display: flex;
-        flex-direction: column;
-        margin-right: 2%;
-    }
-
-    .Finanzas {
-        height: 49%;
-        padding: 20px;
-        background-color: #f9f9f9;
-        border-radius: 10px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 2%;
-    }
-
-    .RedesSociales {
-        height: 49%;
-        padding: 20px;
-        background-color: #f9f9f9;
-        border-radius: 10px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        display: flex;
-        flex-direction: column;
-    }
-
-        .RedesSociales div {
-            display: flex;
-            flex-direction: row;
-        }
-
-    .youtubeImg {
-        height: 62px;
-    }
-
-    .igImg {
-        height: 47.4px;
-        margin-top: 7.4px;
-        margin-right: 16px;
-    }
-    /*Noticias pagina*/
-    .contenedor-principal {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-    }
-
-    .noticias-container-pagina {
-        display: flex;
-        gap: 50px;
-    }
-
-    /*Oferta calificada tarjeta */
-    .modal-dialog {
-        max-width: 1100px;
-        justify-content: center;
-        display: flex;
-        height: 82%;
-    }
-
-    .modalOfertaCalificada {
-        width: 100% !important;
-        height: 100% !important;
-        margin: 0px !important;
-        min-height: 450px;
-    }
-
-    #detalleContenido .col-md-6 {
+    .quienSomosDescripcion h1 {
+        color: #0099CD;
+        font-size: 2em;
+        text-align: left;
         margin-bottom: 20px;
     }
 
-
-
-    @media (min-width: 1000px) {
-        .noticias-container-pagina {
-            min-width: 900px;
-        }
+    .quienSomosDescripcion p {
+        line-height: 1.6;
+        color: #34495e;
+        text-align: justify;
+        margin-bottom: 20px;
     }
 
-    .columna-izquierda, .columna-derecha {
-        width: 50%;
-    }
-        .columna-izquierda .noticia-item:first-of-type {
-            margin-top:48px;
+        .quienSomosDescripcion p:last-child {
+            margin-bottom: 0;
         }
 
-        .columna-derecha .noticia-item:first-of-type {
-            margin-top:48px;
-        }
-
-    .noticia-item {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background-color: #f9f9f9;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        box-sizing: border-box;
-        max-width: 550px;
-        margin-bottom: 12px;
-        height: auto;
-    }
-
-        .noticia-item img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            aspect-ratio: 16 / 9; /* Relaci�n de aspecto fija */
-            border-radius: 2px; /* Opcional: bordes redondeados */
-        }
-
-
-        .noticia-item h2 {
-            color: #003366;
-            margin-top: 2px;
-        }
-
-
-
-    .containertitulo {
-        height: 120px;
+    .quienSomosDescripcion img {
         width: 100%;
+        align-content: center;
+        align-self: center;
     }
 
-        .containertitulo h2 {
-            margin-left: 16px;
-        }
+/*FinanzasYRedes*/
 
-        .containertitulo p {
-            font-size: 16px;
-            margin-left: 16px;
-        }
+.FinanzasYRedes {
+    width: 47%;
+    display: flex;
+    flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    margin-right: 2%;
+}
 
-    .pasadorColumnas {
+.Finanzas {
+    height: 49%;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2%;
+}
+
+.RedesSociales {
+    height: 49%;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+    .RedesSociales div {
         display: flex;
         flex-direction: row;
-        gap: 8px;
-        align-items: center;
-        justify-content: center;
-        margin-top:48px;
     }
 
-    .noticiasPaginaSiguiente, .noticiasPaginaAnterior {
-        display: flex; /* Asegura que el contenido interno est� centrado */
-        align-items: center; /* Centra verticalmente el texto o icono del bot�n */
-        justify-content: center; /* Centra horizontalmente el texto o icono del bot�n */
-        width: 40px; /* Ancho fijo */
-        height: 40px; /* Alto fijo */
-        background-color: #f9f9f9;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        cursor: pointer;
+.youtubeImg {
+    height: 62px;
+}
+
+.igImg {
+    height: 47.4px;
+    margin-top: 7.4px;
+    margin-right: 16px;
+}
+/*Noticias pagina*/
+.contenedor-principal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.noticias-container-pagina {
+    display: flex;
+    gap: 50px;
+}
+
+/*Oferta calificada tarjeta */
+.modal-dialog {
+    max-width: 1100px;
+    justify-content: center;
+    display: flex;
+    height: 82%;
+}
+
+.modalOfertaCalificada {
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0px !important;
+    min-height: 450px;
+}
+
+#detalleContenido .col-md-6 {
+    margin-bottom: 20px;
+}
+
+
+
+@media (min-width: 1000px) {
+    .noticias-container-pagina {
+        min-width: 900px;
+    }
+}
+
+.columna-izquierda, .columna-derecha {
+    width: 50%;
+}
+
+    .columna-izquierda .noticia-item:first-of-type {
+        margin-top: 48px;
     }
 
-    .pasadorColumnas p {
-        margin-top: auto;
+    .columna-derecha .noticia-item:first-of-type {
+        margin-top: 48px;
     }
 
-    /*Noticia ampliada*/
+.noticia-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    max-width: 550px;
+    margin-bottom: 12px;
+    height: auto;
+}
 
-    .noticia-ampliada {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background-color: #f9f9f9;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        box-sizing: border-box;
+    .noticia-item img {
         width: 100%;
-        padding: 20px;
+        height: auto;
+        object-fit: cover;
+        aspect-ratio: 16 / 9; /* Relaci�n de aspecto fija */
+        border-radius: 2px; /* Opcional: bordes redondeados */
     }
 
-        .noticia-ampliada img {
-            width: 100%;
-            height: auto;
-            max-height: 500px;
-            object-fit: cover;
-            margin-bottom: 20px;
-        }
 
-        .noticia-ampliada .containertitulo {
-            text-align: center;
-        }
-
-        .noticia-ampliada h2 {
-            color: #0099CD;
-            margin-bottom: 20px;
-        }
-
-        .noticia-ampliada p {
-            line-height: 1.6;
-            color: #34495e;
-            text-align: justify;
-        }
+    .noticia-item h2 {
+        color: #003366;
+        margin-top: 2px;
+    }
 
 
-    /*Noticias Detalle*/
-    .contenedorDetalleNoticia {
+
+.containertitulo {
+    height: 120px;
+    width: 100%;
+}
+
+    .containertitulo h2 {
+        margin-left: 16px;
+    }
+
+    .containertitulo p {
+        font-size: 16px;
+        margin-left: 16px;
+    }
+
+.pasadorColumnas {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 48px;
+}
+
+.noticiasPaginaSiguiente, .noticiasPaginaAnterior {
+    display: flex; /* Asegura que el contenido interno est� centrado */
+    align-items: center; /* Centra verticalmente el texto o icono del bot�n */
+    justify-content: center; /* Centra horizontalmente el texto o icono del bot�n */
+    width: 40px; /* Ancho fijo */
+    height: 40px; /* Alto fijo */
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.pasadorColumnas p {
+    margin-top: auto;
+}
+
+/*Noticia ampliada*/
+
+.noticia-ampliada {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    width: 100%;
+    padding: 20px;
+}
+
+    .noticia-ampliada img {
+        width: 100%;
+        height: auto;
+        max-height: 500px;
+        object-fit: cover;
+        margin-bottom: 20px;
+    }
+
+    .noticia-ampliada .containertitulo {
+        text-align: center;
+    }
+
+    .noticia-ampliada h2 {
+        color: #0099CD;
+        margin-bottom: 20px;
+    }
+
+    .noticia-ampliada p {
+        line-height: 1.6;
+        color: #34495e;
+        text-align: justify;
+    }
+
+
+/*Noticias Detalle*/
+.contenedorDetalleNoticia {
+    align-content: center;
+    align-items: center;
+}
+
+.contenedorDetalleNoticia {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+    .contenedorDetalleNoticia img {
+        width: 90%;
         align-content: center;
-        align-items: center;
-
+        align-self: center;
+        margin-bottom: 14px;
+        aspect-ratio: 1 / 0.8;
+        object-fit: cover;
     }
 
-    .contenedorDetalleNoticia {
-        max-width: 900px;
-        width: 100%;
-        margin: 0 auto;
-        padding: 20px;
-        background-color: #f9f9f9;
-        border-radius: 10px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        display: flex;
-        flex-direction: column;
+    .contenedorDetalleNoticia h1 {
+        width: 99%;
+        color: #003366;
+        font-size: 32px;
+        text-align: left;
+        margin-bottom: 12px;
     }
 
-        .contenedorDetalleNoticia img {
-            width: 90%;
-            align-content: center;
-            align-self: center;
-            margin-bottom: 14px;
-            aspect-ratio: 1 / 0.8;
-            object-fit: cover;
-        }
-
-        .contenedorDetalleNoticia h1 {
-            width: 99%;
-            color: #003366 ;
-            font-size: 32px;
-            text-align: left;
-            margin-bottom: 12px;
-        }
-
-        .contenedorDetalleNoticia p {
-            width: 99%;
-            font-size: 14px;
-            line-height: 1.6;
-            text-align: left;
-        }
-    /*Ocultar Login
+    .contenedorDetalleNoticia p {
+        width: 99%;
+        font-size: 14px;
+        line-height: 1.6;
+        text-align: left;
+    }
+/*Ocultar Login
    .botonesLogin{
         display:none;
     }*/
 
 
-    /* Planes de estudio */
+/* Planes de estudio */
+#contenedorPlanes {
+    height: fit-content;
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    padding: 1rem;
+    justify-items: center;
+}
+
+.contenedorWsp {
+    grid-template-columns: repeat(2, 1fr) !important;
+}
+
+.grid-2-col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.planesDeEstudio {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+    .planesDeEstudio img {
+        width: 200PX;
+    }
+
+    .planesDeEstudio p {
+        width: 200PX;
+    }
+
+    .planesDeEstudio h3 {
+        width: 200PX;
+        font-size: 18px;
+        text-align: center;
+    }
+
+#modalPlanes {
+    width: 100%;
+    height: 100%;
+}
+
+.modal {
+    justify-content: center;
+}
+
+.modal-content {
+    max-height: 90vh; /* altura máxima del modal */
+    overflow-y: auto; /* scroll vertical solo cuando se necesite */
+    padding-right: 1rem;
+    height: 82%;
+    width: 82%;
+    margin-top: 60px;
+}
+
+#pagina1 {
+    height: 100%;
+}
+
+.divMediano h3 {
+    color: rgba(0, 153, 205, 0.8);
+}
+
+.fixed-header th {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 1;
+}
+
+
+
+.pagina-detalle {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+    grid-template-rows: repeat(3, auto); /* 3 filas */
+    gap: 1rem;
+}
+
+
+.celda-detalle {
+    border: 1px solid #ccc;
+    padding: 0.75rem;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    width: 100%;
+}
+
+
+    .celda-detalle.red {
+        background-color: rgb(0, 153, 205, 0.38);
+        border-color: #ffeeba;
+        grid-column: 3 / span 2; /* columnas 3 y 4 */
+        grid-row: 2 / span 2; /* filas 2 y 3 */
+    }
+
+
+
+.pagina-visible {
+    display: grid;
+    gap: 1rem;
+}
+
+.pagina-oculta {
+    display: none !important;
+}
+
+@media (max-width: 600px) {
+    .pagina-visible {
+        display: flex !important;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .modalOfertaCalificada {
+        margin-top: 10% !important;
+        height: 100% !important;
+    }
+}
+
+@media (max-width: 930px) {
     #contenedorPlanes {
-        height: fit-content;
-        justify-content: center;
-        align-items: center;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 24px;
-        padding: 1rem;
-        justify-items: center;
-    }
-
-    .contenedorWsp {
-        grid-template-columns: repeat(2, 1fr) !important;
-    }
-
-    .grid-2-col {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
-    }
-
-    .planesDeEstudio {
-        justify-content: center;
-        display: flex;
+        display: flex !important;
         flex-direction: column;
     }
 
-        .planesDeEstudio img {
-            width: 200PX;
-        }
-
-        .planesDeEstudio p {
-            width: 200PX;
-        }
-        .planesDeEstudio h3 {
-            width: 200PX;
-            font-size: 18px;
-            text-align: center;
-        }
-
-    #modalPlanes {
-        width: 100%;
-        height: 100%;
-    }
-    .modal{
-        justify-content: center;
-    }
-    .modal-content {
-        max-height: 90vh; /* altura máxima del modal */
-        overflow-y: auto; /* scroll vertical solo cuando se necesite */
-        padding-right: 1rem;
-        height: 82%;
-        width: 82%;
-       
-        margin-top: 60px;
+    .table-striped td {
+        max-width: 250px;
+        word-wrap: break-word;
+        white-space: normal;
+        font-size: 12px;
     }
 
-    #pagina1 {
-        height: 100%;
-    }
-
-    .divMediano h3 {
-        color: rgba(0, 153, 205, 0.8);
-    }
-
-    .fixed-header th {
-        position: sticky;
-        top: 0;
-        background-color: white;
-        z-index: 1;
-    }
-
-
-
-    .pagina-detalle {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr); /* 4 columnas */
-        grid-template-rows: repeat(3, auto); /* 3 filas */
-        gap: 1rem;
-    }
-
-
-
-
-
-
-    .celda-detalle {
-        border: 1px solid #ccc;
-        padding: 0.75rem;
-        border-radius: 5px;
-        background-color: #f9f9f9;
-        width: 100%;
-    }
-
-
-
-
-
-        .celda-detalle.red {
-            background-color: rgb(0, 153, 205, 0.38);
-            border-color: #ffeeba;
-            grid-column: 3 / span 2; /* columnas 3 y 4 */
-            grid-row: 2 / span 2; /* filas 2 y 3 */
-        }
-
-
-
-    .pagina-visible {
-        display: grid;
-        gap: 1rem;
-    }
-
-    .pagina-oculta {
+    .botonesLogin {
         display: none !important;
     }
 
-    @media (max-width: 600px) {
-        .pagina-visible {
-            display: flex !important;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .modalOfertaCalificada {
-            margin-top: 10% !important;
-            height: 100% !important;
-        }
+    .carousel-container {
+        height: 312px;
     }
 
-    @media (max-width: 930px) {
-        #contenedorPlanes {
-            display: flex !important;
-            flex-direction: column;
-        }
-
-        .table-striped td {
-            max-width: 250px;
-            word-wrap: break-word;
-            white-space: normal;
-            font-size: 12px;
-        }
-
-        .botonesLogin {
-            display: none !important;
-        }
-        .carousel-container {
-            height: 312px;
-        }
-
-        .carousel-item {
-            justify-content: start;
-        }
-
-        .carousel-item {
-            display: flex;
-            justify-content: center;
-            height: min-content;
-        }
-
-        .carousel-button {
-            top: 25%;
-        }
-
-        .contenedorIndex2 {
-            flex-direction: column;
-            display: flex;
-            height: 1200px;
-            margin-left: 5%;
-            margin-right: 5%;
-            align-content: center;
-            align-items: center;
-        }
-
-
-        .NoticiasYGruposWsp {
-            width: 90%;
-        }
-
-        .contentNoticias {
-            width: 90%;
-        }
-
-        .noticias-container-pagina {
-            flex-direction: column;
-        }
-
-        .columna-izquierda, .columna-derecha {
-            width: 100% !important;
-        }
-
-        .divMediano {
-            align-items: center;
-            height:92px;
-        }
-
-            .divMediano h3 {
-                color: rgba(0, 153, 205, 0.8);
-            }
-        /**/
-        #contenedorPlanes {
-            grid-template-columns: 1fr;
-        }
-
-        .carousel-button.left, .carousel-button.right {
-            display: none;
-        }
-
-        .carousel-caption {
-            left:auto;
-            right:auto;
-            width: 90%;
-        }
-        .contenedorIndex2 {
-            height: 1340px;
-        }
+    .carousel-item {
+        justify-content: start;
     }
 
-    /* ===========================================
+    .carousel-item {
+        display: flex;
+        justify-content: center;
+        height: min-content;
+    }
+
+    .carousel-button {
+        top: 25%;
+    }
+
+    .contenedorIndex2 {
+        flex-direction: column;
+        display: flex;
+        height: 1200px;
+        margin-left: 5%;
+        margin-right: 5%;
+        align-content: center;
+        align-items: center;
+    }
+
+
+    .NoticiasYGruposWsp {
+        width: 90%;
+    }
+
+    .contentNoticias {
+        width: 90%;
+    }
+
+    .noticias-container-pagina {
+        flex-direction: column;
+    }
+
+    .columna-izquierda, .columna-derecha {
+        width: 100% !important;
+    }
+
+    .divMediano {
+        align-items: center;
+        height: 92px;
+    }
+
+        .divMediano h3 {
+            color: rgba(0, 153, 205, 0.8);
+        }
+    /**/
+    #contenedorPlanes {
+        grid-template-columns: 1fr;
+    }
+
+    .carousel-button.left, .carousel-button.right {
+        display: none;
+    }
+
+    .carousel-caption {
+        left: auto;
+        right: auto;
+        width: 90%;
+    }
+
+    .contenedorIndex2 {
+        height: 1340px;
+    }
+}
+
+/* ===========================================
    CLASES ESTANDARIZADAS PARA CAJAS
    =========================================== */
 
-    /* Clase base para todas las cajas */
-    .caja-base {
-        background-color: #f9f9f9;
-        border-radius: 8px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        margin-bottom: 16px;
-    }
+/* Clase base para todas las cajas */
+.caja-base {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 16px;
+}
 
-.Recomendaciones-celu img{
+.Recomendaciones-celu img {
     width: 180px;
     margin-top: 28px;
 }
@@ -983,11 +947,9 @@ p{
     text-align: center;
 }
 
-.Recomendaciones-celu  li {
-    text-align: left !important;
-}
-
-
+    .Recomendaciones-celu li {
+        text-align: left !important;
+    }
 
 
 .contentCalendario h3 {
@@ -1032,8 +994,8 @@ p{
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s ease;
-    flex-direction:column;
-    align-content:center;
+    flex-direction: column;
+    align-content: center;
 }
 
     .footer-link:hover {
@@ -1082,4 +1044,29 @@ p{
     /* YouTube (rojo institucional real, menos brillante) */
     .footer-link[data-red="youtube"]:hover {
         color: #E91E63;
+    }
+
+.botonesLogin {
+    justify-content: right;
+    text-align: right;
+    flex-direction: row;
+    gap: 8px;
+    margin-right: 14px;
+    color: #ccc;
+    margin-top: -24px;
+    font-weight: bold;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+    body > div.container {
+        flex: 1;
     }

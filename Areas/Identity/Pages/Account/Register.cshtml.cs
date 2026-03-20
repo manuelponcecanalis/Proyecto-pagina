@@ -30,13 +30,15 @@ namespace Pagina_proyecto.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<AppUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly IConfiguration _configuration;
 
         public RegisterModel(
             UserManager<AppUser> userManager,
             IUserStore<AppUser> userStore,
             SignInManager<AppUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            IConfiguration configuration)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -44,46 +46,23 @@ namespace Pagina_proyecto.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _configuration = configuration;
         }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         [BindProperty]
         public InputModel Input { get; set; }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         public string ReturnUrl { get; set; }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         public IList<AuthenticationScheme> ExternalLogins { get; set; }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         public class InputModel
         {
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
             [DataType(DataType.Password)]
@@ -101,20 +80,15 @@ namespace Pagina_proyecto.Areas.Identity.Pages.Account
             public string SecondName { get; set; }
 
             [Required]
-            [DataType(DataType.Text)]
+            [RegularExpression(@"^\d+$", ErrorMessage = "El número de registro solo puede contener dígitos.")]
             [Display(Name = "Numero de registro")]
             public string NumeroRegistro { get; set; }
 
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
             [DataType(DataType.Password)]
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
         }
-
 
         public async Task OnGetAsync(string returnUrl = null)
         {
@@ -132,7 +106,7 @@ namespace Pagina_proyecto.Areas.Identity.Pages.Account
                 {
                     FirstName = Input.FirstName,
                     SecondName = Input.SecondName,
-                    NumeroRegistro = int.Parse(Input.NumeroRegistro), // Convierte a entero aquí
+                    NumeroRegistro = int.TryParse(Input.NumeroRegistro, out var nro) ? nro : 0,
                     UserName = Input.Email,
                     Email = Input.Email
                 };
@@ -148,14 +122,53 @@ namespace Pagina_proyecto.Areas.Identity.Pages.Account
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+
                     var callbackUrl = Url.Page(
                         "/Account/ConfirmEmail",
                         pageHandler: null,
                         values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
-                        protocol: Request.Scheme);
+                        protocol: Request.Scheme,
+                        host: new Uri(_configuration["AppUrl"] ?? $"{Request.Scheme}://{Request.Host}").Host);
 
-                    await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    var emailBody = $@"<!DOCTYPE html>
+<html lang='es'>
+<head><meta charset='UTF-8'/></head>
+<body style='margin:0;padding:0;background-color:#f4f6f9;font-family:Segoe UI,Arial,sans-serif;'>
+  <table width='100%' cellpadding='0' cellspacing='0' style='background-color:#f4f6f9;padding:40px 0;'>
+    <tr><td align='center'>
+      <table width='600' cellpadding='0' cellspacing='0' style='background-color:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.08);'>
+        <tr><td style='background-color:#003366;padding:32px 40px;text-align:center;'>
+          <img src='https://proyectoeconomicas.org/Recurso_4-100-removebg-preview.png' alt='PROYECTO Económicas' style='max-width:260px;height:auto;'/>
+        </td></tr>
+        <tr><td style='background-color:#E91E63;height:4px;'></td></tr>
+        <tr><td style='padding:48px 40px 32px 40px;'>
+          <h1 style='color:#003366;font-size:26px;font-weight:700;margin:0 0 16px 0;'>¡Bienvenido/a a Proyecto Económicas!</h1>
+          <p style='color:#333333;font-size:16px;line-height:1.7;margin:0 0 24px 0;'>Gracias por registrarte. Para completar tu registro y acceder a todos los contenidos de la plataforma, necesitamos verificar tu dirección de correo electrónico.</p>
+          <p style='color:#333333;font-size:16px;line-height:1.7;margin:0 0 36px 0;'>Hacé clic en el botón para confirmar tu cuenta:</p>
+          <table cellpadding='0' cellspacing='0' style='margin:0 auto 36px auto;'>
+            <tr><td align='center' style='background-color:#E91E63;border-radius:8px;'>
+              <a href='{callbackUrl}' target='_blank' style='display:inline-block;padding:16px 40px;color:#ffffff;font-size:16px;font-weight:700;text-decoration:none;'>Confirmar mi cuenta</a>
+            </td></tr>
+          </table>
+          <p style='color:#666666;font-size:14px;margin:0 0 8px 0;'>Si el botón no funciona, copiá y pegá este enlace en tu navegador:</p>
+          <p style='margin:0 0 32px 0;'><a href='{callbackUrl}' style='color:#003366;font-size:13px;word-break:break-all;'>{callbackUrl}</a></p>
+          <hr style='border:none;border-top:1px solid #eeeeee;margin:0 0 28px 0;'/>
+          <p style='color:#999999;font-size:13px;line-height:1.6;margin:0;'>Si no creaste una cuenta en Proyecto Económicas, podés ignorar este mensaje. Este enlace expira en 24 horas.</p>
+        </td></tr>
+        <tr><td style='background-color:#f4f6f9;padding:24px 40px;text-align:center;border-top:1px solid #eeeeee;'>
+          <p style='color:#999999;font-size:12px;margin:0 0 8px 0;'>© 2024 PROYECTO Económicas. Todos los derechos reservados.</p>
+          <p style='margin:0;'>
+            <a href='https://www.instagram.com/proyectoeconomicas/' style='color:#003366;font-size:12px;text-decoration:none;margin:0 8px;'>Instagram</a>
+            <a href='https://x.com/proyectofce' style='color:#003366;font-size:12px;text-decoration:none;margin:0 8px;'>X</a>
+            <a href='https://www.youtube.com/proyectoeconomicas' style='color:#003366;font-size:12px;text-decoration:none;margin:0 8px;'>YouTube</a>
+          </p>
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+</body></html>";
+
+                    await _emailSender.SendEmailAsync(Input.Email, "Confirmá tu cuenta - Proyecto Económicas", emailBody);
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
@@ -173,9 +186,9 @@ namespace Pagina_proyecto.Areas.Identity.Pages.Account
                 }
             }
 
-            // If we got this far, something failed, redisplay form
             return Page();
         }
+
         private AppUser CreateUser()
         {
             try

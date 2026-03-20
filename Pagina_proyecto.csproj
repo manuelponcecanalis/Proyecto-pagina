@@ -1,56 +1,54 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
-
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>aspnet-Pagina_proyecto-a43044d8-7e72-4b9c-b9b4-2e1791700dcc</UserSecretsId>
-    <RootNamespace>Pagina_proyecto</RootNamespace>
-    <AssemblyName>PaginaProyecto</AssemblyName>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Remove="Data\NewFolder\**" />
-    <Compile Remove="NewFolder1\**" />
-    <Content Remove="Data\NewFolder\**" />
-    <Content Remove="NewFolder1\**" />
-    <EmbeddedResource Remove="Data\NewFolder\**" />
-    <EmbeddedResource Remove="NewFolder1\**" />
-    <None Remove="Data\NewFolder\**" />
-    <None Remove="NewFolder1\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="Controllers\wwwroot\css\site.css" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="bootstrap" Version="5.3.3" />
-    <PackageReference Include="EPPlus" Version="7.3.1" />
-    <PackageReference Include="Google.Apis.Auth" Version="1.73.0" />
-    <PackageReference Include="Google.Apis.Drive.v3" Version="1.73.0.3996" />
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.8" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.11" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.11" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.28" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.28">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.11" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.28" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.28">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.0" />
-    <PackageReference Include="NPOI" Version="2.7.1" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.9.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\wwwroot\css\" />
-    <Folder Include="wwwroot\PlanesDeEstudio\" />
-  </ItemGroup>
-
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UserSecretsId>aspnet-Pagina_proyecto-a43044d8-7e72-4b9c-b9b4-2e1791700dcc</UserSecretsId>
+		<RootNamespace>Pagina_proyecto</RootNamespace>
+		<AssemblyName>PaginaProyecto</AssemblyName>
+	</PropertyGroup>
+	<ItemGroup>
+		<Compile Remove="Data\NewFolder\**" />
+		<Compile Remove="NewFolder1\**" />
+		<Compile Remove="publish-linux\**" />
+		<Content Remove="Data\NewFolder\**" />
+		<Content Remove="NewFolder1\**" />
+		<Content Remove="publish-linux\**" />
+		<EmbeddedResource Remove="Data\NewFolder\**" />
+		<EmbeddedResource Remove="NewFolder1\**" />
+		<EmbeddedResource Remove="publish-linux\**" />
+		<None Remove="Data\NewFolder\**" />
+		<None Remove="NewFolder1\**" />
+		<None Remove="publish-linux\**" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Remove="Controllers\wwwroot\css\site.css" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="bootstrap" Version="5.3.3" />
+		<PackageReference Include="EPPlus" Version="7.3.1" />
+		<PackageReference Include="Google.Apis.Auth" Version="1.73.0" />
+		<PackageReference Include="Google.Apis.Drive.v3" Version="1.73.0.3996" />
+		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.8" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.11" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.11" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.28" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.28">
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.11" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.28" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.28">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.0" />
+		<PackageReference Include="NPOI" Version="2.7.1" />
+		<PackageReference Include="System.Data.SqlClient" Version="4.9.0" />
+	</ItemGroup>
+	<ItemGroup>
+		<Folder Include="Controllers\wwwroot\css\" />
+		<Folder Include="wwwroot\PlanesDeEstudio\" />
+	</ItemGroup>
 </Project>

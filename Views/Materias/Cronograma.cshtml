@@ -1,103 +1,169 @@
 ﻿@model List<Pagina_proyecto.Models.Entities.Materia>
 @{
     ViewData["Title"] = "Malla Sistemas";
+
     var aprobadas = ViewBag.Aprobadas as List<int> ?? new();
     var carreras = ViewBag.Carreras as List<Pagina_proyecto.Models.Entities.Carrera> ?? new();
     var idCarreraActual = (ViewBag.IdCarrera as int?)?.ToString() ?? "";
+
+    var nombresArea = new Dictionary<string, string>
+    {
+        { "1", "Contador" },
+        { "2", "Administración" },
+        { "3", "Economía" },
+        { "4", "Sistemas" },
+        { "5", "Actuario" },
+        { "6", "Téc. Datos" }
+    };
+
+    var slugs = new Dictionary<string, string>
+    {
+        { "1", "contador" },
+        { "2", "administracion" },
+        { "3", "economia" },
+        { "4", "sistemas" },
+        { "5", "actuario" },
+        { "6", "tec-datos" }
+    };
+
+    var nombreArea = nombresArea.TryGetValue(idCarreraActual, out var n) ? n : "";
 }
+
 @section Styles {
     <link rel="stylesheet" href="~/css/Cronograma.css" asp-append-version="true" />
 }
 
-<input type="hidden" id="idCarrera" value="@idCarreraActual" />
+<section class="cronograma-hero">
+    <div class="container">
+        <h1>🚀 Planes de estudio</h1>
+        <p>Planes de estudio didacticos de todas las carreras</p>
+    </div>
+</section>
 
-<!-- ============================
-     BLOQUE INSCRIPCIÓN CARRERA
-============================= -->
-<div class="card mb-4 p-3">
-    <h5>Inscribirse a una carrera</h5>
-    <select id="selectCarrera" class="form-select mb-2">
-        <option value="">-- Seleccionar carrera --</option>
+<!-- Selector de carrera (siempre visible) -->
+<div class="seleccion-carrera-container">
+    <h5>Seleccioná una carrera</h5>
+    <div class="carreras-botones">
         @foreach (var c in carreras)
         {
-            <option value="@c.IdCarrera"
-                    selected="@(c.IdCarrera.ToString() == idCarreraActual)">
+            <button class="btn-carrera @(c.IdCarrera.ToString() == idCarreraActual ? "activa" : "")"
+                    onclick="seleccionarCarrera('@c.IdCarrera', '@slugs.GetValueOrDefault(c.IdCarrera.ToString(), c.IdCarrera.ToString())')">
                 @c.Nombre
-            </option>
+            </button>
         }
-    </select>
-    <button class="btn btn-primary" onclick="inscribirse()">
-        Inscribirme
-    </button>
-    <div id="mensajeCarrera" class="mt-2"></div>
+    </div>
+    <div id="mensajeCarrera" class="mt-1"></div>
 </div>
 
-<!-- ============================
-            MALLA
-============================= -->
-<div class="malla">
-    <div class="header" style="grid-column:1 / 3; grid-row:1;">
-        SISTEMAS – CICLO GENERAL
-    </div>
-    <div class="header" style="grid-column:3 / 8; grid-row:1; justify-content:center;">
-        CICLO PROFESIONAL
-    </div>
-
-    @if (Model != null && Model.Any())
-    {
-        @for (int i = 0; i < Model.Count; i++)
-        {
-            var m = Model[i];
-            var totalFilas = 6;
-            var col = (i / totalFilas) + 1;
-            var row = (i % totalFilas) + 2;
-            var aprobada = aprobadas.Contains(m.IdMateria);
-            var desbloqueada = m.Correlativas == null || !m.Correlativas.Any() ||
-                               m.Correlativas.All(c => aprobadas.Contains(c.IdMateriaCorrelativa));
-            var css = aprobada ? "aprobada" : desbloqueada ? "disponible" : "bloqueada";
-
-            <div class="materia @css"
-                 style="grid-column:@col; grid-row:@row;"
-                 data-id="@m.IdMateria"
-                 data-correlativas="@string.Join(",", m.Correlativas?.Select(c => c.IdMateriaCorrelativa) ?? Enumerable.Empty<int>())"
-                 onclick="toggleMateria(this)">
-                <div class="area">SISTEMAS</div>
-                <div class="codigo">@m.IdMateria</div>
-                <div class="horas">@m.Horas VH</div>
-                <div class="nombre">
-                    <p>@m.Nombre</p>
-                    @if (m.Correlativas != null)
-                    {
-                        @foreach (var c in m.Correlativas)
-                        {
-                            <div class="correlativa">@c.IdMateriaCorrelativa</div>
-                        }
-                    }
-                </div>
+@if (string.IsNullOrEmpty(idCarreraActual))
+{
+    <div class="instructivo">
+        <p class="instructivo-titulo">Instrucciones</p>
+        <p class="instructivo-subtitulo">Seleccioná tu carrera y completá las materias</p>
+        <div class="instructivo-refs">
+            <div class="instructivo-ref">
+                <span class="ref-color" style="background:#198754;"></span>
+                <span>Materia <strong>aprobada</strong></span>
             </div>
-        }
-    }
-    else
-    {
-        <div style="grid-column:1 / -1; margin-top:20px;">
-            No hay materias cargadas.
+            <div class="instructivo-ref">
+                <span class="ref-color" style="background:#1f6d8c;"></span>
+                <span>Materia <strong>disponible</strong></span>
+            </div>
+            <div class="instructivo-ref">
+                <span class="ref-color" style="background:#9e9e9e;"></span>
+                <span>Pendiente de <strong>correlativas</strong></span>
+            </div>
         </div>
-    }
-</div>
+        <div class="instructivo-footer">
+            @if (User.Identity!.IsAuthenticated)
+            {
+                <p>Hacé click sobre una materia para guardar tu progreso</p>
+            }
+            else
+            {
+                <a asp-area="Identity" asp-page="/Account/Register">
+                    Hacé un registro rápido y guardá tu progreso
+                </a>
+            }
+        </div>
+    </div>
+}
+
+<input type="hidden" id="idCarrera" value="@idCarreraActual" />
+
+@if (!string.IsNullOrEmpty(idCarreraActual))
+{
+    <div class="malla-wrapper">
+        <div class="malla">
+            @if (idCarreraActual != "6")
+            {
+                <div class="header" style="grid-column: 1 / 3; grid-row: 1;">
+                    CICLO GENERAL
+                </div>
+                <div class="header" style="grid-column: 3 / 5; grid-row: 1;">
+                    CICLO PROFESIONAL
+                </div>
+            }
+
+            @if (Model != null && Model.Any())
+            {
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    var m = Model[i];
+                    var totalFilas = 6;
+                    var col = (i / totalFilas) + 1;
+                    var row = (i % totalFilas) + 2;
+                    var aprobada = aprobadas.Contains(m.IdMateria);
+                    var desbloqueada = m.Correlativas == null || !m.Correlativas.Any() ||
+                    m.Correlativas.All(c =>
+                    c.IdMateriaCorrelativa < 31
+                    ? aprobadas.Count >= c.IdMateriaCorrelativa
+                    : aprobadas.Contains(c.IdMateriaCorrelativa));
+                    var css = aprobada ? "aprobada" : desbloqueada ? "disponible" : "bloqueada";
+
+                    <div class="materia @css"
+                         style="grid-column:@col; grid-row:@row;"
+                         data-id="@m.IdMateria"
+                         data-correlativas="@string.Join(",", m.Correlativas?.Select(c => c.IdMateriaCorrelativa) ?? Enumerable.Empty<int>())"
+                         onclick="toggleMateria(this)">
+                        <div class="area">@nombreArea</div>
+                        <div class="codigo">@m.IdMateria</div>
+                        <div class="horas">@(m.Horas.HasValue ? $"{m.Horas}VH" : "")</div>
+                        <div class="nombre">
+                            <p>@m.Nombre</p>
+                            @if (m.Correlativas != null)
+                            {
+                                <div>
+                                    @foreach (var c in m.Correlativas)
+                                    {
+                                        <div class="correlativa">
+                                            @(c.IdMateriaCorrelativa < 31
+                                                                    ? (c.MateriaCorrelativa?.Nombre ?? c.IdMateriaCorrelativa.ToString())
+                                                                    : c.IdMateriaCorrelativa.ToString())
+                    </div>
+                                        }
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div style="grid-column:1 / -1; margin-top:20px;">
+                    No hay materias cargadas.
+                </div>
+            }
+        </div>
+    </div>
+}
 
 <!-- ============================
-            SCRIPT
+        SCRIPT
 ============================= -->
 <script>
-    // Al cambiar el selector, recargar con ?idCarrera=X
-    document.getElementById("selectCarrera").addEventListener("change", function () {
-        if (this.value) window.location.href = `?idCarrera=${this.value}`;
-    });
-
     function getIdCarrera() {
-        const hidden = document.getElementById("idCarrera").value;
-        if (hidden) return hidden;
-        return document.getElementById("selectCarrera").value;
+        return document.getElementById("idCarrera").value;
     }
 
     const aprobadas = new Set([
@@ -113,9 +179,15 @@
             return;
         }
 
-        const estaAprobada = card.classList.contains("aprobada");
-        const estaDisponible = card.classList.contains("disponible");
-        if (!estaAprobada && !estaDisponible) return;
+        const correlativas = card.dataset.correlativas
+            ? card.dataset.correlativas.split(",").map(Number).filter(n => n > 0)
+            : [];
+
+        const estaAprobada = aprobadas.has(parseInt(idMateria));
+        const estaDesbloqueada = correlativas.length === 0 ||
+            correlativas.every(c => c < 31 ? aprobadas.size >= c : aprobadas.has(c));
+
+        if (!estaAprobada && !estaDesbloqueada) return;
 
         try {
             const url = `/api/materias/${estaAprobada ? "desaprobar" : "aprobar"}?idMateria=${idMateria}&idCarrera=${idCarrera}`;
@@ -152,7 +224,10 @@
 
             if (aprobadas.has(id)) {
                 card.classList.add("aprobada");
-            } else if (correlativas.length === 0 || correlativas.every(c => aprobadas.has(c))) {
+            } else if (
+                correlativas.length === 0 ||
+                correlativas.every(c => c < 31 ? aprobadas.size >= c : aprobadas.has(c))
+            ) {
                 card.classList.add("disponible");
             } else {
                 card.classList.add("bloqueada");
@@ -160,24 +235,15 @@
         });
     }
 
-    async function inscribirse() {
-        const id = document.getElementById("selectCarrera").value;
-        const mensaje = document.getElementById("mensajeCarrera");
-        if (!id) {
-            mensaje.innerHTML = "Seleccioná una carrera";
-            return;
-        }
-        try {
-            const response = await fetch(`/api/usuario-carrera/${id}`, { method: "POST" });
-            const text = await response.text();
-            if (response.ok) {
-                mensaje.innerHTML = `<span style="color:green">${text}</span>`;
-                setTimeout(() => window.location.href = `?idCarrera=${id}`, 1000);
-            } else {
-                mensaje.innerHTML = `<span style="color:red">${text}</span>`;
-            }
-        } catch {
-            mensaje.innerHTML = "Error al inscribirse";
-        }
+    function seleccionarCarrera(id, slug) {
+        fetch(`/api/usuario-carrera/${id}`, { method: "POST" })
+            .then(r => {
+                setTimeout(() => window.location.href = `/planes/${slug}`, 800);
+            })
+            .catch(() => {
+                document.getElementById("mensajeCarrera").innerHTML = "Error al conectar.";
+            });
     }
+
+    recalcularEstados();
 </script>

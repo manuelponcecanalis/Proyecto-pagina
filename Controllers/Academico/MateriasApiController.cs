@@ -30,32 +30,33 @@ namespace Pagina_proyecto.Controllers.Academico
 
             var yaAprobada = await _context.MateriasAprobadas
                 .AnyAsync(x => x.IdUsuario == userId &&
-                               x.IdCarrera == idCarrera &&
                                x.IdMateria == idMateria);
-
             if (yaAprobada)
                 return BadRequest("La materia ya está aprobada");
 
             var correlativas = await _context.Correlativas
-                .Where(c => c.IdMateria == idMateria)
+                .Where(c => c.IdCarrera == idCarrera && c.IdMateria == idMateria)
                 .Select(c => c.IdMateriaCorrelativa)
                 .ToListAsync();
 
             var aprobadas = await _context.MateriasAprobadas
-                .Where(a => a.IdUsuario == userId && a.IdCarrera == idCarrera)
+                .Where(a => a.IdUsuario == userId)
                 .Select(a => a.IdMateria)
                 .ToListAsync();
 
-            if (!correlativas.All(c => aprobadas.Contains(c)))
+            // Correlativas virtuales (id < 31): necesitás tantas aprobadas como el id
+            // Correlativas reales (id >= 31): necesitás tener esa materia aprobada
+            bool cumpleCorrelativas = correlativas.All(c =>
+                c < 31 ? aprobadas.Count >= c : aprobadas.Contains(c));
+
+            if (!cumpleCorrelativas)
                 return BadRequest("No se cumplen las correlativas");
 
             _context.MateriasAprobadas.Add(new MateriaAprobadaAlumno
             {
                 IdUsuario = userId,
-                IdCarrera = idCarrera,
                 IdMateria = idMateria
             });
-
             await _context.SaveChangesAsync();
             return Ok();
         }
@@ -68,12 +69,15 @@ namespace Pagina_proyecto.Controllers.Academico
             if (string.IsNullOrEmpty(userId)) return Unauthorized();
 
             var aprobadas = await _context.MateriasAprobadas
-                .Where(a => a.IdUsuario == userId && a.IdCarrera == idCarrera)
+                .Where(a => a.IdUsuario == userId)
                 .Select(a => a.IdMateria)
                 .ToListAsync();
 
+            // Solo verificar bloqueo para correlativas reales (id >= 31)
             var bloquearia = await _context.Correlativas
-                .AnyAsync(c => c.IdMateriaCorrelativa == idMateria &&
+                .AnyAsync(c => c.IdCarrera == idCarrera &&
+                               c.IdMateriaCorrelativa == idMateria &&
+                               c.IdMateriaCorrelativa >= 31 &&
                                aprobadas.Contains(c.IdMateria));
 
             if (bloquearia)
@@ -81,16 +85,12 @@ namespace Pagina_proyecto.Controllers.Academico
 
             var aprobada = await _context.MateriasAprobadas
                 .FirstOrDefaultAsync(x => x.IdUsuario == userId &&
-                                          x.IdCarrera == idCarrera &&
                                           x.IdMateria == idMateria);
-
             if (aprobada == null) return NotFound();
 
             _context.MateriasAprobadas.Remove(aprobada);
             await _context.SaveChangesAsync();
             return Ok();
         }
-
-        
     }
 }

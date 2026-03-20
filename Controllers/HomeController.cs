@@ -57,6 +57,22 @@ namespace Pagina_proyecto.Controllers
             return Json(archivos);
         }
 
+        public IActionResult ObtenerMapas()
+        {
+            var folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "mapas");
+
+            if (!Directory.Exists(folderPath))
+                return Json(new List<object>());
+
+            var imagenes = Directory.GetFiles(folderPath, "*.jpg")
+                .Select(file => new
+                {
+                    Titulo = Path.GetFileNameWithoutExtension(file),
+                    Url = "/mapas/" + Path.GetFileName(file)
+                }).ToList();
+
+            return Json(imagenes);
+        }
         public async Task<IActionResult> Noticias()
         {
             var noticias = await _context.Noticias

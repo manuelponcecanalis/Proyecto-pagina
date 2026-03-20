@@ -1,7 +1,7 @@
 ﻿@model Pagina_proyecto.Models.ViewModels.HomeIndexViewModel
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Inicio";
 }
 
 @section Styles {
@@ -24,24 +24,22 @@
 <!-- ================= CONTENEDOR PRINCIPAL ================= -->
 <div class="main-content">
 
-    <!-- ================= CALENDARIO ================= -->
-   
     <!-- ================= CARDS ================= -->
     <div class="cards-container">
 
         <div class="card planEstudio" onclick="abrirModalPlanes()">
-            <img src="~/PlanesDeEstudio/Economía.jpg" />
+            <img src="~/logos/planesImg.png" />
             <h3>Planes de estudio</h3>
-            <p>
-                Explorá los planes de estudio actualizados de todas las carreras
-            </p>
+            <p>Explorá los planes de estudio actualizados de todas las carreras</p>
         </div>
 
-        <div class="card gruposWsp" onclick="abrirModalGruposWsp()">
-            <img src="~/logos/CapturaGruposWsp.png" />
-            <h3>Grupos de wsp por curso</h3>
-            <p>Encontrá tu grupo de cursada o crealo y subilo para que otros se sumen</p>
-        </div>
+        <a href="https://docs.google.com/spreadsheets/d/1mz_13bcCP8fOqGfdUz70RBQJyo47P-D0/edit?usp=drivesdk&ouid=118121082394623422809&rtpof=true&sd=true" target="_blank">
+            <div class="card gruposWsp">
+                <img src="~/logos/CapturaGruposWsp.png" />
+                <h3>Grupos de wsp por curso</h3>
+                <p>Encontrá tu grupo de cursada o crealo y subilo para que otros se sumen</p>
+            </div>
+        </a>
 
         <a href="@Url.Action("Ranking", "Home")">
             <div class="card">
@@ -67,17 +65,22 @@
             </div>
         </a>
 
+        <div class="card mapas" onclick="abrirModalMapas()">
+            <img src="~/mapas/MapaCórdoba.jpg" />
+            <h3>Mapas de las sedes</h3>
+            <p>Explorá los mapas de las distintas sedes y nunca te pierdas</p>
+        </div>
+
     </div>
 </div>
+
+<!-- ================= WIDGET CALENDARIO ================= -->
 <div class="widgetCalendario">
     <h3>Calendario Académico</h3>
 
     <div class="eventsCalendario">
         @{
-            var proximosEventos = Model.EventosCalendario
-            
-            .Take(3)
-            .ToList();
+            var proximosEventos = Model.EventosCalendario.Take(3).ToList();
         }
 
         @foreach (var evento in proximosEventos)
@@ -85,7 +88,6 @@
             <div class="eventCalendario evento-expandible"
                  data-titulo="@evento.Titulo"
                  data-cuerpo="@evento.Cuerpo">
-
                 <div class="detailsCalendario">
                     <span class="timeCalendario">
                         @evento.FechaInicio
@@ -94,7 +96,6 @@
                             <text> al @evento.FechaFin</text>
                         }
                     </span>
-
                     <p>@evento.Titulo</p>
                     <div class="eventoCuerpoExpandido"></div>
                 </div>
@@ -103,9 +104,7 @@
     </div>
 
     <div class="footerCalendario">
-        <span onclick="abrirModalCalendario2026()">
-            Calendario completo 2026
-        </span>
+        <span onclick="abrirModalCalendario2026()">Calendario completo 2026</span>
     </div>
 </div>
 
@@ -113,6 +112,7 @@
 <div id="modalPlanes" class="modal" onclick="cerrarModalDesdeFondo(event)">
     <div class="modal-content">
         <span class="close" onclick="cerrarModal()">&times;</span>
+        <h2>Planes de estudio</h2>
         <div id="contenedorPlanes"></div>
     </div>
 </div>
@@ -126,30 +126,140 @@
     </div>
 </div>
 
+<!-- ================= MODAL MAPAS ================= -->
+<div id="modalMapas" class="modal" onclick="cerrarModalMapas(event)">
+    <div class="modal-content">
+        <span class="close" onclick="cerrarModalMapas()">&times;</span>
+        <h2 style="text-align:center;">Mapas de las sedes</h2>
+        <div id="contenedorMapas" style="display:flex; flex-wrap:wrap; gap:1.5rem; justify-content:center; padding:1rem;"></div>
+    </div>
+</div>
+
 @section Scripts {
     <script>
         // ================= CARRUSEL =================
         let currentIndex = 0;
         const noticias = @Html.Raw(Json.Serialize(Model.Noticias.Take(3)));
+        let isAnimating = false;
 
-        function gestionCarrusel() {
+        function cargarSlideInicial() {
             const n = noticias[currentIndex];
             if (!n) return;
-
-            document.getElementById('carousel-imagen').src = n.primeraImagenUrl;
+            const img = document.getElementById('carousel-imagen');
+            const caption = document.querySelector('.carousel-caption');
+            img.src = n.primeraImagenUrl;
             document.getElementById('carousel-title').innerText = n.titulo;
             document.getElementById('carousel-body').innerText = n.subtitulo;
-            document.querySelector('.carousel-item').onclick = () => {
+            caption.style.opacity = '1';
+            const item = document.querySelector('.carousel-item');
+            item.onclick = () => {
                 window.location.href = `/Home/DetalleNoticia?id=${n.id}`;
             };
         }
 
-        function moveCarousel(dir) {
-            currentIndex = (currentIndex + dir + noticias.length) % noticias.length;
-            gestionCarrusel();
+        function gestionCarrusel(direction) {
+            const n = noticias[currentIndex];
+            if (!n) return;
+
+            const img = document.getElementById('carousel-imagen');
+            const item = document.querySelector('.carousel-item');
+
+            const preload = new Image();
+            preload.src = n.primeraImagenUrl;
+
+            const ejecutar = () => {
+                isAnimating = true;
+
+                const salida = direction > 0 ? '100%' : '-100%';
+                const entrada = direction > 0 ? '-100%' : '100%';
+
+                // Asegurar que el caption actual sea visible antes de clonar
+                const captionActual = item.querySelector('.carousel-caption');
+                captionActual.style.transition = 'none';
+                captionActual.style.opacity = '1';
+
+                // 1. Clonar el slide actual (viejo) ANTES de modificar
+                const clone = item.cloneNode(true);
+                clone.style.position = 'absolute';
+                clone.style.top = '0';
+                clone.style.left = '0';
+                clone.style.width = '100%';
+                clone.style.height = '100%';
+                clone.style.transition = 'transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                clone.style.zIndex = '1';
+                item.parentNode.style.position = 'relative';
+                item.parentNode.style.overflow = 'hidden';
+                item.parentNode.insertBefore(clone, item);
+
+                // 2. Actualizar contenido del slide nuevo DESPUÉS de clonar
+                img.src = n.primeraImagenUrl;
+                document.getElementById('carousel-title').innerText = n.titulo;
+                document.getElementById('carousel-body').innerText = n.subtitulo;
+                item.style.zIndex = '2';
+                item.onclick = () => {
+                    window.location.href = `/Home/DetalleNoticia?id=${n.id}`;
+                };
+
+                // 3. Ocultar caption del slide NUEVO durante la transición
+                const captionNuevo = item.querySelector('.carousel-caption');
+                captionNuevo.style.transition = 'none';
+                captionNuevo.style.opacity = '0';
+
+                // 4. Posicionar el slide nuevo fuera de pantalla
+                item.style.transition = 'none';
+                item.style.transform = `translateX(${entrada})`;
+
+                // 5. Animar ambos slides
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        item.style.transition = 'transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                        item.style.transform = 'translateX(0)';
+                        clone.style.transform = `translateX(${salida})`;
+
+                        setTimeout(() => {
+                            clone.remove();
+                            item.style.zIndex = '';
+                            isAnimating = false;
+
+                            // Mostrar caption nuevo con fade al terminar
+                            captionNuevo.style.transition = 'opacity 0.3s ease';
+                            captionNuevo.style.opacity = '1';
+                        }, 450);
+                    });
+                });
+            };
+
+            if (preload.complete) {
+                ejecutar();
+            } else {
+                preload.onload = ejecutar;
+                preload.onerror = ejecutar;
+            }
         }
 
-        gestionCarrusel();
+        function moveCarousel(dir) {
+            if (isAnimating) return;
+            currentIndex = (currentIndex + dir + noticias.length) % noticias.length;
+            gestionCarrusel(dir);
+        }
+
+        // Carga inicial sin animación
+        cargarSlideInicial();
+
+        // Touch swipe para móviles
+        let touchStartX = 0;
+        const carrusel = document.querySelector('.carousel-container');
+
+        carrusel.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        carrusel.addEventListener('touchend', e => {
+            const diff = touchStartX - e.changedTouches[0].screenX;
+            if (Math.abs(diff) > 50) {
+                moveCarousel(diff > 0 ? 1 : -1);
+            }
+        });
 
         // ================= MODAL PLANES =================
         function abrirModalPlanes() {
@@ -171,18 +281,6 @@
                 });
         }
 
-               function abrirModalGruposWsp() {
-            document.getElementById('contenedorPlanes').innerHTML = `
-                <div class="gruposWSP"
-                     onclick="window.open('https://docs.google.com/spreadsheets/d/1mz_13bcCP8fOqGfdUz70RBQJyo47P-D0/edit?usp=drivesdk&ouid=118121082394623422809&rtpof=true&sd=true', '_blank')">
-                    <img src="/logos/CapturaGruposWsp.png">
-                    <h3>Grupos de WSP por curso</h3>
-                </div>
-            `;
-            document.getElementById('modalPlanes').style.display = 'flex';
-        }
-
-
         function cerrarModal() {
             document.getElementById('modalPlanes').style.display = 'none';
         }
@@ -192,7 +290,7 @@
         }
 
         // ================= MODAL CALENDARIO =================
-               function abrirModalCalendario2026() {
+        function abrirModalCalendario2026() {
             const contenedor = document.getElementById('contenedorCalendario2026');
             contenedor.innerHTML = '';
 
@@ -201,22 +299,17 @@
             eventos.forEach(evento => {
                 const div = document.createElement('div');
                 div.classList.add('eventCalendario', 'evento-expandible');
-
                 div.dataset.cuerpo = evento.cuerpo ?? '';
-
                 div.innerHTML = `
                     <div class="detailsCalendario">
                         <span class="timeCalendario">
                             ${evento.fechaInicio ?? ''}
                             ${evento.fechaFin && evento.fechaFin !== evento.fechaInicio ? ' al ' + evento.fechaFin : ''}
                         </span>
-
                         <p>${evento.titulo ?? ''}</p>
-
                         <div class="eventoCuerpoExpandido"></div>
                     </div>
                 `;
-
                 contenedor.appendChild(div);
             });
 
@@ -238,9 +331,32 @@
             if (!cuerpo) return;
 
             const cont = evento.querySelector('.eventoCuerpoExpandido');
-
             evento.classList.toggle('activo');
             cont.innerHTML = evento.classList.contains('activo') ? cuerpo : '';
         });
+
+        // ================= MODAL MAPAS =================
+        function abrirModalMapas() {
+            fetch('/Home/ObtenerMapas')
+                .then(r => r.json())
+                .then(data => {
+                    const c = document.getElementById('contenedorMapas');
+                    c.innerHTML = '';
+                    data.forEach(i => {
+                        c.innerHTML += `
+                            <div style="text-align:center" class="modalPlanes">
+                                <img src="${i.url}" onclick="window.open('${i.url}', '_blank')">
+                                <h3 style="margin-top:0.5rem; font-weight:600;">${i.titulo}</h3>
+                            </div>`;
+                    });
+                    document.getElementById('modalMapas').style.display = 'flex';
+                });
+        }
+
+        function cerrarModalMapas(e) {
+            if (!e || !e.target.closest('.modal-content')) {
+                document.getElementById('modalMapas').style.display = 'none';
+            }
+        }
     </script>
 }

@@ -1,5 +1,4 @@
-﻿
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Pagina_proyecto.Models;
 using Pagina_proyecto.Models.Entities;
@@ -27,10 +26,7 @@ namespace Pagina_proyecto.Areas.Data
         // -------------------------
         public DbSet<Carrera> Carreras { get; set; }
         public DbSet<Materia> Materias { get; set; }
-
-        /* 🔹 NUEVA TABLA INTERMEDIA */
         public DbSet<CarrerasMateria> CarrerasMateria { get; set; }
-
         public DbSet<Correlativa> Correlativas { get; set; }
         public DbSet<UsuarioCarrera> UsuarioCarreras { get; set; }
         public DbSet<MateriaAprobadaAlumno> MateriasAprobadas { get; set; }
@@ -61,14 +57,16 @@ namespace Pagina_proyecto.Areas.Data
             modelBuilder.Entity<CarrerasMateria>()
                 .HasKey(cm => new { cm.IdCarrera, cm.IdMateria });
 
+            // ✅ Correlativa ahora incluye IdCarrera en la PK
             modelBuilder.Entity<Correlativa>()
-                .HasKey(c => new { c.IdMateria, c.IdMateriaCorrelativa });
+                .HasKey(c => new { c.IdCarrera, c.IdMateria, c.IdMateriaCorrelativa });
 
             modelBuilder.Entity<UsuarioCarrera>()
                 .HasKey(uc => new { uc.IdUsuario, uc.IdCarrera });
 
+            // ✅ MateriaAprobadaAlumno ya no incluye IdCarrera en la PK
             modelBuilder.Entity<MateriaAprobadaAlumno>()
-                .HasKey(ma => new { ma.IdUsuario, ma.IdCarrera, ma.IdMateria });
+                .HasKey(ma => new { ma.IdUsuario, ma.IdMateria });
 
             // -------------------------
             // COLUMNAS EXPLÍCITAS
@@ -96,6 +94,13 @@ namespace Pagina_proyecto.Areas.Data
             // -------------------------
             // CORRELATIVAS
             // -------------------------
+            // ✅ FK hacia Carrera
+            modelBuilder.Entity<Correlativa>()
+                .HasOne(c => c.Carrera)
+                .WithMany()
+                .HasForeignKey(c => c.IdCarrera)
+                .OnDelete(DeleteBehavior.Cascade);
+
             modelBuilder.Entity<Correlativa>()
                 .HasOne(c => c.Materia)
                 .WithMany(m => m.Correlativas)
@@ -123,16 +128,12 @@ namespace Pagina_proyecto.Areas.Data
 
             // -------------------------
             // APROBADAS
+            // ✅ Ya no tiene relación con Carrera
             // -------------------------
             modelBuilder.Entity<MateriaAprobadaAlumno>()
                 .HasOne(ma => ma.Usuario)
                 .WithMany()
                 .HasForeignKey(ma => ma.IdUsuario);
-
-            modelBuilder.Entity<MateriaAprobadaAlumno>()
-                .HasOne(ma => ma.Carrera)
-                .WithMany()
-                .HasForeignKey(ma => ma.IdCarrera);
 
             modelBuilder.Entity<MateriaAprobadaAlumno>()
                 .HasOne(ma => ma.Materia)
@@ -152,4 +153,3 @@ namespace Pagina_proyecto.Areas.Data
         }
     }
 }
-

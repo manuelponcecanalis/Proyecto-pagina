@@ -7,7 +7,7 @@
         // Coincide con la columna de la base de datos
         public string Nombre { get; set; } = null!;
 
-        public int Horas { get; set; }
+        public int? Horas { get; set; }
 
         /* 🔗 Relación N-N con Carreras */
         public ICollection<CarrerasMateria> CarrerasMateria { get; set; }

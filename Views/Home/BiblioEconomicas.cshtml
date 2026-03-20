@@ -10,7 +10,11 @@
     <link rel="stylesheet" href="~/css/BiblioEconomicas.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/Styles.css" asp-append-version="true" />
 }
-
+<div class="floating-btn-container" id="floatingBtn">
+    <a target="_blank" class="floating-btn" title="Recomendaciones FCE" href="https://forms.gle/vh9UNJxG9AX5Uehq8">
+        📚 <span>Dejá tus apuntes</span>
+    </a>
+</div>
 <section class="biblio-hero">
     <div class="container">
         <h1>📚 BiblioEconómicas</h1>
@@ -39,26 +43,21 @@
         <div class="materias-grid" id="materiasGrid">
             @if (Model.Materias != null && Model.Materias.Any())
             {
-                @foreach (var materia in Model.Materias)
+                @foreach (var materia in Model.Materias.Where(m => m.CantidadArchivos > 0).OrderBy(m => m.Materia))
                 {
-                    if (materia.CantidadArchivos > 0)
-                    {
-                        <div class="materia-card" data-id="@materia.Id">
-                            <h3 class="materia-nombre">@materia.Materia</h3>
-                            <p style="color: var(--color-medium-gray); margin-bottom: 1rem;">
-                                @materia.DescripcionContenido
-                            </p>
-                            <div class="stats">
-                                <span>@materia.CantidadArchivos archivos</span>
-                                <span class="visualizaciones-count">@materia.CantidadVisualizaciones visualizaciones</span>
-                            </div>
-                            <a href="@materia.LinkCarpeta" target="_blank" class="download-btn materia-link">
-                                Entrar al Drive
-                            </a>
+                    <div class="materia-card" data-id="@materia.Id">
+                        <h3 class="materia-nombre">@materia.Materia</h3>
+                        <p style="color: var(--color-medium-gray); margin-bottom: 1rem;">
+                            @materia.DescripcionContenido
+                        </p>
+                        <div class="stats">
+                            <span>@materia.CantidadArchivos archivos</span>
+                            <span class="visualizaciones-count">@materia.CantidadVisualizaciones visualizaciones</span>
                         </div>
-                    }
-
-                    
+                        <a href="@materia.LinkCarpeta" target="_blank" class="download-btn materia-link">
+                            Entrar al Drive
+                        </a>
+                    </div>
                 }
             }
             else
@@ -114,4 +113,95 @@
             card.style.display = nombre.includes(input) ? 'block' : 'none';
         });
     }
+
+             /* =========================
+           DRAG BOTÓN FLOTANTE
+        ========================== */
+        (function () {
+            const btn = document.getElementById("floatingBtn");
+            const link = btn.querySelector("a.floating-btn");
+            let isDragging = false;
+            let offsetX = 0, offsetY = 0;
+            let hasMoved = false;
+            let clickOriginatedOnBtn = false;
+
+            btn.addEventListener("mousedown", e => {
+                isDragging = true;
+                hasMoved = false;
+                clickOriginatedOnBtn = true;
+                offsetX = e.clientX - btn.getBoundingClientRect().left;
+                offsetY = e.clientY - btn.getBoundingClientRect().top;
+                btn.classList.add("dragging");
+                e.preventDefault();
+            });
+
+            document.addEventListener("mousemove", e => {
+                if (!isDragging) return;
+                hasMoved = true;
+
+                let newLeft = e.clientX - offsetX;
+                let newTop  = e.clientY - offsetY;
+
+                newLeft = Math.max(0, Math.min(window.innerWidth  - btn.offsetWidth,  newLeft));
+                newTop  = Math.max(0, Math.min(window.innerHeight - btn.offsetHeight, newTop));
+
+                btn.style.left  = newLeft + "px";
+                btn.style.top   = newTop  + "px";
+                btn.style.right = "auto";
+            });
+
+            document.addEventListener("mouseup", () => {
+                if (!isDragging) return;
+                isDragging = false;
+                btn.classList.remove("dragging");
+
+                // Solo navega si el click empezó Y terminó sin moverse
+                if (clickOriginatedOnBtn && !hasMoved) {
+                    window.open(link.href, link.target || "_self");
+                }
+
+                clickOriginatedOnBtn = false;
+                hasMoved = false;
+            });
+
+            // Touch support (mobile)
+            btn.addEventListener("touchstart", e => {
+                const touch = e.touches[0];
+                isDragging = true;
+                hasMoved = false;
+                clickOriginatedOnBtn = true;
+                offsetX = touch.clientX - btn.getBoundingClientRect().left;
+                offsetY = touch.clientY - btn.getBoundingClientRect().top;
+                btn.classList.add("dragging");
+            }, { passive: true });
+
+            document.addEventListener("touchmove", e => {
+                if (!isDragging) return;
+                hasMoved = true;
+                const touch = e.touches[0];
+
+                let newLeft = touch.clientX - offsetX;
+                let newTop  = touch.clientY - offsetY;
+
+                newLeft = Math.max(0, Math.min(window.innerWidth  - btn.offsetWidth,  newLeft));
+                newTop  = Math.max(0, Math.min(window.innerHeight - btn.offsetHeight, newTop));
+
+                btn.style.left  = newLeft + "px";
+                btn.style.top   = newTop  + "px";
+                btn.style.right = "auto";
+            }, { passive: true });
+
+            document.addEventListener("touchend", () => {
+                if (!isDragging) return;
+                isDragging = false;
+                btn.classList.remove("dragging");
+
+                if (clickOriginatedOnBtn && !hasMoved) {
+                    window.open(link.href, link.target || "_self");
+                }
+
+                clickOriginatedOnBtn = false;
+                hasMoved = false;
+            });
+        })();
 </script>
