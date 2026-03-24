@@ -1,4 +1,4 @@
-﻿/* =============================
+/* =============================
    DROPDOWN - Ítems internos
    ============================= */
 .navbar-nav .dropdown-menu .dropdown-item {
@@ -413,4 +413,18 @@
     body {
         overflow-x: hidden;
     }
+}
+
+/* =============================================================================
+   Header económico (FeatureFlags:UseHeaderEconomicas / ViewData["UseHeaderEconomicas"])
+   El sticky y la sombra del bloque superior viven en .site-header-econ; el <nav>
+   interior solo debe aportar estructura Bootstrap (evitar doble sticky/sombra).
+   Estilo detallado: wwwroot/css/header-economicas.css (carga posterior en _Layout).
+   ============================================================================= */
+body.site-header-econ-active .site-header-econ .navbar {
+    position: relative !important;
+    top: auto !important;
+    z-index: auto !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
 }

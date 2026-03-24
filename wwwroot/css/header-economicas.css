@@ -1,0 +1,555 @@
+/* Header alineado a Pagina_proyecto_economicas (styles.css) - solo .site-header-econ */
+
+:root {
+    --econ-header-primary: #003366;
+    --econ-header-accent: #e91e63;
+    --econ-header-white: #ffffff;
+    --econ-header-ice: #f8f9fa;
+    --econ-header-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --econ-header-shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+    --econ-nav-font: 0.95rem;
+    --econ-nav-gap: 0.5rem;
+    /* Estado hover/foco/activo: “sombra rosa” (sin recuadro naranja del navegador/Bootstrap) */
+    --econ-nav-state-bg: rgba(233, 30, 99, 0.08);
+    --econ-nav-state-line: var(--econ-header-accent);
+}
+
+/* layout.css aplica .navbar-nav .nav-item:not(.dropdown) > .nav-link (Inicio, Nosotros) y
+   .dropdown-toggle::before con color gris y lineas ::after/::before; anulamos dentro del header económico */
+.site-header-econ .navbar-nav .nav-item:not(.dropdown) > .nav-link.site-header-econ__link::after,
+.site-header-econ .navbar-nav .nav-item:not(.dropdown) > .nav-link.site-header-econ__link:hover::after,
+.site-header-econ .navbar-nav .nav-item:not(.dropdown) > .nav-link.site-header-econ__link.active::after {
+    display: none !important;
+    content: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+.site-header-econ .navbar-nav .nav-item.dropdown > .nav-link.dropdown-toggle.site-header-econ__link::before,
+.site-header-econ .navbar-nav .nav-item.dropdown > .nav-link.dropdown-toggle.site-header-econ__link:hover::before,
+.site-header-econ .navbar-nav .nav-item.dropdown > .nav-link.dropdown-toggle.site-header-econ__link.active::before {
+    display: none !important;
+    content: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+.site-header-econ .navbar-nav .nav-item:not(.dropdown) > .nav-link.site-header-econ__link,
+.site-header-econ .navbar-nav .nav-item.dropdown > .nav-link.dropdown-toggle.site-header-econ__link {
+    color: var(--econ-header-primary) !important;
+    font-weight: 600 !important;
+}
+
+body.site-header-econ-active {
+    font-family: "Open Sans", "Lato", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+html:has(body.site-header-econ-active) {
+    scroll-padding-top: var(--header-h, 4.5rem);
+}
+
+body.site-header-econ-active .site-main-econ {
+    scroll-margin-top: var(--header-h);
+}
+
+body.site-header-econ-active.menu-open {
+    overflow: hidden;
+}
+
+@media (min-width: 992px) {
+    body.site-header-econ-active.menu-open {
+        overflow: visible;
+    }
+}
+
+/* Contenedor del header (max-width 1200px) */
+.site-header-econ__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+/* Wrapper de contenido: ancho completo sin restricción (las secciones manejan su propio container) */
+.site-main-econ {
+    width: 100%;
+}
+
+/* Los containers internos dentro del layout económico se alinean con el header (1200px).
+   Nota: Styles.css aplica max-width: none !important y padding: 0 !important al .container global;
+   necesitamos mayor especificidad + !important para sobreescribirlo. */
+.site-main-econ .container {
+    max-width: 1200px !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.site-header-econ.header {
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    margin-bottom: 1rem;
+    background-color: var(--econ-header-white);
+    border-bottom: 2px solid var(--econ-header-accent);
+    box-shadow: var(--econ-header-shadow-sm);
+    transition: box-shadow 0.2s ease;
+}
+
+.site-header-econ.is-scrolled.header {
+    box-shadow: var(--econ-header-shadow-lg);
+}
+
+.site-header-econ .navbar {
+    position: relative;
+    z-index: 2;
+}
+
+/* .header-content - base flex (movil), grid en desktop */
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.25rem;
+    padding: 1rem 0;
+    position: relative;
+}
+
+.site-header-econ__brand .logoProyecto {
+    height: 48px;
+    width: auto;
+    max-width: 370px;
+    object-fit: contain;
+    transition: opacity 0.2s ease;
+}
+
+.site-header-econ__brand:hover .logoProyecto {
+    opacity: 0.88;
+}
+
+/* Colapso: nav + auth */
+.site-header-econ__collapse {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 0.35rem 1.25rem;
+    min-width: 0;
+}
+
+.site-header-econ__nav-main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--econ-nav-gap);
+}
+
+/* ===== DESKTOP: bloque logo + nav + Ingresar centrado en la pagina ===== */
+@media (min-width: 992px) {
+    .header-content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem 2.25rem;
+        padding: 1rem 0;
+    }
+
+    .site-header-econ__brand {
+        flex: 0 0 auto;
+    }
+
+    .site-header-econ__collapse {
+        flex: 0 1 auto;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .site-header-econ__nav-main {
+        flex: 0 1 auto;
+        justify-content: center;
+        gap: 0.85rem;
+        min-width: 0;
+    }
+
+    .site-header-econ__auth {
+        flex-shrink: 0;
+    }
+}
+
+.site-header-econ__link {
+    color: var(--econ-header-primary) !important;
+    font-weight: 600;
+    font-size: var(--econ-nav-font);
+    padding: 0.55rem 0.75rem !important;
+    border-radius: 8px;
+    outline: none;
+    border: none;
+    /* Línea inferior: transparente por defecto; rosa en hover/foco/activo */
+    box-shadow: inset 0 -2px 0 0 transparent;
+    transition: color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+@media (min-width: 992px) {
+    .site-header-econ__link {
+        font-size: 1rem;
+    }
+}
+
+/* Hover/foco: línea inferior rosa en todos los ítems (incl. dropdowns). En desktop el JS abre el
+   submenú al entrar al li → aria-expanded pasa a true al instante; no excluir por aria-expanded
+   o el toggle nunca mostraría la línea. */
+.site-header-econ .navbar-nav .nav-link.site-header-econ__link:hover:not(.active) {
+    outline: none !important;
+    color: var(--econ-header-accent) !important;
+    background: var(--econ-nav-state-bg) !important;
+    box-shadow: inset 0 -2px 0 0 var(--econ-nav-state-line) !important;
+}
+
+.site-header-econ .navbar-nav .nav-link.site-header-econ__link:focus:not(.active):not(:hover),
+.site-header-econ .navbar-nav .nav-link.site-header-econ__link:focus-visible:not(.active):not(:hover) {
+    outline: none !important;
+    color: var(--econ-header-accent) !important;
+    background: var(--econ-nav-state-bg) !important;
+    box-shadow: inset 0 -2px 0 0 var(--econ-nav-state-line) !important;
+}
+
+/* Activo (página actual): fondo rosa, sin subrayado */
+.site-header-econ__link.active,
+.site-header-econ__link.active:hover,
+.site-header-econ__link.active:focus,
+.site-header-econ__link.active:focus-visible {
+    color: var(--econ-header-accent) !important;
+    background: var(--econ-nav-state-bg) !important;
+    box-shadow: inset 0 -2px 0 0 transparent !important;
+}
+
+.site-header-econ .navbar-nav .nav-link.site-header-econ__link.active:focus,
+.site-header-econ .navbar-nav .nav-link.site-header-econ__link.active:focus-visible {
+    box-shadow: inset 0 -2px 0 0 transparent !important;
+}
+
+/* Dropdown abierto sin cursor sobre el toggle: fondo rosa, sin línea (evita duplicar con el hover) */
+.site-header-econ .nav-item.dropdown .site-header-econ__dropdown-toggle.site-header-econ__link[aria-expanded="true"]:not(:hover) {
+    color: var(--econ-header-accent) !important;
+    background: var(--econ-nav-state-bg) !important;
+    box-shadow: inset 0 -2px 0 0 transparent !important;
+    outline: none !important;
+}
+
+/* Refuerzo: hover sobre el li entero (camino hacia el submenú) */
+.site-header-econ .nav-item.dropdown:hover > .site-header-econ__dropdown-toggle.site-header-econ__link:not(.active) {
+    color: var(--econ-header-accent) !important;
+    background: var(--econ-nav-state-bg) !important;
+    box-shadow: inset 0 -2px 0 0 var(--econ-nav-state-line) !important;
+    outline: none !important;
+}
+
+/* Chevron en V (SVG), mismo criterio que Pagina_proyecto_economicas .dropdown-arrow */
+.site-header-econ .nav-link.dropdown-toggle.site-header-econ__dropdown-toggle::after {
+    display: none !important;
+}
+
+.site-header-econ .nav-link.site-header-econ__dropdown-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.site-header-econ__chevron {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-left: 0.1rem;
+    transition: transform 0.2s ease;
+    color: inherit;
+}
+
+.site-header-econ__chevron svg {
+    width: 15px;
+    height: 15px;
+    display: block;
+}
+
+@media (min-width: 992px) {
+    .site-header-econ__chevron svg {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+.site-header-econ .nav-item.dropdown:hover > .site-header-econ__dropdown-toggle .site-header-econ__chevron,
+.site-header-econ .nav-item.dropdown .site-header-econ__dropdown-toggle[aria-expanded="true"] .site-header-econ__chevron {
+    transform: rotate(180deg);
+}
+
+/* Boton Ingresar */
+.btn-login {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--econ-header-accent);
+    color: var(--econ-header-white) !important;
+    padding: 0.55rem 1.35rem;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    border: none;
+    white-space: nowrap;
+}
+
+.btn-login:hover {
+    background-color: #c2185b;
+    color: var(--econ-header-white) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.site-header-econ__auth-user {
+    font-size: 0.9375rem;
+}
+
+.site-header-econ__auth-link {
+    color: var(--econ-header-primary);
+    font-weight: 600;
+    text-decoration: none;
+    max-width: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.site-header-econ__auth-link:hover {
+    color: var(--econ-header-accent);
+}
+
+.site-header-econ__btn-logout {
+    background: transparent;
+    border: 1px solid var(--econ-header-primary);
+    color: var(--econ-header-primary);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.site-header-econ__btn-logout:hover {
+    background: var(--econ-header-primary);
+    color: var(--econ-header-white);
+}
+
+/* Dropdowns */
+/* layout.css fuerza .navbar-nav .dropdown-menu .dropdown-item:hover { color: #fff !important }
+   sobre fondo oscuro; nuestro hover usa fondo claro → sin anular con !important el texto queda blanco. */
+.site-header-econ .site-header-econ__dropdown-menu {
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    box-shadow: var(--econ-header-shadow-lg);
+    padding: 0.65rem 0;
+    min-width: 220px;
+    margin-top: 0.35rem;
+}
+
+.site-header-econ .navbar-nav .dropdown-menu .dropdown-item::after {
+    display: none !important;
+    content: none !important;
+}
+
+.site-header-econ .site-header-econ__dropdown-menu .dropdown-item {
+    color: #333 !important;
+    font-size: 0.95rem;
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.site-header-econ .site-header-econ__dropdown-menu .dropdown-item:hover,
+.site-header-econ .site-header-econ__dropdown-menu .dropdown-item:focus,
+.site-header-econ .site-header-econ__dropdown-menu .dropdown-item:focus-visible {
+    background-color: var(--econ-header-ice) !important;
+    color: var(--econ-header-accent) !important;
+}
+
+.site-header-econ .site-header-econ__dropdown-menu .dropdown-item:active {
+    background-color: var(--econ-header-ice) !important;
+    color: var(--econ-header-primary) !important;
+}
+
+.site-header-econ .site-header-econ__dropdown-menu .dropdown-item.active {
+    background-color: rgba(0, 51, 102, 0.06) !important;
+    color: var(--econ-header-primary) !important;
+}
+
+.site-header-econ .site-header-econ__dropdown-menu--academica {
+    min-width: 260px;
+}
+
+.site-header-econ .site-header-econ__dropdown-menu--tramites {
+    min-width: 240px;
+}
+
+.site-header-econ .site-header-econ__dropdown-menu--herramientas {
+    min-width: 260px;
+}
+
+/* Toggler (movil) */
+.site-header-econ__toggler {
+    border: 1.5px solid var(--econ-header-primary);
+    border-radius: 8px;
+    padding: 0.35rem 0.55rem;
+}
+
+@media (max-width: 991.98px) {
+    .site-header-econ__toggler {
+        margin-left: auto;
+    }
+}
+
+.site-header-econ__toggler:focus {
+    box-shadow: 0 0 0 0.15rem rgba(0, 51, 102, 0.25);
+}
+
+.site-header-econ__toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280%2C51%2C102%2C0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Desktop: sin hueco entre toggle y menu (el cursor no pierde el hover); .show lo pone Bootstrap + header-layout.js */
+@media (min-width: 992px) {
+    .site-header-econ .nav-item.dropdown > .site-header-econ__dropdown-menu {
+        margin-top: 0;
+    }
+
+    .site-header-econ .navbar-nav .dropdown-menu {
+        display: block;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-4px);
+        transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+        pointer-events: none;
+    }
+
+    .site-header-econ .navbar-nav .nav-item.dropdown:hover > .dropdown-menu,
+    .site-header-econ .navbar-nav .dropdown-menu.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+}
+
+/* Bootstrap expand-lg */
+@media (max-width: 991.98px) {
+    .site-header-econ .navbar-expand-lg .navbar-toggler {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .site-header-econ .navbar-expand-lg .navbar-collapse {
+        display: none !important;
+    }
+
+    .site-header-econ .navbar-expand-lg .navbar-collapse.show,
+    .site-header-econ .navbar-expand-lg .navbar-collapse.collapsing {
+        display: flex !important;
+    }
+}
+
+@media (min-width: 992px) {
+    .site-header-econ .navbar-expand-lg .navbar-toggler {
+        display: none !important;
+    }
+
+    .site-header-econ .navbar-expand-lg .navbar-collapse {
+        display: flex !important;
+        flex-basis: auto;
+    }
+}
+
+/* Movil */
+@media (max-width: 991.98px) {
+    .header-content {
+        padding: 0.8rem 0;
+    }
+
+    .site-header-econ__collapse {
+        flex: 1 1 100%;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        margin-top: 0.5rem;
+        padding-top: 0.75rem;
+        border-top: 1px solid #e0e8f0;
+    }
+
+    .site-header-econ__nav-main {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .site-header-econ .navbar-nav .nav-item {
+        width: 100%;
+    }
+
+    .site-header-econ__link,
+    .site-header-econ .navbar-nav .nav-item.dropdown > .dropdown-toggle {
+        width: 100%;
+        padding: 0.75rem 1rem !important;
+    }
+
+    .site-header-econ .navbar-nav .dropdown-menu {
+        position: static !important;
+        float: none;
+        width: 100%;
+        box-shadow: none;
+        border: none;
+        border-radius: 0;
+        background: var(--econ-header-ice);
+        margin: 0;
+        padding: 0.35rem 0 0.5rem;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        pointer-events: auto !important;
+    }
+
+    .site-header-econ__auth {
+        width: 100%;
+        padding-top: 0.75rem;
+        margin-top: 0.25rem;
+        border-top: 1px dashed rgba(0, 51, 102, 0.15);
+        display: flex;
+        justify-content: center;
+    }
+
+    .btn-login {
+        width: 100%;
+        text-align: center;
+        margin-top: 0.25rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .site-header-econ__brand .logoProyecto {
+        height: 36px;
+        max-width: 310px;
+    }
+
+    .header-content {
+        padding: 0.65rem 0;
+    }
+}

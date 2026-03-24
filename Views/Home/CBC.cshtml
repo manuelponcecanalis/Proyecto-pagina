@@ -1,114 +1,227 @@
-﻿@{
-    ViewData["Title"] = "Mundo CBC - PROYECTO Económicas";
+@{
+    ViewData["Title"] = "Guía CBC";
 }
 
 @section Styles {
+    <link rel="stylesheet" href="~/css/academicas-landing.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/CBC.css" asp-append-version="true" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto+Condensed:wght@700&family=Open+Sans:wght@400;600&family=Lato:wght@400;600&display=swap" rel="stylesheet">
 }
 
-<!-- ================= HERO ================= -->
-<section class="cbc-hero">
+<section class="academicas-hero">
     <div class="container">
-        <h1>🚀 Guía de Supervivencia CBC</h1>
-        <p>Trámites, sedes y material para ingresantes. Que no te filtren.</p>
+        <h1>Guía de supervivencia CBC</h1>
+        <p>Todo lo que necesitás saber para arrancar el CBC en la FCE UBA: materias, sedes y trámites.</p>
     </div>
 </section>
 
-<!-- ================= CONTENIDO ================= -->
-<section class="guide-section">
+<section class="academicas-section">
     <div class="container">
-
-        <div class="guide-card">
+        <div class="academicas-card">
             <h2>¿Qué es el CBC?</h2>
-            <p>
-                El Ciclo Básico Común (CBC) es el primer año de todas las carreras de la UBA.
-                Son 6 materias obligatorias para ingresar a la facultad.
+            <p class="academicas-text">
+                El <strong>Ciclo Básico Común (CBC)</strong> es el primer año de todas las carreras de la UBA.
+                Antes de ingresar a la facultad, tenés que aprobar <strong>6 materias</strong> específicas según tu carrera.
+            </p>
+            <ul class="academicas-list">
+                <li><strong>Duración:</strong> no tiene un plazo fijo, podés repartirlo en cuantos cuatrimestres necesités.</li>
+                <li><strong>Aprobación:</strong> nota mínima 4 (sobre 10) en cada materia.</li>
+                <li><strong>Modalidades:</strong> presencial, distancia, magistral, virtual o UBA XXI.</li>
+                <li><strong>Sistema:</strong> gestión de inscripciones y consultas a través de <strong>SIU Guaraní CBC</strong>.</li>
+                <li><strong>Importante:</strong> al completar el CBC, te inscribís en la FCE UBA como alumno de la carrera elegida.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="academicas-section">
+    <div class="container">
+        <div class="academicas-card">
+            <h2>Sedes del CBC</h2>
+            <ul class="academicas-list">
+                <li><strong>Ciudad Universitaria:</strong> Av. Int. Güiraldes 2620, CABA</li>
+                <li><strong>Medrano:</strong> Av. Medrano 951, CABA</li>
+                <li><strong>Drago:</strong> Av. Córdoba 2038, CABA</li>
+            </ul>
+            <p class="academicas-text mb-0">
+                <a class="academicas-link" asp-controller="Home" asp-action="CbcSedes">Ver mapa de sedes →</a>
             </p>
         </div>
+    </div>
+</section>
 
-        <div class="guide-card">
-            <h2>Sedes del CBC</h2>
-            <ul class="info-list">
-                <li><strong>Ciudad Universitaria:</strong> Av. Int. Güiraldes 2620</li>
-                <li><strong>Medrano:</strong> Av. Medrano 951</li>
-                <li><strong>Drago:</strong> Av. Córdoba 2038</li>
-            </ul>
-        </div>
+<section class="academicas-section">
+    <div class="container">
+        <div class="academicas-card">
+            <h2>Materias del CBC para Económicas</h2>
+            <p class="academicas-text">Las 6 materias que tenés que cursar dependen de la carrera que elegiste. Buscá la tuya:</p>
 
-        <div class="guide-card">
-            <h2>Materias del CBC – Económicas</h2>
-            <ul class="info-list">
-                <li>ICSE</li>
-                <li>IPC</li>
-                <li>Matemática</li>
-                <li>Álgebra</li>
-                <li>Análisis Matemático</li>
-                <li>Semiótica</li>
-            </ul>
-        </div>
+            <div class="cbc-carreras-grid">
 
-        <!-- ================= TRÁMITES ================= -->
-        <h2 style="font-family:'Montserrat',sans-serif;color:var(--color-primary);margin:3rem 0 2rem;text-align:center; " class="titulo-tramites">
-            Trámites Importantes
-        </h2>
+                <div class="cbc-carrera-card">
+                    <div class="cbc-carrera-header">
+                        <span class="cbc-carrera-code">19</span>
+                        <h3>Contador Público</h3>
+                    </div>
+                    <ul class="cbc-materias-list">
+                        <li><span class="cbc-mat-code">14</span> Sociología</li>
+                        <li><span class="cbc-mat-code">21</span> Economía</li>
+                        <li><span class="cbc-mat-code">71</span> Álgebra</li>
+                        <li><span class="cbc-mat-code">72</span> Análisis Matemático</li>
+                        <li><span class="cbc-mat-code">73</span> Metodología de las Cs. Sociales</li>
+                        <li><span class="cbc-mat-code">74</span> Historia Econ. y Social Gral.</li>
+                    </ul>
+                </div>
 
-        <div class="tramites-grid">
+                <div class="cbc-carrera-card">
+                    <div class="cbc-carrera-header">
+                        <span class="cbc-carrera-code">35</span>
+                        <h3>Lic. en Administración</h3>
+                    </div>
+                    <ul class="cbc-materias-list">
+                        <li><span class="cbc-mat-code">21</span> Economía</li>
+                        <li><span class="cbc-mat-code">71</span> Álgebra</li>
+                        <li><span class="cbc-mat-code">72</span> Análisis Matemático</li>
+                        <li><span class="cbc-mat-code">74</span> Historia Econ. y Social Gral.</li>
+                        <li><span class="cbc-mat-code">86</span> Administración General</li>
+                        <li><span class="cbc-mat-code">94</span> Sociología de las Organizaciones</li>
+                    </ul>
+                </div>
 
-            <div class="tramite-card"
-                 data-titulo="Inscripción"
-                 data-descripcion="En Primer Tramo, las materias se asignan automáticamente según la sede y franja horaria que elegiste. Esto es así en los primeros dos cuatrimestres; en caso de que tengas que recursar una materia, tenes que inscribirte en las fechas que estipule el calendario académico.
+                <div class="cbc-carrera-card">
+                    <div class="cbc-carrera-header">
+                        <span class="cbc-carrera-code">36</span>
+                        <h3>Lic. en Economía</h3>
+                    </div>
+                    <ul class="cbc-materias-list">
+                        <li><span class="cbc-mat-code">21</span> Economía</li>
+                        <li><span class="cbc-mat-code">71</span> Álgebra</li>
+                        <li><span class="cbc-mat-code">72</span> Análisis Matemático</li>
+                        <li><span class="cbc-mat-code">74</span> Historia Econ. y Social Gral.</li>
+                        <li><span class="cbc-mat-code">92</span> Análisis Contable</li>
+                        <li><span class="cbc-mat-code">93</span> IGEP</li>
+                    </ul>
+                </div>
 
-Si sos ingresante al CBC en años anteriores al 2020 y te querés inscribir a materias, necesitás:
-Estar incluido en el padrón de rematriculados. Si no estás incluido en dicho padrón necesitás realizar el Trámite de Rematriculación al CBC.
+                <div class="cbc-carrera-card">
+                    <div class="cbc-carrera-header">
+                        <span class="cbc-carrera-code">58</span>
+                        <h3>Lic. en Sistemas de Información</h3>
+                    </div>
+                    <ul class="cbc-materias-list">
+                        <li><span class="cbc-mat-code">21</span> Economía</li>
+                        <li><span class="cbc-mat-code">71</span> Álgebra</li>
+                        <li><span class="cbc-mat-code">72</span> Análisis Matemático</li>
+                        <li><span class="cbc-mat-code">74</span> Historia Econ. y Social Gral.</li>
+                        <li><span class="cbc-mat-code">86</span> Administración General</li>
+                        <li><span class="cbc-mat-code">94</span> Sociología de las Organizaciones</li>
+                    </ul>
+                </div>
 
-Las fechas para realizar el trámite online de Rematriculación se publican en el calendario del CBC o nuestras redes.
+                <div class="cbc-carrera-card">
+                    <div class="cbc-carrera-header">
+                        <span class="cbc-carrera-code">155</span>
+                        <h3>Tec. en Gestión y Análisis de Datos</h3>
+                    </div>
+                    <ul class="cbc-materias-list">
+                        <li><span class="cbc-mat-code">70</span> Trabajo y Sociedad</li>
+                        <li><span class="cbc-mat-code">71</span> Álgebra</li>
+                        <li><span class="cbc-mat-code">72</span> Análisis Matemático</li>
+                        <li class="cbc-mat-empty">— 3 materias en total</li>
+                    </ul>
+                </div>
 
-Si ingresaste al CBC luego del 2020 y no sos ingresante del año actual, no debés realizar el paso anterior. Si cumplís con los requisitos anteriores, en las fechas correspondientes vas a poder inscribirte a las materias presenciales, siempre y cuando hayas realizado y validado una preinscripción.
+                <div class="cbc-carrera-card">
+                    <div class="cbc-carrera-header">
+                        <span class="cbc-carrera-code">289</span>
+                        <h3>Actuario</h3>
+                    </div>
+                    <ul class="cbc-materias-list">
+                        <li><span class="cbc-mat-code">21</span> Economía</li>
+                        <li><span class="cbc-mat-code">71</span> Álgebra</li>
+                        <li><span class="cbc-mat-code">72</span> Análisis Matemático</li>
+                        <li><span class="cbc-mat-code">74</span> Historia Econ. y Social Gral.</li>
+                        <li><span class="cbc-mat-code">92</span> Análisis Contable</li>
+                        <li><span class="cbc-mat-code">93</span> IGEP</li>
+                    </ul>
+                </div>
 
-Si empezaste a cursar por primera vez el CBC en el primer cuatrimestre, para poder cursar el segundo tenés que hacer la Reconfirmación de Inscripción, completando el formulario que estará disponible en la fecha correspondiente a través de la Plataforma de Trámites e Inscripciones del CBC. En este trámite podrás realizar cambio de carrera o solicitar una simultaneidad.
-
-Es importante que recuerdes que, en tu año de ingreso al CBC, la única forma de realizar el cambio de carrera o solicitar una simultaneidad es a través del trámite de Reconfirmación de la Inscripción. Si te quedaron materias para cursar y cambió el Ciclo Lectivo (nuevo año calendario), debés hacer la inscripción a materias.
-
-                 Si querés inscribirte a materias de UBA XXI, una vez realizado el Pre-ingreso a la UBA, recibirás un correo electrónico con tu usuario y contraseña para ingresar al <a href='https://guarani.uba.ar/cbc/' target='_blank'>SIU Guaraní</a>, donde vas a poder inscribirte a las materias de UBA XXI.
-
-No hay límite en la cantidad de materias que podés cursar a través de UBA XXI.
-">
-                <h3>Inscripción</h3>
-                <p>Inscripción online a través del sistema SIU Guaraní.</p>
-                <a href="#" class="tramite-link">Ver más →</a>
             </div>
 
-            <div class="tramite-card"
-                 data-titulo="Certificado de Alumno Regular"
-                 data-descripcion="Si estás cursando el CBC, la constancia o certificado de alumno regular certifica que sos alumna/o activa/o del CBC y la podés solicitar a través de <a href='https://guarani.uba.ar/cbc/' target='_blank'>SIU Guaraní</a> desde la pantalla de consulta de asignación . No certifica tus horarios de cursada, días de examen, ni presencia en las clases.
-
-Si estás cursando UBA XXI, tenés que realizar los siguientes pasos:
-
-En la solapa “Reportes” hacé clic en “Mis inscripciones”.
-En “Cursadas – Períodos lectivos vigentes” encontrarás las materias en las que te inscribiste.
-En la columna “Comprobantes” hacé clic en el botón “Generar” para que puedas descargar el Certificado de alumno/a regular a la materia.
-">
-                <h3>Certificado de Alumno Regular</h3>
-                <p>Necesario para varios trámites.</p>
-                <a href="#" class="tramite-link">Ver más →</a>
+            <div class="cbc-refs">
+                <p class="cbc-refs-title">Referencia de materias</p>
+                <div class="cbc-refs-grid">
+                    <div><span class="cbc-mat-code">14</span> Sociología</div>
+                    <div><span class="cbc-mat-code">21</span> Economía</div>
+                    <div><span class="cbc-mat-code">70</span> Trabajo y Sociedad</div>
+                    <div><span class="cbc-mat-code">71</span> Álgebra</div>
+                    <div><span class="cbc-mat-code">72</span> Análisis Matemático</div>
+                    <div><span class="cbc-mat-code">73</span> Metodología de las Cs. Sociales</div>
+                    <div><span class="cbc-mat-code">74</span> Historia Económica y Social General</div>
+                    <div><span class="cbc-mat-code">86</span> Administración General</div>
+                    <div><span class="cbc-mat-code">92</span> Análisis Contable</div>
+                    <div><span class="cbc-mat-code">93</span> IGEP — Introd. General a la Economía y el Pensamiento Económico</div>
+                    <div><span class="cbc-mat-code">94</span> Sociología de las Organizaciones</div>
+                </div>
+                <p class="cbc-refs-note mb-0"><strong>Tip:</strong> Álgebra (71) y Análisis Matemático (72) son comunes a <strong>todas</strong> las carreras de la FCE.</p>
             </div>
-
-            <div class="tramite-card"
-                 data-titulo="Renuncia a Cursada"
-                 data-descripcion="Permite abandonar una materia sin perderla, siempre que se realice antes de la fecha límite establecida por el CBC.">
-                <h3>Renuncia a Cursada</h3>
-                <p>Si no podés cursar, podés renunciar.</p>
-                <a href="#" class="tramite-link">Ver más →</a>
-            </div>
-
         </div>
     </div>
 </section>
 
-<!-- ================= MODAL ================= -->
+<section class="academicas-section">
+    <div class="container">
+        <h2>Trámites importantes</h2>
+
+            <div class="tramites-grid">
+
+                <div class="tramite-card"
+                     data-titulo="Inscripción"
+                     data-descripcion="En Primer Tramo, las materias se asignan automáticamente según la sede y franja horaria que elegiste. Esto es así en los primeros dos cuatrimestres; en caso de que tengas que recursar una materia, tenés que inscribirte en las fechas que estipule el calendario académico.
+
+Si sos ingresante al CBC en años anteriores al 2020 y te querés inscribir a materias, necesitás estar incluido en el padrón de rematriculados. Si no estás incluido, necesitás realizar el Trámite de Rematriculación al CBC.
+
+Si ingresaste al CBC luego del 2020 y no sos ingresante del año actual, podés inscribirte en las fechas correspondientes, siempre y cuando hayas realizado y validado una preinscripción.
+
+Si empezaste a cursar por primera vez el CBC en el primer cuatrimestre, para poder cursar el segundo tenés que hacer la Reconfirmación de Inscripción. En ese trámite también podés realizar cambio de carrera o solicitar una simultaneidad.
+
+Para inscribirse a materias de UBA XXI, usá el SIU Guaraní CBC con tu usuario y contraseña. No hay límite de materias por cuatrimestre en UBA XXI.">
+                    <h3>Inscripción</h3>
+                    <p>Inscripción online a través del sistema SIU Guaraní.</p>
+                    <span class="tramite-card__cta">Ver más →</span>
+                </div>
+
+                <div class="tramite-card"
+                     data-titulo="Certificado de Alumno Regular"
+                     data-descripcion="Si estás cursando el CBC, el certificado de alumno regular certifica que sos alumno/a activo/a del CBC y lo podés solicitar a través del SIU Guaraní desde la pantalla de consulta de asignación.
+
+No certifica tus horarios de cursada, días de examen, ni presencia en las clases.
+
+Si estás cursando UBA XXI:
+— En la solapa 'Reportes' hacé clic en 'Mis inscripciones'.
+— En 'Cursadas – Períodos lectivos vigentes' encontrarás las materias en las que te inscribiste.
+— En la columna 'Comprobantes' hacé clic en 'Generar' para descargar el certificado.">
+                    <h3>Certificado de Alumno Regular</h3>
+                    <p>Necesario para trámites de becas y otras gestiones.</p>
+                    <span class="tramite-card__cta">Ver más →</span>
+                </div>
+
+                <div class="tramite-card"
+                     data-titulo="Renuncia a Cursada"
+                     data-descripcion="La Renuncia a Cursada permite abandonar una materia sin que cuente como desaprobada, siempre que se realice antes de la fecha límite establecida por el CBC.
+
+Realizándola a tiempo, la materia no afecta tu historial académico y podés volver a cursarla en un cuatrimestre posterior sin inconvenientes.
+
+Revisá las fechas límite en el calendario del CBC o consultá en el SIU Guaraní.">
+                    <h3>Renuncia a Cursada</h3>
+                    <p>Abandoná una materia sin que afecte tu historial.</p>
+                    <span class="tramite-card__cta">Ver más →</span>
+                </div>
+
+            </div>
+
+    </div>
+</section>
+
 <div id="tramiteModal" class="tramite-modal">
     <div class="tramite-modal-content">
         <span class="tramite-modal-close">&times;</span>
@@ -129,19 +242,11 @@ En la columna “Comprobantes” hacé clic en el botón “Generar” para que 
                 e.preventDefault();
                 modalTitulo.textContent = card.dataset.titulo;
                 modalDescripcion.innerHTML = card.dataset.descripcion;
-
                 modal.style.display = "flex";
             });
         });
 
-        cerrar.addEventListener("click", () => {
-            modal.style.display = "none";
-        });
-
-        modal.addEventListener("click", e => {
-            if (e.target === modal) {
-                modal.style.display = "none";
-            }
-        });
+        cerrar.addEventListener("click", () => { modal.style.display = "none"; });
+        modal.addEventListener("click", e => { if (e.target === modal) modal.style.display = "none"; });
     </script>
 }

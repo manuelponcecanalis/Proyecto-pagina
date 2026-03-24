@@ -103,7 +103,7 @@ namespace Pagina_proyecto.Controllers
 
             // Eventos futuros
             var eventos = await _context.Calendario
-      .Where(e => e.FinEvento >= DateTime.Now) // ahora incluye hoy y más tarde
+      .Where(e => e.FinEvento >= DateTime.Now) // ahora incluye hoy y mï¿½s tarde
       .OrderBy(e => e.InicioEvento)
       .ToListAsync();
 
@@ -131,6 +131,70 @@ namespace Pagina_proyecto.Controllers
 
         public IActionResult Conocenos()
         {
+            ViewData["Title"] = "Nosotros - PROYECTO EconÃ³micas";
+            return View();
+        }
+
+        /// <summary>Contenido migrado desde Pagina_proyecto_economicas/carreras.html</summary>
+        public IActionResult Carreras()
+        {
+            ViewData["Title"] = "Carreras";
+            return View();
+        }
+
+        /// <summary>Contenido migrado desde Pagina_proyecto_economicas/calendario-academico.html</summary>
+        public IActionResult CalendarioAcademico()
+        {
+            ViewData["Title"] = "Calendario acadï¿½mico";
+            return View();
+        }
+
+        /// <summary>Contenido migrado desde Pagina_proyecto_economicas/inscripcion-materias.html (secciï¿½n modalidades)</summary>
+        public IActionResult ModalidadesCursada()
+        {
+            ViewData["Title"] = "Modalidades de cursada";
+            return View();
+        }
+
+        /// <summary>Resumen orientativo de normas de cursada (consultï¿½ siempre la normativa oficial en FCE UBA).</summary>
+        public IActionResult ReglamentoCursada()
+        {
+            ViewData["Title"] = "Reglamento de cursada";
+            return View();
+        }
+
+        /// <summary>Informaciï¿½n general sobre becas; enlaces a sitios oficiales UBA.</summary>
+        public IActionResult Becas()
+        {
+            ViewData["Title"] = "Becas";
+            return View();
+        }
+
+        /// <summary>Contenido migrado desde Pagina_proyecto_economicas/inscripcion-materias.html</summary>
+        public IActionResult InscripcionMaterias()
+        {
+            ViewData["Title"] = "Inscripciï¿½n a materias";
+            return View();
+        }
+
+        /// <summary>Contenido migrado desde Pagina_proyecto_economicas/certificados.html</summary>
+        public IActionResult Certificados()
+        {
+            ViewData["Title"] = "Certificados";
+            return View();
+        }
+
+        /// <summary>Contenido migrado desde Pagina_proyecto_economicas/titulo-en-tramite.html</summary>
+        public IActionResult TituloEnTramite()
+        {
+            ViewData["Title"] = "Tï¿½tulo en trï¿½mite";
+            return View();
+        }
+
+        /// <summary>ï¿½ndice de trï¿½mites y enlaces ï¿½tiles (MiEcon, Departamento de Alumnos).</summary>
+        public IActionResult GuiaTramites()
+        {
+            ViewData["Title"] = "Guï¿½a de trï¿½mites";
             return View();
         }
 
@@ -172,7 +236,7 @@ namespace Pagina_proyecto.Controllers
 
                 var opcionesJson = new JsonSerializerOptions
                 {
-                    PropertyNamingPolicy = null // Mantiene los nombres tal como están en el modelo
+                    PropertyNamingPolicy = null // Mantiene los nombres tal como estï¿½n en el modelo
                 };
 
                 return new JsonResult(datos, opcionesJson);
@@ -185,6 +249,28 @@ namespace Pagina_proyecto.Controllers
 
         public IActionResult CBC()
         {
+            ViewData["Title"] = "Mundo CBC - PROYECTO Econï¿½micas";
+            return View();
+        }
+
+        /// <summary>Contenido migrado desde la guï¿½a CBC (inscripciones y calendario).</summary>
+        public IActionResult CbcInscripciones()
+        {
+            ViewData["Title"] = "Inscripciones CBC";
+            return View();
+        }
+
+        /// <summary>Sedes del CBC (Ciudad Universitaria, Medrano, Drago).</summary>
+        public IActionResult CbcSedes()
+        {
+            ViewData["Title"] = "Sedes CBC";
+            return View();
+        }
+
+        /// <summary>Grupos de WhatsApp para ingresantes y cursada CBC.</summary>
+        public IActionResult CbcGruposWhatsApp()
+        {
+            ViewData["Title"] = "Grupos de WhatsApp - CBC";
             return View();
         }
 

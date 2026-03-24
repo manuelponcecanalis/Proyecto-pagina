@@ -1,0 +1,58 @@
+@{
+    ViewData["Title"] = "Guía de trámites";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/academicas-landing.css" asp-append-version="true" />
+}
+
+<section class="academicas-hero">
+    <div class="container">
+        <h1>Guía de trámites</h1>
+        <p>Accesos rápidos a las guías de la FCE UBA publicadas en este sitio y canales oficiales.</p>
+    </div>
+</section>
+
+<section class="academicas-section">
+    <div class="container">
+        <div class="row g-3">
+            <div class="col-md-6">
+                <div class="tramites-hub-card h-100">
+                    <h2 class="h5">Inscripción a materias</h2>
+                    <p class="academicas-text small">Inscripciones, instancias, MiEcon y consejos.</p>
+                    <a asp-controller="Home" asp-action="InscripcionMaterias">Ingresar →</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="tramites-hub-card h-100">
+                    <h2 class="h5">Certificados</h2>
+                    <p class="academicas-text small">Examen, alumno regular y materias aprobadas vía MiEcon.</p>
+                    <a asp-controller="Home" asp-action="Certificados">Ingresar →</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="tramites-hub-card h-100">
+                    <h2 class="h5">Título en trámite</h2>
+                    <p class="academicas-text small">Documentación, pagos y seguimiento del título.</p>
+                    <a asp-controller="Home" asp-action="TituloEnTramite">Ingresar →</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="tramites-hub-card h-100">
+                    <h2 class="h5">Modalidades y calendario</h2>
+                    <p class="academicas-text small">Modalidades de cursada y fechas académicas.</p>
+                    <p class="mb-1"><a asp-controller="Home" asp-action="ModalidadesCursada">Modalidades de cursada</a></p>
+                    <p class="mb-0"><a asp-controller="Home" asp-action="CalendarioAcademico">Calendario académico</a></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="academicas-note mt-4">
+            <strong>Canales oficiales</strong>
+            <ul class="mb-0 mt-2">
+                <li><strong>MiEcon:</strong> <a href="https://mi.econ.uba.ar" target="_blank" rel="noopener noreferrer">mi.econ.uba.ar</a></li>
+                <li><strong>Departamento de Alumnos:</strong> <a href="mailto:alumnos@fce.uba.ar">alumnos@fce.uba.ar</a></li>
+                <li><strong>Facultad:</strong> <a href="https://www.econ.uba.ar/" target="_blank" rel="noopener noreferrer">econ.uba.ar</a></li>
+            </ul>
+        </div>
+    </div>
+</section>

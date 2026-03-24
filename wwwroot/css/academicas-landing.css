@@ -1,0 +1,358 @@
+/* Páginas Académica (contenido migrado desde Pagina_proyecto_economicas) */
+
+:root {
+    --aca-primary: #003366;
+    --aca-accent: #e91e63;
+    --aca-ice: #f8f9fa;
+    --aca-gray: #666;
+    --aca-dark: #333;
+    --aca-radius: 8px;
+    --aca-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --aca-shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.academicas-hero {
+    background: linear-gradient(135deg, #003366 0%, #004080 100%);
+    color: #fff;
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.academicas-hero h1 {
+    font-family: Montserrat, "Roboto Condensed", sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.75rem, 4vw, 3rem);
+    margin-bottom: 1rem;
+}
+
+.academicas-hero p {
+    font-size: 1.05rem;
+    opacity: 0.95;
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.academicas-section {
+    padding: 2.5rem 0;
+}
+
+.academicas-section:nth-of-type(even) {
+    background-color: var(--aca-ice);
+}
+
+.academicas-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: var(--aca-radius);
+    /* Aire claro respecto al borde del card (en pantallas anchas 1.75rem se sentía justo) */
+    padding: clamp(1.75rem, 3.5vw, 2.75rem);
+    box-shadow: var(--aca-shadow-sm);
+}
+
+.academicas-card h2 {
+    font-family: Montserrat, sans-serif;
+    font-weight: 700;
+    font-size: 1.35rem;
+    color: var(--aca-primary);
+    margin: 0 0 1rem;
+}
+
+.academicas-subtitle {
+    font-weight: 700;
+    color: var(--aca-primary);
+    margin: 1.25rem 0 0.65rem;
+}
+
+.academicas-subtitle:first-of-type {
+    margin-top: 0.85rem;
+}
+
+.academicas-text {
+    color: var(--aca-gray);
+    margin: 0 0 1.15rem;
+    line-height: 1.65;
+}
+
+.academicas-list {
+    list-style: disc;
+    padding-left: 1.75rem;
+    margin: 0.35rem 0 1.15rem;
+    color: var(--aca-dark);
+    line-height: 1.55;
+}
+
+.academicas-link {
+    color: var(--aca-accent);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.academicas-link:hover {
+    text-decoration: underline;
+}
+
+.academicas-table-wrap {
+    overflow-x: auto;
+}
+
+.academicas-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: var(--aca-radius);
+    overflow: hidden;
+    box-shadow: var(--aca-shadow-sm);
+}
+
+.academicas-table th,
+.academicas-table td {
+    text-align: left;
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 0.95rem;
+}
+
+.academicas-table th {
+    background: var(--aca-primary);
+    color: #fff;
+    font-weight: 600;
+}
+
+.academicas-table tr:last-child td {
+    border-bottom: none;
+}
+
+.academicas-list-plain {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.academicas-list-plain li {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: var(--aca-radius);
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.65rem;
+    box-shadow: var(--aca-shadow-sm);
+    font-size: 0.95rem;
+}
+
+.academicas-subheading {
+    font-weight: 600;
+    color: var(--aca-primary);
+    margin: 1.25rem 0 0.5rem;
+}
+
+.academicas-note {
+    background: #fff8fa;
+    border-left: 4px solid var(--aca-accent);
+    padding: 1rem 1.25rem;
+    border-radius: 0 var(--aca-radius) var(--aca-radius) 0;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+}
+
+/* CBC — sub-bloques dentro de una card (1.er / 2.do tramo) */
+.cbc-tramo-box {
+    background: var(--aca-ice);
+    border: 1px solid rgba(0, 51, 102, 0.12);
+    border-left: 4px solid var(--aca-primary);
+    border-radius: var(--aca-radius);
+    padding: 1.25rem 1.4rem;
+    margin: 1.25rem 0 1.5rem;
+}
+
+.cbc-tramo-box:last-of-type {
+    margin-bottom: 0;
+}
+
+.cbc-tramo-box > .academicas-subtitle:first-child {
+    margin-top: 0;
+}
+
+.cbc-tramo-box .academicas-list:last-child {
+    margin-bottom: 0;
+}
+
+/* Trámites (inscripción, certificados, título) — migrado del estático */
+.tramites-step-list {
+    counter-reset: step-counter;
+    list-style: none;
+    padding: 0;
+}
+
+.tramites-step-list li {
+    counter-increment: step-counter;
+    padding: 1.25rem 1.25rem 1.25rem 3.75rem;
+    margin-bottom: 0.65rem;
+    background-color: var(--aca-ice);
+    border-radius: var(--aca-radius);
+    position: relative;
+}
+
+.tramites-step-list li::before {
+    content: counter(step-counter);
+    position: absolute;
+    left: 1rem;
+    top: 1.25rem;
+    background-color: var(--aca-accent);
+    color: #fff;
+    width: 1.85rem;
+    height: 1.85rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    font-family: Montserrat, sans-serif;
+}
+
+.tramites-etapa-list {
+    counter-reset: etapa-counter;
+    list-style: none;
+    padding: 0;
+}
+
+.tramites-etapa-list li {
+    counter-increment: etapa-counter;
+    padding: 1.25rem 1.25rem 1.25rem 3.75rem;
+    margin-bottom: 0.65rem;
+    background-color: var(--aca-ice);
+    border-radius: var(--aca-radius);
+    position: relative;
+}
+
+.tramites-etapa-list li::before {
+    content: counter(etapa-counter);
+    position: absolute;
+    left: 1rem;
+    top: 1.25rem;
+    background-color: var(--aca-accent);
+    color: #fff;
+    width: 1.85rem;
+    height: 1.85rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    font-family: Montserrat, sans-serif;
+}
+
+.tramites-cert-card,
+.tramites-doc-card {
+    background-color: var(--aca-ice);
+    border-left: 4px solid var(--aca-accent);
+    padding: 1.5rem 1.75rem;
+    margin: 1.5rem 0;
+    border-radius: var(--aca-radius);
+}
+
+.tramites-cert-card h3,
+.tramites-doc-card h4 {
+    margin-top: 0;
+    color: var(--aca-primary);
+    font-size: 1.15rem;
+}
+
+.tramites-hub-card {
+    border: 1px solid #e0e0e0;
+    border-radius: var(--aca-radius);
+    padding: 1.25rem;
+    height: 100%;
+    transition: box-shadow 0.2s ease;
+    background: #fff;
+}
+
+.tramites-hub-card:hover {
+    box-shadow: var(--aca-shadow-sm);
+}
+
+.tramites-hub-card a {
+    font-weight: 600;
+    color: var(--aca-primary);
+}
+
+/* Nosotros (migrado desde nosotros.html) */
+.nosotros-hero {
+    background: linear-gradient(135deg, #003366 0%, #004080 100%);
+    color: #fff;
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.nosotros-hero h1 {
+    font-family: Montserrat, "Roboto Condensed", sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.75rem, 4vw, 3rem);
+    margin-bottom: 1rem;
+}
+
+.nosotros-hero p {
+    font-size: 1.05rem;
+    opacity: 0.95;
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.nosotros-section {
+    padding: 2.5rem 0;
+}
+
+.nosotros-section:nth-of-type(even) {
+    background-color: var(--aca-ice);
+}
+
+.nosotros-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.nosotros-title {
+    font-family: Montserrat, sans-serif;
+    font-weight: 700;
+    font-size: 1.65rem;
+    color: var(--aca-primary);
+    margin-bottom: 1rem;
+}
+
+.nosotros-text {
+    color: var(--aca-dark);
+    margin-bottom: 1rem;
+}
+
+.nosotros-manifesto {
+    font-weight: 700;
+    color: var(--aca-primary);
+    line-height: 1.5;
+}
+
+.nosotros-manifesto p {
+    margin: 0 0 0.75rem;
+}
+
+.nosotros-cta {
+    padding: 3rem 0;
+    background: linear-gradient(135deg, var(--aca-primary) 0%, #004080 100%);
+    color: #fff;
+}
+
+.nosotros-cta-inner {
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.nosotros-cta-title {
+    font-family: Montserrat, sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.nosotros-cta-sub {
+    opacity: 0.95;
+    margin-bottom: 0;
+}

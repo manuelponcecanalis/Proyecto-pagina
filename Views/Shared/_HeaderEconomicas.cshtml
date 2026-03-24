@@ -1,0 +1,111 @@
+@{
+    var action = ViewContext.RouteData.Values["action"]?.ToString();
+    var controller = ViewContext.RouteData.Values["controller"]?.ToString();
+    var accionesAcademicas = new[] { "Carreras", "CalendarioAcademico", "ModalidadesCursada", "ReglamentoCursada", "Becas" };
+    var accionesTramites = new[] { "InscripcionMaterias", "Certificados", "TituloEnTramite", "GuiaTramites" };
+    var accionesCbc = new[] { "CBC", "CbcInscripciones", "CbcSedes" };
+    var isAcademica = (controller == "Materias" && action == "Cronograma")
+        || (controller == "Home" && !string.IsNullOrEmpty(action) && accionesAcademicas.Contains(action));
+    var isTramites = controller == "Home" && !string.IsNullOrEmpty(action) && accionesTramites.Contains(action);
+    var isHerramientas = action is "RecomendacionesFCE" or "BiblioEconomicas" or "Ranking" or "Noticias"
+        || (action == "Cronograma" && controller != "Materias");
+    var isCbc = controller == "Home" && !string.IsNullOrEmpty(action) && accionesCbc.Contains(action);
+}
+<header class="site-header-econ header" id="site-header-econ" data-header-econ data-header-econ-version="2-normalizado">
+    <div class="container site-header-econ__container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-transparent border-0 p-0">
+            <div class="header-content w-100">
+                <a class="navbar-brand site-header-econ__brand m-0" asp-controller="Home" asp-action="Index">
+                    <img class="logoProyecto" src="~/images/logo.png" alt="PROYECTO Económicas" />
+                </a>
+
+                <button class="navbar-toggler site-header-econ__toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarCollapseEcon"
+                        aria-controls="navbarCollapseEcon"
+                        aria-expanded="false"
+                        aria-label="Abrir menú">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div id="navbarCollapseEcon" class="collapse navbar-collapse site-header-econ__collapse">
+                    <ul class="navbar-nav site-header-econ__nav-main mb-2 mb-lg-0">
+
+                        <li class="nav-item">
+                            <a class="nav-link site-header-econ__link @(controller == "Home" && action == "Index" ? "active" : "")"
+                               asp-controller="Home" asp-action="Index">Inicio</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle site-header-econ__link site-header-econ__dropdown-toggle @(isAcademica ? "active" : "")"
+                               href="#" id="dropdownAcademica" role="button" data-bs-toggle="dropdown" aria-expanded="false">Académica<partial name="_HeaderEconChevron" /></a>
+                            <ul class="dropdown-menu site-header-econ__dropdown-menu site-header-econ__dropdown-menu--academica" aria-labelledby="dropdownAcademica">
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Carreras">Carreras</a></li>
+                                <li><a class="dropdown-item" asp-controller="Materias" asp-action="Cronograma">Planes de estudio</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="ModalidadesCursada">Modalidades de cursada</a></li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="ReglamentoCursada">Reglamento de cursada</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Becas">Becas</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="CalendarioAcademico">Calendario académico</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle site-header-econ__link site-header-econ__dropdown-toggle @(isTramites ? "active" : "")"
+                               href="#" id="dropdownTramites" role="button" data-bs-toggle="dropdown" aria-expanded="false">Trámites<partial name="_HeaderEconChevron" /></a>
+                            <ul class="dropdown-menu site-header-econ__dropdown-menu site-header-econ__dropdown-menu--tramites" aria-labelledby="dropdownTramites">
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="GuiaTramites">Guía de trámites</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="InscripcionMaterias">Inscripción a materias</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Certificados">Certificados</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="TituloEnTramite">Título en trámite</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle site-header-econ__link site-header-econ__dropdown-toggle @(isHerramientas ? "active" : "")"
+                               href="#" id="herramientasDropdownEcon" role="button" data-bs-toggle="dropdown" aria-expanded="false">Herramientas<partial name="_HeaderEconChevron" /></a>
+                            <ul class="dropdown-menu site-header-econ__dropdown-menu site-header-econ__dropdown-menu--herramientas" aria-labelledby="herramientasDropdownEcon">
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Ranking">Calculá tu ranking</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="BiblioEconomicas">Biblioeconómicas</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="RecomendacionesFCE">Recomendaciones de materias</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Noticias">Anuncios</a></li>
+                                <li><a class="dropdown-item" asp-controller="Materias" asp-action="Cronograma">Planes de estudio</a></li>
+                                <li><a class="dropdown-item" href="https://www.proyectofinanzas.com.ar/" target="_blank" rel="noopener noreferrer">Proyecto Finanzas</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle site-header-econ__link site-header-econ__dropdown-toggle @(isCbc ? "active" : "")"
+                               href="#" id="dropdownCbc" role="button" data-bs-toggle="dropdown" aria-expanded="false">CBC<partial name="_HeaderEconChevron" /></a>
+                            <ul class="dropdown-menu site-header-econ__dropdown-menu" aria-labelledby="dropdownCbc">
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="CBC">Guía CBC</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="CbcInscripciones">Inscripciones CBC</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="CbcSedes">Sedes CBC</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link site-header-econ__link @(action == "Conocenos" ? "active" : "")"
+                               asp-controller="Home" asp-action="Conocenos">Nosotros</a>
+                        </li>
+
+                        @if (User.Identity?.IsAuthenticated == true && User.IsInRole("Operador"))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle site-header-econ__link site-header-econ__dropdown-toggle
+                                   @(controller is "CargaNoticias" or "CargaCalendario" or "MateriasDrive" ? "active" : "")"
+                                   href="#" id="backendDropdownEcon" role="button" data-bs-toggle="dropdown" aria-expanded="false"><strong>BackEnd</strong><partial name="_HeaderEconChevron" /></a>
+                                <ul class="dropdown-menu site-header-econ__dropdown-menu" aria-labelledby="backendDropdownEcon">
+                                    <li><a class="dropdown-item" asp-controller="CargaNoticias" asp-action="Index">Carga Noticias</a></li>
+                                    <li><a class="dropdown-item" asp-controller="CargaCalendario" asp-action="Index">Eventos</a></li>
+                                    <li><a class="dropdown-item" asp-controller="MateriasDrive" asp-action="Index">BiblioEconomicas</a></li>
+                                </ul>
+                            </li>
+                        }
+                    </ul>
+
+                    <partial name="_LoginHeaderEconomicas" />
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>

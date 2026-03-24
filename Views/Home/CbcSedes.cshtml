@@ -1,0 +1,68 @@
+@{
+    ViewData["Title"] = "Sedes CBC";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/academicas-landing.css" asp-append-version="true" />
+}
+
+<section class="academicas-hero">
+    <div class="container">
+        <h1>Sedes del CBC</h1>
+        <p>Información de sedes y contacto para consultas administrativas del CBC.</p>
+    </div>
+</section>
+
+<section class="academicas-section">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-4">
+                <div class="academicas-card h-100">
+                    <h2 class="h4">Ciudad Universitaria</h2>
+                    <p class="academicas-text mb-2">Pabellón III, Av. Int. Güiraldes 2160, CABA</p>
+                    <p class="academicas-text mb-0"><strong>Email:</strong> <a class="academicas-link" href="mailto:ciudaduniversitaria@cbc.uba.ar">ciudaduniversitaria@cbc.uba.ar</a></p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="academicas-card h-100">
+                    <h2 class="h4">Avellaneda</h2>
+                    <p class="academicas-text mb-2">Av. Mitre 1300, Avellaneda, Buenos Aires</p>
+                    <p class="academicas-text mb-0"><strong>Email:</strong> <a class="academicas-link" href="mailto:avellaneda@cbc.uba.ar">avellaneda@cbc.uba.ar</a></p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="academicas-card h-100">
+                    <h2 class="h4">Drago</h2>
+                    <p class="academicas-text mb-2">Av. Córdoba 2038, CABA</p>
+                    <p class="academicas-text mb-0"><strong>Email:</strong> <a class="academicas-link" href="mailto:drago@cbc.uba.ar">drago@cbc.uba.ar</a></p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="academicas-card h-100">
+                    <h2 class="h4">San Isidro</h2>
+                    <p class="academicas-text mb-2">Av. del Libertador 17.160, San Isidro, Buenos Aires</p>
+                    <p class="academicas-text mb-0"><strong>Email:</strong> <a class="academicas-link" href="mailto:sanisidro@cbc.uba.ar">sanisidro@cbc.uba.ar</a></p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="academicas-card h-100">
+                    <h2 class="h4">Paternal</h2>
+                    <p class="academicas-text mb-2">Av. Gaona 3 (también conocida como La Paternal o Mariano Acosta)</p>
+                    <p class="academicas-text mb-0"><strong>Email:</strong> <a class="academicas-link" href="mailto:paternal@cbc.uba.ar">paternal@cbc.uba.ar</a></p>
+                </div>
+            </div>
+        </div>
+        <p class="academicas-text mt-4 mb-0">
+            La sede y el horario concretos de cada materia los definís al inscribirte; consultá siempre el calendario oficial del CBC y
+            <a class="academicas-link" href="https://guarani.uba.ar/cbc/" target="_blank" rel="noopener noreferrer">SIU Guaraní</a>.
+        </p>
+    </div>
+</section>
+
+<section class="academicas-section">
+    <div class="container text-center">
+        <p class="academicas-text mb-0">
+            <a class="academicas-link" asp-controller="Home" asp-action="CBC">← Volver a la Guía CBC</a>
+        </p>
+    </div>
+</section>
