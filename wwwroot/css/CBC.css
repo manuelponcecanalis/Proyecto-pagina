@@ -206,6 +206,107 @@
     }
 }
 
+/* ===========================
+   SEDES CBC
+=========================== */
+.cbc-sedes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.cbc-sede-card {
+    border: 1.5px solid #e0e8f0;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0, 51, 102, 0.07);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.cbc-sede-card:hover {
+    box-shadow: 0 6px 18px rgba(0, 51, 102, 0.13);
+    transform: translateY(-2px);
+}
+
+.cbc-sede-header {
+    background: #003366;
+    color: #fff;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.cbc-sede-icon {
+    color: #e91e63;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+}
+
+.cbc-sede-header h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    margin: 0;
+    color: #fff !important;
+    line-height: 1.3;
+}
+
+.cbc-sede-body {
+    padding: 1.1rem 1.25rem 1.25rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.cbc-sede-detail {
+    font-size: 0.9rem;
+    color: #444;
+    margin: 0 0 0.65rem;
+    line-height: 1.5;
+}
+
+.cbc-sede-label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #003366;
+    margin-bottom: 0.15rem;
+}
+
+.cbc-sede-map-link {
+    margin-top: auto;
+    padding-top: 0.65rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #e91e63;
+    text-decoration: none;
+}
+
+.cbc-sede-map-link:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 1024px) {
+    .cbc-sedes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .cbc-sedes-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Modal trámites (Guía CBC) */
 .tramite-modal {
     position: fixed;
