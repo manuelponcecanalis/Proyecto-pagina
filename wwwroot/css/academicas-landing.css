@@ -276,6 +276,45 @@
     color: var(--aca-primary);
 }
 
+.tramites-hub-card a.academicas-link {
+    color: var(--aca-accent);
+}
+
+/* Guía de trámites: Styles.css define .row > * { width:25% } (tablas) y rompe el grid Bootstrap en móvil */
+.tramites-hub-row.row {
+    --bs-gutter-x: 1rem;
+    --bs-gutter-y: 1rem;
+}
+
+.tramites-hub-row.row > * {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0;
+}
+
+@media (min-width: 768px) {
+    .tramites-hub-row.row > .col-md-6 {
+        width: 50% !important;
+        max-width: 50% !important;
+    }
+}
+
+.tramites-hub-card h2.h5 {
+    color: var(--aca-primary);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.tramites-hub-card .academicas-list {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+}
+
+.tramites-hub-card .academicas-link {
+    display: inline-block;
+    margin-top: 0.25rem;
+}
+
 /* Nosotros (migrado desde nosotros.html) */
 .nosotros-hero {
     background: linear-gradient(135deg, #003366 0%, #004080 100%);

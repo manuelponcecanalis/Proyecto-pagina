@@ -8,40 +8,69 @@
 <section class="academicas-hero">
     <div class="container">
         <h1>Guía de trámites</h1>
-        <p>Accesos rápidos a las guías de la FCE UBA publicadas en este sitio y canales oficiales.</p>
+        <p>
+            Accesos ordenados a las guías de la FCE UBA publicadas en este sitio: inscripciones, certificados, título universitario y calendario.
+            Complementá con <strong>MiEcon</strong> y los canales oficiales para gestionar y hacer consultas.
+        </p>
     </div>
 </section>
 
 <section class="academicas-section">
     <div class="container">
-        <div class="row g-3">
-            <div class="col-md-6">
+        <div class="academicas-card mb-4">
+            <h2 class="h5 mb-2">Cómo usar esta página</h2>
+            <p class="academicas-text mb-0">
+                Elegí el tema que necesites: cada tarjeta lleva a una guía con pasos, requisitos y enlaces.
+                Muchos trámites se inician o se consultan en
+                <a class="academicas-link" href="https://mi.econ.uba.ar" target="_blank" rel="noopener noreferrer">MiEcon</a>;
+                ante dudas, escribí al Departamento de Alumnos o revisá la web de la facultad.
+            </p>
+        </div>
+
+        <div class="row g-3 tramites-hub-row">
+            <div class="col-12 col-md-6">
                 <div class="tramites-hub-card h-100">
                     <h2 class="h5">Inscripción a materias</h2>
-                    <p class="academicas-text small">Inscripciones, instancias, MiEcon y consejos.</p>
-                    <a asp-controller="Home" asp-action="InscripcionMaterias">Ingresar →</a>
+                    <p class="academicas-text small mb-2">Ventanas de inscripción, cursada y examen, uso de MiEcon y consejos para no perder plazos.</p>
+                    <ul class="academicas-list small mb-3">
+                        <li>Instancias y prioridades según tu situación</li>
+                        <li>Requisitos y advertencias comunes</li>
+                    </ul>
+                    <a class="academicas-link" asp-controller="Home" asp-action="InscripcionMaterias">Ir a la guía →</a>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-12 col-md-6">
                 <div class="tramites-hub-card h-100">
                     <h2 class="h5">Certificados</h2>
-                    <p class="academicas-text small">Examen, alumno regular y materias aprobadas vía MiEcon.</p>
-                    <a asp-controller="Home" asp-action="Certificados">Ingresar →</a>
+                    <p class="academicas-text small mb-2">Solicitud de certificados de examen, alumno regular y materias aprobadas; en muchos casos vía MiEcon.</p>
+                    <ul class="academicas-list small mb-3">
+                        <li>Qué pedir según el trámite externo</li>
+                        <li>Tiempos y canales de entrega</li>
+                    </ul>
+                    <a class="academicas-link" asp-controller="Home" asp-action="Certificados">Ir a la guía →</a>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-12 col-md-6">
                 <div class="tramites-hub-card h-100">
                     <h2 class="h5">Título en trámite</h2>
-                    <p class="academicas-text small">Documentación, pagos y seguimiento del título.</p>
-                    <a asp-controller="Home" asp-action="TituloEnTramite">Ingresar →</a>
+                    <p class="academicas-text small mb-2">Documentación, aranceles, legalizaciones y seguimiento hasta la entrega del título.</p>
+                    <ul class="academicas-list small mb-3">
+                        <li>Etapas del trámite de graduación</li>
+                        <li>Enlaces a trámites a distancia UBA cuando aplica</li>
+                    </ul>
+                    <a class="academicas-link" asp-controller="Home" asp-action="TituloEnTramite">Ir a la guía →</a>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-12 col-md-6">
                 <div class="tramites-hub-card h-100">
                     <h2 class="h5">Modalidades y calendario</h2>
-                    <p class="academicas-text small">Modalidades de cursada y fechas académicas.</p>
-                    <p class="mb-1"><a asp-controller="Home" asp-action="ModalidadesCursada">Modalidades de cursada</a></p>
-                    <p class="mb-0"><a asp-controller="Home" asp-action="CalendarioAcademico">Calendario académico</a></p>
+                    <p class="academicas-text small mb-2">Modalidades de cursada y fechas del calendario académico para planificar el cuatrimestre.</p>
+                    <ul class="academicas-list small mb-3">
+                        <li>Presencial, virtual o mixto según normativa vigente</li>
+                        <li>Inscripciones, feriados y recesos</li>
+                    </ul>
+                    <p class="mb-2"><a class="academicas-link" asp-controller="Home" asp-action="ModalidadesCursada">Modalidades de cursada →</a></p>
+                    <p class="mb-0"><a class="academicas-link" asp-controller="Home" asp-action="CalendarioAcademico">Calendario académico →</a></p>
                 </div>
             </div>
         </div>
@@ -49,9 +78,10 @@
         <div class="academicas-note mt-4">
             <strong>Canales oficiales</strong>
             <ul class="mb-0 mt-2">
-                <li><strong>MiEcon:</strong> <a href="https://mi.econ.uba.ar" target="_blank" rel="noopener noreferrer">mi.econ.uba.ar</a></li>
-                <li><strong>Departamento de Alumnos:</strong> <a href="mailto:alumnos@fce.uba.ar">alumnos@fce.uba.ar</a></li>
-                <li><strong>Facultad:</strong> <a href="https://www.econ.uba.ar/" target="_blank" rel="noopener noreferrer">econ.uba.ar</a></li>
+                <li><strong>MiEcon:</strong> <a class="academicas-link" href="https://mi.econ.uba.ar" target="_blank" rel="noopener noreferrer">mi.econ.uba.ar</a></li>
+                <li><strong>Departamento de Alumnos:</strong> <a class="academicas-link" href="mailto:alumnos@fce.uba.ar">alumnos@fce.uba.ar</a></li>
+                <li><strong>Facultad:</strong> <a class="academicas-link" href="https://www.econ.uba.ar/" target="_blank" rel="noopener noreferrer">econ.uba.ar</a></li>
+                <li><strong>Trámites a distancia UBA:</strong> <a class="academicas-link" href="https://tramitesadistancia.uba.ar" target="_blank" rel="noopener noreferrer">tramitesadistancia.uba.ar</a> (cuando el trámite corresponda a la red central)</li>
             </ul>
         </div>
     </div>
