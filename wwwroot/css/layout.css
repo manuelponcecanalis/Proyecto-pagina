@@ -413,4 +413,17 @@
     body {
         overflow-x: hidden;
     }
+
+    .columna-registro {
+        width: 90%
+        
+    }
+}
+
+.columna-registro{
+    margin-left: 5%;
+}
+
+#registerSubmit, #login-submit {
+    background-color: #003366;
 }

@@ -8,9 +8,7 @@
 
 
 
-.mb-3 {
-    margin-bottom: 0px !important;
-}
+
 
 
 html {
@@ -379,10 +377,6 @@ td:nth-child(21) {
     max-width: 400px;
 }
 
-.row > * {
-    width: 25%;
-    max-width: none;
-}
 
 .table > :not(caption) > * > * {
     padding: .5rem 1.8rem !important;
@@ -1070,3 +1064,4 @@ body {
     body > div.container {
         flex: 1;
     }
+

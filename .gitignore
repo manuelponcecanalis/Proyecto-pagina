@@ -5,3 +5,4 @@ publish/
 publish-linux/ 
 *.user 
 google-credentials.json 
+/Pagina_proyecto.csproj
