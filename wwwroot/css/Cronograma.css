@@ -337,6 +337,11 @@
 /* ===== RESPONSIVE MOBILE ===== */
 @media (max-width: 768px) {
 
+    .instructivo {
+
+        margin-left: 6px !important;
+        margin-right: 6px !important;
+    }
     /* Hero más compacto */
     .cronograma-hero {
         padding: 2rem 1rem;
@@ -533,6 +538,7 @@
     border-radius: 12px;
     padding: 20px 24px;
     margin: 16px auto;
+  
 }
 
 .instructivo-titulo {

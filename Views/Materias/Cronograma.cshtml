@@ -166,6 +166,8 @@
         return document.getElementById("idCarrera").value;
     }
 
+    const usuarioLogueado = @Html.Raw(User.Identity!.IsAuthenticated ? "true" : "false");
+
     const aprobadas = new Set([
         @Html.Raw(string.Join(",", aprobadas))
     ]);
@@ -188,6 +190,16 @@
             correlativas.every(c => c < 31 ? aprobadas.size >= c : aprobadas.has(c));
 
         if (!estaAprobada && !estaDesbloqueada) return;
+
+        if (!usuarioLogueado) {
+            if (estaAprobada) {
+                aprobadas.delete(parseInt(idMateria));
+            } else {
+                aprobadas.add(parseInt(idMateria));
+            }
+            recalcularEstados();
+            return;
+        }
 
         try {
             const url = `/api/materias/${estaAprobada ? "desaprobar" : "aprobar"}?idMateria=${idMateria}&idCarrera=${idCarrera}`;
