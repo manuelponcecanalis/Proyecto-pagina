@@ -1,0 +1,109 @@
+@{
+    ViewData["Title"] = "Inscripción a materias";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/academicas-landing.css" asp-append-version="true" />
+}
+
+<section class="academicas-hero">
+    <div class="container">
+        <h1>Inscripción a materias</h1>
+        <p>Todo lo que necesitás saber para inscribirte correctamente en las materias de la FCE UBA</p>
+    </div>
+</section>
+
+<section class="academicas-section">
+    <div class="container">
+        <h2 class="h4 mb-3" style="color: var(--aca-primary);">📅 Cuándo se abren las inscripciones</h2>
+        <p class="academicas-text">Las inscripciones a materias en la Facultad de Ciencias Económicas de la UBA (FCE UBA) abren, por lo general, unas semanas antes del inicio de cada cuatrimestre o de los cursos intensivos. Para inscribirte es obligatorio contar con un usuario en <strong>MiEcon</strong> y consultar la oferta de materias con días, horarios y sedes disponibles.</p>
+        <p class="academicas-text">Si estás organizando tu cuatrimestre con anticipación, te recomendamos revisar las ofertas de años anteriores, ya que suelen variar muy poco de un período a otro. Podés acceder a los archivos históricos desde este enlace: <a href="https://drive.google.com/drive/folders/16NloJLGew4pNZMgu8naaZyiVIPD0uVkm?usp=drive_link" target="_blank" rel="noopener noreferrer">Archivos históricos de ofertas</a></p>
+
+        <h2 class="h4 mt-4 mb-3" style="color: var(--aca-primary);">✅ Requisitos para inscribirte a materias</h2>
+        <p class="academicas-text">Antes de iniciar la inscripción, asegurate de cumplir con los siguientes puntos:</p>
+        <ul class="academicas-list">
+            <li><strong>Tener usuario activo en MiEcon.</strong></li>
+            <li><strong>Conocer la oferta de materias, sedes, días y horarios.</strong></li>
+            <li><strong>Haber completado, si corresponde, la declaración jurada de materias aprobadas o regularizadas no cargadas aún en el sistema.</strong></li>
+        </ul>
+
+        <h2 class="h4 mt-4 mb-3" style="color: var(--aca-primary);">📋 Instancias de inscripción (cuatrimestres regulares)</h2>
+        <p class="academicas-text">En los cuatrimestres regulares (no intensivos) existen tres instancias de inscripción:</p>
+
+        <h3 class="h5 mt-3">1. Primera inscripción</h3>
+        <p class="academicas-text">En esta instancia podés inscribirte a:</p>
+        <ul class="academicas-list">
+            <li>Hasta <strong>tres cursos presenciales</strong>.</li>
+            <li>Hasta <strong>un curso de modalidad a distancia, magistral o virtual</strong>.</li>
+        </ul>
+        <div class="academicas-note">
+            <strong>Importante:</strong> En la primera inscripción se tiene en cuenta la penalidad por ausentismo. Puede haber corte por ranking si la demanda supera los cupos disponibles.
+        </div>
+
+        <h3 class="h5 mt-3">2. Cobertura de vacantes – cursos presenciales</h3>
+        <p class="academicas-text">En esta etapa podés inscribirte únicamente en cursos presenciales que tengan vacantes disponibles, es decir, aquellos que no cortaron por ranking.</p>
+
+        <h3 class="h5 mt-3">3. Cobertura de vacantes – cursos D-M-V</h3>
+        <p class="academicas-text">Funciona igual que la instancia anterior, pero aplicada a los cursos de modalidad a distancia, magistral o virtual.</p>
+
+        <h2 class="h4 mt-4 mb-3" style="color: var(--aca-primary);">🔍 Cómo inscribirte paso a paso</h2>
+        <ol class="tramites-step-list">
+            <li><strong>Ingresá al campus de la facultad:</strong> <a href="https://mi.econ.uba.ar" target="_blank" rel="noopener noreferrer">https://mi.econ.uba.ar</a></li>
+            <li><strong>Abrí el cuadernillo de inscripción,</strong> donde figura la oferta completa de materias y docentes.</li>
+            <li><strong>Para elegir curso, primero seleccioná con qué docente querés cursar.</strong> Si no sabés qué curso elegir, podés consultar <a href="https://www.recomendacionesfce.com" target="_blank" rel="noopener noreferrer">https://www.recomendacionesfce.com</a>, una plataforma con más de 3600 recomendaciones hechas por estudiantes.</li>
+            <li><strong>Una vez elegido el docente, bajá al segundo listado de la materia en el cuadernillo y compará:</strong> sede, día y horario.</li>
+            <li><strong>Obtené el código de curso</strong> (por ejemplo, 101, 102, etc.).</li>
+            <li><strong>Este paso es fundamental:</strong> al inscribirte en MiEcon no se elige docente, sino número de curso.</li>
+        </ol>
+
+        <h2 class="h4 mt-4 mb-3" style="color: var(--aca-primary);">💡 Consejos para mejorar tu inscripción</h2>
+        <ul class="academicas-list">
+            <li><strong>Anotarte el primer o último día es indistinto.</strong></li>
+            <li><strong>En materias de Segundo Tramo,</strong> solo podés elegir sede y banda horaria.</li>
+            <li><strong>Para aumentar las chances de cursar con el docente que preferís,</strong> revisá previamente las recomendaciones en <a href="https://www.recomendacionesfce.com" target="_blank" rel="noopener noreferrer">Recomendaciones FCE</a>.</li>
+            <li><strong>No olvides completar la declaración jurada</strong> si tenés materias aprobadas o regularizadas que aún no figuran en el sistema.</li>
+            <li><strong>Podés inscribirte en el cuatrimestre a una materia que te hayan asignado en un intensivo,</strong> pero si lo hacés, se da de baja automáticamente el intensivo y no podrás rendir esa materia.</li>
+            <li><strong>Si cargás dos opciones de una misma materia,</strong> prestá especial atención a las superposiciones de días y horarios.</li>
+            <li><strong>Si en el cuatrimestre anterior quedaste ausente en una materia del Ciclo Profesional asignada en primera inscripción:</strong>
+                <ul>
+                    <li>Podés inscribirte en primera inscripción en Sede Córdoba (banda horaria negativa: 11 a 17 h) o en sedes regionales.</li>
+                    <li>En cobertura de vacantes podrás anotarte en cualquier sede y horario, pero no podrás ver el docente asignado.</li>
+                </ul>
+            </li>
+            <li><strong>Si querés cursar cuatro materias,</strong> podés hacerlo de dos formas:
+                <ul>
+                    <li>3 presenciales + 1 virtual/magistral/a distancia.</li>
+                    <li>3 presenciales en primera inscripción + 1 presencial en cobertura de vacantes.</li>
+                </ul>
+            </li>
+            <li><strong>Las materias regularizadas permiten:</strong>
+                <ul>
+                    <li>Inscribirte a sus correlativas.</li>
+                    <li>Reinscribirte en la misma materia (en este caso, se pierde la condición de regular).</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2 class="h4 mt-4 mb-3" style="color: var(--aca-primary);">❌ ¿Te inscribiste mal?</h2>
+        <p class="academicas-text">No te preocupes, es algo común. Podés dar de baja tu inscripción de dos maneras:</p>
+        <ul class="academicas-list">
+            <li><strong>Enviando un mail al Departamento de Alumnos:</strong> <a href="mailto:alumnos@fce.uba.ar">alumnos@fce.uba.ar</a></li>
+            <li><strong>Acercándote de forma presencial</strong> con tu DNI y constancia de inscripción.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="academicas-section">
+    <div class="container">
+        <h2 class="h4 mb-3" style="color: var(--aca-primary);">🏆 Ranking e inscripción</h2>
+        <p class="academicas-text">El ranking es el criterio que utiliza la facultad para asignar cursos en la primera inscripción cuando la demanda supera los cupos. Podés calcular tu ranking y ver más detalle en nuestra herramienta:</p>
+        <p class="mb-0"><a class="academicas-link" asp-controller="Home" asp-action="Ranking">Ir a Calculá tu ranking</a></p>
+    </div>
+</section>
+
+<section class="academicas-section pb-5">
+    <div class="container">
+        <p class="academicas-text mb-2">Para modalidades de cursada (presencial, distancia, virtual, libre):</p>
+        <p class="mb-3"><a class="academicas-link" asp-controller="Home" asp-action="ModalidadesCursada">Ver modalidades de cursada</a></p>
+        <p class="text-muted small mb-0">Texto migrado desde <cite>Pagina_proyecto_economicas/inscripcion-materias.html</cite>. Las fechas del calendario de inscripción están en <a asp-controller="Home" asp-action="CalendarioAcademico">Calendario académico</a>.</p>
+    </div>
+</section>

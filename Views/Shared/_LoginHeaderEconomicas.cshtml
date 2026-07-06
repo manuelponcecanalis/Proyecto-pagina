@@ -1,0 +1,19 @@
+@using Microsoft.AspNetCore.Identity
+@using Pagina_proyecto.Areas.Data
+@inject SignInManager<AppUser> SignInManager
+
+<div class="site-header-econ__auth">
+@if (SignInManager.IsSignedIn(User))
+{
+    <div class="site-header-econ__auth-user d-flex flex-column flex-lg-row align-items-lg-center gap-1 gap-lg-2">
+        <a class="site-header-econ__auth-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Cuenta">@User.Identity?.Name</a>
+        <form class="m-0" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button type="submit" class="site-header-econ__btn-logout">Salir</button>
+        </form>
+    </div>
+}
+else
+{
+    <a class="btn-login" asp-area="Identity" asp-page="/Account/Login">Ingresar</a>
+}
+</div>

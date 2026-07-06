@@ -1,0 +1,77 @@
+@{
+    ViewData["Title"] = "Modalidades de cursada";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/academicas-landing.css" asp-append-version="true" />
+}
+
+<section class="academicas-hero">
+    <div class="container">
+        <h1>📚 Modalidades de cursada</h1>
+        <p>Resumen de cómo se dictan los cursos en la FCE UBA. Las reglas pueden variar según el docente: revisá siempre las recomendaciones de curso.</p>
+    </div>
+</section>
+
+<section class="academicas-section">
+    <div class="container">
+        <div class="academicas-card">
+            <h2>Cursos presenciales</h2>
+            <ul class="academicas-list">
+                <li>Modalidad regular</li>
+                <li>Entre 1 y 3 clases semanales de 2 horas cada una</li>
+                <li>Mínimo dos exámenes parciales</li>
+                <li>Asistencia obligatoria: se requiere un 75% de asistencia</li>
+                <li>Máximo 3 materias presenciales por cuatrimestre</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="academicas-section">
+    <div class="container">
+        <div class="academicas-card">
+            <h2>A distancia y magistrales</h2>
+            <ul class="academicas-list">
+                <li>Dos cuatrimestres por año (en algunos casos, tres)</li>
+                <li>Clases de 2 horas reloj</li>
+                <li>No exigen asistencia, aunque es recomendable</li>
+                <li><strong>A distancia:</strong> tutoría cada 15 días. Dos exámenes</li>
+                <li><strong>Magistral:</strong> una clase semanal. Un examen final</li>
+            </ul>
+            <div class="academicas-note">
+                <strong>Importante:</strong> estas reglas pueden variar según el docente. Para conocer la modalidad real de evaluación, revisá siempre las recomendaciones de cursos.
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="academicas-section">
+    <div class="container">
+        <div class="academicas-card">
+            <h2>Cursos virtuales</h2>
+            <ul class="academicas-list">
+                <li>No se dictan clases presenciales ni sincrónicas</li>
+                <li>El material se sube al campus</li>
+                <li>Participación en foros (algunas obligatorias)</li>
+                <li>Un único examen final</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="academicas-section pb-5">
+    <div class="container">
+        <div class="academicas-card">
+            <h2>Modalidad libre</h2>
+            <ul class="academicas-list">
+                <li>La materia se prepara de forma independiente</li>
+                <li>Se rinde examen final en los turnos del calendario académico</li>
+                <li>Hay cinco llamados por año</li>
+                <li>Dos instancias: escrita (eliminatoria) y oral</li>
+                <li>Se aprueba con nota mínima 4</li>
+                <li>No se puede regularizar una materia rindiéndola libre</li>
+            </ul>
+        </div>
+        <p class="text-muted small mt-4 mb-0">Contenido adaptado desde <cite>Pagina_proyecto_economicas</cite> (inscripción a materias). Para calcular ranking y vacantes podés usar también nuestra <a asp-controller="Home" asp-action="Ranking">herramienta de ranking</a>.</p>
+    </div>
+</section>

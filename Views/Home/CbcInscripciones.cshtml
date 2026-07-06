@@ -1,0 +1,148 @@
+@{
+    ViewData["Title"] = "Inscripciones CBC";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/academicas-landing.css" asp-append-version="true" />
+}
+
+<section class="academicas-hero">
+    <div class="container">
+        <h1>Inscripciones CBC</h1>
+        <p>Preinscripción, requisitos por tramo del ciclo general, SIU Guaraní y trámites clave para el CBC.</p>
+    </div>
+</section>
+
+<section class="academicas-section">
+    <div class="container">
+        <div class="academicas-card">
+            <h2>¿Cómo me inscribo?</h2>
+            <p class="academicas-text">
+                La <strong>preinscripción</strong> al primer tramo del ciclo general se habilita <strong>dos veces al año</strong> (principio y mitad del año).
+                La preinscripción UBA está abierta únicamente para quienes <strong>nunca se inscribieron</strong> en la Universidad de Buenos Aires.
+            </p>
+            <div class="academicas-note mb-0">
+                Si en algún momento te inscribiste en el CBC o en <strong>UBA XXI</strong>, consultá en <a class="academicas-link" asp-controller="Home" asp-action="CbcSedes">alguna sede</a>
+                qué trámite debés realizar.
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="academicas-section">
+    <div class="container">
+        <div class="academicas-card">
+            <h2>Requisitos de inscripción — Ciclo de formación general</h2>
+
+            <div class="cbc-tramo-box">
+                <div class="academicas-subtitle">Inscripción 1.er tramo</div>
+                <p class="academicas-text">
+                    De manera virtual a través de
+                    <a class="academicas-link" href="https://www.cbc.uba.ar/" target="_blank" rel="noopener noreferrer">www.cbc.uba.ar</a>
+                    en las fechas correspondientes.
+                </p>
+                <p class="academicas-subheading mb-2">Documentación</p>
+                <ul class="academicas-list">
+                    <li><strong>DNI</strong> actualizado.</li>
+                    <li>Fotocopia del <strong>título secundario</strong> o certificado de título en trámite, si la institución secundaria aún no lo expidió.</li>
+                </ul>
+            </div>
+
+            <div class="cbc-tramo-box">
+                <div class="academicas-subtitle">Inscripción 2.do tramo</div>
+                <p class="academicas-text">
+                    Una vez finalizadas las <strong>6 materias</strong> del primer tramo, completá la <strong>DDJJ de primer tramo</strong> en
+                    <a class="academicas-link" href="https://servicios.econ.uba.ar/" target="_blank" rel="noopener noreferrer">servicios.econ.uba.ar</a>,
+                    en las fechas indicadas (consultá el
+                    <a class="academicas-link" asp-controller="Home" asp-action="CalendarioAcademico">calendario académico de grado</a>).
+                </p>
+                <p class="academicas-text">
+                    Cuando finalices el trámite online, debés acercarte <strong>presencialmente</strong> al <strong>Departamento de Alumnos</strong> de la
+                    <strong>sede regional más cercana</strong>, sin importar dónde hubieras pensado cursar.
+                </p>
+                <p class="academicas-subheading mb-2">Elementos a presentar</p>
+                <ul class="academicas-list mb-0">
+                    <li>DDJJ impresa.</li>
+                    <li>Certificado de materias aprobadas emitido por CBC o <a class="academicas-link" href="https://guarani.uba.ar/cbc/" target="_blank" rel="noopener noreferrer">SIU Guaraní</a>.</li>
+                    <li>Fotocopia de DNI.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="academicas-section">
+    <div class="container">
+        <div class="academicas-card">
+            <h2>Asignación en primer tramo</h2>
+            <p class="academicas-text">
+                En Primer Tramo, las materias se asignan automáticamente según la sede y franja horaria que elegiste.
+                Esto aplica en los primeros dos cuatrimestres; si tenés que recursar una materia, tenés que inscribirte en las fechas que estipule el calendario académico.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="academicas-section">
+    <div class="container">
+        <div class="academicas-card">
+            <h2>Ingresantes anteriores al 2020</h2>
+            <p class="academicas-text">
+                Si sos ingresante al CBC en años anteriores al 2020 y te querés inscribir a materias, necesitás estar incluido en el padrón de rematriculados.
+                Si no estás incluido, tenés que realizar el trámite de Rematriculación al CBC.
+                Las fechas del trámite online se publican en el calendario del CBC o en nuestras redes.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="academicas-section">
+    <div class="container">
+        <div class="academicas-card">
+            <h2>Ingreso posterior al 2020</h2>
+            <p class="academicas-text">
+                Si ingresaste al CBC luego del 2020 y no sos ingresante del año actual, no debés realizar el paso anterior.
+                Si cumplís los requisitos, en las fechas correspondientes vas a poder inscribirte a las materias presenciales,
+                siempre y cuando hayas realizado y validado una preinscripción.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="academicas-section">
+    <div class="container">
+        <div class="academicas-card">
+            <h2>Reconfirmación de inscripción</h2>
+            <p class="academicas-text">
+                Si empezaste a cursar por primera vez el CBC en el primer cuatrimestre, para cursar el segundo tenés que hacer la Reconfirmación de Inscripción,
+                completando el formulario que estará disponible en la fecha correspondiente a través de la Plataforma de Trámites e Inscripciones del CBC.
+                En este trámite podés realizar cambio de carrera o solicitar una simultaneidad.
+            </p>
+            <p class="academicas-text">
+                En tu año de ingreso al CBC, la única forma de cambiar de carrera o solicitar una simultaneidad es mediante la Reconfirmación de la Inscripción.
+                Si te quedaron materias para cursar y cambió el ciclo lectivo (nuevo año calendario), debés hacer la inscripción a materias.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="academicas-section">
+    <div class="container">
+        <div class="academicas-card">
+            <h2>UBA XXI</h2>
+            <p class="academicas-text">
+                Si querés inscribirte a materias de UBA XXI, una vez realizado el Pre-ingreso a la UBA recibirás un correo con usuario y contraseña para ingresar al
+                <a class="academicas-link" href="https://guarani.uba.ar/cbc/" target="_blank" rel="noopener noreferrer">SIU Guaraní</a>,
+                donde vas a poder inscribirte a las materias de UBA XXI. No hay límite en la cantidad de materias que podés cursar por esa modalidad.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="academicas-section">
+    <div class="container text-center">
+        <p class="academicas-text mb-0">
+            <a class="academicas-link" asp-controller="Home" asp-action="CBC">← Volver a la Guía CBC</a>
+        </p>
+    </div>
+</section>

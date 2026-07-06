@@ -984,17 +984,33 @@ td:nth-child(21) {
 }
 
 .footer-link {
-    color: var(--color-medium-gray);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    padding: 0.35rem;
+    color: #ccc;
     text-decoration: none;
     font-weight: 600;
-    transition: color 0.3s ease;
-    flex-direction: column;
-    align-content: center;
+    transition: color 0.3s ease, transform 0.2s ease;
 }
 
-    .footer-link:hover {
-        color: var(--color-accent);
-    }
+.footer-link__icon {
+    display: inline-flex;
+    flex-shrink: 0;
+    line-height: 0;
+}
+
+.footer-link__icon svg {
+    width: 1.35rem;
+    height: 1.35rem;
+    display: block;
+}
+
+.footer-link:hover {
+    transform: translateY(-2px);
+}
 
 .footer-text {
     color: var(--color-medium-gray);
@@ -1010,35 +1026,13 @@ td:nth-child(21) {
     background-color: #E91E63;
 }
 
-.footer-link {
-    text-decoration: none;
-    color: #ccc;
-    font-weight: 500;
-    transition: color 0.3s ease, transform 0.2s ease;
+/* WhatsApp / redes — color al hover */
+.footer-link[data-red="whatsapp"]:hover,
+.footer-link[data-red="instagram"]:hover,
+.footer-link[data-red="twitter"]:hover,
+.footer-link[data-red="youtube"]:hover {
+    color: #E91E63;
 }
-
-    .footer-link:hover {
-        transform: translateY(-2px);
-    }
-    /* WhatsApp (verde más profundo) */
-    .footer-link[data-red="whatsapp"]:hover {
-        color: #E91E63;
-    }
-
-    /* Instagram (magenta menos saturado) */
-    .footer-link[data-red="instagram"]:hover {
-        color: #E91E63;
-    }
-
-    /* Twitter / X (azul más sobrio) */
-    .footer-link[data-red="twitter"]:hover {
-        color: #E91E63;
-    }
-
-    /* YouTube (rojo institucional real, menos brillante) */
-    .footer-link[data-red="youtube"]:hover {
-        color: #E91E63;
-    }
 
 .botonesLogin {
     justify-content: right;

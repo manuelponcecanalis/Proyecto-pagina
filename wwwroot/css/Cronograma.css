@@ -1,4 +1,4 @@
-﻿body {
+body {
 }
 
 .malla {
@@ -265,27 +265,7 @@
     gap: 6px;
 }
 
-.cronograma-hero {
-    background: linear-gradient(135deg, #003366 0%, #004080 100%);
-    color: white;
-    padding: 4rem 0;
-    text-align: center;
-}
-
-    .cronograma-hero h1 {
-        font-family: 'Montserrat', 'Roboto Condensed', sans-serif;
-        font-weight: 900;
-        font-size: 3rem;
-        margin-bottom: 1rem;
-        color: white !important;
-    }
-
-    .cronograma-hero p {
-        font-size: 1.2rem;
-        opacity: 0.9;
-        max-width: 700px;
-        margin: 0 auto;
-    }
+/* Hero: clase .academicas-hero (academicas-landing.css), alineada con Carreras y el resto de Académica */
 
 .botonElegiMateria {
     height: 100%;
@@ -338,22 +318,13 @@
 @media (max-width: 768px) {
 
     .instructivo {
-
         margin-left: 6px !important;
         margin-right: 6px !important;
     }
-    /* Hero más compacto */
-    .cronograma-hero {
+
+    .academicas-hero {
         padding: 2rem 1rem;
     }
-
-        .cronograma-hero h1 {
-            font-size: 1.8rem;
-        }
-
-        .cronograma-hero p {
-            font-size: 1rem;
-        }
 
     /* Selector de carrera en mobile */
     .seleccion-carrera-container {
@@ -445,18 +416,9 @@
 /* ===== TABLET (768px – 1100px) ===== */
 @media (max-width: 1100px) and (min-width: 769px) {
 
-    /* Hero más compacto */
-    .cronograma-hero {
+    .academicas-hero {
         padding: 2rem 1rem;
     }
-
-        .cronograma-hero h1 {
-            font-size: 1.8rem;
-        }
-
-        .cronograma-hero p {
-            font-size: 1rem;
-        }
 
     /* Selector de carrera en mobile */
     .seleccion-carrera-container {

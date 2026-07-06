@@ -1,6 +1,6 @@
-﻿@model List<Pagina_proyecto.Models.Entities.Materia>
+@model List<Pagina_proyecto.Models.Entities.Materia>
 @{
-    ViewData["Title"] = "Malla Sistemas";
+    ViewData["Title"] = "Planes de estudio";
 
     var aprobadas = ViewBag.Aprobadas as List<int> ?? new();
     var carreras = ViewBag.Carreras as List<Pagina_proyecto.Models.Entities.Carrera> ?? new();
@@ -30,13 +30,40 @@
 }
 
 @section Styles {
+    <link rel="stylesheet" href="~/css/academicas-landing.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/Cronograma.css" asp-append-version="true" />
 }
 
-<section class="cronograma-hero">
+<section class="academicas-hero">
     <div class="container">
-        <h1>🚀 Planes de estudio</h1>
-        <p>Planes de estudio didacticos de todas las carreras</p>
+        <h1>Planes de estudio</h1>
+        <p>
+            Visualizá la malla curricular, las correlativas y tu avance en las carreras de la Facultad de Ciencias Económicas (UBA).
+            Elegí una carrera abajo para abrir la grilla interactiva.
+        </p>
+    </div>
+</section>
+
+<section class="academicas-section">
+    <div class="container">
+        <div class="academicas-card">
+            <h2>¿Qué es esta herramienta?</h2>
+            <p class="academicas-text mb-0">
+                Es una <strong>malla didáctica</strong> basada en las materias y correlativas del proyecto: te permite ver qué cursarías después de aprobar cada espacio,
+                distinguir materias disponibles, bloqueadas y —si iniciás sesión— <strong>guardar qué materias ya aprobaste</strong> para seguir tu recorrido.
+            </p>
+            <div class="academicas-subtitle">Cómo usarla</div>
+            <ul class="academicas-list">
+                <li>Elegí tu carrera con los botones de la barra siguiente (Contador, Administración, Economía, Sistemas, Actuario o Téc. en Datos).</li>
+                <li>En la grilla, las materias <strong>disponibles</strong> se pueden cursar según correlativas; las <strong>bloqueadas</strong> aún no.</li>
+                <li>Con cuenta en el sitio, hacé clic en una materia disponible o aprobada para marcar o desmarcar el progreso (se guarda en tu perfil).</li>
+            </ul>
+            <div class="academicas-note mb-0">
+                Los <strong>planes oficiales</strong> y resoluciones vigentes son los publicados por la FCE UBA. Esta pantalla es una ayuda para estudiar la malla y tus correlativas, no reemplaza la normativa ni la inscripción en SIU.
+                Más información de carreras: <a class="academicas-link" asp-controller="Home" asp-action="Carreras">Carreras</a> · Sitio oficial:
+                <a class="academicas-link" href="https://www.econ.uba.ar/" target="_blank" rel="noopener noreferrer">econ.uba.ar</a>
+            </div>
+        </div>
     </div>
 </section>
 

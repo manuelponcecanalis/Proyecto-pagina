@@ -1,44 +1,94 @@
-﻿
 @{
-    ViewData["Title"] = "Conocenos";
+    ViewData["Title"] = "Nosotros - PROYECTO Económicas";
 }
 
 @section Styles {
-
-    <link rel="stylesheet" href="~/css/Styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/academicas-landing.css" asp-append-version="true" />
 }
-<div class="contenedorConocenos1">
-    <div class="quienSomosDescripcion">
-        <h1>¿Quiénes somos? </h1>
-        <p>
-            Proyecto es una agrupación de estudiantes como vos, que desde el 2019 venimos pensando de qué manera mejorar nuestra facultad. Para eso, hacemos clases de apoyo, talleres de herramientas informáticas, charlas de coyuntura económica, reuniones abiertas para debatir sobre nuestros planes de estudios y muchas más actividades que creemos necesarias para mejorar tanto nuestra formación académica como nuestro paso por la facultad.
-        </p>
-        <img src="~/foto_grupal_proyecto.jpg" alt="Proyecto crew" />
+
+<section class="nosotros-hero">
+    <div class="container">
+        <h1>La universidad pública es un derecho. Y también un nosotros.</h1>
+        <p>Si estás en Económicas, ya sos parte de algo grande. Este espacio es el lugar donde nos organizamos para cuidar lo que conquistamos y empujar lo que viene.</p>
     </div>
-    <div class="FinanzasYRedes">
-        <div class="Finanzas"></div> 
-        <div class="RedesSociales">
-            <div>
-                <h1>Redes</h1>
-            </div>
-            <div>
-                <div>
-                    <img src="~/instagram.png" alt="logo instagram" class="igImg" />
-                </div>
-                <div>
-                    <img src="~/youtube.png" alt="logoYouTube" class="youtubeImg" />
-                </div>
-                
+</section>
+
+<section class="nosotros-section">
+    <div class="container">
+        <div class="nosotros-content">
+            <h2 class="nosotros-title">Quiénes somos</h2>
+            <p class="nosotros-text">Somos estudiantes de la FCE UBA que decidimos organizarnos. Venimos de aulas, pasillos, bibliotecas y laburos. Compartimos el mismo orgullo: estudiar en la universidad pública argentina.</p>
+            <p class="nosotros-text">Nos une una convicción simple: cuando nos juntamos, hacemos que la facultad sea un lugar más justo, más humano y más nuestro.</p>
+        </div>
+    </div>
+</section>
+
+<section class="nosotros-section">
+    <div class="container">
+        <div class="nosotros-content">
+            <h2 class="nosotros-title">Nuestra convicción</h2>
+            <div class="nosotros-manifesto">
+                <p>La educación pública es una conquista.</p>
+                <p>La organización es la herramienta para defenderla.</p>
+                <p>La universidad es un espacio que transforma la sociedad.</p>
+                <p>Estudiar también es comprometerse con lo que somos y lo que queremos ser.</p>
             </div>
         </div>
     </div>
-    <div class="quienSomosDescripcion">
-        <h1>¿Quiénes somos? </h1>
-        <p>
-            Proyecto es una agrupación de estudiantes como vos, que desde el 2019 venimos pensando de qué manera mejorar nuestra facultad. Para eso, hacemos clases de apoyo, talleres de herramientas informáticas, charlas de coyuntura económica, reuniones abiertas para debatir sobre nuestros planes de estudios y muchas más actividades que creemos necesarias para mejorar tanto nuestra formación académica como nuestro paso por la facultad.
-        </p>
-        <img src="~/foto_grupal_proyecto.jpg" alt="Proyecto crew" />
+</section>
+
+<section class="nosotros-section">
+    <div class="container">
+        <div class="nosotros-content">
+            <h2 class="nosotros-title">Por qué nos organizamos</h2>
+            <p class="nosotros-text">Nos organizamos para defender derechos, para acompañar trayectorias y para participar de una vida universitaria que no se reduce a cursar.</p>
+            <p class="nosotros-text">Nos organizamos para pensar la universidad que necesita el país, y para que nadie tenga que transitarla en soledad.</p>
+        </div>
     </div>
-</div>
+</section>
 
+<section class="nosotros-section">
+    <div class="container">
+        <div class="nosotros-content">
+            <h2 class="nosotros-title">Qué hacemos</h2>
+            <p class="nosotros-text">Estamos en la facultad todos los días. Escuchamos, acompañamos, organizamos espacios colectivos y sostenemos redes entre estudiantes.</p>
+            <p class="nosotros-text">Construimos herramientas, generamos debates, impulsamos participación real. Hacemos que la experiencia universitaria sea más cercana, más solidaria y más transformadora.</p>
+        </div>
+    </div>
+</section>
 
+<section class="nosotros-section">
+    <div class="container">
+        <div class="nosotros-content">
+            <h2 class="nosotros-title">Nuestra identidad</h2>
+            <p class="nosotros-text">Somos educación pública. Somos organización. Somos compromiso nacional. Somos participación estudiantil.</p>
+            <p class="nosotros-text">No como slogans, sino como una identidad viva que se expresa en lo que hacemos y en cómo nos encontramos.</p>
+        </div>
+    </div>
+</section>
+
+<section class="nosotros-section">
+    <div class="container">
+        <div class="nosotros-content">
+            <h2 class="nosotros-title">Impacto colectivo</h2>
+            <p class="nosotros-text">No medimos con números fríos. Medimos con historias compartidas.</p>
+            <p class="nosotros-text">Personas acompañadas. Espacios que nacen. Tiempo que se organiza para que nadie quede atrás. Ese es nuestro impacto.</p>
+        </div>
+    </div>
+</section>
+
+<section class="nosotros-cta" id="sumarse">
+    <div class="container">
+        <div class="nosotros-cta-inner text-center">
+            <p class="nosotros-cta-title">Si sentís que la facultad también es tuya, este espacio es para vos.</p>
+            <p class="nosotros-cta-sub">Sumate, participá y organizate con nosotrxs. La universidad que soñamos se construye en colectivo.</p>
+            <a class="btn btn-lg mt-3"
+               style="background-color: #25d366; color: #fff; font-weight: 600;"
+               href="https://chat.whatsapp.com/Lt65YC6x3W89HDCs3vcYRy"
+               target="_blank"
+               rel="noopener noreferrer">
+                Escribinos por WhatsApp
+            </a>
+        </div>
+    </div>
+</section>

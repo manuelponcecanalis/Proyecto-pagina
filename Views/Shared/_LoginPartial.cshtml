@@ -1,9 +1,9 @@
-﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Identity
 @inject SignInManager<AppUser> SignInManager
 @using Pagina_proyecto.Areas.Data;
 @inject UserManager<AppUser> UserManager
 
-<ul class="navbar-nav botonesLogin">
+<ul class="navbar-nav botonesLogin ms-sm-auto flex-shrink-0 align-items-sm-center">
 @if (SignInManager.IsSignedIn(User))
 {
     <li class="nav-item">
