@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROYECTO Económicas - La Facultad, Más Fácil</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto+Condensed:wght@700&family=Open+Sans:wght@400;600&family=Lato:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="logo">
+                    <img src="images/logo.png" alt="PROYECTO Económicas" class="logo-img">
+                </div>
+                <nav class="nav">
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">Académica <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu dropdown-menu-2col">
+                            <div class="dropdown-col">
+                                <a href="carreras.html" class="dropdown-item">Carreras</a>
+                                <a href="#" class="dropdown-item">Planes de estudio</a>
+                                <a href="#" class="dropdown-item">Modalidades de cursada</a>
+                            </div>
+                            <div class="dropdown-col">
+                                <a href="#" class="dropdown-item">Reglamento de cursada</a>
+                                <a href="#" class="dropdown-item">Becas</a>
+                                <a href="calendario-academico.html" class="dropdown-item">Calendario académico</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">Trámites <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu">
+                            <a href="inscripcion-materias.html" class="dropdown-item">Inscripción a materias</a>
+                            <a href="certificados.html" class="dropdown-item">Certificados</a>
+                            <a href="titulo-en-tramite.html" class="dropdown-item">Título en trámite</a>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">Herramientas <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu dropdown-menu-cards">
+                            <a href="ranking.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">🧮</span>
+                                <span class="dropdown-card-text">Calculá tu ranking</span>
+                            </a>
+                            <a href="biblioeconomicas.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">📚</span>
+                                <span class="dropdown-card-text">Biblioeconómicas</span>
+                            </a>
+                            <a href="#" class="dropdown-card">
+                                <span class="dropdown-card-icon">💬</span>
+                                <span class="dropdown-card-text">Grupos de WhatsApp</span>
+                            </a>
+                            <a href="recomendaciones.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">📊</span>
+                                <span class="dropdown-card-text">Recomendaciones de materias</span>
+                            </a>
+                            <a href="blog.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">📝</span>
+                                <span class="dropdown-card-text">Blog</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">CBC <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu">
+                            <a href="cbc.html" class="dropdown-item">Guía CBC</a>
+                            <a href="#" class="dropdown-item">Inscripciones CBC</a>
+                            <a href="#" class="dropdown-item">Sedes CBC</a>
+                            <a href="#" class="dropdown-item">Grupos de WhatsApp</a>
+                        </div>
+                    </div>
+                    
+                    <a href="recomendaciones.html" class="nav-link">Recomendaciones</a>
+                    <a href="nosotros.html" class="nav-link">Nosotros</a>
+                    <a href="#login" class="btn-login">Ingresar</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Ticker Bar -->
+    <div class="ticker-bar" aria-label="Indicadores económicos">
+        <div class="ticker-bar-wrapper">
+            <div class="ticker-bar-content" id="ticker-content-1">
+                <span class="ticker-item">Producción industrial <span class="ticker-value negative">−12,4%</span></span>
+                <span class="ticker-separator">•</span>
+                <span class="ticker-item">Construcción <span class="ticker-value negative">−18,7%</span></span>
+                <span class="ticker-separator">•</span>
+                <span class="ticker-item">Obra pública: 0 nuevas licitaciones</span>
+                <span class="ticker-separator">•</span>
+                <span class="ticker-item">Empleo industrial <span class="ticker-value negative">−94.000 puestos</span></span>
+                <span class="ticker-separator">•</span>
+                <span class="ticker-item">Salario real <span class="ticker-value negative">−21%</span></span>
+                <span class="ticker-separator">•</span>
+                <span class="ticker-item">Presupuesto universitario <span class="ticker-value negative">−30%</span></span>
+                <span class="ticker-separator">•</span>
+                <span class="ticker-item">Ciencia y técnica: proyectos paralizados</span>
+                <span class="ticker-separator">•</span>
+                <span class="ticker-item">Incendios forestales: <span class="ticker-value positive">+1,2M ha afectadas</span></span>
+            </div>
+            <!-- Duplicado para loop infinito -->
+            <div class="ticker-bar-content" id="ticker-content-2" aria-hidden="true">
+                <span class="ticker-item">Producción industrial <span class="ticker-value negative">−12,4%</span></span>
+                <span class="ticker-separator">•</span>
+                <span class="ticker-item">Construcción <span class="ticker-value negative">−18,7%</span></span>
+                <span class="ticker-separator">•</span>
+                <span class="ticker-item">Obra pública: 0 nuevas licitaciones</span>
+                <span class="ticker-separator">•</span>
+                <span class="ticker-item">Empleo industrial <span class="ticker-value negative">−94.000 puestos</span></span>
+                <span class="ticker-separator">•</span>
+                <span class="ticker-item">Salario real <span class="ticker-value negative">−21%</span></span>
+                <span class="ticker-separator">•</span>
+                <span class="ticker-item">Presupuesto universitario <span class="ticker-value negative">−30%</span></span>
+                <span class="ticker-separator">•</span>
+                <span class="ticker-item">Ciencia y técnica: proyectos paralizados</span>
+                <span class="ticker-separator">•</span>
+                <span class="ticker-item">Incendios forestales: <span class="ticker-value positive">+1,2M ha afectadas</span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- Carrusel de imágenes -->
+        <div class="hero-carousel">
+            <button class="carousel-prev" aria-label="Anterior">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+            <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1920&h=1080&fit=crop');"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1920&h=1080&fit=crop');"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1920&h=1080&fit=crop');"></div>
+            <button class="carousel-next" aria-label="Siguiente">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </button>
+            <div class="carousel-dots">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+            </div>
+        </div>
+
+        <!-- Contenido del hero (título y buscador) -->
+        <div class="hero-content-wrapper">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        LA FACULTAD, <span class="highlight">MÁS FÁCIL</span>.
+                    </h1>
+                    <p class="hero-subtitle">
+                        Todo lo que necesitas para aprobar, en un solo lugar. Apuntes, trámites y data real.
+                    </p>
+                    <div class="search-container">
+                        <input type="text" class="search-input" placeholder="Busca tu materia, profesor o apunte...">
+                        <button class="search-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Grid de Herramientas -->
+    <section class="tools-section">
+        <div class="container">
+            <div class="tools-grid">
+                <!-- Tarjeta 1: CALENDARIO ACADÉMICO -->
+                <div class="tool-card">
+                    <div class="tool-icon blue">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                    </div>
+                    <h3 class="tool-title">Calendario Académico</h3>
+                    <p class="tool-description">Próximas fechas: Inscripción cursadas 12 al 18 feb. Libres 24 al 25 feb. Exámenes 16 al 20 mar.</p>
+                    <a href="calendario-academico.html" class="tool-link">Ver calendario →</a>
+                </div>
+
+                <!-- Tarjeta 2: CALCULÁ TU RANKING -->
+                <div class="tool-card">
+                    <div class="tool-icon magenta">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="20" x2="18" y2="10"></line>
+                            <line x1="12" y1="20" x2="12" y2="4"></line>
+                            <line x1="6" y1="20" x2="6" y2="14"></line>
+                        </svg>
+                    </div>
+                    <h3 class="tool-title">Simulador de Promedio</h3>
+                    <p class="tool-description">¿Entrás al ranking? Cargá tus notas y proyectá tu posición.</p>
+                    <a href="ranking.html" class="tool-link">Calcular ahora →</a>
+                </div>
+
+                <!-- Tarjeta 3: RECOMENDACIONES -->
+                <div class="tool-card">
+                    <div class="tool-icon blue">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                    </div>
+                    <h3 class="tool-title">La Verdad de la Milanesa</h3>
+                    <p class="tool-description">Opiniones sin filtro sobre cátedras y profesores. Elegí con estrategia.</p>
+                    <a href="recomendaciones.html" class="tool-link">Ver opiniones →</a>
+                </div>
+
+                <!-- Tarjeta 4: MUNDO CBC -->
+                <div class="tool-card">
+                    <div class="tool-icon magenta">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path>
+                            <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path>
+                            <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path>
+                            <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path>
+                        </svg>
+                    </div>
+                    <h3 class="tool-title">Guía de Supervivencia</h3>
+                    <p class="tool-description">Trámites, sedes y material para ingresantes. Que no te filtren.</p>
+                    <a href="cbc.html" class="tool-link">Explorar CBC →</a>
+                </div>
+
+                <!-- Tarjeta 5: PREGUNTAS FRECUENTES -->
+                <div class="tool-card">
+                    <div class="tool-icon blue">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg>
+                    </div>
+                    <h3 class="tool-title">Respuestas Flash</h3>
+                    <p class="tool-description">Inscripciones, renuncia a cursada, certificado de alumno regular.</p>
+                    <a href="faq.html" class="tool-link">Ver FAQ →</a>
+                </div>
+
+                <!-- Tarjeta 6: BIBLIO ECONÓMICAS -->
+                <div class="tool-card">
+                    <div class="tool-icon blue">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                            <path d="M8 7h8"></path>
+                            <path d="M8 11h8"></path>
+                        </svg>
+                    </div>
+                    <h3 class="tool-title">Tu Arsenal de Estudio</h3>
+                    <p class="tool-description">Digitalizamos todo. Buscá por materia y cátedra. Descargá gratis.</p>
+                    <a href="biblioeconomicas.html" class="tool-link">Ir a BiblioEconómicas →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Feed Section -->
+    <section class="instagram-section">
+        <div class="container">
+            <div class="instagram-header">
+                <h2 class="instagram-title">Seguinos en Instagram</h2>
+                <p class="instagram-subtitle">Mantente al día con tips, actualizaciones y contenido exclusivo</p>
+                <a href="https://www.instagram.com/proyectoeconomicas/?hl=es" target="_blank" rel="noopener noreferrer" class="instagram-link">
+                    @proyectoeconomicas
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </a>
+            </div>
+            <div class="instagram-feed" id="instagram-feed">
+                <!-- Feed de Instagram - Se carga dinámicamente -->
+                <div class="instagram-embed-container" id="instagram-embed-container">
+                    <!-- El feed se cargará aquí mediante JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner CTA -->
+    <section class="cta-banner">
+        <div class="container">
+            <div class="cta-content">
+                <p class="cta-text">¿Tenés apuntes que salvan vidas? Subilos y ayudá a otros.</p>
+                <button class="cta-button">SUBIR APUNTE</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Banner -->
+    <section class="contact-banner">
+        <div class="container">
+            <div class="contact-content">
+                <p class="contact-text">¿Tenés dudas o sugerencias? Contactanos y te ayudamos.</p>
+                <button class="contact-button" onclick="toggleContactForm()">CONTACTANOS</button>
+                <!-- Notificación -->
+                <div class="notification" id="contact-notification">
+                    <div class="notification-content">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                        <span class="notification-message">¡Mensaje enviado con éxito! Te responderemos a la brevedad.</span>
+                    </div>
+                </div>
+                <div class="contact-form-container" id="contact-form-container">
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-group">
+                            <label for="nombre">Nombre y Apellido</label>
+                            <input type="text" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="mail">Mail</label>
+                            <input type="email" id="mail" name="mail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="asunto">Asunto</label>
+                            <input type="text" id="asunto" name="asunto" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="mensaje">Mensaje</label>
+                            <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="submit-button">Enviar</button>
+                            <button type="button" class="cancel-button" onclick="toggleContactForm()">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Instagram</a>
+                    <a href="#" class="footer-link">WhatsApp</a>
+                    <a href="#" class="footer-link">Contacto</a>
+                </div>
+                <p class="footer-text">© 2024 PROYECTO Económicas. Todos los derechos reservados.</p>
+            </div>
+        </div>
+        <div class="footer-bar"></div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,1475 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Style Guide & Design System — PROYECTO Económicas</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;600;700&family=Montserrat:wght@700;900&family=Open+Sans:wght@400;600&family=Roboto+Condensed:wght@700;900&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      /* Colores */
+      --color-white: #FFFFFF;
+      --color-ice-gray: #F8F9FA;
+      --color-primary: #003366;
+      --color-accent: #E91E63;
+      --color-dark-gray: #333333;
+      --color-medium-gray: #666666;
+
+      /* Bordes */
+      --border-radius: 8px;
+
+      /* Sombras */
+      --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+      --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+
+      /* Espaciado */
+      --space-xs: 0.5rem; /* 8px */
+      --space-sm: 1rem;   /* 16px */
+      --space-md: 1.5rem; /* 24px */
+      --space-lg: 2rem;   /* 32px */
+      --space-xl: 3rem;   /* 48px */
+      --space-xxl: 4rem;  /* 64px */
+
+      /* Layout */
+      --container: 1100px;
+    }
+
+    /* Base */
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: 'Open Sans', 'Lato', sans-serif;
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--color-dark-gray);
+      background: var(--color-white);
+    }
+    a { color: inherit; }
+    code, pre {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.92rem;
+    }
+
+    /* Tipografía (según guía) */
+    .logo-text {
+      font-family: 'Montserrat', 'Roboto Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.5rem;
+      letter-spacing: 0.2px;
+    }
+    h1 {
+      font-family: 'Montserrat', 'Roboto Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 3rem;
+      line-height: 1.2;
+      margin: 0 0 var(--space-sm);
+      color: var(--color-white);
+    }
+    h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 2rem;
+      line-height: 1.3;
+      margin: 0 0 var(--space-sm);
+      color: var(--color-primary);
+    }
+    h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      line-height: 1.4;
+      margin: 0 0 var(--space-xs);
+      color: var(--color-primary);
+    }
+    p { margin: 0 0 var(--space-md); }
+    small, .meta { color: var(--color-medium-gray); font-size: 0.9rem; }
+
+    /* Layout */
+    .container { max-width: var(--container); margin: 0 auto; padding: 0 1.25rem; }
+    section { padding: var(--space-xxl) 0; }
+    section.alt { background: var(--color-ice-gray); }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-lg);
+    }
+    @media (max-width: 1024px) {
+      .grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-md); }
+      h1 { font-size: 2.5rem; }
+      h2 { font-size: 1.75rem; }
+      h3 { font-size: 1.25rem; }
+      body { font-size: 0.95rem; }
+    }
+    @media (max-width: 768px) {
+      .grid { grid-template-columns: 1fr; gap: var(--space-sm); }
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.6rem; }
+      h3 { font-size: 1.2rem; }
+      body { font-size: 0.9rem; }
+    }
+
+    /* Header */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--color-white);
+      border-bottom: 2px solid var(--color-accent);
+      box-shadow: var(--shadow-sm);
+    }
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+      padding: 0.9rem 0;
+    }
+    .nav { display: flex; align-items: center; gap: 2rem; }
+    .nav-link {
+      text-decoration: none;
+      font-family: 'Open Sans', 'Lato', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--color-dark-gray);
+      transition: color 0.3s ease;
+    }
+    .nav-link:hover { color: var(--color-accent); }
+    .menu-toggle {
+      display: none;
+      border: 1px solid rgba(0,0,0,0.1);
+      background: var(--color-white);
+      border-radius: 10px;
+      padding: 0.5rem 0.7rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .menu-toggle:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+    @media (max-width: 768px) {
+      .menu-toggle { display: inline-flex; }
+      .nav { display: none; }
+      .nav.is-open {
+        display: flex;
+        position: absolute;
+        left: 0; right: 0;
+        top: 64px;
+        background: var(--color-white);
+        padding: 1rem 1.25rem;
+        border-bottom: 1px solid rgba(0,0,0,0.08);
+        box-shadow: var(--shadow-sm);
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+    }
+
+    /* Botones */
+    .cta-button, .btn-login, .submit-button, .cancel-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      user-select: none;
+      white-space: nowrap;
+    }
+    .cta-button {
+      background: var(--color-accent);
+      color: var(--color-white);
+      padding: 1rem 2rem;
+      border-radius: 25px;
+      font-weight: 700;
+      box-shadow: var(--shadow-sm);
+    }
+    .cta-button:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .cta-button:active { transform: translateY(-1px); }
+
+    .btn-login {
+      background: var(--color-accent);
+      color: var(--color-white);
+      padding: 0.6rem 1.5rem;
+      border-radius: 25px;
+      font-weight: 700;
+      box-shadow: var(--shadow-sm);
+    }
+    .btn-login:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+    .tool-link {
+      color: var(--color-accent);
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      gap: 0.35rem;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+    .tool-link:hover { color: var(--color-accent); transform: translateX(3px); }
+
+    /* Cards */
+    .card, .tool-card, .blog-card {
+      background: var(--color-white);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-sm);
+      padding: 2rem;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .card:hover, .tool-card:hover, .blog-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .tool-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(233, 30, 99, 0.10);
+      color: var(--color-accent);
+      margin-bottom: var(--space-sm);
+      font-weight: 900;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .blog-category {
+      display: inline-flex;
+      padding: 0.25rem 0.75rem;
+      border-radius: 15px;
+      background: rgba(0, 51, 102, 0.08);
+      color: var(--color-primary);
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: var(--space-sm);
+    }
+    .blog-meta { color: var(--color-medium-gray); font-size: 0.9rem; }
+
+    /* Formularios */
+    .form-group { display: grid; gap: 0.4rem; margin-bottom: var(--space-md); }
+    label { font-weight: 700; color: var(--color-dark-gray); }
+    input, textarea {
+      width: 100%;
+      background: var(--color-ice-gray);
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: var(--border-radius);
+      padding: 0.75rem 1rem;
+      outline: none;
+      transition: all 0.3s ease;
+      font: inherit;
+      color: var(--color-dark-gray);
+    }
+    input:focus, textarea:focus {
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 4px rgba(233, 30, 99, 0.12);
+      background: var(--color-white);
+    }
+    textarea { resize: vertical; }
+    .form-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .submit-button {
+      background: var(--color-accent);
+      color: var(--color-white);
+      padding: 0.75rem 2rem;
+      border-radius: 25px;
+      font-weight: 700;
+      box-shadow: var(--shadow-sm);
+    }
+    .submit-button:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .cancel-button {
+      background: transparent;
+      color: var(--color-dark-gray);
+      border: 1px solid rgba(0,0,0,0.18);
+      padding: 0.75rem 2rem;
+      border-radius: 25px;
+      font-weight: 700;
+    }
+    .cancel-button:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+
+    /* Hero */
+    .hero {
+      padding: var(--space-xxl) 0;
+      background: linear-gradient(135deg, var(--color-primary), #001f3d);
+      color: var(--color-white);
+    }
+    .hero-subtitle { color: rgba(255,255,255,0.86); max-width: 58ch; }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: var(--space-md); }
+    .hero-search {
+      margin-top: var(--space-md);
+      max-width: 520px;
+    }
+    .hero-search input[type="search"] {
+      background: rgba(255,255,255,0.96);
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    /* Tabla / code blocks */
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: var(--border-radius);
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+    .table th, .table td {
+      padding: 0.8rem 0.9rem;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      vertical-align: top;
+    }
+    .table th {
+      text-align: left;
+      background: rgba(0, 51, 102, 0.06);
+      color: var(--color-primary);
+      font-weight: 900;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .table tr:last-child td { border-bottom: none; }
+
+    pre {
+      background: #0b1220;
+      color: #e7e7e7;
+      padding: 1rem;
+      border-radius: var(--border-radius);
+      overflow: auto;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .callout {
+      background: var(--color-ice-gray);
+      border-left: 4px solid var(--color-accent);
+      padding: 1rem 1.25rem;
+      border-radius: var(--border-radius);
+    }
+
+    /* Paleta visual */
+    .swatches { display: grid; gap: 1rem; }
+    .swatch {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 1rem;
+      align-items: center;
+      padding: 1rem;
+      border-radius: var(--border-radius);
+      border: 1px solid rgba(0,0,0,0.08);
+      background: var(--color-white);
+      box-shadow: var(--shadow-sm);
+    }
+    .swatch-color {
+      height: 54px;
+      border-radius: 10px;
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+    .swatch-meta { display: grid; gap: 0.2rem; }
+
+    /* TOC */
+    .toc {
+      display: grid;
+      gap: 0.5rem;
+      padding: 1.25rem;
+      border-radius: var(--border-radius);
+      background: var(--color-white);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .toc a { text-decoration: none; color: var(--color-primary); font-weight: 700; }
+    .toc a:hover { color: var(--color-accent); }
+
+    /* Util */
+    .muted { color: var(--color-medium-gray); }
+    .hr { height: 1px; background: rgba(0,0,0,0.08); border: 0; margin: var(--space-lg) 0; }
+    .badge {
+      display: inline-flex;
+      border-radius: 15px;
+      padding: 0.25rem 0.75rem;
+      background: rgba(233, 30, 99, 0.10);
+      color: var(--color-accent);
+      font-weight: 900;
+      font-size: 0.9rem;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+
+    /* PDF: ocultar UI extra */
+    .no-print { }
+    @media print {
+      .no-print { display: none !important; }
+      .header { position: static; box-shadow: none; }
+      a { text-decoration: none; }
+      section { padding: 1.25rem 0; }
+      .hero { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .swatch-color { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      pre { white-space: pre-wrap; word-wrap: break-word; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header no-print">
+    <div class="container">
+      <div class="header-content">
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+
+        <div class="logo">
+          <span class="logo-text">PROYECTO Económicas</span>
+        </div>
+
+        <nav class="nav" id="nav">
+          <a class="nav-link" href="#design-system">Design System</a>
+          <a class="nav-link" href="#componentes">Componentes</a>
+          <a class="nav-link" href="#patrones">Patrones</a>
+          <button class="btn-login" id="downloadPdfBtn" type="button">Descargar PDF</button>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contenido para exportar -->
+  <main id="pdfContent">
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <div class="container">
+        <div class="hero-content">
+          <div class="meta">Style Guide & Design System</div>
+          <h1>PROYECTO Económicas</h1>
+          <p class="hero-subtitle">
+            Guía unificada de colores, tipografías, espaciado, componentes y patrones de diseño para mantener consistencia visual y de interacción.
+          </p>
+
+          <div class="hero-actions no-print">
+            <a class="cta-button" href="#design-system">Ir al Design System</a>
+            <a class="cta-button" href="#componentes">Ver Componentes</a>
+          </div>
+
+          <div class="hero-search no-print">
+            <input type="search" placeholder="Buscar en la guía (Ctrl/Cmd + F)..." aria-label="Buscar" />
+          </div>
+
+          <p class="muted" style="margin-top: var(--space-md);">
+            Última actualización: <strong>Enero 2024</strong> · Versión: <strong>1.0</strong> · Mantenido por: <strong>PROYECTO Económicas</strong>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOC -->
+    <section class="alt">
+      <div class="container">
+        <h2>📋 Tabla de Contenidos</h2>
+        <div class="toc">
+          <a href="#design-system">1. Design System</a>
+          <a href="#colores">— Colores</a>
+          <a href="#tipografia">— Tipografía</a>
+          <a href="#espaciado">— Espaciado</a>
+          <a href="#sombras">— Sombras</a>
+          <a href="#bordes">— Bordes</a>
+          <a href="#componentes">2. Componentes</a>
+          <a href="#header">— Header</a>
+          <a href="#botones">— Botones</a>
+          <a href="#cards">— Cards</a>
+          <a href="#formularios">— Formularios</a>
+          <a href="#hero-sections">— Hero Sections</a>
+          <a href="#patrones">3. Patrones de Diseño</a>
+          <a href="#responsive-design">— Responsive Design</a>
+          <a href="#animaciones">— Animaciones</a>
+          <a href="#iconos">— Iconos &amp; SVG</a>
+          <a href="#estados">— Estados</a>
+          <a href="#guias-uso">🎯 Guías de Uso</a>
+          <a href="#ejemplos">📱 Ejemplos de Implementación</a>
+          <a href="#variables-css">🔧 Variables CSS Disponibles</a>
+          <a href="#recursos">📚 Recursos Adicionales</a>
+          <a href="#notas">📝 Notas de Implementación</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Design System -->
+    <section id="design-system">
+      <div class="container">
+        <h2>🎨 Design System</h2>
+
+        <hr class="hr" />
+
+        <div id="colores"></div>
+        <h3>Colores <span class="badge">Tokens</span></h3>
+
+        <p>Colores principales y su uso recomendado.</p>
+
+        <table class="table" aria-label="Colores principales">
+          <thead>
+            <tr>
+              <th>Color</th>
+              <th>Variable CSS</th>
+              <th>Hex</th>
+              <th>Uso</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Primary</strong></td>
+              <td><code>--color-primary</code></td>
+              <td><code>#003366</code></td>
+              <td>Color principal de marca, títulos, elementos destacados</td>
+            </tr>
+            <tr>
+              <td><strong>Accent</strong></td>
+              <td><code>--color-accent</code></td>
+              <td><code>#E91E63</code></td>
+              <td>Botones principales, enlaces hover, elementos de acción</td>
+            </tr>
+            <tr>
+              <td><strong>White</strong></td>
+              <td><code>--color-white</code></td>
+              <td><code>#FFFFFF</code></td>
+              <td>Fondos principales, texto sobre fondos oscuros</td>
+            </tr>
+            <tr>
+              <td><strong>Ice Gray</strong></td>
+              <td><code>--color-ice-gray</code></td>
+              <td><code>#F8F9FA</code></td>
+              <td>Fondos secundarios, secciones alternadas</td>
+            </tr>
+            <tr>
+              <td><strong>Dark Gray</strong></td>
+              <td><code>--color-dark-gray</code></td>
+              <td><code>#333333</code></td>
+              <td>Texto principal, contenido</td>
+            </tr>
+            <tr>
+              <td><strong>Medium Gray</strong></td>
+              <td><code>--color-medium-gray</code></td>
+              <td><code>#666666</code></td>
+              <td>Texto secundario, metadata</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="height: var(--space-lg)"></div>
+
+        <h3>Paleta de Colores Visual</h3>
+        <div class="swatches" role="list">
+          <div class="swatch" role="listitem">
+            <div class="swatch-color" style="background: var(--color-primary)"></div>
+            <div class="swatch-meta">
+              <div><strong>Primary</strong> <span class="muted">(#003366)</span></div>
+              <div class="muted"><code>--color-primary</code></div>
+            </div>
+          </div>
+
+          <div class="swatch" role="listitem">
+            <div class="swatch-color" style="background: var(--color-accent)"></div>
+            <div class="swatch-meta">
+              <div><strong>Accent</strong> <span class="muted">(#E91E63)</span></div>
+              <div class="muted"><code>--color-accent</code></div>
+            </div>
+          </div>
+
+          <div class="swatch" role="listitem">
+            <div class="swatch-color" style="background: var(--color-white)"></div>
+            <div class="swatch-meta">
+              <div><strong>White</strong> <span class="muted">(#FFFFFF)</span></div>
+              <div class="muted"><code>--color-white</code></div>
+            </div>
+          </div>
+
+          <div class="swatch" role="listitem">
+            <div class="swatch-color" style="background: var(--color-ice-gray)"></div>
+            <div class="swatch-meta">
+              <div><strong>Ice Gray</strong> <span class="muted">(#F8F9FA)</span></div>
+              <div class="muted"><code>--color-ice-gray</code></div>
+            </div>
+          </div>
+
+          <div class="swatch" role="listitem">
+            <div class="swatch-color" style="background: var(--color-dark-gray)"></div>
+            <div class="swatch-meta">
+              <div><strong>Dark Gray</strong> <span class="muted">(#333333)</span></div>
+              <div class="muted"><code>--color-dark-gray</code></div>
+            </div>
+          </div>
+
+          <div class="swatch" role="listitem">
+            <div class="swatch-color" style="background: var(--color-medium-gray)"></div>
+            <div class="swatch-meta">
+              <div><strong>Medium Gray</strong> <span class="muted">(#666666)</span></div>
+              <div class="muted"><code>--color-medium-gray</code></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="height: var(--space-lg)"></div>
+
+        <h3>Uso de Colores</h3>
+        <div class="callout">
+          <ul style="margin: 0; padding-left: 1.2rem;">
+            <li><strong>Primary</strong>: logo, títulos principales, navegación y elementos de marca</li>
+            <li><strong>Accent</strong>: botones de acción, enlaces interactivos, bordes destacados y CTAs</li>
+            <li><strong>White</strong>: fondo principal de la página y contenido</li>
+            <li><strong>Ice Gray</strong>: fondos de secciones alternadas, inputs, cards secundarias</li>
+            <li><strong>Dark Gray</strong>: texto del cuerpo principal</li>
+            <li><strong>Medium Gray</strong>: texto secundario, fechas, metadata</li>
+          </ul>
+        </div>
+
+        <hr class="hr" />
+
+        <div id="tipografia"></div>
+        <h3>Tipografía</h3>
+
+        <h3 style="margin-top: var(--space-md);">Familias de Fuentes</h3>
+        <table class="table" aria-label="Familias tipográficas">
+          <thead>
+            <tr>
+              <th>Familia</th>
+              <th>Uso</th>
+              <th>Peso</th>
+              <th>Tamaños</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Montserrat / Roboto Condensed</strong></td>
+              <td>Títulos, Headings, Logo</td>
+              <td>700, 900</td>
+              <td>1.5rem - 3rem</td>
+            </tr>
+            <tr>
+              <td><strong>Open Sans / Lato</strong></td>
+              <td>Cuerpo de texto, contenido</td>
+              <td>400, 600</td>
+              <td>0.95rem - 1.1rem</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 style="margin-top: var(--space-md);">Jerarquía Tipográfica</h3>
+        <pre><code>/* Logo / Brand */
+.logo-text {
+    font-family: 'Montserrat', 'Roboto Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.5rem;
+}
+
+/* Heading 1 - Hero Titles */
+h1 {
+    font-family: 'Montserrat', 'Roboto Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 3rem;
+    line-height: 1.2;
+}
+
+/* Heading 2 - Section Titles */
+h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 1.3;
+}
+
+/* Heading 3 - Subsection Titles */
+h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 1.4;
+}
+
+/* Body Text */
+body, p {
+    font-family: 'Open Sans', 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Navigation Links */
+.nav-link {
+    font-family: 'Open Sans', 'Lato', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+/* Small Text / Metadata */
+small, .meta {
+    font-family: 'Open Sans', 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 0.9rem;
+}</code></pre>
+
+        <h3>Responsive Typography</h3>
+        <table class="table" aria-label="Responsive typography">
+          <thead>
+            <tr><th>Breakpoint</th><th>H1</th><th>H2</th><th>H3</th><th>Body</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Desktop (&gt;768px)</td><td>3rem</td><td>2rem</td><td>1.5rem</td><td>1rem</td></tr>
+            <tr><td>Tablet (768px)</td><td>2.5rem</td><td>1.75rem</td><td>1.25rem</td><td>0.95rem</td></tr>
+            <tr><td>Mobile (&lt;768px)</td><td>2rem</td><td>1.6rem</td><td>1.2rem</td><td>0.9rem</td></tr>
+          </tbody>
+        </table>
+
+        <hr class="hr" />
+
+        <div id="espaciado"></div>
+        <h3>Espaciado</h3>
+        <p>El sistema utiliza un espaciado basado en múltiplos de <strong>0.5rem</strong> (8px).</p>
+
+        <table class="table" aria-label="Sistema de espaciado">
+          <thead>
+            <tr><th>Valor</th><th>Rem</th><th>Pixels</th><th>Uso</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>xs</td><td>0.5rem</td><td>8px</td><td>Espaciado mínimo entre elementos relacionados</td></tr>
+            <tr><td>sm</td><td>1rem</td><td>16px</td><td>Padding interno de elementos pequeños</td></tr>
+            <tr><td>md</td><td>1.5rem</td><td>24px</td><td>Espaciado estándar entre elementos</td></tr>
+            <tr><td>lg</td><td>2rem</td><td>32px</td><td>Espaciado entre secciones</td></tr>
+            <tr><td>xl</td><td>3rem</td><td>48px</td><td>Espaciado entre secciones grandes</td></tr>
+            <tr><td>xxl</td><td>4rem</td><td>64px</td><td>Padding de secciones principales</td></tr>
+          </tbody>
+        </table>
+
+        <h3 style="margin-top: var(--space-md);">Ejemplos de Uso</h3>
+        <pre><code>/* Padding de contenedores */
+.container {
+    padding: 0 1.25rem; /* 20px */
+}
+
+/* Espaciado entre elementos de navegación */
+.nav {
+    gap: 2rem; /* 32px */
+}
+
+/* Padding de secciones */
+section {
+    padding: 4rem 0; /* 64px vertical */
+}
+
+/* Margin entre párrafos */
+p {
+    margin-bottom: 1.5rem; /* 24px */
+}</code></pre>
+
+        <hr class="hr" />
+
+        <div id="sombras"></div>
+        <h3>Sombras</h3>
+        <table class="table" aria-label="Sombras">
+          <thead>
+            <tr><th>Variable</th><th>Valor</th><th>Uso</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>--shadow-sm</code></td><td><code>0 2px 4px rgba(0, 0, 0, 0.1)</code></td><td>Elementos elevados ligeramente (cards, inputs)</td></tr>
+            <tr><td><code>--shadow-md</code></td><td><code>0 4px 6px rgba(0, 0, 0, 0.1)</code></td><td>Elementos con elevación media (botones hover, modales)</td></tr>
+            <tr><td><code>--shadow-lg</code></td><td><code>0 10px 25px rgba(0, 0, 0, 0.15)</code></td><td>Elementos con elevación alta (hero sections, overlays)</td></tr>
+          </tbody>
+        </table>
+
+        <hr class="hr" />
+
+        <div id="bordes"></div>
+        <h3>Bordes</h3>
+        <table class="table" aria-label="Bordes">
+          <thead>
+            <tr><th>Propiedad</th><th>Valor</th><th>Uso</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>border-radius</code></td><td><code>8px</code> (<code>--border-radius</code>)</td><td>Bordes redondeados estándar</td></tr>
+            <tr><td><code>border-radius</code></td><td><code>15px</code></td><td>Badges, tags, elementos pequeños</td></tr>
+            <tr><td><code>border-radius</code></td><td><code>25px</code></td><td>Botones, pills</td></tr>
+            <tr><td><code>border-radius</code></td><td><code>50%</code></td><td>Botones circulares, avatares</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Componentes -->
+    <section id="componentes" class="alt">
+      <div class="container">
+        <h2>🧩 Componentes</h2>
+
+        <hr class="hr" />
+
+        <div id="header"></div>
+        <h3>Header</h3>
+
+        <h3 style="margin-top: var(--space-md);">Estructura</h3>
+        <pre><code>&lt;header class="header"&gt;
+  &lt;div class="container"&gt;
+    &lt;div class="header-content"&gt;
+      &lt;button class="menu-toggle"&gt;...&lt;/button&gt;
+      &lt;div class="logo"&gt;
+        &lt;span class="logo-text"&gt;PROYECTO Económicas&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;nav class="nav"&gt;
+        &lt;a href="#" class="nav-link"&gt;Enlace&lt;/a&gt;
+        &lt;a href="#" class="btn-login"&gt;Ingresar&lt;/a&gt;
+      &lt;/nav&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+
+        <h3>Características</h3>
+        <ul>
+          <li><strong>Sticky</strong>: se mantiene fijo en la parte superior al hacer scroll</li>
+          <li><strong>Responsive</strong>: menú hamburguesa en móviles</li>
+          <li><strong>Borde inferior</strong>: línea de 2px en color accent</li>
+          <li><strong>Sombra</strong>: <code>--shadow-sm</code></li>
+        </ul>
+
+        <h3>Estados</h3>
+        <ul>
+          <li><strong>Default</strong>: logo centrado, navegación a la derecha</li>
+          <li><strong>Mobile</strong>: menú hamburguesa a la izquierda, logo centrado</li>
+          <li><strong>Active</strong>: menú desplegado con overlay</li>
+        </ul>
+
+        <hr class="hr" />
+
+        <div id="botones"></div>
+        <h3>Botones</h3>
+
+        <div class="grid" style="align-items: start;">
+          <div class="card">
+            <h3>Botón Principal (CTA)</h3>
+            <p class="muted">Fondo accent, texto blanco, padding <code>1rem 2rem</code>, radius <code>25px</code>, hover con transformación + sombra.</p>
+            <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+              <button class="cta-button" type="button">TEXTO DEL BOTÓN</button>
+              <a class="tool-link" href="#botones">Ir a la sección →</a>
+            </div>
+            <div style="height: var(--space-sm)"></div>
+            <pre><code>&lt;button class="cta-button"&gt;TEXTO DEL BOTÓN&lt;/button&gt;</code></pre>
+          </div>
+
+          <div class="card">
+            <h3>Botón Secundario</h3>
+            <p class="muted">Similar al principal pero más pequeño: padding <code>0.6rem 1.5rem</code>.</p>
+            <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+              <a href="#" class="btn-login">Ingresar</a>
+            </div>
+            <div style="height: var(--space-sm)"></div>
+            <pre><code>&lt;a href="#" class="btn-login"&gt;Ingresar&lt;/a&gt;</code></pre>
+          </div>
+
+          <div class="card">
+            <h3>Botón de Enlace</h3>
+            <p class="muted">Texto accent, flecha animada en hover, sin fondo.</p>
+            <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+              <a href="#" class="tool-link">Ir a la sección →</a>
+            </div>
+            <div style="height: var(--space-sm)"></div>
+            <pre><code>&lt;a href="#" class="tool-link"&gt;Ir a la sección →&lt;/a&gt;</code></pre>
+          </div>
+        </div>
+
+        <hr class="hr" />
+
+        <div id="cards"></div>
+        <h3>Cards</h3>
+
+        <div class="grid">
+          <div class="tool-card">
+            <div class="tool-icon">⧉</div>
+            <h3 class="tool-title">Título</h3>
+            <p class="tool-description">Descripción</p>
+            <a href="#" class="tool-link">Enlace →</a>
+            <div style="height: var(--space-sm)"></div>
+            <pre><code>&lt;div class="tool-card"&gt;
+  &lt;div class="tool-icon"&gt;...&lt;/div&gt;
+  &lt;h3 class="tool-title"&gt;Título&lt;/h3&gt;
+  &lt;p class="tool-description"&gt;Descripción&lt;/p&gt;
+  &lt;a href="#" class="tool-link"&gt;Enlace →&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+
+          <article class="blog-card">
+            <div class="blog-category">Categoría</div>
+            <h3 class="blog-title">Título del artículo</h3>
+            <p class="blog-excerpt">Resumen...</p>
+            <div class="blog-meta">Fecha</div>
+            <div style="height: var(--space-sm)"></div>
+            <pre><code>&lt;article class="blog-card"&gt;
+  &lt;div class="blog-category"&gt;Categoría&lt;/div&gt;
+  &lt;h3 class="blog-title"&gt;Título del artículo&lt;/h3&gt;
+  &lt;p class="blog-excerpt"&gt;Resumen...&lt;/p&gt;
+  &lt;div class="blog-meta"&gt;Fecha&lt;/div&gt;
+&lt;/article&gt;</code></pre>
+          </article>
+
+          <div class="card">
+            <h3>Características</h3>
+            <ul style="margin: 0; padding-left: 1.2rem;">
+              <li>Fondo: blanco</li>
+              <li>Sombra: <code>--shadow-sm</code></li>
+              <li>Radius: <code>--border-radius</code> (8px)</li>
+              <li>Padding: <code>2rem</code></li>
+              <li>Hover: elevación con <code>--shadow-md</code></li>
+            </ul>
+          </div>
+        </div>
+
+        <hr class="hr" />
+
+        <div id="formularios"></div>
+        <h3>Formularios</h3>
+
+        <div class="grid" style="align-items:start;">
+          <div class="card">
+            <h3>Input de Texto</h3>
+            <div class="form-group">
+              <label for="nombre">Nombre y Apellido</label>
+              <input type="text" id="nombre" name="nombre" required placeholder="Ej: Juan Pérez" />
+            </div>
+            <pre><code>&lt;div class="form-group"&gt;
+  &lt;label for="nombre"&gt;Nombre y Apellido&lt;/label&gt;
+  &lt;input type="text" id="nombre" name="nombre" required&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+
+          <div class="card">
+            <h3>Textarea</h3>
+            <div class="form-group">
+              <label for="mensaje">Mensaje</label>
+              <textarea id="mensaje" name="mensaje" rows="5" required placeholder="Escribí tu mensaje..."></textarea>
+            </div>
+            <pre><code>&lt;div class="form-group"&gt;
+  &lt;label for="mensaje"&gt;Mensaje&lt;/label&gt;
+  &lt;textarea id="mensaje" name="mensaje" rows="5" required&gt;&lt;/textarea&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+
+          <div class="card">
+            <h3>Acciones</h3>
+            <div class="form-actions">
+              <button type="button" class="submit-button">ENVIAR</button>
+              <button type="button" class="cancel-button">CANCELAR</button>
+            </div>
+            <div style="height: var(--space-sm)"></div>
+            <pre><code>&lt;button type="submit" class="submit-button"&gt;ENVIAR&lt;/button&gt;</code></pre>
+          </div>
+        </div>
+
+        <hr class="hr" />
+
+        <div id="hero-sections"></div>
+        <h3>Hero Sections</h3>
+
+        <div class="grid" style="align-items: start;">
+          <div class="card">
+            <h3>Hero Principal</h3>
+            <pre><code>&lt;section class="hero"&gt;
+  &lt;div class="container"&gt;
+    &lt;div class="hero-content"&gt;
+      &lt;h1 class="hero-title"&gt;Título Principal&lt;/h1&gt;
+      &lt;p class="hero-subtitle"&gt;Subtítulo descriptivo&lt;/p&gt;
+      &lt;div class="hero-search"&gt;
+        &lt;input type="search" placeholder="Buscar..."&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+            <ul>
+              <li>Fondo: gradiente de <code>--color-primary</code> a tono más oscuro</li>
+              <li>Texto: blanco</li>
+              <li>Padding: <code>4rem</code> desktop / <code>3rem</code> mobile</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Hero de Blog Post</h3>
+            <pre><code>&lt;section class="post-hero"&gt;
+  &lt;div class="post-hero-content"&gt;
+    &lt;div class="post-meta"&gt;
+      &lt;span&gt;Fecha&lt;/span&gt;
+      &lt;span class="post-category"&gt;Categoría&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;h1 class="post-title"&gt;Título del Post&lt;/h1&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+          </div>
+
+          <div class="card">
+            <h3>Notas</h3>
+            <ul style="margin:0; padding-left:1.2rem;">
+              <li>Aplicar <code>--shadow-lg</code> a overlays y hero con alto relieve si es necesario</li>
+              <li>Mantener contraste (WCAG AA) para texto en fondos oscuros</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Patrones -->
+    <section id="patrones">
+      <div class="container">
+        <h2>📐 Patrones de Diseño</h2>
+
+        <hr class="hr" />
+
+        <div id="responsive-design"></div>
+        <h3>Responsive Design</h3>
+
+        <h3 style="margin-top: var(--space-md);">Breakpoints</h3>
+        <table class="table" aria-label="Breakpoints">
+          <thead>
+            <tr><th>Breakpoint</th><th>Ancho</th><th>Uso</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Mobile</td><td>&lt; 768px</td><td>Diseño de una columna, menú hamburguesa</td></tr>
+            <tr><td>Tablet</td><td>768px - 1024px</td><td>Diseño adaptativo, 2 columnas</td></tr>
+            <tr><td>Desktop</td><td>&gt; 1024px</td><td>Diseño completo, múltiples columnas</td></tr>
+          </tbody>
+        </table>
+
+        <h3 style="margin-top: var(--space-md);">Grid System</h3>
+        <pre><code>/* Desktop */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}</code></pre>
+
+        <hr class="hr" />
+
+        <div id="animaciones"></div>
+        <h3>Animaciones</h3>
+
+        <h3 style="margin-top: var(--space-md);">Transiciones Estándar</h3>
+        <pre><code>/* Transición suave para todos los elementos interactivos */
+transition: all 0.3s ease;
+
+/* Transición específica para transformaciones */
+transition: transform 0.3s ease;
+
+/* Transición para colores */
+transition: color 0.3s ease;</code></pre>
+
+        <h3>Efectos Hover Comunes</h3>
+        <ul>
+          <li><strong>Botones</strong>: <code>transform: translateY(-2px)</code> + sombra aumentada</li>
+          <li><strong>Enlaces</strong>: cambio de color a accent</li>
+          <li><strong>Cards</strong>: elevación con sombra aumentada</li>
+          <li><strong>Imágenes</strong>: ligeramente más opacas</li>
+        </ul>
+
+        <hr class="hr" />
+
+        <div id="estados"></div>
+        <h3>Estados</h3>
+
+        <h3 style="margin-top: var(--space-md);">Estados de Interacción</h3>
+        <table class="table" aria-label="Estados de interacción">
+          <thead>
+            <tr><th>Estado</th><th>Estilo</th><th>Uso</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Default</strong></td><td>Color normal, sin transformación</td><td>Estado inicial</td></tr>
+            <tr><td><strong>Hover</strong></td><td>Color accent, transformación, sombra</td><td>Al pasar el mouse</td></tr>
+            <tr><td><strong>Active</strong></td><td>Transformación reducida</td><td>Al hacer clic</td></tr>
+            <tr><td><strong>Focus</strong></td><td>Borde accent, outline</td><td>En elementos de formulario</td></tr>
+            <tr><td><strong>Disabled</strong></td><td>Opacidad 0.5, cursor not-allowed</td><td>Elementos deshabilitados</td></tr>
+          </tbody>
+        </table>
+
+        <h3 style="margin-top: var(--space-md);">Estados de Formularios</h3>
+        <ul>
+          <li><strong>Válido</strong>: borde verde (opcional)</li>
+          <li><strong>Inválido</strong>: borde rojo, mensaje de error</li>
+          <li><strong>Focus</strong>: borde accent, sombra</li>
+        </ul>
+
+        <hr class="hr" />
+
+        <div id="guias-uso"></div>
+        <h2>🎯 Guías de Uso</h2>
+
+        <h3>Cuándo Usar Cada Color</h3>
+        <ul>
+          <li><strong>Primary (#003366)</strong>: logo y marca, títulos principales, navegación, elementos de marca</li>
+          <li><strong>Accent (#E91E63)</strong>: botones de acción, enlaces interactivos, CTAs, elementos que requieren atención</li>
+          <li><strong>Grises</strong>: texto secundario, fondos sutiles, separadores, metadata</li>
+        </ul>
+
+        <h3>Cuándo Usar Cada Tipo de Botón</h3>
+        <ul>
+          <li><strong>Botón Principal (CTA)</strong>: acciones principales, envío de formularios, navegación importante</li>
+          <li><strong>Botón Secundario</strong>: acciones secundarias, cancelar, opciones alternativas</li>
+          <li><strong>Botón de Enlace</strong>: navegación, "leer más", enlaces contextuales</li>
+        </ul>
+
+        <h3>Espaciado Consistente</h3>
+        <ul>
+          <li>Usar siempre múltiplos de 0.5rem (8px)</li>
+          <li>Mantener espaciado consistente entre elementos similares</li>
+          <li>Usar padding interno para contenido</li>
+          <li>Usar margin para separar secciones</li>
+        </ul>
+
+        <hr class="hr" />
+
+        <div id="ejemplos"></div>
+        <h2>📱 Ejemplos de Implementación</h2>
+
+        <h3>Ejemplo: Card de Herramienta</h3>
+        <pre><code>&lt;div class="tool-card"&gt;
+  &lt;div class="tool-icon"&gt;
+    &lt;svg&gt;...&lt;/svg&gt;
+  &lt;/div&gt;
+  &lt;h3 class="tool-title"&gt;BiblioEconómicas&lt;/h3&gt;
+  &lt;p class="tool-description"&gt;
+    Accedé a apuntes, resúmenes y material de estudio
+  &lt;/p&gt;
+  &lt;a href="biblioeconomicas.html" class="tool-link"&gt;
+    Ir a la Biblio →
+  &lt;/a&gt;
+&lt;/div&gt;</code></pre>
+
+        <h3>Ejemplo: Formulario de Contacto</h3>
+        <pre><code>&lt;form class="contact-form" id="contact-form"&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="nombre"&gt;Nombre y Apellido&lt;/label&gt;
+    &lt;input type="text" id="nombre" name="nombre" required&gt;
+  &lt;/div&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="mail"&gt;Mail&lt;/label&gt;
+    &lt;input type="email" id="mail" name="mail" required&gt;
+  &lt;/div&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="asunto"&gt;Asunto&lt;/label&gt;
+    &lt;input type="text" id="asunto" name="asunto" required&gt;
+  &lt;/div&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="mensaje"&gt;Mensaje&lt;/label&gt;
+    &lt;textarea id="mensaje" name="mensaje" rows="5" required&gt;&lt;/textarea&gt;
+  &lt;/div&gt;
+  &lt;div class="form-actions"&gt;
+    &lt;button type="submit" class="submit-button"&gt;ENVIAR&lt;/button&gt;
+    &lt;button type="button" class="cancel-button"&gt;CANCELAR&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+
+        <hr class="hr" />
+
+        <div id="variables-css"></div>
+        <h2>🔧 Variables CSS Disponibles</h2>
+        <pre><code>:root {
+    /* Colores */
+    --color-white: #FFFFFF;
+    --color-ice-gray: #F8F9FA;
+    --color-primary: #003366;
+    --color-accent: #E91E63;
+    --color-dark-gray: #333333;
+    --color-medium-gray: #666666;
+    
+    /* Bordes */
+    --border-radius: 8px;
+    
+    /* Sombras */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+}</code></pre>
+
+        <hr class="hr" />
+
+        <div id="recursos"></div>
+        <h2>📚 Recursos Adicionales</h2>
+
+        <h3>Fuentes Google Fonts</h3>
+        <ul>
+          <li><strong>Montserrat</strong>: https://fonts.google.com/specimen/Montserrat</li>
+          <li><strong>Roboto Condensed</strong>: https://fonts.google.com/specimen/Roboto+Condensed</li>
+          <li><strong>Open Sans</strong>: https://fonts.google.com/specimen/Open+Sans</li>
+          <li><strong>Lato</strong>: https://fonts.google.com/specimen/Lato</li>
+        </ul>
+
+        <div id="iconos"></div>
+        <h3>Iconos &amp; SVG</h3>
+        <p>Todos los iconos de la marca se implementan como <strong>SVG inline</strong>, heredando el color del texto mediante <code>fill="currentColor"</code> o <code>stroke="currentColor"</code>. Tamaño base recomendado: <strong>18–20px</strong>.</p>
+
+        <table class="table" aria-label="Iconos principales">
+          <thead>
+            <tr>
+              <th>Icono</th>
+              <th>Uso</th>
+              <th>Tamaño base</th>
+              <th>Color</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Flecha atrás</strong></td>
+              <td>Volver al blog u otras vistas anteriores</td>
+              <td>20px</td>
+              <td><code>stroke="currentColor"</code></td>
+            </tr>
+            <tr>
+              <td><strong>X (antes Twitter)</strong></td>
+              <td>Compartir en X en posts del blog</td>
+              <td>18–20px</td>
+              <td><code>fill="currentColor"</code></td>
+            </tr>
+            <tr>
+              <td><strong>Facebook</strong></td>
+              <td>Compartir en Facebook en posts del blog</td>
+              <td>18–20px</td>
+              <td><code>fill="currentColor"</code></td>
+            </tr>
+            <tr>
+              <td><strong>WhatsApp</strong></td>
+              <td>Compartir por WhatsApp en posts del blog</td>
+              <td>18–20px</td>
+              <td><code>fill="currentColor"</code></td>
+            </tr>
+            <tr>
+              <td><strong>Email</strong></td>
+              <td>Compartir por email en posts del blog</td>
+              <td>18–20px</td>
+              <td><code>stroke="currentColor"</code></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 style="margin-top: var(--space-md);">Iconos de navegación</h3>
+        <pre><code>&lt;a href="../blog.html" class="back-link"&gt;
+  &lt;svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+       stroke="currentColor" stroke-width="2" aria-hidden="true"&gt;
+    &lt;polyline points="15 18 9 12 15 6"&gt;&lt;/polyline&gt;
+  &lt;/svg&gt;
+  Volver al Blog
+&lt;/a&gt;</code></pre>
+
+        <h3>Iconos de compartir (redes y correo)</h3>
+        <pre><code>&lt;!-- X --&gt;
+&lt;svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"&gt;
+  &lt;path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/&gt;
+&lt;/svg&gt;
+
+&lt;!-- Facebook --&gt;
+&lt;svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"&gt;
+  &lt;path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"&gt;&lt;/path&gt;
+&lt;/svg&gt;
+
+&lt;!-- WhatsApp --&gt;
+&lt;svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"&gt;
+  &lt;path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"&gt;&lt;/path&gt;
+&lt;/svg&gt;
+
+&lt;!-- Email --&gt;
+&lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+     stroke-width="2" aria-hidden="true"&gt;
+  &lt;path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"&gt;&lt;/path&gt;
+  &lt;polyline points="22,6 12,13 2,6"&gt;&lt;/polyline&gt;
+&lt;/svg&gt;</code></pre>
+
+        <h3>Iconos de herramientas (Home)</h3>
+        <p>Iconos usados en las cards de la grilla de herramientas de la portada.</p>
+
+        <div class="card" style="display:flex; gap:1rem; flex-wrap:wrap; align-items:center;">
+          <div class="tool-icon blue">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+          </div>
+
+          <div class="tool-icon magenta">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="20" x2="18" y2="10"></line>
+              <line x1="12" y1="20" x2="12" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+          </div>
+
+          <div class="tool-icon blue">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          </div>
+
+          <div class="tool-icon magenta">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2">
+              <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path>
+              <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path>
+              <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path>
+              <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path>
+            </svg>
+          </div>
+
+          <div class="tool-icon blue">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+          </div>
+
+          <div class="tool-icon blue">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              <path d="M8 7h8"></path>
+              <path d="M8 11h8"></path>
+            </svg>
+          </div>
+        </div>
+
+        <pre><code>&lt;!-- Calendario Académico --&gt;
+&lt;div class="tool-icon blue"&gt;
+  &lt;svg width="40" height="40" viewBox="0 0 24 24" fill="none"
+       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;
+    &lt;rect x="3" y="4" width="18" height="18" rx="2" ry="2"&gt;&lt;/rect&gt;
+    &lt;line x1="16" y1="2" x2="16" y2="6"&gt;&lt;/line&gt;
+    &lt;line x1="8" y1="2" x2="8" y2="6"&gt;&lt;/line&gt;
+    &lt;line x1="3" y1="10" x2="21" y2="10"&gt;&lt;/line&gt;
+  &lt;/svg&gt;
+&lt;/div&gt;
+
+&lt;!-- Simulador de Promedio --&gt;
+&lt;div class="tool-icon magenta"&gt;
+  &lt;svg width="40" height="40" viewBox="0 0 24 24" fill="none"
+       stroke="currentColor" stroke-width="2"&gt;
+    &lt;line x1="18" y1="20" x2="18" y2="10"&gt;&lt;/line&gt;
+    &lt;line x1="12" y1="20" x2="12" y2="4"&gt;&lt;/line&gt;
+    &lt;line x1="6" y1="20" x2="6" y2="14"&gt;&lt;/line&gt;
+  &lt;/svg&gt;
+&lt;/div&gt;
+
+&lt;!-- La Verdad de la Milanesa --&gt;
+&lt;div class="tool-icon blue"&gt;
+  &lt;svg width="40" height="40" viewBox="0 0 24 24" fill="none"
+       stroke="currentColor" stroke-width="2"&gt;
+    &lt;polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"&gt;&lt;/polygon&gt;
+  &lt;/svg&gt;
+&lt;/div&gt;
+
+&lt;!-- Guía de Supervivencia CBC --&gt;
+&lt;div class="tool-icon magenta"&gt;
+  &lt;svg width="40" height="40" viewBox="0 0 24 24" fill="none"
+       stroke="currentColor" stroke-width="2"&gt;
+    &lt;path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"&gt;&lt;/path&gt;
+    &lt;path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"&gt;&lt;/path&gt;
+    &lt;path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"&gt;&lt;/path&gt;
+    &lt;path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"&gt;&lt;/path&gt;
+  &lt;/svg&gt;
+&lt;/div&gt;
+
+&lt;!-- Respuestas Flash (FAQ) --&gt;
+&lt;div class="tool-icon blue"&gt;
+  &lt;svg width="40" height="40" viewBox="0 0 24 24" fill="none"
+       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;
+    &lt;circle cx="12" cy="12" r="10"&gt;&lt;/circle&gt;
+    &lt;path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"&gt;&lt;/path&gt;
+    &lt;line x1="12" y1="17" x2="12.01" y2="17"&gt;&lt;/line&gt;
+  &lt;/svg&gt;
+&lt;/div&gt;
+
+&lt;!-- BiblioEconómicas --&gt;
+&lt;div class="tool-icon blue"&gt;
+  &lt;svg width="40" height="40" viewBox="0 0 24 24" fill="none"
+       stroke="currentColor" stroke-width="2"&gt;
+    &lt;path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"&gt;&lt;/path&gt;
+    &lt;path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"&gt;&lt;/path&gt;
+    &lt;path d="M8 7h8"&gt;&lt;/path&gt;
+    &lt;path d="M8 11h8"&gt;&lt;/path&gt;
+  &lt;/svg&gt;
+&lt;/div&gt;</code></pre>
+
+        <h3>Logo como imagen</h3>
+        <p>En el sitio principal, el logo se usa como imagen PNG optimizada. Mantener una altura visual entre <strong>40–48px</strong> según breakpoint.</p>
+        <pre><code>&lt;div class="logo"&gt;
+  &lt;img src="images/logo.png"
+       alt="PROYECTO Económicas"
+       class="logo-img"&gt;
+&lt;/div&gt;</code></pre>
+
+        <hr class="hr" />
+
+        <div id="notas"></div>
+        <h2>📝 Notas de Implementación</h2>
+        <ol>
+          <li>Siempre usar variables CSS para colores, espaciados y sombras</li>
+          <li>Mantener consistencia en el uso de tipografías según la jerarquía</li>
+          <li>Probar en múltiples dispositivos antes de publicar</li>
+          <li>Usar transiciones suaves (0.3s ease) para todas las interacciones</li>
+          <li>Asegurar contraste adecuado para accesibilidad (WCAG AA mínimo)</li>
+        </ol>
+
+        <div class="callout">
+          <strong>PDF:</strong> el botón "Descargar PDF" genera un archivo con el contenido del <code>&lt;main id="pdfContent"&gt;</code>.
+          Si querés exportar también el header, movelo dentro de <code>pdfContent</code>.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Botón flotante opcional (móvil) -->
+  <div class="no-print" style="position: fixed; right: 16px; bottom: 16px; z-index: 60;">
+    <button class="cta-button" type="button" id="downloadPdfBtnFloating">Descargar PDF</button>
+  </div>
+
+  <!-- html2pdf (usa html2canvas + jsPDF) -->
+  <script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js"></script>
+
+  <script>
+    // Menú mobile
+    const menuToggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('nav');
+    if (menuToggle) {
+      menuToggle.addEventListener('click', () => {
+        nav.classList.toggle('is-open');
+      });
+    }
+
+    // PDF download
+    function downloadPdf() {
+      const element = document.getElementById('pdfContent');
+
+      const opt = {
+        margin:       [10, 10, 10, 10], // mm
+        filename:     'Style-Guide-PROYECTO-Economicas.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2, useCORS: true },
+        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
+        pagebreak:    { mode: ['css', 'legacy'] }
+      };
+
+      // Cierra el menú en mobile para evitar capturas raras
+      if (nav && nav.classList.contains('is-open')) nav.classList.remove('is-open');
+
+      html2pdf().set(opt).from(element).save();
+    }
+
+    document.getElementById('downloadPdfBtn')?.addEventListener('click', downloadPdf);
+    document.getElementById('downloadPdfBtnFloating')?.addEventListener('click', downloadPdf);
+  </script>
+</body>
+</html>
+

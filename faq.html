@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preguntas Frecuentes - PROYECTO Económicas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto+Condensed:wght@700&family=Open+Sans:wght@400;600&family=Lato:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .faq-hero {
+            background: linear-gradient(135deg, #003366 0%, #004080 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .faq-hero h1 {
+            font-family: 'Montserrat', 'Roboto Condensed', sans-serif;
+            font-weight: 900;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .faq-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .faq-section {
+            padding: 4rem 0;
+            background-color: var(--color-ice-gray);
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: var(--color-white);
+            border-radius: var(--border-radius);
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .faq-question {
+            padding: 1.5rem 2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--color-primary);
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: var(--color-ice-gray);
+        }
+
+        .faq-question svg {
+            transition: transform 0.3s ease;
+            color: var(--color-accent);
+        }
+
+        .faq-item.active .faq-question svg {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 1000px;
+        }
+
+        .faq-answer-content {
+            padding: 0 2rem 1.5rem;
+            color: var(--color-medium-gray);
+            line-height: 1.8;
+        }
+
+        .faq-answer-content ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .faq-answer-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .search-section {
+            background-color: var(--color-white);
+            padding: 3rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .faq-hero h1 {
+                font-size: 2rem;
+            }
+
+            .faq-question {
+                padding: 1.2rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .faq-answer-content {
+                padding: 0 1.5rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="logo">
+                    <a href="index.html" style="text-decoration: none;">
+                        <img src="images/logo.png" alt="PROYECTO Económicas" class="logo-img">
+                    </a>
+                </div>
+                <nav class="nav">
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">Académica <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu dropdown-menu-2col">
+                            <div class="dropdown-col">
+                                <a href="carreras.html" class="dropdown-item">Carreras</a>
+                                <a href="#" class="dropdown-item">Planes de estudio</a>
+                                <a href="#" class="dropdown-item">Modalidades de cursada</a>
+                            </div>
+                            <div class="dropdown-col">
+                                <a href="#" class="dropdown-item">Reglamento de cursada</a>
+                                <a href="#" class="dropdown-item">Becas</a>
+                                <a href="calendario-academico.html" class="dropdown-item">Calendario académico</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">Trámites <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu">
+                            <a href="inscripcion-materias.html" class="dropdown-item">Inscripción a materias</a>
+                            <a href="certificados.html" class="dropdown-item">Certificados</a>
+                            <a href="titulo-en-tramite.html" class="dropdown-item">Título en trámite</a>
+                            <a href="#" class="dropdown-item">Guía de trámites</a>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">Herramientas <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu dropdown-menu-cards">
+                            <a href="ranking.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">🧮</span>
+                                <span class="dropdown-card-text">Calculá tu ranking</span>
+                            </a>
+                            <a href="biblioeconomicas.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">📚</span>
+                                <span class="dropdown-card-text">Biblioeconómicas</span>
+                            </a>
+                            <a href="#" class="dropdown-card">
+                                <span class="dropdown-card-icon">💬</span>
+                                <span class="dropdown-card-text">Grupos de WhatsApp</span>
+                            </a>
+                            <a href="recomendaciones.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">📊</span>
+                                <span class="dropdown-card-text">Recomendaciones de materias</span>
+                            </a>
+                            <a href="blog.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">📝</span>
+                                <span class="dropdown-card-text">Blog</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">CBC <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu">
+                            <a href="cbc.html" class="dropdown-item">Guía CBC</a>
+                            <a href="#" class="dropdown-item">Inscripciones CBC</a>
+                            <a href="#" class="dropdown-item">Sedes CBC</a>
+                            <a href="#" class="dropdown-item">Grupos de WhatsApp</a>
+                        </div>
+                    </div>
+                    
+                    <a href="recomendaciones.html" class="nav-link">Recomendaciones</a>
+                    <a href="nosotros.html" class="nav-link">Nosotros</a>
+                    <a href="#login" class="btn-login">Ingresar</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="faq-hero">
+        <div class="container">
+            <h1>💡 Respuestas Flash</h1>
+            <p>Inscripciones, renuncia a cursada, certificado de alumno regular. Todo lo que necesitás saber.</p>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-container" style="max-width: 100%; margin-bottom: 2rem;">
+                <input type="text" class="search-input" placeholder="Busca tu pregunta..." id="faq-search">
+                <button class="search-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="faq-container">
+                <!-- FAQ 1 -->
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>¿Cómo me inscribo a las materias?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>La inscripción se realiza a través del sistema SIU Guaraní. Los pasos son:</p>
+                            <ul>
+                                <li>Ingresá a <strong>guarani.uba.ar</strong> con tu usuario y contraseña</li>
+                                <li>Seleccioná "Inscripción a Cursada"</li>
+                                <li>Elegí las materias y horarios disponibles</li>
+                                <li>Confirmá tu inscripción antes de la fecha límite</li>
+                            </ul>
+                            <p>Las fechas de inscripción suelen ser en febrero (primer cuatrimestre) y julio (segundo cuatrimestre).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>¿Cómo renuncio a una cursada?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Podés renunciar a una cursada hasta la fecha límite establecida (generalmente a mitad del cuatrimestre).</p>
+                            <ul>
+                                <li>Ingresá a SIU Guaraní</li>
+                                <li>Seleccioná "Renuncia a Cursada"</li>
+                                <li>Elegí la materia a la que querés renunciar</li>
+                                <li>Confirmá la renuncia</li>
+                            </ul>
+                            <p><strong>Importante:</strong> Si renunciás antes de la fecha límite, no perdés la materia y podés volver a cursarla más adelante.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>¿Cómo obtengo el certificado de alumno regular?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>El certificado de alumno regular se puede obtener de dos formas:</p>
+                            <ul>
+                                <li><strong>Online:</strong> A través de SIU Guaraní, en la sección "Certificados"</li>
+                                <li><strong>Presencial:</strong> En Bedelía de tu sede, presentando DNI</li>
+                            </ul>
+                            <p>El certificado es necesario para varios trámites como becas, trabajos, o cambios de carrera.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>¿Cuántas materias puedo cursar por cuatrimestre?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>No hay un límite estricto, pero se recomienda:</p>
+                            <ul>
+                                <li><strong>CBC:</strong> 3-4 materias por cuatrimestre es lo ideal</li>
+                                <li><strong>Facultad:</strong> 4-5 materias es un ritmo normal</li>
+                            </ul>
+                            <p>Todo depende de tu disponibilidad de tiempo y capacidad de estudio. Es mejor cursar menos materias y aprobarlas todas que cursar muchas y no aprobar ninguna.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>¿Qué pasa si no apruebo una materia?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Si no aprobás una materia:</p>
+                            <ul>
+                                <li>Podés volver a cursarla el siguiente cuatrimestre</li>
+                                <li>No hay límite de intentos</li>
+                                <li>La nota anterior no se promedia con la nueva</li>
+                            </ul>
+                            <p>Lo importante es no desanimarse. Muchos estudiantes recursan materias, es parte del proceso de aprendizaje.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 6 -->
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>¿Cómo funciona el sistema de promoción?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>El sistema de promoción varía según la cátedra, pero generalmente:</p>
+                            <ul>
+                                <li>Si aprobás los dos parciales con 7 o más, promocionás (no rendís final)</li>
+                                <li>Si aprobás los parciales con 4 o más, vas a final</li>
+                                <li>Si no aprobás los parciales, recursás la materia</li>
+                            </ul>
+                            <p>Cada cátedra tiene sus propias reglas, así que fijate en el programa de la materia.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Instagram</a>
+                    <a href="#" class="footer-link">WhatsApp</a>
+                    <a href="#" class="footer-link">Contacto</a>
+                </div>
+                <p class="footer-text">© 2024 PROYECTO Económicas. Todos los derechos reservados.</p>
+            </div>
+        </div>
+        <div class="footer-bar"></div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function toggleFaq(element) {
+            const faqItem = element.closest('.faq-item');
+            const isActive = faqItem.classList.contains('active');
+            
+            // Cerrar todas las FAQs
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Abrir la FAQ clickeada si no estaba activa
+            if (!isActive) {
+                faqItem.classList.add('active');
+            }
+        }
+
+        // Búsqueda en FAQs
+        document.getElementById('faq-search').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            document.querySelectorAll('.faq-item').forEach(item => {
+                const question = item.querySelector('.faq-question span').textContent.toLowerCase();
+                const answer = item.querySelector('.faq-answer-content').textContent.toLowerCase();
+                
+                if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+

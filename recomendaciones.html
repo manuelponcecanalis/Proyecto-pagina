@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recomendaciones - PROYECTO Económicas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto+Condensed:wght@700&family=Open+Sans:wght@400;600&family=Lato:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .recomendaciones-hero {
+            background: linear-gradient(135deg, #003366 0%, #004080 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .recomendaciones-hero h1 {
+            font-family: 'Montserrat', 'Roboto Condensed', sans-serif;
+            font-weight: 900;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .recomendaciones-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .search-section {
+            background-color: var(--color-white);
+            padding: 3rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .catedras-section {
+            padding: 4rem 0;
+            background-color: var(--color-ice-gray);
+        }
+
+        .catedras-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .catedra-card {
+            background-color: var(--color-white);
+            border: 1px solid #E0E0E0;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .catedra-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--color-accent);
+        }
+
+        .catedra-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            gap: 1rem;
+        }
+
+        .catedra-header > div:first-child {
+            flex: 1;
+        }
+
+        .catedra-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .rating {
+            display: flex;
+            gap: 0.3rem;
+            align-items: center;
+            flex-shrink: 0;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .rating-stars {
+            display: flex;
+            gap: 0.2rem;
+        }
+
+        .star {
+            color: #FFD700;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .star.empty {
+            color: #E0E0E0;
+        }
+
+        .rating-number {
+            margin-top: 0.3rem;
+            color: var(--color-medium-gray);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .profesor {
+            color: var(--color-medium-gray);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .opiniones {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #E0E0E0;
+        }
+
+        .opinion {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background-color: var(--color-ice-gray);
+            border-radius: var(--border-radius);
+        }
+
+        .opinion-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .opinion-author {
+            font-weight: 600;
+            color: var(--color-primary);
+            font-size: 0.9rem;
+        }
+
+        .opinion-date {
+            color: var(--color-medium-gray);
+            font-size: 0.85rem;
+        }
+
+        .opinion-text {
+            color: var(--color-dark-gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background-color: rgba(233, 30, 99, 0.1);
+            color: var(--color-accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .recomendaciones-hero h1 {
+                font-size: 2rem;
+            }
+
+            .catedras-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .catedra-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .rating {
+                flex-direction: row;
+                align-items: center;
+                margin-top: 0.5rem;
+            }
+
+            .rating-number {
+                margin-top: 0;
+                margin-left: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="logo">
+                    <a href="index.html" style="text-decoration: none;">
+                        <img src="images/logo.png" alt="PROYECTO Económicas" class="logo-img">
+                    </a>
+                </div>
+                <nav class="nav">
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">Académica <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu dropdown-menu-2col">
+                            <div class="dropdown-col">
+                                <a href="carreras.html" class="dropdown-item">Carreras</a>
+                                <a href="#" class="dropdown-item">Planes de estudio</a>
+                                <a href="#" class="dropdown-item">Modalidades de cursada</a>
+                            </div>
+                            <div class="dropdown-col">
+                                <a href="#" class="dropdown-item">Reglamento de cursada</a>
+                                <a href="#" class="dropdown-item">Becas</a>
+                                <a href="calendario-academico.html" class="dropdown-item">Calendario académico</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">Trámites <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu">
+                            <a href="inscripcion-materias.html" class="dropdown-item">Inscripción a materias</a>
+                            <a href="certificados.html" class="dropdown-item">Certificados</a>
+                            <a href="titulo-en-tramite.html" class="dropdown-item">Título en trámite</a>
+                            <a href="#" class="dropdown-item">Guía de trámites</a>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">Herramientas <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu dropdown-menu-cards">
+                            <a href="ranking.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">🧮</span>
+                                <span class="dropdown-card-text">Calculá tu ranking</span>
+                            </a>
+                            <a href="biblioeconomicas.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">📚</span>
+                                <span class="dropdown-card-text">Biblioeconómicas</span>
+                            </a>
+                            <a href="#" class="dropdown-card">
+                                <span class="dropdown-card-icon">💬</span>
+                                <span class="dropdown-card-text">Grupos de WhatsApp</span>
+                            </a>
+                            <a href="recomendaciones.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">📊</span>
+                                <span class="dropdown-card-text">Recomendaciones de materias</span>
+                            </a>
+                            <a href="blog.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">📝</span>
+                                <span class="dropdown-card-text">Blog</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">CBC <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu">
+                            <a href="cbc.html" class="dropdown-item">Guía CBC</a>
+                            <a href="#" class="dropdown-item">Inscripciones CBC</a>
+                            <a href="#" class="dropdown-item">Sedes CBC</a>
+                            <a href="#" class="dropdown-item">Grupos de WhatsApp</a>
+                        </div>
+                    </div>
+                    
+                    <a href="recomendaciones.html" class="nav-link">Recomendaciones</a>
+                    <a href="nosotros.html" class="nav-link">Nosotros</a>
+                    <a href="#login" class="btn-login">Ingresar</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="recomendaciones-hero">
+        <div class="container">
+            <h1>⭐ La Verdad de la Milanesa</h1>
+            <p>Opiniones sin filtro sobre cátedras y profesores. Elegí con estrategia.</p>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-container" style="max-width: 100%; margin-bottom: 2rem;">
+                <input type="text" class="search-input" placeholder="Busca por cátedra o profesor...">
+                <button class="search-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catedras Grid -->
+    <section class="catedras-section">
+        <div class="container">
+            <div class="catedras-grid">
+            <!-- Cátedra 1 -->
+            <div class="catedra-card">
+                <div class="catedra-header">
+                    <div>
+                        <h3 class="catedra-title">Microeconomía I</h3>
+                        <p class="profesor">Prof. Varian</p>
+                    </div>
+                    <div class="rating">
+                        <div class="rating-stars">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star empty">★</span>
+                        </div>
+                        <span class="rating-number">4.2</span>
+                    </div>
+                </div>
+                <p style="color: var(--color-medium-gray); margin-bottom: 1rem;">Cátedra exigente pero justa. Los parciales son claros y el material está bien organizado.</p>
+                <div class="tags">
+                    <span class="tag">Exigente</span>
+                    <span class="tag">Clara</span>
+                    <span class="tag">Bien organizada</span>
+                </div>
+                <div class="opiniones">
+                    <div class="opinion">
+                        <div class="opinion-header">
+                            <span class="opinion-author">Estudiante Anónimo</span>
+                            <span class="opinion-date">2024</span>
+                        </div>
+                        <p class="opinion-text">"Los parciales son justos y el profesor explica bien. Requiere estudio constante pero se puede aprobar."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cátedra 2 -->
+            <div class="catedra-card">
+                <div class="catedra-header">
+                    <div>
+                        <h3 class="catedra-title">Macroeconomía II</h3>
+                        <p class="profesor">Prof. Blanchard</p>
+                    </div>
+                    <div class="rating">
+                        <div class="rating-stars">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                        <span class="rating-number">4.8</span>
+                    </div>
+                </div>
+                <p style="color: var(--color-medium-gray); margin-bottom: 1rem;">Excelente cátedra. El profesor es muy didáctico y los ejercicios prácticos ayudan mucho.</p>
+                <div class="tags">
+                    <span class="tag">Recomendada</span>
+                    <span class="tag">Didáctica</span>
+                    <span class="tag">Práctica</span>
+                </div>
+                <div class="opiniones">
+                    <div class="opinion">
+                        <div class="opinion-header">
+                            <span class="opinion-author">Estudiante Anónimo</span>
+                            <span class="opinion-date">2024</span>
+                        </div>
+                        <p class="opinion-text">"Una de las mejores cátedras. El material es claro y las clases son muy útiles. Totalmente recomendable."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cátedra 3 -->
+            <div class="catedra-card">
+                <div class="catedra-header">
+                    <div>
+                        <h3 class="catedra-title">Matemática I</h3>
+                        <p class="profesor">Prof. Varios</p>
+                    </div>
+                    <div class="rating">
+                        <div class="rating-stars">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star empty">★</span>
+                            <span class="star empty">★</span>
+                        </div>
+                        <span class="rating-number">3.1</span>
+                    </div>
+                </div>
+                <p style="color: var(--color-medium-gray); margin-bottom: 1rem;">Cátedra con mucha variabilidad según el profesor. Algunos son excelentes, otros no tanto.</p>
+                <div class="tags">
+                    <span class="tag">Variable</span>
+                    <span class="tag">Depende del profe</span>
+                </div>
+                <div class="opiniones">
+                    <div class="opinion">
+                        <div class="opinion-header">
+                            <span class="opinion-author">Estudiante Anónimo</span>
+                            <span class="opinion-date">2024</span>
+                        </div>
+                        <p class="opinion-text">"Depende mucho del profesor que te toque. Algunos explican muy bien, otros no tanto. Fijate bien antes de anotarte."</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Instagram</a>
+                    <a href="#" class="footer-link">WhatsApp</a>
+                    <a href="#" class="footer-link">Contacto</a>
+                </div>
+                <p class="footer-text">© 2024 PROYECTO Económicas. Todos los derechos reservados.</p>
+            </div>
+        </div>
+        <div class="footer-bar"></div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

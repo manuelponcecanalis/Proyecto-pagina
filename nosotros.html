@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros - PROYECTO Económicas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto+Condensed:wght@700&family=Open+Sans:wght@400;600&family=Lato:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .about-hero {
+            background: linear-gradient(135deg, #003366 0%, #004080 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .about-hero h1 {
+            font-family: 'Montserrat', 'Roboto Condensed', sans-serif;
+            font-weight: 900;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .about-section {
+            padding: 3rem 0;
+        }
+
+        .about-section:nth-of-type(even) {
+            background-color: var(--color-ice-gray);
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .about-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        .about-text {
+            color: var(--color-dark-gray);
+            margin-bottom: 1rem;
+        }
+
+        .manifesto {
+            font-weight: 700;
+            color: var(--color-primary);
+            line-height: 1.5;
+        }
+
+        .manifesto p {
+            margin: 0 0 0.75rem 0;
+        }
+
+        .about-list {
+            list-style: disc;
+            padding-left: 1.5rem;
+            margin: 0 0 1rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .about-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .about-hero p {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="logo">
+                    <a href="index.html" style="text-decoration: none;">
+                        <img src="images/logo.png" alt="PROYECTO Económicas" class="logo-img">
+                    </a>
+                </div>
+                <nav class="nav">
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">Académica <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu dropdown-menu-2col">
+                            <div class="dropdown-col">
+                                <a href="carreras.html" class="dropdown-item">Carreras</a>
+                                <a href="#" class="dropdown-item">Planes de estudio</a>
+                                <a href="#" class="dropdown-item">Modalidades de cursada</a>
+                            </div>
+                            <div class="dropdown-col">
+                                <a href="#" class="dropdown-item">Reglamento de cursada</a>
+                                <a href="#" class="dropdown-item">Becas</a>
+                                <a href="calendario-academico.html" class="dropdown-item">Calendario académico</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">Trámites <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu">
+                            <a href="inscripcion-materias.html" class="dropdown-item">Inscripción a materias</a>
+                            <a href="certificados.html" class="dropdown-item">Certificados</a>
+                            <a href="titulo-en-tramite.html" class="dropdown-item">Título en trámite</a>
+                            <a href="#" class="dropdown-item">Guía de trámites</a>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">Herramientas <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu dropdown-menu-cards">
+                            <a href="ranking.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">🧮</span>
+                                <span class="dropdown-card-text">Calculá tu ranking</span>
+                            </a>
+                            <a href="biblioeconomicas.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">📚</span>
+                                <span class="dropdown-card-text">Biblioeconómicas</span>
+                            </a>
+                            <a href="#" class="dropdown-card">
+                                <span class="dropdown-card-icon">💬</span>
+                                <span class="dropdown-card-text">Grupos de WhatsApp</span>
+                            </a>
+                            <a href="recomendaciones.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">📊</span>
+                                <span class="dropdown-card-text">Recomendaciones de materias</span>
+                            </a>
+                            <a href="blog.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">📝</span>
+                                <span class="dropdown-card-text">Blog</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">CBC <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu">
+                            <a href="cbc.html" class="dropdown-item">Guía CBC</a>
+                            <a href="#" class="dropdown-item">Inscripciones CBC</a>
+                            <a href="#" class="dropdown-item">Sedes CBC</a>
+                            <a href="#" class="dropdown-item">Grupos de WhatsApp</a>
+                        </div>
+                    </div>
+                    
+                    <a href="recomendaciones.html" class="nav-link">Recomendaciones</a>
+                    <a href="nosotros.html" class="nav-link">Nosotros</a>
+                    <a href="#login" class="btn-login">Ingresar</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="about-hero">
+        <div class="container">
+            <h1>La universidad pública es un derecho. Y también un nosotros.</h1>
+            <p>Si estás en Económicas, ya sos parte de algo grande. Este espacio es el lugar donde nos organizamos para cuidar lo que conquistamos y empujar lo que viene.</p>
+        </div>
+    </section>
+
+    <section class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="about-title">Quiénes somos</h2>
+                <p class="about-text">Somos estudiantes de la FCE UBA que decidimos organizarnos. Venimos de aulas, pasillos, bibliotecas y laburos. Compartimos el mismo orgullo: estudiar en la universidad pública argentina.</p>
+                <p class="about-text">Nos une una convicción simple: cuando nos juntamos, hacemos que la facultad sea un lugar más justo, más humano y más nuestro.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="about-title">Nuestra convicción</h2>
+                <div class="manifesto">
+                    <p>La educación pública es una conquista.</p>
+                    <p>La organización es la herramienta para defenderla.</p>
+                    <p>La universidad es un espacio que transforma la sociedad.</p>
+                    <p>Estudiar también es comprometerse con lo que somos y lo que queremos ser.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="about-title">Por qué nos organizamos</h2>
+                <p class="about-text">Nos organizamos para defender derechos, para acompañar trayectorias y para participar de una vida universitaria que no se reduce a cursar.</p>
+                <p class="about-text">Nos organizamos para pensar la universidad que necesita el país, y para que nadie tenga que transitarla en soledad.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="about-title">Qué hacemos</h2>
+                <p class="about-text">Estamos en la facultad todos los días. Escuchamos, acompañamos, organizamos espacios colectivos y sostenemos redes entre estudiantes.</p>
+                <p class="about-text">Construimos herramientas, generamos debates, impulsamos participación real. Hacemos que la experiencia universitaria sea más cercana, más solidaria y más transformadora.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="about-title">Nuestra identidad</h2>
+                <p class="about-text">Somos educación pública. Somos organización. Somos compromiso nacional. Somos participación estudiantil.</p>
+                <p class="about-text">No como slogans, sino como una identidad viva que se expresa en lo que hacemos y en cómo nos encontramos.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="about-title">Impacto colectivo</h2>
+                <p class="about-text">No medimos con números fríos. Medimos con historias compartidas.</p>
+                <p class="about-text">Personas acompañadas. Espacios que nacen. Tiempo que se organiza para que nadie quede atrás. Ese es nuestro impacto.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-banner" id="sumarse">
+        <div class="container">
+            <div class="contact-content">
+                <p class="contact-text">
+                    <span class="contact-text-title">Si sentís que la facultad también es tuya, este espacio es para vos.</span>
+                    <span class="contact-text-sub">Sumate, participá y organizate con nosotrxs. La universidad que soñamos se construye en colectivo.</span>
+                </p>
+                <button class="contact-button" type="button" onclick="toggleContactForm()">QUIERO SUMARME</button>
+                <div class="notification" id="contact-notification">
+                    <div class="notification-content">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                        <span class="notification-message">¡Mensaje enviado con éxito! Te responderemos a la brevedad.</span>
+                    </div>
+                </div>
+                <div class="contact-form-container" id="contact-form-container">
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-group">
+                            <label for="nombre">Nombre y Apellido</label>
+                            <input type="text" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="mail">Mail</label>
+                            <input type="email" id="mail" name="mail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="asunto">Asunto</label>
+                            <input type="text" id="asunto" name="asunto" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="mensaje">Mensaje</label>
+                            <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="submit-button">Enviar</button>
+                            <button type="button" class="cancel-button" onclick="toggleContactForm()">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Instagram</a>
+                    <a href="#" class="footer-link">WhatsApp</a>
+                    <a href="#" class="footer-link">Contacto</a>
+                </div>
+                <p class="footer-text">© 2024 PROYECTO Económicas. Todos los derechos reservados.</p>
+            </div>
+        </div>
+        <div class="footer-bar"></div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

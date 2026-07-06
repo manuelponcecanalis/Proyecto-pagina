@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Inscripción a Materias - PROYECTO Económicas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto+Condensed:wght@700&family=Open+Sans:wght@400;600&family=Lato:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .inscripcion-hero {
+            background: linear-gradient(135deg, #003366 0%, #004080 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .inscripcion-hero h1 {
+            font-family: 'Montserrat', 'Roboto Condensed', sans-serif;
+            font-weight: 900;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .inscripcion-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .content-section {
+            padding: 4rem 0;
+            background-color: var(--color-white);
+        }
+
+        .content-section.alt {
+            background-color: var(--color-ice-gray);
+        }
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .content-section h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 2rem;
+            color: var(--color-primary);
+            margin: 3rem 0 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-accent);
+        }
+
+        .content-section h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .content-section h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            margin: 2.5rem 0 1rem;
+        }
+
+        .content-section p {
+            color: var(--color-dark-gray);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .content-section ul,
+        .content-section ol {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+
+        .content-section li {
+            color: var(--color-dark-gray);
+            line-height: 1.8;
+            margin-bottom: 0.8rem;
+            font-size: 1.05rem;
+        }
+
+        .content-section li strong {
+            color: var(--color-primary);
+        }
+
+        .content-section a {
+            color: var(--color-accent);
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+
+        .content-section a:hover {
+            color: var(--color-primary);
+        }
+
+        .highlight-box {
+            background-color: var(--color-ice-gray);
+            border-left: 4px solid var(--color-accent);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: var(--border-radius);
+        }
+
+        .highlight-box p {
+            margin: 0;
+            color: var(--color-dark-gray);
+        }
+
+        .ranking-image {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            margin: 2rem auto;
+            display: block;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+        }
+
+        .ranking-image-container {
+            text-align: center;
+            margin: 2.5rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .ranking-image {
+                max-width: 100%;
+                margin: 1.5rem 0;
+            }
+
+            .ranking-image-container {
+                margin: 2rem 0;
+            }
+        }
+
+        .step-list {
+            counter-reset: step-counter;
+            list-style: none;
+            padding: 0;
+        }
+
+        .step-list li {
+            counter-increment: step-counter;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            background-color: var(--color-ice-gray);
+            border-radius: var(--border-radius);
+            position: relative;
+            padding-left: 4rem;
+        }
+
+        .step-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 1rem;
+            top: 1.5rem;
+            background-color: var(--color-accent);
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        @media (max-width: 768px) {
+            .inscripcion-hero h1 {
+                font-size: 2rem;
+            }
+
+            .inscripcion-hero p {
+                font-size: 1rem;
+            }
+
+            .content-wrapper {
+                padding: 0 1.5rem;
+            }
+
+            .content-section h2 {
+                font-size: 1.6rem;
+            }
+
+            .content-section h3 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="logo">
+                    <a href="index.html" style="text-decoration: none;">
+                        <img src="images/logo.png" alt="PROYECTO Económicas" class="logo-img">
+                    </a>
+                </div>
+                <nav class="nav">
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">Académica <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu dropdown-menu-2col">
+                            <div class="dropdown-col">
+                                <a href="carreras.html" class="dropdown-item">Carreras</a>
+                                <a href="#" class="dropdown-item">Planes de estudio</a>
+                                <a href="#" class="dropdown-item">Modalidades de cursada</a>
+                            </div>
+                            <div class="dropdown-col">
+                                <a href="#" class="dropdown-item">Reglamento de cursada</a>
+                                <a href="#" class="dropdown-item">Becas</a>
+                                <a href="calendario-academico.html" class="dropdown-item">Calendario académico</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">Trámites <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu">
+                            <a href="inscripcion-materias.html" class="dropdown-item">Inscripción a materias</a>
+                            <a href="certificados.html" class="dropdown-item">Certificados</a>
+                            <a href="titulo-en-tramite.html" class="dropdown-item">Título en trámite</a>
+                            <a href="#" class="dropdown-item">Guía de trámites</a>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">Herramientas <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu dropdown-menu-cards">
+                            <a href="ranking.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">🧮</span>
+                                <span class="dropdown-card-text">Calculá tu ranking</span>
+                            </a>
+                            <a href="biblioeconomicas.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">📚</span>
+                                <span class="dropdown-card-text">Biblioeconómicas</span>
+                            </a>
+                            <a href="#" class="dropdown-card">
+                                <span class="dropdown-card-icon">💬</span>
+                                <span class="dropdown-card-text">Grupos de WhatsApp</span>
+                            </a>
+                            <a href="recomendaciones.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">📊</span>
+                                <span class="dropdown-card-text">Recomendaciones de materias</span>
+                            </a>
+                            <a href="blog.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">📝</span>
+                                <span class="dropdown-card-text">Blog</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">CBC <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu">
+                            <a href="cbc.html" class="dropdown-item">Guía CBC</a>
+                            <a href="#" class="dropdown-item">Inscripciones CBC</a>
+                            <a href="#" class="dropdown-item">Sedes CBC</a>
+                            <a href="#" class="dropdown-item">Grupos de WhatsApp</a>
+                        </div>
+                    </div>
+                    
+                    <a href="recomendaciones.html" class="nav-link">Recomendaciones</a>
+                    <a href="nosotros.html" class="nav-link">Nosotros</a>
+                    <a href="#login" class="btn-login">Ingresar</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="inscripcion-hero">
+        <div class="container">
+            <h1>Inscripción a Materias</h1>
+            <p>Todo lo que necesitás saber para inscribirte correctamente en las materias de la FCE UBA</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="content-section">
+        <div class="content-wrapper">
+            <h2>📅 Cuándo se abren las inscripciones</h2>
+            <p>Las inscripciones a materias en la Facultad de Ciencias Económicas de la UBA (FCE UBA) abren, por lo general, unas semanas antes del inicio de cada cuatrimestre o de los cursos intensivos. Para inscribirte es obligatorio contar con un usuario en <strong>MiEcon</strong> y consultar la oferta de materias con días, horarios y sedes disponibles.</p>
+            <p>Si estás organizando tu cuatrimestre con anticipación, te recomendamos revisar las ofertas de años anteriores, ya que suelen variar muy poco de un período a otro. Podés acceder a los archivos históricos desde este enlace: <a href="https://drive.google.com/drive/folders/16NloJLGew4pNZMgu8naaZyiVIPD0uVkm?usp=drive_link" target="_blank" rel="noopener noreferrer">Archivos históricos de ofertas</a></p>
+
+            <h2>✅ Requisitos para inscribirte a materias</h2>
+            <p>Antes de iniciar la inscripción, asegurate de cumplir con los siguientes puntos:</p>
+            <ul>
+                <li><strong>Tener usuario activo en MiEcon.</strong></li>
+                <li><strong>Conocer la oferta de materias, sedes, días y horarios.</strong></li>
+                <li><strong>Haber completado, si corresponde, la declaración jurada de materias aprobadas o regularizadas no cargadas aún en el sistema.</strong></li>
+            </ul>
+
+            <h2>📋 Instancias de inscripción (cuatrimestres regulares)</h2>
+            <p>En los cuatrimestres regulares (no intensivos) existen tres instancias de inscripción:</p>
+            
+            <h3>1. Primera inscripción</h3>
+            <p>En esta instancia podés inscribirte a:</p>
+            <ul>
+                <li>Hasta <strong>tres cursos presenciales</strong>.</li>
+                <li>Hasta <strong>un curso de modalidad a distancia, magistral o virtual</strong>.</li>
+            </ul>
+            <div class="highlight-box">
+                <p><strong>Importante:</strong> En la primera inscripción se tiene en cuenta la penalidad por ausentismo. Puede haber corte por ranking si la demanda supera los cupos disponibles.</p>
+            </div>
+
+            <h3>2. Cobertura de vacantes – cursos presenciales</h3>
+            <p>En esta etapa podés inscribirte únicamente en cursos presenciales que tengan vacantes disponibles, es decir, aquellos que no cortaron por ranking.</p>
+
+            <h3>3. Cobertura de vacantes – cursos D-M-V</h3>
+            <p>Funciona igual que la instancia anterior, pero aplicada a los cursos de modalidad a distancia, magistral o virtual.</p>
+
+            <h2>🔍 Cómo inscribirte paso a paso</h2>
+            <ol class="step-list">
+                <li>
+                    <strong>Ingresá al campus de la facultad:</strong> <a href="https://mi.econ.uba.ar" target="_blank" rel="noopener noreferrer">https://mi.econ.uba.ar</a>
+                </li>
+                <li>
+                    <strong>Abrí el cuadernillo de inscripción,</strong> donde figura la oferta completa de materias y docentes.
+                </li>
+                <li>
+                    <strong>Para elegir curso, primero seleccioná con qué docente querés cursar.</strong> Si no sabés qué curso elegir, podés consultar <a href="https://www.recomendacionesfce.com" target="_blank" rel="noopener noreferrer">https://www.recomendacionesfce.com</a>, una plataforma con más de 3600 recomendaciones hechas por estudiantes.
+                </li>
+                <li>
+                    <strong>Una vez elegido el docente, bajá al segundo listado de la materia en el cuadernillo y compará:</strong>
+                    <ul>
+                        <li>Sede</li>
+                        <li>Día</li>
+                        <li>Horario</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Obtené el código de curso</strong> (por ejemplo, 101, 102, etc.).
+                </li>
+                <li>
+                    <strong>Este paso es fundamental:</strong> al inscribirte en MiEcon no se elige docente, sino número de curso.
+                </li>
+            </ol>
+
+            <h2>💡 Consejos para mejorar tu inscripción</h2>
+            <ul>
+                <li><strong>Anotarte el primer o último día es indistinto.</strong></li>
+                <li><strong>En materias de Segundo Tramo,</strong> solo podés elegir sede y banda horaria.</li>
+                <li><strong>Para aumentar las chances de cursar con el docente que preferís,</strong> revisá previamente las recomendaciones en <a href="https://www.recomendacionesfce.com" target="_blank" rel="noopener noreferrer">Recomendaciones FCE</a>.</li>
+                <li><strong>No olvides completar la declaración jurada</strong> si tenés materias aprobadas o regularizadas que aún no figuran en el sistema.</li>
+                <li><strong>Podés inscribirte en el cuatrimestre a una materia que te hayan asignado en un intensivo,</strong> pero si lo hacés, se da de baja automáticamente el intensivo y no podrás rendir esa materia.</li>
+                <li><strong>Si cargás dos opciones de una misma materia,</strong> prestá especial atención a las superposiciones de días y horarios.</li>
+                <li><strong>Si en el cuatrimestre anterior quedaste ausente en una materia del Ciclo Profesional asignada en primera inscripción:</strong>
+                    <ul>
+                        <li>Podés inscribirte en primera inscripción en Sede Córdoba (banda horaria negativa: 11 a 17 h) o en sedes regionales.</li>
+                        <li>En cobertura de vacantes podrás anotarte en cualquier sede y horario, pero no podrás ver el docente asignado.</li>
+                    </ul>
+                </li>
+                <li><strong>Si querés cursar cuatro materias,</strong> podés hacerlo de dos formas:
+                    <ul>
+                        <li>3 presenciales + 1 virtual/magistral/a distancia.</li>
+                        <li>3 presenciales en primera inscripción + 1 presencial en cobertura de vacantes.</li>
+                    </ul>
+                </li>
+                <li><strong>Las materias regularizadas permiten:</strong>
+                    <ul>
+                        <li>Inscribirte a sus correlativas.</li>
+                        <li>Reinscribirte en la misma materia (en este caso, se pierde la condición de regular).</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h2>❌ ¿Te inscribiste mal?</h2>
+            <p>No te preocupes, es algo común. Podés dar de baja tu inscripción de dos maneras:</p>
+            <ul>
+                <li><strong>Enviando un mail al Departamento de Alumnos:</strong> <a href="mailto:alumnos@fce.uba.ar">alumnos@fce.uba.ar</a></li>
+                <li><strong>Acercándote de forma presencial</strong> con tu DNI y constancia de inscripción.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Modalidades Section -->
+    <section class="content-section alt">
+        <div class="content-wrapper">
+            <h2>📚 Modalidades de cursada</h2>
+            
+            <h3>Cursos presenciales</h3>
+            <ul>
+                <li>Modalidad regular</li>
+                <li>Entre 1 y 3 clases semanales de 2 horas cada una</li>
+                <li>Mínimo dos exámenes parciales</li>
+                <li>Asistencia obligatoria: se requiere un 75% de asistencia</li>
+                <li>Máximo 3 materias presenciales por cuatrimestre</li>
+            </ul>
+
+            <h3>A distancia y magistrales</h3>
+            <ul>
+                <li>Dos cuatrimestres por año (en algunos casos, tres)</li>
+                <li>Clases de 2 horas reloj</li>
+                <li>No exigen asistencia, aunque es recomendable</li>
+                <li><strong>A distancia:</strong> Tutoría cada 15 días. Dos exámenes</li>
+                <li><strong>Magistral:</strong> Una clase semanal. Un examen final</li>
+            </ul>
+            <div class="highlight-box">
+                <p><strong>Importante:</strong> Estas reglas pueden variar según el docente. Para conocer la modalidad real de evaluación, revisá siempre las recomendaciones de cursos.</p>
+            </div>
+
+            <h3>Cursos virtuales</h3>
+            <ul>
+                <li>No se dictan clases presenciales ni sincrónicas</li>
+                <li>El material se sube al campus</li>
+                <li>Participación en foros (algunas obligatorias)</li>
+                <li>Un único examen final</li>
+            </ul>
+
+            <h3>Modalidad libre</h3>
+            <ul>
+                <li>La materia se prepara de forma independiente</li>
+                <li>Se rinde examen final en los turnos del calendario académico</li>
+                <li>Hay cinco llamados por año</li>
+                <li>Dos instancias: escrita (eliminatoria) y oral</li>
+                <li>Se aprueba con nota mínima 4</li>
+                <li>No se puede regularizar una materia rindiéndola libre</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Ranking Section -->
+    <section class="content-section">
+        <div class="content-wrapper">
+            <h2>🏆 Ranking: qué es y cómo funciona</h2>
+            <p>El ranking es el criterio que utiliza la facultad para asignar cursos en la primera inscripción, cuando la demanda supera los cupos disponibles.</p>
+
+            <div class="ranking-image-container">
+                <img src="images/calculo-ranking.png" alt="Fórmula de cálculo de ranking: RANKING = A + B + C + D" class="ranking-image">
+            </div>
+
+            <h3>Cómo se asignan las vacantes</h3>
+            <ul>
+                <li><strong>70% de las vacantes</strong> se asignan a estudiantes con ranking más alto.</li>
+                <li><strong>30% se asignan</strong> según el número de registro más bajo.</li>
+            </ul>
+
+            <div class="highlight-box">
+                <p><strong>El corte por ranking:</strong></p>
+                <ul style="margin-top: 0.5rem;">
+                    <li>Solo aplica en la primera inscripción.</li>
+                    <li>No aplica en la cobertura de vacantes.</li>
+                    <li>Se publica después de la inscripción.</li>
+                    <li>Las materias de Segundo Tramo no cortan por ranking. Las del Ciclo Profesional sí.</li>
+                </ul>
+            </div>
+
+            <h3>Cómo calcular tu ranking</h3>
+            <p>Tené en cuenta que:</p>
+            <ul>
+                <li>El ranking se calcula al finalizar la primera inscripción.</li>
+                <li><strong>Materias aprobadas</strong> = Aprobadas + Regularizadas.</li>
+                <li><strong>Materias rendidas</strong> = Aprobadas + Regularizadas + Insuficientes.</li>
+                <li>Cada final desaprobado cuenta como materia rendida.</li>
+                <li>Las materias declaradas en la declaración jurada cuentan como aprobadas y rendidas.</li>
+                <li>El promedio real es el que figura en MiEcon antes de la primera inscripción.</li>
+                <li>Las materias regularizadas cuentan para el cálculo de últimas materias.</li>
+            </ul>
+            <div class="highlight-box">
+                <p>Podés calcular tu ranking antes de inscribirte desde esta herramienta: <a href="https://calculaturanking.com/" target="_blank" rel="noopener noreferrer">👉 https://calculaturanking.com/</a></p>
+            </div>
+
+            <h2>❓ ¿Tenés dudas sobre la inscripción?</h2>
+            <p>Te recomendamos mirar nuestros tutoriales y guías paso a paso para inscribirte sin errores y organizar mejor tu cursada.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Instagram</a>
+                    <a href="#" class="footer-link">WhatsApp</a>
+                    <a href="#" class="footer-link">Contacto</a>
+                </div>
+                <p class="footer-text">© 2024 PROYECTO Económicas. Todos los derechos reservados.</p>
+            </div>
+        </div>
+        <div class="footer-bar"></div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

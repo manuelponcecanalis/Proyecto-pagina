@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carreras - PROYECTO Económicas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto+Condensed:wght@700&family=Open+Sans:wght@400;600&family=Lato:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .careers-hero {
+            background: linear-gradient(135deg, #003366 0%, #004080 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .careers-hero h1 {
+            font-family: 'Montserrat', 'Roboto Condensed', sans-serif;
+            font-weight: 900;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .careers-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .career-section {
+            padding: 3rem 0;
+        }
+
+        .career-section:nth-of-type(even) {
+            background-color: var(--color-ice-gray);
+        }
+
+        .career-card {
+            background-color: var(--color-white);
+            border: 1px solid #E0E0E0;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .career-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--color-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .career-text {
+            color: var(--color-medium-gray);
+            margin-bottom: 1.25rem;
+        }
+
+        .career-subtitle {
+            font-weight: 700;
+            color: var(--color-primary);
+            margin: 1.25rem 0 0.75rem;
+        }
+
+        .career-list {
+            list-style: disc;
+            padding-left: 1.5rem;
+            margin: 0 0 1rem 0;
+            color: var(--color-dark-gray);
+        }
+
+        .career-link {
+            color: var(--color-accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .career-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .careers-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .careers-hero p {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+
+            .career-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="logo">
+                    <a href="index.html" style="text-decoration: none;">
+                        <img src="images/logo.png" alt="PROYECTO Económicas" class="logo-img">
+                    </a>
+                </div>
+                <nav class="nav">
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">Académica <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu dropdown-menu-2col">
+                            <div class="dropdown-col">
+                                <a href="carreras.html" class="dropdown-item">Carreras</a>
+                                <a href="#" class="dropdown-item">Planes de estudio</a>
+                                <a href="#" class="dropdown-item">Modalidades de cursada</a>
+                            </div>
+                            <div class="dropdown-col">
+                                <a href="#" class="dropdown-item">Reglamento de cursada</a>
+                                <a href="#" class="dropdown-item">Becas</a>
+                                <a href="calendario-academico.html" class="dropdown-item">Calendario académico</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">Trámites <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu">
+                            <a href="inscripcion-materias.html" class="dropdown-item">Inscripción a materias</a>
+                            <a href="certificados.html" class="dropdown-item">Certificados</a>
+                            <a href="titulo-en-tramite.html" class="dropdown-item">Título en trámite</a>
+                            <a href="#" class="dropdown-item">Guía de trámites</a>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">Herramientas <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu dropdown-menu-cards">
+                            <a href="ranking.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">🧮</span>
+                                <span class="dropdown-card-text">Calculá tu ranking</span>
+                            </a>
+                            <a href="biblioeconomicas.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">📚</span>
+                                <span class="dropdown-card-text">Biblioeconómicas</span>
+                            </a>
+                            <a href="#" class="dropdown-card">
+                                <span class="dropdown-card-icon">💬</span>
+                                <span class="dropdown-card-text">Grupos de WhatsApp</span>
+                            </a>
+                            <a href="recomendaciones.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">📊</span>
+                                <span class="dropdown-card-text">Recomendaciones de materias</span>
+                            </a>
+                            <a href="blog.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">📝</span>
+                                <span class="dropdown-card-text">Blog</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">CBC <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu">
+                            <a href="cbc.html" class="dropdown-item">Guía CBC</a>
+                            <a href="#" class="dropdown-item">Inscripciones CBC</a>
+                            <a href="#" class="dropdown-item">Sedes CBC</a>
+                            <a href="#" class="dropdown-item">Grupos de WhatsApp</a>
+                        </div>
+                    </div>
+                    
+                    <a href="recomendaciones.html" class="nav-link">Recomendaciones</a>
+                    <a href="nosotros.html" class="nav-link">Nosotros</a>
+                    <a href="#login" class="btn-login">Ingresar</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="careers-hero">
+        <div class="container">
+            <h1>Elegí tu camino en la Facultad de Ciencias Económicas – UBA</h1>
+            <p>Las decisiones económicas mueven al mundo. Detrás de cada empresa, política pública, inversión o innovación, hay profesionales formados para entender la complejidad, ordenar el caos y transformar datos en decisiones. La Facultad de Ciencias Económicas de la Universidad de Buenos Aires (FCE UBA) forma a quienes quieren pensar, analizar y liderar en un mundo en constante cambio. Conocé nuestras carreras y descubrí cuál es tu camino.</p>
+        </div>
+    </section>
+
+    <section class="career-section">
+        <div class="container">
+            <div class="career-card">
+                <h2 class="career-title">Contador/a Público/a – UBA</h2>
+                <div class="career-subtitle">Quienes ordenan la economía real</div>
+                <p class="career-text">La carrera de Contador Público en la UBA forma profesionales que convierten los números en información confiable, legal y estratégica. Son quienes garantizan que las organizaciones funcionen con transparencia, cumplan las normas y tomen decisiones sobre bases sólidas.</p>
+                <p class="career-text">Un/a contador/a no solo registra operaciones: interpreta la realidad económica, anticipa riesgos y aporta claridad en contextos complejos.</p>
+                <div class="career-subtitle">¿Dónde deja huella un/a Contador/a?</div>
+                <ul class="career-list">
+                    <li>En la contabilidad y auditoría, asegurando la veracidad de la información financiera.</li>
+                    <li>En el sistema impositivo, planificando y asesorando con precisión.</li>
+                    <li>En finanzas y costos, cuidando la rentabilidad y la sustentabilidad.</li>
+                    <li>En la gestión empresarial, acompañando decisiones estratégicas.</li>
+                    <li>En el sector público, controlando y administrando recursos del Estado.</li>
+                    <li>En el ejercicio independiente, asesorando a empresas y personas.</li>
+                    <li>En la docencia y consultoría, formando a las próximas generaciones.</li>
+                </ul>
+                <p class="career-text">Es una carrera con salida laboral amplia, estable y versátil, presente en todos los sectores de la economía.</p>
+                <a href="#" class="career-link">👉 ¿Querés saber más? Mirá nuestra charla de carreras de Contador/a Público/a – FCE UBA.</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="career-section">
+        <div class="container">
+            <div class="career-card">
+                <h2 class="career-title">Licenciatura en Administración – UBA</h2>
+                <div class="career-subtitle">Quienes hacen que las organizaciones funcionen</div>
+                <p class="career-text">La Licenciatura en Administración de la UBA forma profesionales capaces de pensar en grande y ejecutar con criterio. Son quienes entienden cómo se conectan las personas, los procesos y los recursos para que las organizaciones crezcan, se adapten y perduren.</p>
+                <p class="career-text">Administrar es decidir en contextos reales, liderar equipos y transformar ideas en resultados.</p>
+                <div class="career-subtitle">¿Dónde impacta un/a Licenciado/a en Administración?</div>
+                <ul class="career-list">
+                    <li>En la dirección y gestión estratégica de organizaciones.</li>
+                    <li>En la administración de empresas, coordinando áreas clave.</li>
+                    <li>En Recursos Humanos, desarrollando personas y culturas organizacionales.</li>
+                    <li>En marketing y comercialización, leyendo mercados y creando valor.</li>
+                    <li>En finanzas, evaluando proyectos y asignando recursos.</li>
+                    <li>En emprendimientos y startups, creando negocios desde cero.</li>
+                    <li>En el sector público, gestionando políticas y organismos.</li>
+                    <li>En consultoría y docencia.</li>
+                </ul>
+                <p class="career-text">Es una carrera ideal para quienes buscan liderar, gestionar y transformar.</p>
+                <a href="#" class="career-link">👉 Conocé más en la charla de carreras de Licenciatura en Administración – FCE UBA.</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="career-section">
+        <div class="container">
+            <div class="career-card">
+                <h2 class="career-title">Licenciatura en Economía – UBA</h2>
+                <div class="career-subtitle">Quienes entienden cómo funciona el mundo</div>
+                <p class="career-text">La Licenciatura en Economía de la UBA forma profesionales que analizan las fuerzas que mueven la economía: mercados, inflación, empleo, crecimiento y desigualdad. Su mirada permite explicar la realidad y diseñar soluciones para problemas complejos.</p>
+                <p class="career-text">Ser economista es pensar con datos, teoría y visión de largo plazo.</p>
+                <div class="career-subtitle">¿Dónde actúa un/a Economista?</div>
+                <ul class="career-list">
+                    <li>En el análisis de la coyuntura económica.</li>
+                    <li>En el diseño de políticas públicas.</li>
+                    <li>En finanzas y mercados financieros.</li>
+                    <li>En empresas y consultoría estratégica.</li>
+                    <li>En organismos nacionales e internacionales.</li>
+                    <li>En la investigación académica y la docencia.</li>
+                    <li>En la economía aplicada y el análisis de datos.</li>
+                </ul>
+                <p class="career-text">Es una carrera para quienes buscan comprender la realidad en profundidad y transformarla.</p>
+                <a href="#" class="career-link">👉 Mirá la charla de carreras de Licenciatura en Economía – FCE UBA.</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="career-section">
+        <div class="container">
+            <div class="career-card">
+                <h2 class="career-title">Actuario/a – UBA</h2>
+                <div class="career-subtitle">Quienes calculan el futuro</div>
+                <p class="career-text">La carrera de Actuario/a en la UBA forma especialistas en riesgo, incertidumbre y decisiones bajo presión. A través de modelos matemáticos y estadísticos, los/as actuarios/as anticipan escenarios y protegen la estabilidad financiera de organizaciones y sistemas.</p>
+                <p class="career-text">Actuar es ponerle números al futuro.</p>
+                <div class="career-subtitle">¿Dónde trabaja un/a Actuario/a?</div>
+                <ul class="career-list">
+                    <li>En el mercado de seguros, diseñando productos y reservas.</li>
+                    <li>En la gestión de riesgos financieros y operacionales.</li>
+                    <li>En mercados de capitales, valuando activos y pasivos.</li>
+                    <li>En sistemas previsionales y seguridad social.</li>
+                    <li>En organismos públicos y de regulación.</li>
+                    <li>En investigación y docencia.</li>
+                </ul>
+                <p class="career-text">Es una carrera con alta demanda laboral, ideal para mentes analíticas que disfrutan de los desafíos complejos.</p>
+                <a href="#" class="career-link">👉 Conocé la charla de carreras de Actuario/a – FCE UBA.</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="career-section">
+        <div class="container">
+            <div class="career-card">
+                <h2 class="career-title">Licenciatura en Sistemas de Información – UBA</h2>
+                <div class="career-subtitle">Quienes conectan tecnología y decisiones</div>
+                <p class="career-text">La Licenciatura en Sistemas de Información de la UBA forma profesionales que entienden la tecnología como una herramienta estratégica. Su rol es diseñar, gestionar y liderar sistemas que potencien a las organizaciones.</p>
+                <p class="career-text">No se trata solo de sistemas: se trata de cómo la tecnología transforma el negocio.</p>
+                <div class="career-subtitle">¿Dónde se insertan los/as Licenciados/as en Sistemas?</div>
+                <ul class="career-list">
+                    <li>En la gestión de sistemas de información.</li>
+                    <li>En el análisis funcional y de procesos.</li>
+                    <li>En la dirección de proyectos tecnológicos.</li>
+                    <li>En la consultoría en transformación digital.</li>
+                    <li>En organizaciones públicas y privadas.</li>
+                    <li>En seguridad de la información y gestión de riesgos tecnológicos.</li>
+                </ul>
+                <p class="career-text">Es una carrera con perfil híbrido, liderazgo y altísima inserción laboral.</p>
+                <a href="#" class="career-link">👉 Mirá la charla de carreras de Licenciatura en Sistemas – FCE UBA.</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="career-section">
+        <div class="container">
+            <div class="career-card">
+                <h2 class="career-title">Tecnicatura en Análisis de Datos – UBA</h2>
+                <div class="career-subtitle">Quienes convierten datos en decisiones</div>
+                <p class="career-text">La Tecnicatura en Análisis de Datos de la UBA forma profesionales preparados para trabajar con información, tecnología e inteligencia artificial desde el primer día.</p>
+                <p class="career-text">Es una carrera corta, práctica y orientada a la acción: analizar, interpretar y decidir.</p>
+                <div class="career-subtitle">¿Dónde trabajan los/as Técnicos/as en Análisis de Datos?</div>
+                <ul class="career-list">
+                    <li>En análisis y visualización de datos.</li>
+                    <li>En la gestión de bases de datos.</li>
+                    <li>En equipos tecnológicos y digitales.</li>
+                    <li>En empresas, sector público y organizaciones sociales.</li>
+                    <li>En proyectos con IA y machine learning.</li>
+                </ul>
+                <p class="career-text">Ideal para quienes quieren insertarse rápidamente en el mundo tecnológico, con fuerte salida laboral.</p>
+                <a href="#" class="career-link">👉 Conocé la charla de la Tecnicatura en Análisis de Datos – FCE UBA.</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Instagram</a>
+                    <a href="#" class="footer-link">WhatsApp</a>
+                    <a href="#" class="footer-link">Contacto</a>
+                </div>
+                <p class="footer-text">© 2024 PROYECTO Económicas. Todos los derechos reservados.</p>
+            </div>
+        </div>
+        <div class="footer-bar"></div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

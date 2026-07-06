@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Ranking - PROYECTO Económicas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto+Condensed:wght@700&family=Open+Sans:wght@400;600&family=Lato:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .ranking-hero {
+            background: linear-gradient(135deg, #E91E63 0%, #C2185B 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .ranking-hero h1 {
+            font-family: 'Montserrat', 'Roboto Condensed', sans-serif;
+            font-weight: 900;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .ranking-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .calculator-section {
+            background-color: var(--color-white);
+            padding: 4rem 0;
+        }
+
+        .calculator-card {
+            background-color: var(--color-ice-gray);
+            border-radius: var(--border-radius);
+            padding: 3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 2px solid #E0E0E0;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--color-accent);
+        }
+
+        .add-materia-btn {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .add-materia-btn:hover {
+            background-color: #004080;
+            transform: translateY(-2px);
+        }
+
+        .calculate-btn {
+            background-color: var(--color-accent);
+            color: white;
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .calculate-btn:hover {
+            background-color: #C2185B;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .result-section {
+            background-color: var(--color-ice-gray);
+            padding: 4rem 0;
+            display: none;
+        }
+
+        .result-section.show {
+            display: block;
+        }
+
+        .result-card {
+            background-color: var(--color-white);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: var(--shadow-md);
+            text-align: center;
+        }
+
+        .result-card h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        .promedio-display {
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--color-accent);
+            margin: 1rem 0;
+        }
+
+        .ranking-info {
+            color: var(--color-medium-gray);
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .ranking-hero h1 {
+                font-size: 2rem;
+            }
+
+            .calculator-card {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="logo">
+                    <a href="index.html" style="text-decoration: none;">
+                        <img src="images/logo.png" alt="PROYECTO Económicas" class="logo-img">
+                    </a>
+                </div>
+                <nav class="nav">
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">Académica <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu dropdown-menu-2col">
+                            <div class="dropdown-col">
+                                <a href="carreras.html" class="dropdown-item">Carreras</a>
+                                <a href="#" class="dropdown-item">Planes de estudio</a>
+                                <a href="#" class="dropdown-item">Modalidades de cursada</a>
+                            </div>
+                            <div class="dropdown-col">
+                                <a href="#" class="dropdown-item">Reglamento de cursada</a>
+                                <a href="#" class="dropdown-item">Becas</a>
+                                <a href="calendario-academico.html" class="dropdown-item">Calendario académico</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">Trámites <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu">
+                            <a href="inscripcion-materias.html" class="dropdown-item">Inscripción a materias</a>
+                            <a href="certificados.html" class="dropdown-item">Certificados</a>
+                            <a href="titulo-en-tramite.html" class="dropdown-item">Título en trámite</a>
+                            <a href="#" class="dropdown-item">Guía de trámites</a>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">Herramientas <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu dropdown-menu-cards">
+                            <a href="ranking.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">🧮</span>
+                                <span class="dropdown-card-text">Calculá tu ranking</span>
+                            </a>
+                            <a href="biblioeconomicas.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">📚</span>
+                                <span class="dropdown-card-text">Biblioeconómicas</span>
+                            </a>
+                            <a href="#" class="dropdown-card">
+                                <span class="dropdown-card-icon">💬</span>
+                                <span class="dropdown-card-text">Grupos de WhatsApp</span>
+                            </a>
+                            <a href="recomendaciones.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">📊</span>
+                                <span class="dropdown-card-text">Recomendaciones de materias</span>
+                            </a>
+                            <a href="blog.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">📝</span>
+                                <span class="dropdown-card-text">Blog</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">CBC <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu">
+                            <a href="cbc.html" class="dropdown-item">Guía CBC</a>
+                            <a href="#" class="dropdown-item">Inscripciones CBC</a>
+                            <a href="#" class="dropdown-item">Sedes CBC</a>
+                            <a href="#" class="dropdown-item">Grupos de WhatsApp</a>
+                        </div>
+                    </div>
+                    
+                    <a href="recomendaciones.html" class="nav-link">Recomendaciones</a>
+                    <a href="nosotros.html" class="nav-link">Nosotros</a>
+                    <a href="#login" class="btn-login">Ingresar</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="ranking-hero">
+        <div class="container">
+            <h1>📊 Simulador de Ranking</h1>
+            <p>¿Entrás al ranking? Cargá tus notas y proyectá tu posición. Calculá tu promedio y sabé dónde estás parado.</p>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section class="calculator-section">
+        <div class="container">
+            <div class="calculator-card">
+                <h2 style="font-family: 'Montserrat', sans-serif; color: var(--color-primary); margin-bottom: 2rem; text-align: center;">Calculá tu Promedio</h2>
+                
+                <div id="materias-container">
+                    <div class="input-group">
+                        <label>Nombre de la Materia</label>
+                        <input type="text" placeholder="Ej: Microeconomía I" class="materia-name">
+                    </div>
+                    <div class="input-group">
+                        <label>Nota Final</label>
+                        <input type="number" min="0" max="10" step="0.1" placeholder="Ej: 8.5" class="materia-nota">
+                    </div>
+                </div>
+
+                <button class="add-materia-btn" onclick="addMateria()">+ Agregar Otra Materia</button>
+                <button class="calculate-btn" onclick="calcularPromedio()">Calcular Promedio</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Result Section -->
+    <section class="result-section" id="result-section">
+        <div class="container">
+            <div class="result-card">
+                <h2>Tu Promedio</h2>
+                <div class="promedio-display" id="promedio-display">0.00</div>
+                <p class="ranking-info" id="ranking-info">Cargá tus notas para calcular tu promedio</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Instagram</a>
+                    <a href="#" class="footer-link">WhatsApp</a>
+                    <a href="#" class="footer-link">Contacto</a>
+                </div>
+                <p class="footer-text">© 2024 PROYECTO Económicas. Todos los derechos reservados.</p>
+            </div>
+        </div>
+        <div class="footer-bar"></div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        let materiaCount = 1;
+
+        function addMateria() {
+            materiaCount++;
+            const container = document.getElementById('materias-container');
+            const newMateria = document.createElement('div');
+            newMateria.className = 'materia-item';
+            newMateria.innerHTML = `
+                <div style="display: flex; gap: 1rem; align-items: flex-end; margin-bottom: 1.5rem;">
+                    <div class="input-group" style="flex: 2;">
+                        <label>Nombre de la Materia</label>
+                        <input type="text" placeholder="Ej: Macroeconomía II" class="materia-name">
+                    </div>
+                    <div class="input-group" style="flex: 1;">
+                        <label>Nota</label>
+                        <input type="number" min="0" max="10" step="0.1" placeholder="8.5" class="materia-nota">
+                    </div>
+                    <button onclick="removeMateria(this)" style="background-color: var(--color-accent); color: white; border: none; padding: 0.8rem 1rem; border-radius: var(--border-radius); cursor: pointer; font-weight: 600;">Eliminar</button>
+                </div>
+            `;
+            container.appendChild(newMateria);
+        }
+
+        function removeMateria(btn) {
+            btn.closest('.materia-item').remove();
+        }
+
+        function calcularPromedio() {
+            const notas = [];
+            document.querySelectorAll('.materia-nota').forEach(input => {
+                const nota = parseFloat(input.value);
+                if (!isNaN(nota) && nota >= 0 && nota <= 10) {
+                    notas.push(nota);
+                }
+            });
+
+            if (notas.length === 0) {
+                alert('Por favor, ingresá al menos una nota válida.');
+                return;
+            }
+
+            const promedio = notas.reduce((a, b) => a + b, 0) / notas.length;
+            const promedioRedondeado = promedio.toFixed(2);
+
+            document.getElementById('promedio-display').textContent = promedioRedondeado;
+            
+            let mensaje = '';
+            if (promedio >= 9.0) {
+                mensaje = '🎉 ¡Excelente! Estás en el top del ranking.';
+            } else if (promedio >= 8.0) {
+                mensaje = '👍 Muy buen promedio. Estás bien posicionado.';
+            } else if (promedio >= 7.0) {
+                mensaje = '✅ Buen promedio. Seguí así.';
+            } else {
+                mensaje = '💪 Podés mejorar. Seguí estudiando.';
+            }
+
+            document.getElementById('ranking-info').textContent = mensaje;
+            document.getElementById('result-section').classList.add('show');
+            document.getElementById('result-section').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Certificados - PROYECTO Económicas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto+Condensed:wght@700&family=Open+Sans:wght@400;600&family=Lato:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .certificados-hero {
+            background: linear-gradient(135deg, #003366 0%, #004080 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .certificados-hero h1 {
+            font-family: 'Montserrat', 'Roboto Condensed', sans-serif;
+            font-weight: 900;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .certificados-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .content-section {
+            padding: 4rem 0;
+            background-color: var(--color-white);
+        }
+
+        .content-section.alt {
+            background-color: var(--color-ice-gray);
+        }
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .content-section h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 2rem;
+            color: var(--color-primary);
+            margin: 3rem 0 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-accent);
+        }
+
+        .content-section h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .content-section h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            margin: 2.5rem 0 1rem;
+        }
+
+        .content-section p {
+            color: var(--color-dark-gray);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .content-section ul,
+        .content-section ol {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+
+        .content-section li {
+            color: var(--color-dark-gray);
+            line-height: 1.8;
+            margin-bottom: 0.8rem;
+            font-size: 1.05rem;
+        }
+
+        .content-section li strong {
+            color: var(--color-primary);
+        }
+
+        .content-section a {
+            color: var(--color-accent);
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+
+        .content-section a:hover {
+            color: var(--color-primary);
+        }
+
+        .highlight-box {
+            background-color: var(--color-ice-gray);
+            border-left: 4px solid var(--color-accent);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: var(--border-radius);
+        }
+
+        .highlight-box p {
+            margin: 0;
+            color: var(--color-dark-gray);
+        }
+
+        .highlight-box ul {
+            margin-top: 0.5rem;
+        }
+
+        .certificado-card {
+            background-color: var(--color-ice-gray);
+            border-left: 4px solid var(--color-accent);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: var(--border-radius);
+        }
+
+        .certificado-card h3 {
+            margin-top: 0;
+            color: var(--color-primary);
+        }
+
+        .certificado-card ul {
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .certificados-hero h1 {
+                font-size: 2rem;
+            }
+
+            .certificados-hero p {
+                font-size: 1rem;
+            }
+
+            .content-wrapper {
+                padding: 0 1.5rem;
+            }
+
+            .content-section h2 {
+                font-size: 1.6rem;
+            }
+
+            .content-section h3 {
+                font-size: 1.3rem;
+            }
+
+            .certificado-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="logo">
+                    <a href="index.html" style="text-decoration: none;">
+                        <img src="images/logo.png" alt="PROYECTO Económicas" class="logo-img">
+                    </a>
+                </div>
+                <nav class="nav">
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">Académica <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu dropdown-menu-2col">
+                            <div class="dropdown-col">
+                                <a href="carreras.html" class="dropdown-item">Carreras</a>
+                                <a href="#" class="dropdown-item">Planes de estudio</a>
+                                <a href="#" class="dropdown-item">Modalidades de cursada</a>
+                            </div>
+                            <div class="dropdown-col">
+                                <a href="#" class="dropdown-item">Reglamento de cursada</a>
+                                <a href="#" class="dropdown-item">Becas</a>
+                                <a href="calendario-academico.html" class="dropdown-item">Calendario académico</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">Trámites <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu">
+                            <a href="inscripcion-materias.html" class="dropdown-item">Inscripción a materias</a>
+                            <a href="certificados.html" class="dropdown-item">Certificados</a>
+                            <a href="titulo-en-tramite.html" class="dropdown-item">Título en trámite</a>
+                            <a href="#" class="dropdown-item">Guía de trámites</a>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">Herramientas <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu dropdown-menu-cards">
+                            <a href="ranking.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">🧮</span>
+                                <span class="dropdown-card-text">Calculá tu ranking</span>
+                            </a>
+                            <a href="biblioeconomicas.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">📚</span>
+                                <span class="dropdown-card-text">Biblioeconómicas</span>
+                            </a>
+                            <a href="#" class="dropdown-card">
+                                <span class="dropdown-card-icon">💬</span>
+                                <span class="dropdown-card-text">Grupos de WhatsApp</span>
+                            </a>
+                            <a href="recomendaciones.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">📊</span>
+                                <span class="dropdown-card-text">Recomendaciones de materias</span>
+                            </a>
+                            <a href="blog.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">📝</span>
+                                <span class="dropdown-card-text">Blog</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">CBC <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu">
+                            <a href="cbc.html" class="dropdown-item">Guía CBC</a>
+                            <a href="#" class="dropdown-item">Inscripciones CBC</a>
+                            <a href="#" class="dropdown-item">Sedes CBC</a>
+                            <a href="#" class="dropdown-item">Grupos de WhatsApp</a>
+                        </div>
+                    </div>
+                    
+                    <a href="recomendaciones.html" class="nav-link">Recomendaciones</a>
+                    <a href="nosotros.html" class="nav-link">Nosotros</a>
+                    <a href="#login" class="btn-login">Ingresar</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="certificados-hero">
+        <div class="container">
+            <h1>Certificados</h1>
+            <p>Todo lo que necesitás saber para obtener tus certificados académicos en la FCE UBA</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="content-section">
+        <div class="content-wrapper">
+            <h2>📋 ¿Qué certificados podés solicitar?</h2>
+            <p>En la Facultad de Ciencias Económicas (FCE UBA), los certificados académicos se solicitan y descargan de manera online a través de <strong>MiEcon</strong>. Estos documentos suelen ser necesarios para trámites laborales, becas, pasantías, regularidad académica o constancias de exámenes rendidos.</p>
+
+            <div class="certificado-card">
+                <h3>📝 Certificado de examen</h3>
+                <p>El certificado de examen acredita que rendiste una materia en una fecha determinada.</p>
+                <ul>
+                    <li>Lo genera el/la docente de la materia.</li>
+                    <li>Está disponible para su descarga desde MiEcon.</li>
+                    <li>Incluye información sobre:
+                        <ul>
+                            <li>Materia rendida</li>
+                            <li>Fecha del examen</li>
+                            <li>Horario y día en que rendiste</li>
+                        </ul>
+                    </li>
+                </ul>
+                <h4>Cómo obtenerlo:</h4>
+                <ol>
+                    <li>Ingresá a <strong>MiEcon</strong>.</li>
+                    <li>Buscá la materia que rendiste.</li>
+                    <li>Verificá que coincidan el día y horario del examen.</li>
+                    <li>Descargá el certificado desde la plataforma.</li>
+                </ol>
+                <p><strong>Nota:</strong> Este certificado es útil, por ejemplo, si necesitás comprobar que rendiste un examen mientras la nota aún no fue cargada al sistema.</p>
+            </div>
+
+            <div class="certificado-card">
+                <h3>🎓 Certificado de alumno regular</h3>
+                <p>El certificado de alumno/a regular acredita que estás cursando una carrera en la FCE UBA.</p>
+                <p>Se solicita habitualmente para:</p>
+                <ul>
+                    <li>Presentar en el trabajo</li>
+                    <li>Postularse a becas</li>
+                    <li>Trámites administrativos externos</li>
+                </ul>
+                <h4>Cómo obtenerlo:</h4>
+                <ol>
+                    <li>Ingresá a <strong>MiEcon</strong>.</li>
+                    <li>Dirigite a la sección <strong>Certificados</strong>.</li>
+                    <li>Seleccioná <strong>Certificado de Alumno Regular</strong>.</li>
+                    <li>Descargalo o imprimilo directamente.</li>
+                </ol>
+            </div>
+
+            <div class="certificado-card">
+                <h3>✅ Certificado de materias aprobadas</h3>
+                <p>El certificado de materias aprobadas detalla las materias que ya aprobaste en tu carrera.</p>
+                <p>Es solicitado, por ejemplo, para:</p>
+                <ul>
+                    <li>Becas</li>
+                    <li>Trámites laborales</li>
+                    <li>Presentaciones académicas</li>
+                </ul>
+                <h4>Cómo obtenerlo:</h4>
+                <ol>
+                    <li>Ingresá a <strong>MiEcon</strong> > <strong>Certificados</strong>.</li>
+                    <li>Seleccioná la opción <strong>Certificado de materias aprobadas</strong>.</li>
+                    <li>Descargalo desde la plataforma.</li>
+                </ol>
+            </div>
+
+            <h2>📍 ¿Dónde se descargan los certificados?</h2>
+            <p>Todos los certificados se gestionan desde <strong>MiEcon</strong>, siguiendo este recorrido general:</p>
+            <div class="highlight-box">
+                <p><strong>MiEcon → Certificados</strong></p>
+            </div>
+            <p>Desde allí vas a poder:</p>
+            <ul>
+                <li>Consultar certificados de examen</li>
+                <li>Imprimir el certificado de alumno regular</li>
+                <li>Descargar certificados de materias aprobadas</li>
+            </ul>
+
+            <h2>💡 Recomendaciones importantes</h2>
+            <ul>
+                <li><strong>Verificá siempre que los datos sean correctos</strong> antes de enviar o imprimir un certificado.</li>
+                <li><strong>Si rendiste recientemente,</strong> puede haber una demora en la generación del certificado de examen.</li>
+                <li><strong>Guardá una copia digital</strong> del certificado descargado.</li>
+                <li><strong>Ante cualquier inconveniente,</strong> podés comunicarte con el Departamento de Alumnos.</li>
+            </ul>
+
+            <h2>❓ ¿Tenés problemas para obtener un certificado?</h2>
+            <p>Si no encontrás un certificado o detectás errores en la información, te recomendamos:</p>
+            <ul>
+                <li><strong>Revisar primero</strong> que la materia o examen figure correctamente en MiEcon.</li>
+                <li><strong>Consultar con el docente</strong> (en el caso de certificados de examen).</li>
+                <li><strong>Contactar al Departamento de Alumnos</strong> para resolver el inconveniente.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Instagram</a>
+                    <a href="#" class="footer-link">WhatsApp</a>
+                    <a href="#" class="footer-link">Contacto</a>
+                </div>
+                <p class="footer-text">© 2024 PROYECTO Económicas. Todos los derechos reservados.</p>
+            </div>
+        </div>
+        <div class="footer-bar"></div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

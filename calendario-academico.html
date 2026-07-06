@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario Académico - PROYECTO Económicas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto+Condensed:wght@700&family=Open+Sans:wght@400;600&family=Lato:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .calendar-hero {
+            background: linear-gradient(135deg, #003366 0%, #004080 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .calendar-hero h1 {
+            font-family: 'Montserrat', 'Roboto Condensed', sans-serif;
+            font-weight: 900;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .calendar-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .calendar-section {
+            padding: 3rem 0;
+        }
+
+        .calendar-section:nth-of-type(even) {
+            background-color: var(--color-ice-gray);
+        }
+
+        .calendar-section h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .calendar-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--color-white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .calendar-table th,
+        .calendar-table td {
+            text-align: left;
+            padding: 0.9rem 1rem;
+            border-bottom: 1px solid #E0E0E0;
+            font-size: 0.95rem;
+        }
+
+        .calendar-table th {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            font-weight: 600;
+        }
+
+        .calendar-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .calendar-subtitle {
+            font-weight: 600;
+            color: var(--color-primary);
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        .calendar-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .calendar-list li {
+            background-color: var(--color-white);
+            border: 1px solid #E0E0E0;
+            border-radius: var(--border-radius);
+            padding: 0.9rem 1rem;
+            margin-bottom: 0.75rem;
+            box-shadow: var(--shadow-sm);
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .calendar-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .calendar-hero p {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+
+            .calendar-table th,
+            .calendar-table td {
+                font-size: 0.9rem;
+                padding: 0.75rem 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="logo">
+                    <a href="index.html" style="text-decoration: none;">
+                        <img src="images/logo.png" alt="PROYECTO Económicas" class="logo-img">
+                    </a>
+                </div>
+                <nav class="nav">
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">Académica <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu dropdown-menu-2col">
+                            <div class="dropdown-col">
+                                <a href="carreras.html" class="dropdown-item">Carreras</a>
+                                <a href="#" class="dropdown-item">Planes de estudio</a>
+                                <a href="#" class="dropdown-item">Modalidades de cursada</a>
+                            </div>
+                            <div class="dropdown-col">
+                                <a href="#" class="dropdown-item">Reglamento de cursada</a>
+                                <a href="#" class="dropdown-item">Becas</a>
+                                <a href="calendario-academico.html" class="dropdown-item">Calendario académico</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">Trámites <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu">
+                            <a href="inscripcion-materias.html" class="dropdown-item">Inscripción a materias</a>
+                            <a href="certificados.html" class="dropdown-item">Certificados</a>
+                            <a href="titulo-en-tramite.html" class="dropdown-item">Título en trámite</a>
+                            <a href="#" class="dropdown-item">Guía de trámites</a>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">Herramientas <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu dropdown-menu-cards">
+                            <a href="ranking.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">🧮</span>
+                                <span class="dropdown-card-text">Calculá tu ranking</span>
+                            </a>
+                            <a href="biblioeconomicas.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">📚</span>
+                                <span class="dropdown-card-text">Biblioeconómicas</span>
+                            </a>
+                            <a href="#" class="dropdown-card">
+                                <span class="dropdown-card-icon">💬</span>
+                                <span class="dropdown-card-text">Grupos de WhatsApp</span>
+                            </a>
+                            <a href="recomendaciones.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">📊</span>
+                                <span class="dropdown-card-text">Recomendaciones de materias</span>
+                            </a>
+                            <a href="blog.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">📝</span>
+                                <span class="dropdown-card-text">Blog</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">CBC <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu">
+                            <a href="cbc.html" class="dropdown-item">Guía CBC</a>
+                            <a href="#" class="dropdown-item">Inscripciones CBC</a>
+                            <a href="#" class="dropdown-item">Sedes CBC</a>
+                            <a href="#" class="dropdown-item">Grupos de WhatsApp</a>
+                        </div>
+                    </div>
+                    
+                    <a href="recomendaciones.html" class="nav-link">Recomendaciones</a>
+                    <a href="nosotros.html" class="nav-link">Nosotros</a>
+                    <a href="#login" class="btn-login">Ingresar</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="calendar-hero">
+        <div class="container">
+            <h1>📘 Calendario Académico</h1>
+            <p>Fechas clave de cursadas, exámenes e inscripciones. Guardalo para no colgarte.</p>
+        </div>
+    </section>
+
+    <section class="calendar-section">
+        <div class="container">
+            <h2>📘 Exámenes Libres y Remanentes</h2>
+            <table class="calendar-table">
+                <thead>
+                    <tr>
+                        <th>Turno</th>
+                        <th>Inscripción</th>
+                        <th>Fechas de Examen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Marzo</td>
+                        <td>24 y 25 de febrero</td>
+                        <td>16 al 20 de marzo</td>
+                    </tr>
+                    <tr>
+                        <td>Mayo</td>
+                        <td>28 y 29 de abril</td>
+                        <td>18 al 22 de mayo</td>
+                    </tr>
+                    <tr>
+                        <td>Agosto</td>
+                        <td>28 y 29 de julio</td>
+                        <td>24 al 28 de agosto</td>
+                    </tr>
+                    <tr>
+                        <td>Octubre</td>
+                        <td>29 y 30 de septiembre</td>
+                        <td>19 al 23 de octubre</td>
+                    </tr>
+                    <tr>
+                        <td>Diciembre</td>
+                        <td>10 y 11 de noviembre</td>
+                        <td>30 nov al 4 dic</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="calendar-section">
+        <div class="container">
+            <h2>📘 Cursos – Primer Cuatrimestre</h2>
+            <table class="calendar-table">
+                <thead>
+                    <tr>
+                        <th>Etapa</th>
+                        <th>Fechas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Inscripción (todas las modalidades)</td>
+                        <td>12 al 18 de febrero</td>
+                    </tr>
+                    <tr>
+                        <td>Publicación resultados</td>
+                        <td>26 de febrero</td>
+                    </tr>
+                    <tr>
+                        <td>Vacantes presencial</td>
+                        <td>27 feb al 2 mar</td>
+                    </tr>
+                    <tr>
+                        <td>Publicación resultados</td>
+                        <td>6 de marzo</td>
+                    </tr>
+                    <tr>
+                        <td>Dictado presencial</td>
+                        <td>12 de marzo al 4 de julio</td>
+                    </tr>
+                    <tr>
+                        <td>Vacantes distancia/magistral/virtual</td>
+                        <td>9 y 10 de marzo</td>
+                    </tr>
+                    <tr>
+                        <td>Publicación resultados</td>
+                        <td>13 de marzo</td>
+                    </tr>
+                    <tr>
+                        <td>Dictado distancia/magistral/virtual</td>
+                        <td>17 de marzo al 4 de julio</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="calendar-section">
+        <div class="container">
+            <h2>📘 Intensivo de Invierno</h2>
+            <table class="calendar-table">
+                <thead>
+                    <tr>
+                        <th>Etapa</th>
+                        <th>Fechas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Inscripción</td>
+                        <td>30 de junio al 1 de julio</td>
+                    </tr>
+                    <tr>
+                        <td>Publicación resultados</td>
+                        <td>3 de julio</td>
+                    </tr>
+                    <tr>
+                        <td>Dictado de clases</td>
+                        <td>6 de julio al 7 de agosto</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="calendar-section">
+        <div class="container">
+            <h2>📘 Segundo Cuatrimestre</h2>
+            <table class="calendar-table">
+                <thead>
+                    <tr>
+                        <th>Etapa</th>
+                        <th>Fechas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Inscripción (todas las modalidades)</td>
+                        <td>16 al 21 de julio</td>
+                    </tr>
+                    <tr>
+                        <td>Publicación resultados</td>
+                        <td>30 de julio</td>
+                    </tr>
+                    <tr>
+                        <td>Vacantes presencial</td>
+                        <td>31 jul al 3 ago</td>
+                    </tr>
+                    <tr>
+                        <td>Publicación resultados</td>
+                        <td>7 de agosto</td>
+                    </tr>
+                    <tr>
+                        <td>Dictado presencial</td>
+                        <td>13 de agosto al 4 de septiembre</td>
+                    </tr>
+                    <tr>
+                        <td>Vacantes distancia/magistral/virtual</td>
+                        <td>10 y 11 de agosto</td>
+                    </tr>
+                    <tr>
+                        <td>Publicación resultados</td>
+                        <td>14 de agosto</td>
+                    </tr>
+                    <tr>
+                        <td>Dictado distancia/magistral/virtual</td>
+                        <td>18 de agosto al 4 de diciembre</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="calendar-section">
+        <div class="container">
+            <h2>📘 Intensivo de Verano</h2>
+            <table class="calendar-table">
+                <thead>
+                    <tr>
+                        <th>Etapa</th>
+                        <th>Fechas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Inscripción</td>
+                        <td>1 y 2 de diciembre</td>
+                    </tr>
+                    <tr>
+                        <td>Publicación resultados</td>
+                        <td>11 de diciembre</td>
+                    </tr>
+                    <tr>
+                        <td>Dictado distancia/magistral/virtual</td>
+                        <td>14 dic 2026 al 9 mar 2027</td>
+                    </tr>
+                    <tr>
+                        <td>Dictado intensivo</td>
+                        <td>1 feb al 9 mar 2027</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="calendar-section">
+        <div class="container">
+            <h2>📘 Declaraciones Juradas</h2>
+            <div class="calendar-subtitle">Primer Cuatrimestre (solo días hábiles)</div>
+            <ul class="calendar-list">
+                <li>15 al 18 de diciembre 2025</li>
+                <li>4 al 9 de febrero 2026</li>
+                <li>19 al 23 de febrero 2026</li>
+                <li>3 al 5 de marzo 2026</li>
+            </ul>
+            <div class="calendar-subtitle">Segundo Cuatrimestre (solo días hábiles)</div>
+            <ul class="calendar-list">
+                <li>8 al 13 de julio 2026</li>
+                <li>22 al 27 de julio 2026</li>
+                <li>4 al 6 de agosto 2026</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Instagram</a>
+                    <a href="#" class="footer-link">WhatsApp</a>
+                    <a href="#" class="footer-link">Contacto</a>
+                </div>
+                <p class="footer-text">© 2024 PROYECTO Económicas. Todos los derechos reservados.</p>
+            </div>
+        </div>
+        <div class="footer-bar"></div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

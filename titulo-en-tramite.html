@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Título en Trámite - PROYECTO Económicas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto+Condensed:wght@700&family=Open+Sans:wght@400;600&family=Lato:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .titulo-hero {
+            background: linear-gradient(135deg, #003366 0%, #004080 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .titulo-hero h1 {
+            font-family: 'Montserrat', 'Roboto Condensed', sans-serif;
+            font-weight: 900;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .titulo-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .content-section {
+            padding: 4rem 0;
+            background-color: var(--color-white);
+        }
+
+        .content-section.alt {
+            background-color: var(--color-ice-gray);
+        }
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .content-section h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 2rem;
+            color: var(--color-primary);
+            margin: 3rem 0 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-accent);
+        }
+
+        .content-section h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .content-section h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            margin: 2.5rem 0 1rem;
+        }
+
+        .content-section h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--color-primary);
+            margin: 1.5rem 0 0.8rem;
+        }
+
+        .content-section p {
+            color: var(--color-dark-gray);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .content-section ul,
+        .content-section ol {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+
+        .content-section li {
+            color: var(--color-dark-gray);
+            line-height: 1.8;
+            margin-bottom: 0.8rem;
+            font-size: 1.05rem;
+        }
+
+        .content-section li strong {
+            color: var(--color-primary);
+        }
+
+        .content-section a {
+            color: var(--color-accent);
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+
+        .content-section a:hover {
+            color: var(--color-primary);
+        }
+
+        .highlight-box {
+            background-color: var(--color-ice-gray);
+            border-left: 4px solid var(--color-accent);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: var(--border-radius);
+        }
+
+        .highlight-box p {
+            margin: 0;
+            color: var(--color-dark-gray);
+        }
+
+        .highlight-box ul {
+            margin-top: 0.5rem;
+        }
+
+        .documento-card {
+            background-color: var(--color-ice-gray);
+            border-left: 4px solid var(--color-accent);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: var(--border-radius);
+        }
+
+        .documento-card h4 {
+            margin-top: 0;
+            color: var(--color-primary);
+        }
+
+        .documento-card ul {
+            margin-top: 1rem;
+        }
+
+        .etapa-list {
+            counter-reset: etapa-counter;
+            list-style: none;
+            padding: 0;
+        }
+
+        .etapa-list li {
+            counter-increment: etapa-counter;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            background-color: var(--color-ice-gray);
+            border-radius: var(--border-radius);
+            position: relative;
+            padding-left: 4rem;
+        }
+
+        .etapa-list li::before {
+            content: counter(etapa-counter);
+            position: absolute;
+            left: 1rem;
+            top: 1.5rem;
+            background-color: var(--color-accent);
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        @media (max-width: 768px) {
+            .titulo-hero h1 {
+                font-size: 2rem;
+            }
+
+            .titulo-hero p {
+                font-size: 1rem;
+            }
+
+            .content-wrapper {
+                padding: 0 1.5rem;
+            }
+
+            .content-section h2 {
+                font-size: 1.6rem;
+            }
+
+            .content-section h3 {
+                font-size: 1.3rem;
+            }
+
+            .documento-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="logo">
+                    <a href="index.html" style="text-decoration: none;">
+                        <img src="images/logo.png" alt="PROYECTO Económicas" class="logo-img">
+                    </a>
+                </div>
+                <nav class="nav">
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">Académica <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu dropdown-menu-2col">
+                            <div class="dropdown-col">
+                                <a href="carreras.html" class="dropdown-item">Carreras</a>
+                                <a href="#" class="dropdown-item">Planes de estudio</a>
+                                <a href="#" class="dropdown-item">Modalidades de cursada</a>
+                            </div>
+                            <div class="dropdown-col">
+                                <a href="#" class="dropdown-item">Reglamento de cursada</a>
+                                <a href="#" class="dropdown-item">Becas</a>
+                                <a href="calendario-academico.html" class="dropdown-item">Calendario académico</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">Trámites <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu">
+                            <a href="inscripcion-materias.html" class="dropdown-item">Inscripción a materias</a>
+                            <a href="certificados.html" class="dropdown-item">Certificados</a>
+                            <a href="titulo-en-tramite.html" class="dropdown-item">Título en trámite</a>
+                            <a href="#" class="dropdown-item">Guía de trámites</a>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">Herramientas <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu dropdown-menu-cards">
+                            <a href="ranking.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">🧮</span>
+                                <span class="dropdown-card-text">Calculá tu ranking</span>
+                            </a>
+                            <a href="biblioeconomicas.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">📚</span>
+                                <span class="dropdown-card-text">Biblioeconómicas</span>
+                            </a>
+                            <a href="#" class="dropdown-card">
+                                <span class="dropdown-card-icon">💬</span>
+                                <span class="dropdown-card-text">Grupos de WhatsApp</span>
+                            </a>
+                            <a href="recomendaciones.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">📊</span>
+                                <span class="dropdown-card-text">Recomendaciones de materias</span>
+                            </a>
+                            <a href="blog.html" class="dropdown-card">
+                                <span class="dropdown-card-icon">📝</span>
+                                <span class="dropdown-card-text">Blog</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-link-dropdown">CBC <span class="dropdown-arrow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
+                        <div class="dropdown-menu">
+                            <a href="cbc.html" class="dropdown-item">Guía CBC</a>
+                            <a href="#" class="dropdown-item">Inscripciones CBC</a>
+                            <a href="#" class="dropdown-item">Sedes CBC</a>
+                            <a href="#" class="dropdown-item">Grupos de WhatsApp</a>
+                        </div>
+                    </div>
+                    
+                    <a href="recomendaciones.html" class="nav-link">Recomendaciones</a>
+                    <a href="nosotros.html" class="nav-link">Nosotros</a>
+                    <a href="#login" class="btn-login">Ingresar</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="titulo-hero">
+        <div class="container">
+            <h1>Título en Trámite</h1>
+            <p>Guía completa para iniciar y seguir el trámite de tu título universitario en la FCE UBA</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="content-section">
+        <div class="content-wrapper">
+            <h2>📋 ¿Cómo es el trámite del título?</h2>
+            <p>El trámite del título universitario en la Facultad de Ciencias Económicas (FCE UBA) se realiza una vez que completaste y aprobaste todas las materias de tu carrera. Este procedimiento está regulado por la <strong>Resolución (CS) N° RESCS-2020-271-UBA-REC</strong> y se gestiona de manera digital, con carga de documentación y seguimiento online.</p>
+            
+            <p>El trámite del título consta de cuatro etapas principales:</p>
+            <ol class="etapa-list">
+                <li><strong>Inicio del trámite</strong></li>
+                <li><strong>Carga del formulario y la documentación requerida</strong></li>
+                <li><strong>Confirmación del trámite</strong></li>
+                <li><strong>Seguimiento del estado del trámite</strong></li>
+            </ol>
+            <p>Cada una de estas etapas debe completarse correctamente para que el proceso avance sin demoras.</p>
+
+            <h2>📄 Documentación requerida para iniciar el trámite</h2>
+            <p>Para comenzar el trámite del título, vas a necesitar subir la siguiente documentación en formato digital:</p>
+
+            <div class="documento-card">
+                <h4>A) Documento de Identidad</h4>
+                <ul>
+                    <li><strong>DNI (frente y dorso)</strong></li>
+                    <li>Debe cargarse en un solo archivo.</li>
+                </ul>
+            </div>
+
+            <div class="documento-card">
+                <h4>B) Título secundario legalizado por la UBA</h4>
+                <p>El título secundario o superior debe estar legalizado por la Universidad de Buenos Aires. Podés presentarlo de las siguientes formas:</p>
+                <p><strong>Opciones válidas:</strong></p>
+                <ul>
+                    <li><strong>Diploma de secundario o superior legalizado por la UBA</strong>
+                        <ul>
+                            <li>Adjuntar frente y dorso a color</li>
+                            <li>Documento escaneado con firma ológrafa</li>
+                            <li>Incluye sello con la leyenda Universidad de Buenos Aires y la firma de un responsable</li>
+                        </ul>
+                    </li>
+                    <li><strong>Diploma de secundario o superior legalizado por la UBA con firma digital</strong>
+                        <ul>
+                            <li>Debe subirse exactamente como se descarga desde el sistema TAD</li>
+                            <li>No modificar el archivo</li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="highlight-box">
+                    <p><strong>Importante:</strong> Si tu título secundario todavía no está legalizado por la UBA, antes de iniciar el trámite del título universitario debés realizar el trámite:</p>
+                    <p><strong>👉 "Solicitud de Legalización de Títulos Secundarios y Convalidación de Secundarios"</strong></p>
+                    <p>A través de: <a href="https://tramitesadistancia.uba.ar" target="_blank" rel="noopener noreferrer">https://tramitesadistancia.uba.ar</a></p>
+                </div>
+            </div>
+
+            <div class="documento-card">
+                <h4>C) Certificado de título en trámite</h4>
+                <p>Este certificado acredita que ya finalizaste la cursada de tu carrera.</p>
+                <ul>
+                    <li>Podés descargarlo desde <strong>MiECON</strong>.</li>
+                    <li><strong>Ruta:</strong> MiECON → Alumnos → Certificados.</li>
+                    <li>Estará disponible una vez que figure cargada la última materia rendida.</li>
+                </ul>
+            </div>
+
+            <div class="documento-card">
+                <h4>D) Comprobante de pago del trámite</h4>
+                <p>Para completar el trámite, es obligatorio realizar el pago del título universitario.</p>
+                <h4>Cómo realizar el pago:</h4>
+                <ol>
+                    <li>Ingresá al portal de pagos de la UBA: <a href="https://portalpagos.uba.ar/" target="_blank" rel="noopener noreferrer">👉 https://portalpagos.uba.ar/</a></li>
+                    <li>Seleccioná la opción: <strong>"Pagar trámites diplomas académicos"</strong>.</li>
+                    <li>Completá tus datos personales.</li>
+                    <li>Realizá el pago y guardá el comprobante, que deberás adjuntar al trámite.</li>
+                </ol>
+            </div>
+
+            <h2>📊 Seguimiento del trámite del título</h2>
+            <p>Una vez iniciado y confirmado el trámite, vas a poder realizar el seguimiento del estado del mismo a través de los canales habilitados por la facultad.</p>
+            <p>Te recomendamos:</p>
+            <ul>
+                <li><strong>Revisar periódicamente</strong> el estado del trámite.</li>
+                <li><strong>Conservar copias digitales</strong> de toda la documentación presentada.</li>
+                <li><strong>Verificar que los datos personales</strong> estén correctamente cargados.</li>
+            </ul>
+
+            <h2>💡 Recomendaciones finales</h2>
+            <ul>
+                <li><strong>Antes de iniciar el trámite,</strong> asegurate de que todas las materias estén correctamente cargadas en el sistema.</li>
+                <li><strong>Revisá que los archivos</strong> sean legibles, completos y en el formato solicitado.</li>
+                <li><strong>No modifiques documentos</strong> con firma digital.</li>
+                <li><strong>Ante cualquier inconveniente,</strong> comunicate con el Departamento de Alumnos.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Instagram</a>
+                    <a href="#" class="footer-link">WhatsApp</a>
+                    <a href="#" class="footer-link">Contacto</a>
+                </div>
+                <p class="footer-text">© 2024 PROYECTO Económicas. Todos los derechos reservados.</p>
+            </div>
+        </div>
+        <div class="footer-bar"></div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
